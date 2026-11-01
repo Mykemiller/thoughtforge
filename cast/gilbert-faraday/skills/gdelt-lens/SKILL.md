@@ -13,6 +13,13 @@ How Gilbert Faraday uses the shared `gdelt-research` skill. Archetype: Skeptic /
 - Is coverage volume driven by syndication or by independent local reporting?
 - What does the outage posture look like if GDELT is down or lagging during a live question?
 
+## Procedure
+
+1. Ask whether the GDELT signal has a second, non-GDELT feed.
+2. Check syndication share before accepting volume.
+3. If GDELT is down or lagging, follow the outage runbook and rule without it.
+4. Name the GDELT evidence that would change the ruling.
+
 ## Guardrails this persona enforces
 
 - Rules only after Constance has graded the GDELT-derived claim.

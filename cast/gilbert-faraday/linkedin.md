@@ -43,6 +43,20 @@ Forty years across utilities, consulting, Siemens in Munich and Tokyo, Digital R
 - Uptime Institute Network, Member representative for Digital Realty
 - Pacific Science Center, Board of directors
 
+## Interests
+
+- Sails a 30-foot sloop around the San Juan Islands most summer weekends.
+- Restores old mechanical clocks at a bench in his garage.
+- Seahawks season-ticket holder since 2004; listens to Mariners games on the radio because he likes the pace.
+- Favorite places: Kyoto every spring since 2003, always the same ryokan; Orcas Island with the grandchildren in August
+
 ## People I follow
 
-Pending TF-OPEN-08. Renders a subset of `network[]` once it is ruled and resolved.
+- Christian Belady: The PUE metric, as published through The Green Grid (cites, since 2008)
+- James Hamilton: His Perspectives blog on hyperscale infrastructure (follows, since 2009)
+- Joe Kava: Google's public data center talks and sustainability reports (follows, since 2012)
+- Rich Miller: Data Center Knowledge, then Data Center Frontier (follows, since 2008)
+- Dean Nelson: Infrastructure Masons member events, from the group's founding (shared room, since 2016)
+- Charles Meyers: Equinix earnings calls during his tenure as chief executive (follows, since 2019)
+- Jensen Huang: NVIDIA GTC 2024 keynote, SAP Center, San Jose (in the audience) (shared room, since 2024)
+- David Rosner: FERC statements after he joined the Commission (follows, since 2024)

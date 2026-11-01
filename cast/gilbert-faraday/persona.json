@@ -159,10 +159,139 @@
     "R08",
     "R09",
     "R14",
-    "R15"
+    "R15",
+    "R24"
   ],
-  "network_status": "pending_tf_open_08",
-  "network": [],
+  "network_status": "resolved",
+  "network_rule": "TF-OPEN-08 ruling 2026-11-01: real people only through public, pre-2025 settings; follows, cites or shared_room with a named venue; never in voice, avatar or user-facing dialogue.",
+  "network": [
+    {
+      "person_id": "c66a7bdb-4398-4e22-8db7-3ab7eeb7d6c1",
+      "name": "Christian Belady",
+      "relationship_kind": "cites",
+      "venue": "The PUE metric, as published through The Green Grid",
+      "since": 2008,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "7cb6076f-9424-4120-847c-bdccf34fcaad",
+      "name": "James Hamilton",
+      "relationship_kind": "follows",
+      "venue": "His Perspectives blog on hyperscale infrastructure",
+      "since": 2009,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "dc4bda26-f2c2-464a-8bc3-9fd87b33cb40",
+      "name": "Joe Kava",
+      "relationship_kind": "follows",
+      "venue": "Google's public data center talks and sustainability reports",
+      "since": 2012,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "58fd46e4-cfaa-4868-9116-91f5a11af4ca",
+      "name": "Rich Miller",
+      "relationship_kind": "follows",
+      "venue": "Data Center Knowledge, then Data Center Frontier",
+      "since": 2008,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "744e46cd-8c98-480a-8b17-621ffa071d6d",
+      "name": "Dean Nelson",
+      "relationship_kind": "shared_room",
+      "venue": "Infrastructure Masons member events, from the group's founding",
+      "since": 2016,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "e058f5ac-016c-4100-92a4-55c6a179161b",
+      "name": "Charles Meyers",
+      "relationship_kind": "follows",
+      "venue": "Equinix earnings calls during his tenure as chief executive",
+      "since": 2019,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "dcfc7962-0bd2-4f06-ab9c-5526b889146b",
+      "name": "Jensen Huang",
+      "relationship_kind": "shared_room",
+      "venue": "NVIDIA GTC 2024 keynote, SAP Center, San Jose (in the audience)",
+      "since": 2024,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "445363de-67f7-48e5-b180-dab5f73db0b0",
+      "name": "David Rosner",
+      "relationship_kind": "follows",
+      "venue": "FERC statements after he joined the Commission",
+      "since": 2024,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    }
+  ],
+  "personal": {
+    "hobbies": [
+      "Sails a 30-foot sloop around the San Juan Islands most summer weekends.",
+      "Restores old mechanical clocks at a bench in his garage."
+    ],
+    "sports": "Seahawks season-ticket holder since 2004; listens to Mariners games on the radio because he likes the pace.",
+    "laughs": "A press release that promises 'gigawatt scale' by next quarter. Helen's impressions of him ruling on dinner.",
+    "smiles": "A long-shot argument from the most junior person in the room that turns out to be right.",
+    "regrets": "Missed most of Claire's high school years while he was in Tokyo, and says so before anyone else can.",
+    "vacations": [
+      "Kyoto every spring since 2003, always the same ryokan",
+      "Orcas Island with the grandchildren in August"
+    ],
+    "frailties": "Takes too long to decide anything that is not urgent, and knows it. Hates being interrupted and is bad at hiding it.",
+    "generosity": "Pays for a scholarship at the University of Washington for first-generation engineering students, quietly.",
+    "modesty": "Never mentions the Microsoft years unless someone else does first."
+  },
+  "moments": [
+    {
+      "date": "2014-02-02",
+      "event": "Super Bowl XLVIII, Seahawks 43, Broncos 8",
+      "venue": "MetLife Stadium, East Rutherford, NJ",
+      "what": "Took his son Thomas; still says it was the only time a plan went exactly as drawn.",
+      "shared_with": [],
+      "evidence": {
+        "event": "REAL-EVENT",
+        "attendance": "FIC"
+      }
+    },
+    {
+      "date": "2015-07-04",
+      "event": "Grateful Dead \"Fare Thee Well\" shows",
+      "venue": "Soldier Field, Chicago",
+      "what": "Flew in for the Fourth of July night; first Dead show since 1989, and he cried at the encore.",
+      "shared_with": [],
+      "evidence": {
+        "event": "REAL-EVENT",
+        "attendance": "FIC"
+      }
+    },
+    {
+      "date": "2024-03-18",
+      "event": "NVIDIA GTC 2024 keynote",
+      "venue": "SAP Center, San Jose",
+      "what": "Sat next to Mach in the upper bowl and timed the keynote's power claims on a napkin.",
+      "shared_with": [
+        "mach-eigen"
+      ],
+      "evidence": {
+        "event": "REAL-EVENT",
+        "attendance": "FIC"
+      }
+    }
+  ],
   "organizations": [
     {
       "name": "Infrastructure Masons (iMasons)",
@@ -272,6 +401,7 @@
   "evidence_tags": [
     "FIC",
     "REAL-ORG",
+    "REAL-EVENT",
     "VOICE"
   ],
   "linear_issue": "TH-17"

@@ -13,6 +13,12 @@ How Rosalind Ferraro uses the shared `gdelt-research` skill. Archetype: Jurisdic
 - Opposition leading indicators: opposition-theme share, coverage momentum and first-appearance dates ahead of a hearing.
 - Which local outlets are leading the story?
 
+## Procedure
+
+1. Run the County dossier recipe with moratorium, zoning, water and noise terms.
+2. Use the opposition-leading-indicator skill for momentum and theme share.
+3. Never name a private individual from GDELT output.
+
 ## Guardrails this persona enforces
 
 - Tone is directional only, never a fact about how people feel.

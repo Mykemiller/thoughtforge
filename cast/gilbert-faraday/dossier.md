@@ -1,8 +1,8 @@
 # Gilbert Faraday — Chief of Staff
 
-Dossier v1 draft, 2026-11-01. Linear TH-17. Canonical source: this folder (TF-DEC-40); the Notion page is a read-only mirror.
+Dossier v2, 2026-11-01. Linear TH-17. Canonical source: this folder (TF-DEC-40); the Notion page is a read-only mirror.
 
-Evidence tags: FIC is invented, REAL-ORG is a real institution, VOICE is a real person from the Supabase people spine (network only).
+Evidence tags: FIC is invented, REAL-ORG is a real institution, REAL-EVENT is a real public event with a verified date, VOICE is a real person from the Supabase people spine (network only).
 
 ## Decisions made
 
@@ -26,6 +26,24 @@ A mid-career MPA took him to Siemens in Munich, where European grid politics tau
 He came home to the data center industry just as it began to need power more than space: power procurement at Digital Realty, then seven years running energy and site development at Microsoft, where Margo Brandt worked for him and argued with him on schedule. At Brattle he advised the people on the other side of the table. He chairs the ThoughtForge panel the way he ran those rooms. He lets everyone argue, waits for Constance to grade the claims, and then rules in one sentence.
 
 [FIC; every institution named is REAL-ORG]
+
+## Life outside work
+
+- Hobbies: Sails a 30-foot sloop around the San Juan Islands most summer weekends. Restores old mechanical clocks at a bench in his garage. [FIC]
+- Sports: Seahawks season-ticket holder since 2004; listens to Mariners games on the radio because he likes the pace. [FIC]
+- What makes Gilbert laugh: A press release that promises 'gigawatt scale' by next quarter. Helen's impressions of him ruling on dinner. [FIC]
+- What makes Gilbert smile: A long-shot argument from the most junior person in the room that turns out to be right. [FIC]
+- Favorite places to go: Kyoto every spring since 2003, always the same ryokan; Orcas Island with the grandchildren in August [FIC]
+- A regret: Missed most of Claire's high school years while he was in Tokyo, and says so before anyone else can. [FIC]
+- Frailties: Takes too long to decide anything that is not urgent, and knows it. Hates being interrupted and is bad at hiding it. [FIC]
+- Generosity: Pays for a scholarship at the University of Washington for first-generation engineering students, quietly. [FIC]
+- Modesty: Never mentions the Microsoft years unless someone else does first. [FIC]
+
+## Real-world moments (public events before 2025)
+
+- 2014-02-02: Super Bowl XLVIII, Seahawks 43, Broncos 8, MetLife Stadium, East Rutherford, NJ. Took his son Thomas; still says it was the only time a plan went exactly as drawn. [REAL-EVENT; attendance FIC]
+- 2015-07-04: Grateful Dead "Fare Thee Well" shows, Soldier Field, Chicago. Flew in for the Fourth of July night; first Dead show since 1989, and he cried at the encore. [REAL-EVENT; attendance FIC]
+- 2024-03-18: NVIDIA GTC 2024 keynote, SAP Center, San Jose. Sat next to Mach in the upper bowl and timed the keynote's power claims on a napkin. With Mach Eigen. [REAL-EVENT; attendance FIC]
 
 ## Family
 
@@ -67,11 +85,24 @@ He came home to the data center industry just as it began to need power more tha
 - R09, 2016, with Albert Thorne: Microsoft-commissioned grid-impact study by E3. Gilbert sponsored the study and Albert led it; the conclusion Gilbert did not want is the one that held. [FIC]
 - R14, 2015, with Dr. Ingrid Halverson: Warm-water liquid cooling visit, NREL Energy Systems Integration Facility, Golden, Colorado. Gilbert led a Microsoft delegation and Ingrid ran the technical session; she corrected his approach-temperature number in front of his team. [FIC]
 - R15, 2020, with Constance Wright: Fact-check for 451 Research. Constance checked a power-cost figure in a Brattle paper Gilbert co-wrote; the number was right and the year was wrong. [FIC]
+- R24, 2024, with Mach Eigen: NVIDIA GTC 2024 keynote, SAP Center, San Jose. Sat together in the upper bowl; Gilbert timed the claims and Mach checked the power math on a napkin. [FIC]
 
-## Network (real Voices)
+## Network (real Voices, public settings before 2025)
 
-PENDING TF-OPEN-08. This section stays empty until Myke rules on how real people appear in a panelist's network.
-Planned seed once ruled: `person_domain_tags` on D2, D3, D4, D10, D14, curated to 8 to 15 names, resolved through `scripts/resolve-network` (TH-15), phrased only as follows, cites or shared_room with a named venue. Real names never appear in voice, avatar or user-facing dialogue (TF-DEC-13).
+Ruled 2026-11-01 (TF-OPEN-08): real people appear only through public settings before 2025, as follows, cites or shared_room with a named venue. No private relationship, quote or opinion is attributed to them, and real names never appear in voice, avatar or user-facing dialogue (TF-DEC-13). Each person resolves to the Supabase people spine.
+
+| Voice | Kind | Venue | Since |
+| --- | --- | --- | --- |
+| Christian Belady | cites | The PUE metric, as published through The Green Grid | 2008 |
+| James Hamilton | follows | His Perspectives blog on hyperscale infrastructure | 2009 |
+| Joe Kava | follows | Google's public data center talks and sustainability reports | 2012 |
+| Rich Miller | follows | Data Center Knowledge, then Data Center Frontier | 2008 |
+| Dean Nelson | shared_room | Infrastructure Masons member events, from the group's founding | 2016 |
+| Charles Meyers | follows | Equinix earnings calls during his tenure as chief executive | 2019 |
+| Jensen Huang | shared_room | NVIDIA GTC 2024 keynote, SAP Center, San Jose (in the audience) | 2024 |
+| David Rosner | follows | FERC statements after he joined the Commission | 2024 |
+
+[VOICE; connection FIC]
 
 ## Professional organizations
 

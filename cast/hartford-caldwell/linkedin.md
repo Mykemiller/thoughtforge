@@ -42,6 +42,18 @@ Thirty years in land use and energy law: a county attorney's office, two nationa
 - NAIOP, the Commercial Real Estate Development Association, Member
 - Institute for Professionals in Taxation (IPT), Member
 
+## Interests
+
+- Fly-fishes the Shenandoah Valley streams on spring weekends.
+- Collects first editions of Virginia history books.
+- UVA basketball, through the worst loss in tournament history and the title a year later.
+- Favorite places: Chincoteague with Anne every October; One fly-fishing trip to Montana he took alone and talks about too much
+
 ## People I follow
 
-Pending TF-OPEN-08. Renders a subset of `network[]` once it is ruled and resolved.
+- Samuel T. Towell: Virginia State Corporation Commission orders (follows, since 2024)
+- Lindsay S. See: FERC statements after she joined the Commission (cites, since 2024)
+- David Rosner: FERC statements after he joined the Commission (follows, since 2024)
+- Judy W. Chang: FERC statements after she joined the Commission (follows, since 2024)
+- Jenifer French: Public Utilities Commission of Ohio open meetings during her tenure as chair (follows, since 2021)
+- Rich Miller: Data Center Knowledge, then Data Center Frontier (follows, since 2012)

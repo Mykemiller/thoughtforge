@@ -13,6 +13,12 @@ How Dr. Ingrid Halverson uses the shared `gdelt-research` skill. Archetype: Educ
 - Which cooling deployments make good case studies, using coverage around announcement, issue and resolution?
 - Which candidate sources does GDELT surface for the Reference Shelf on cooling and water?
 
+## Procedure
+
+1. Run a cross-language sweep with English cooling terms (liquid cooling, immersion, CDU, cold plate).
+2. Note where Japanese, Nordic or Korean coverage leads English.
+3. Use GDELT to find sources, then cite the spec or paper.
+
 ## Guardrails this persona enforces
 
 - GDELT finds sources; it does not source a technical claim.

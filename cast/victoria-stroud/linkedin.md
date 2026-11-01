@@ -41,6 +41,20 @@ Banker, infrastructure investor and capital adviser to data center developers. I
 - Nareit, Associate member
 - Infrastructure Masons (iMasons), Member
 
+## Interests
+
+- Sits in on Daniel's jazz trio rehearsals and turns pages.
+- Runs half marathons and logs every split in a spreadsheet.
+- Duke basketball, always; she has been to two national finals and won both.
+- Favorite places: Oak Bluffs on Martha's Vineyard every August; The Newport Jazz Festival most summers
+
 ## People I follow
 
-Pending TF-OPEN-08. Renders a subset of `network[]` once it is ruled and resolved.
+- Charles Meyers: Equinix earnings calls during his tenure as chief executive (follows, since 2018)
+- Marc Ganzi: DigitalBridge investor calls and letters (follows, since 2019)
+- Raul Martynek: DataBank's financing announcements (follows, since 2017)
+- Michael Intrator: CoreWeave's financing announcements (follows, since 2023)
+- David Liggitt: datacenterHawk market reports (follows, since 2019)
+- Bernard Johnson: DC Byte market research (follows, since 2021)
+- Giordano Albertazzi: Vertiv's investor updates (follows, since 2023)
+- Sureel Choksi: Vantage Data Centers' capital raises (follows, since 2018)

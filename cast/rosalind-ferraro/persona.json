@@ -127,10 +127,121 @@
     "R05",
     "R10",
     "R11",
-    "R20"
+    "R20",
+    "R26"
   ],
-  "network_status": "pending_tf_open_08",
-  "network": [],
+  "network_status": "resolved",
+  "network_rule": "TF-OPEN-08 ruling 2026-11-01: real people only through public, pre-2025 settings; follows, cites or shared_room with a named venue; never in voice, avatar or user-facing dialogue.",
+  "network": [
+    {
+      "person_id": "845b75d9-4b14-4b73-bdbc-2c062b509d70",
+      "name": "Ann McCabe",
+      "relationship_kind": "follows",
+      "venue": "Illinois Commerce Commission open meetings",
+      "since": 2013,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "93119654-a18b-419e-92ca-89a5bfa95136",
+      "name": "David E. Ziegner",
+      "relationship_kind": "follows",
+      "venue": "Indiana Utility Regulatory Commission open meetings, including the 2022 large-load proceeding",
+      "since": 2022,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "6ec82d28-98a8-4a1b-b906-c84fd663933e",
+      "name": "Jenifer French",
+      "relationship_kind": "follows",
+      "venue": "Public Utilities Commission of Ohio open meetings during her tenure as chair",
+      "since": 2021,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "8de9ac83-a98b-4bd5-bf21-71f2ec376614",
+      "name": "Miranda Gardiner",
+      "relationship_kind": "follows",
+      "venue": "The iMasons Climate Accord's community and water commitments",
+      "since": 2022,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "dc4bda26-f2c2-464a-8bc3-9fd87b33cb40",
+      "name": "Joe Kava",
+      "relationship_kind": "follows",
+      "venue": "Google's public statements on data center water and community commitments",
+      "since": 2016,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "58fd46e4-cfaa-4868-9116-91f5a11af4ca",
+      "name": "Rich Miller",
+      "relationship_kind": "follows",
+      "venue": "Data Center Frontier's coverage of local opposition",
+      "since": 2016,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    }
+  ],
+  "personal": {
+    "hobbies": [
+      "Cooks her grandmother's Sunday gravy for whoever shows up.",
+      "Keeps a vote-count notebook for every council in Cook County, just for fun."
+    ],
+    "sports": "White Sox, fiercely, and Blackhawks; tolerates Delia's Cubs.",
+    "laughs": "A developer who says 'the community is excited'. Her son Miles imitating her on the phone.",
+    "smiles": "A neighbor at a hearing who was heard, even if the vote went the other way.",
+    "regrets": "Told a water-district board member in 2017 that a project would not need more water, on a developer's word. It did. She has checked the numbers herself ever since.",
+    "vacations": [
+      "Saugatuck, Michigan, every August",
+      "One family trip to Calabria in 2019 that she plans to repeat"
+    ],
+    "frailties": "Counts everything, including the people who did not come to dinner.",
+    "generosity": "Runs a free Saturday clinic for neighbors who want to testify at zoning hearings.",
+    "modesty": "Credits her mother's lost race for everything she knows."
+  },
+  "moments": [
+    {
+      "date": "2005-10-23",
+      "event": "World Series Game 2, White Sox beat the Astros on a walk-off home run",
+      "venue": "U.S. Cellular Field, Chicago",
+      "what": "Was there with her mother; the White Sox went on to sweep.",
+      "shared_with": [],
+      "evidence": {
+        "event": "REAL-EVENT",
+        "attendance": "FIC"
+      }
+    },
+    {
+      "date": "2015-06-15",
+      "event": "Stanley Cup Final Game 6, Blackhawks clinch at home",
+      "venue": "United Center, Chicago",
+      "what": "Took Marcus and the kids; first Cup clinched at home since 1938.",
+      "shared_with": [],
+      "evidence": {
+        "event": "REAL-EVENT",
+        "attendance": "FIC"
+      }
+    },
+    {
+      "date": "2016-11-02",
+      "event": "World Series Game 7 (the Cubs won)",
+      "venue": "At home in Bridgeport",
+      "what": "Answered Delia's 12:47 a.m. call, heard the silence, and hung up.",
+      "shared_with": [
+        "delia-marchetti"
+      ],
+      "evidence": {
+        "event": "REAL-EVENT",
+        "attendance": "FIC"
+      }
+    }
+  ],
   "organizations": [
     {
       "name": "International City/County Management Association (ICMA)",
@@ -187,8 +298,8 @@
       "kind": "persona"
     },
     {
-      "name": "community-cost-first",
-      "path": "cast/rosalind-ferraro/skills/community-cost-first/SKILL.md",
+      "name": "opposition-leading-indicator",
+      "path": "cast/rosalind-ferraro/skills/opposition-leading-indicator/SKILL.md",
       "kind": "persona"
     },
     {
@@ -230,6 +341,7 @@
   "evidence_tags": [
     "FIC",
     "REAL-ORG",
+    "REAL-EVENT",
     "VOICE"
   ],
   "linear_issue": "TH-23"

@@ -43,6 +43,20 @@ Power engineer by training: HVDC at Siemens, medium-voltage DC at ABB, mission-c
 - 7x24 Exchange International, Member
 - NFPA 70 (National Electrical Code) committee process, Observer
 
+## Interests
+
+- Restores vintage German motorcycles in a heated garage in Kansas City.
+- Bakes Christmas stollen every December and gives it to everyone at work.
+- Lifelong VfB Stuttgart supporter; adopted the Chiefs in 2009 and claims he saw the Mahomes era coming.
+- Favorite places: Hiking the Dolomites with Sabine every September; Christmas markets in Stuttgart with his brother's family
+
 ## People I follow
 
-Pending TF-OPEN-08. Renders a subset of `network[]` once it is ruled and resolved.
+- Jensen Huang: NVIDIA GTC 2024 keynote, SAP Center, San Jose (in the audience) (shared room, since 2024)
+- Prof. Deepak Divan: Georgia Tech Center for Distributed Energy research (follows, since 2010)
+- Prof. Alex Q. Huang: FREEDM Systems Center research at NC State on solid-state transformers (cites, since 2008)
+- Prof. Subhashish Bhattacharya: FREEDM Systems Center medium-voltage converter research (follows, since 2008)
+- Giordano Albertazzi: Vertiv's investor and product updates (follows, since 2023)
+- James Hamilton: His Perspectives blog, especially the power-distribution posts (follows, since 2010)
+- Christian Belady: The PUE metric, as published through The Green Grid (cites, since 2008)
+- Dr. Peter De Bock: ARPA-E's COOLERCHIPS program (follows, since 2023)

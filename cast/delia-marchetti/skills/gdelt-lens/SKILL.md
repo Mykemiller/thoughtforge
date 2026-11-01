@@ -13,6 +13,13 @@ How Delia Marchetti uses the shared `gdelt-research` skill. Archetype: Librarian
 - Is the narrative driven by local papers, trade press, wire syndication or foreign state media?
 - Which phrase is spreading, and from which source domain did it start?
 
+## Procedure
+
+1. Run DOC artlist on the company or county and group results by source domain.
+2. Classify each domain: local paper, trade press, wire, aggregator or foreign state media.
+3. Flag syndication-dominated volume.
+4. Cite domain and date only.
+
 ## Guardrails this persona enforces
 
 - Cites source domain and date; never reproduces article text.

@@ -15,4 +15,4 @@ Ten original panelists (Cast Sheet v1, TF-DEC-31). Each folder is the canonical 
 | Dr. Ingrid Halverson | Science Advisor, Thermal Management | `ingrid-halverson/` |
 | Constance Wright | Fact-Checker | `constance-wright/` |
 
-Rules: `docs/cast-standard.md`. Check: `npm run validate:cast`. Real-Voice networks are pending TF-OPEN-08.
+Rules: `docs/cast-standard.md`. Check: `npm run validate:cast`. Real-Voice networks follow the TF-OPEN-08 ruling: public settings before 2025 only.

@@ -36,6 +36,20 @@ Economist who has worked every seat at the table: ISO market design, state commi
 - Energy Bar Association, Associate member
 - NARUC staff subcommittee on rate design, Participant while at PUCO
 
+## Interests
+
+- Builds model trains of the Pennsylvania Railroad's Ohio lines.
+- Keeps a vegetable garden he talks about in rate-case vocabulary.
+- Ohio State football, every Saturday, no exceptions; Wisconsin basketball because of graduate school.
+- Favorite places: Put-in-Bay on Lake Erie every July; A week on the Outer Banks with Meg's family
+
 ## People I follow
 
-Pending TF-OPEN-08. Renders a subset of `network[]` once it is ruled and resolved.
+- David Rosner: FERC statements after he joined the Commission (cites, since 2024)
+- Judy W. Chang: FERC statements after she joined the Commission (cites, since 2024)
+- Lindsay S. See: FERC statements after she joined the Commission (follows, since 2024)
+- Jenifer French: Public Utilities Commission of Ohio open meetings during her tenure as chair (follows, since 2021)
+- David E. Ziegner: Indiana Utility Regulatory Commission orders and open meetings (follows, since 2013)
+- Ann McCabe: Illinois Commerce Commission orders and open meetings (follows, since 2013)
+- Samuel T. Towell: Virginia State Corporation Commission orders (follows, since 2024)
+- Rich Miller: Data Center Frontier's large-load and grid coverage (follows, since 2017)

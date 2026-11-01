@@ -1,8 +1,8 @@
-# Network rules (draft, pending TF-OPEN-08)
+# Network rules
 
-Linear TH-15. Nothing in this file is live until Myke rules on TF-OPEN-08.
+Linear TH-15. TF-OPEN-08 ruled by Myke 2026-11-01: connections to real people date from before 2025 and run through public settings (conferences, commission proceedings, published work, sports, concerts, travel).
 
-## Proposed vocabulary
+## Vocabulary
 
 - `follows`: the panelist reads this person's published output.
 - `cites`: the panelist has referenced this person's work in a panel answer.
@@ -10,11 +10,14 @@ Linear TH-15. Nothing in this file is live until Myke rules on TF-OPEN-08.
 
 Forbidden: friend, mentor, endorsed, worked_for.
 
-## Proposed rules
+## Rules
 
 - Every entry resolves to a row in Supabase `people` on project `ycadmmngkdhvpcsrcuaq` (read-only, anon key, guard assertion first).
 - Unresolved names go to `cast/<slug>/network.unresolved.yaml` for Myke's review; they are never dropped silently and never added to `people`.
 - Real names never appear in voice, avatar or user-facing dialogue (TF-DEC-13).
+- Every entry carries `since`, a year before 2025.
+- No private relationship, quote or opinion is attributed to a real person.
+- v1 networks were curated by hand from the people spine on 2026-11-01 (6 to 8 per panelist) and written to `cast/<slug>/network.json`; `scripts/resolve-network` (still to build) will re-check them.
 
 ## Schema notes (read 2026-11-01)
 

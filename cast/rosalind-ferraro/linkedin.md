@@ -39,6 +39,18 @@ Field organizer, Senate press secretary, chief of staff, data center community l
 - National Association of Counties (NACo), Associate
 - Women in Government Relations (WGR), Member
 
+## Interests
+
+- Cooks her grandmother's Sunday gravy for whoever shows up.
+- Keeps a vote-count notebook for every council in Cook County, just for fun.
+- White Sox, fiercely, and Blackhawks; tolerates Delia's Cubs.
+- Favorite places: Saugatuck, Michigan, every August; One family trip to Calabria in 2019 that she plans to repeat
+
 ## People I follow
 
-Pending TF-OPEN-08. Renders a subset of `network[]` once it is ruled and resolved.
+- Ann McCabe: Illinois Commerce Commission open meetings (follows, since 2013)
+- David E. Ziegner: Indiana Utility Regulatory Commission open meetings, including the 2022 large-load proceeding (follows, since 2022)
+- Jenifer French: Public Utilities Commission of Ohio open meetings during her tenure as chair (follows, since 2021)
+- Miranda Gardiner: The iMasons Climate Accord's community and water commitments (follows, since 2022)
+- Joe Kava: Google's public statements on data center water and community commitments (follows, since 2016)
+- Rich Miller: Data Center Frontier's coverage of local opposition (follows, since 2016)

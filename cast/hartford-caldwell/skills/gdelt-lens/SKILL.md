@@ -13,6 +13,12 @@ How Hartford Caldwell uses the shared `gdelt-research` skill. Archetype: Jurisdi
 - Is there a hearing, appeal or clawback dispute in local coverage that the filing record does not show yet?
 - Which officials and firms are quoted around a rezoning?
 
+## Procedure
+
+1. Run the County dossier recipe scoped to zoning, permitting, abatement and clawback terms.
+2. Prefer meeting minutes (SRC) over press about a hearing (EST).
+3. Apply the thin-coverage guard before citing opposition.
+
 ## Guardrails this persona enforces
 
 - Press about a hearing is EST; the minutes are SRC.

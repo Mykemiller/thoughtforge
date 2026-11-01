@@ -297,5 +297,53 @@
     "what": "Ingrid corrected Constance's units on a PUE claim and Constance corrected Ingrid's significant figures.",
     "associates": [],
     "evidence": "FIC"
+  },
+  {
+    "id": "R23",
+    "participants": [
+      "victoria-stroud",
+      "albert-thorne"
+    ],
+    "where": "NCAA men's basketball final, Lucas Oil Stadium, Indianapolis",
+    "years": "2015",
+    "what": "Vick cheered for Duke one row in front of Albert, who cheered for Wisconsin; they met arguing about a foul call and have argued about everything since.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R24",
+    "participants": [
+      "gilbert-faraday",
+      "mach-eigen"
+    ],
+    "where": "NVIDIA GTC 2024 keynote, SAP Center, San Jose",
+    "years": "2024",
+    "what": "Sat together in the upper bowl; Gilbert timed the claims and Mach checked the power math on a napkin.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R25",
+    "participants": [
+      "hartford-caldwell",
+      "victoria-stroud"
+    ],
+    "where": "NCAA tournament, Spectrum Center, Charlotte",
+    "years": "2018",
+    "what": "Vick took Hart to dinner after Virginia lost to UMBC and let him talk about it for two hours.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R26",
+    "participants": [
+      "delia-marchetti",
+      "rosalind-ferraro"
+    ],
+    "where": "World Series Game 7, Chicago",
+    "years": "2016",
+    "what": "Delia, a Cubs fan, called Rose, a White Sox fan, at 12:47 a.m. after the final out and said nothing. Rose hung up.",
+    "associates": [],
+    "evidence": "FIC"
   }
 ]

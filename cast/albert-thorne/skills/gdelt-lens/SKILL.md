@@ -13,6 +13,12 @@ How Albert Thorne uses the shared `gdelt-research` skill. Archetype: Jurisdictio
 - County sweeps for tariff and interconnection fights ahead of a commission vote.
 - Is coverage of a tariff proposal rising before the hearing date?
 
+## Procedure
+
+1. Run the County dossier recipe scoped to tariff, interconnection and large-load terms.
+2. Add a cross-language sweep with the same English terms.
+3. Treat press about a docket as EST and the docket itself as SRC.
+
 ## Guardrails this persona enforces
 
 - Tone is directional only.

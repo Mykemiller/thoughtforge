@@ -1,12 +1,12 @@
 # ThoughtForge cast dossier standard
 
-Draft v1, 2026-11-01. Linear TH-13. Applies to every folder under `cast/`. Myke approves this standard through the pull request (TF-DEC-19).
+Draft v2, 2026-11-01. Linear TH-13. Applies to every folder under `cast/`. Myke approves this standard through the pull request (TF-DEC-19).
 
 ## Recommendations (decisions made in this draft)
 
 - **Birth years.** 1962 to 1985, skewing senior. The v1 cast runs 1962 (Gilbert) to 1975 (Ingrid).
-- **Minimum counts per dossier.** 3 family entries, 2 degrees, 5 career entries (the ThoughtForge Panel entry counts), 4 fictional associates, 3 professional organizations, 2 persona skills plus a `gdelt-lens` skill, and the three shared skills. 8 real-Voice network entries once TF-OPEN-08 is ruled; until then `network_status` is `pending_tf_open_08` and `network[]` is empty.
-- **Evidence tags.** `FIC` (invented), `REAL-ORG` (real institution), `VOICE` (real person from the Supabase people spine, with `person_id`). Career lines read `REAL-ORG employer, FIC role`: the firm is real and the person holding the role is not.
+- **Minimum counts per dossier.** 3 family entries, 2 degrees, 5 career entries (the ThoughtForge Panel entry counts), 4 fictional associates, 3 professional organizations, 2 persona skills plus a `gdelt-lens` skill, the three shared skills, a `personal` block (hobbies, sports, what makes them laugh and smile, regrets, vacations, frailties, generosity, modesty), at least 2 real-world moments, and 6 to 15 real-Voice network entries. Six, not eight, because only connections with a verifiable public setting before 2025 are allowed.
+- **Evidence tags.** `FIC` (invented), `REAL-ORG` (real institution), `REAL-EVENT` (a real public event with a verified date; the panelist's attendance is FIC), `VOICE` (real person from the Supabase people spine, with `person_id`). Career lines read `REAL-ORG employer, FIC role`: the firm is real and the person holding the role is not.
 - **No singular officer titles at real firms.** A fictional person never holds a title only one real person can hold (CEO, general counsel, CTO, commissioner, president). Use titles many people hold at once (director, partner, senior counsel, managing director, distinguished engineer).
 - **Real projects stay generic.** Shared history names the kind of project and the region ("a liquid-cooled AI campus in the Midwest"), never a real campus name, a real deal's terms or a real executive.
 - **Validator has no external dependencies.** `scripts/validate-cast.mjs` runs on Node 20 with no packages. `cast/_schema/persona.schema.json` remains the contract for a later ajv check.
@@ -22,22 +22,23 @@ Draft v1, 2026-11-01. Linear TH-13. Applies to every folder under `cast/`. Myke 
 - The repo copy under `cast/<slug>/` is canonical; the Notion page under the Cast Sheet is a read-only mirror (TF-DEC-40).
 - Every panelist carries a GDELT lens built on the shared `gdelt-research` skill; write-back stays behind `CAST_GDELT_WRITEBACK=false` until the GDELT pack's Gate 1 (TF-DEC-42).
 
-## Open (not ruled)
-
-- **TF-OPEN-08, network wording.** The plan lists real Voices from the Supabase `people` spine as followed, cited or shared-room contacts with a named venue, never as friends, mentors or endorsers, and never in voice, avatar or user-facing dialogue. Until Myke rules, every `network[]` is empty and every dossier's Network section is marked pending.
+- **Real-world connections (TF-OPEN-08, ruled by Myke 2026-11-01).** Connections to real people date from before 2025 and run through public settings that fit the panelist's expertise or personal history: industry conferences, public commission proceedings, published work, college and pro sports, concerts and family travel. Each real person resolves to the Supabase `people` spine and appears only as `follows`, `cites` or `shared_room` with a named venue. No private relationship, quote or opinion is attributed to a real person, and real names never appear in voice, avatar or user-facing dialogue (TF-DEC-13).
+- **Real-world moments.** Sports, concerts and conferences are real public events with verified dates before 2025. The panelist's attendance and what they did there are fictional. Two panelists who share a moment list it in both dossiers and in `relationships.json`.
 
 ## Dossier outline (`cast/<slug>/dossier.md`)
 
 1. Decisions made
 2. Identity
 3. Backstory (two to three short paragraphs)
+3a. Life outside work (personal block)
+3b. Real-world moments (public events before 2025)
 4. Family
 5. Academics
 6. Career timeline (dated)
 7. Licenses and credentials (if any)
 8. Associates (fictional, ids from `cast/_shared/associates.json`)
 9. Shared history with the panel (ids from `cast/_shared/relationships.json`)
-10. Network (real Voices) — pending TF-OPEN-08
+10. Network (real Voices, public settings before 2025)
 11. Professional organizations
 12. Publications and talks (fictional titles, real venues)
 13. Skills manifest
@@ -63,4 +64,6 @@ cast/
 - Every relationship's participants each list it, and every panelist appears in at least three relationships.
 - No two panelists work at the same employer in overlapping years unless a relationship joins them (the ThoughtForge Panel entry is exempt).
 - No fictional name (panelist, family, associate) appears in any `network[]`.
+- Every network entry and every moment dates from before 2025, and a shared moment appears in both panelists' dossiers.
+- Every personal field is present.
 - Every skill path in the manifest exists.

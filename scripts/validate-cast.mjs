@@ -22,7 +22,7 @@ for (const slug of slugs) {
   personas.set(slug, JSON.parse(readFileSync(p, "utf8")));
 }
 
-const REQUIRED = ["slug", "display_name", "short_name", "role", "idf_domains", "born_year", "hometown", "family", "education", "career", "associates", "relationships", "network_status", "network", "organizations", "skills", "gdelt_lens", "voice_brief", "evidence_tags"];
+const REQUIRED = ["personal", "moments", "slug", "display_name", "short_name", "role", "idf_domains", "born_year", "hometown", "family", "education", "career", "associates", "relationships", "network_status", "network", "organizations", "skills", "gdelt_lens", "voice_brief", "evidence_tags"];
 const MIN = { family: 3, education: 2, career: 5, associates: 4, relationships: 3, organizations: 3 };
 const FORBIDDEN_TITLE = /\b(chief executive|ceo|(?<!(assistant|deputy|associate) )general counsel|chief technology|cto|(?<!vice )president|commissioner)\b/i;
 
@@ -60,7 +60,15 @@ for (const [slug, p] of personas) {
   for (const n of ["gdelt-research", "evidence-ladder", "faraday-retrieval"]) if (!shared.has(n)) fail(slug, `missing shared skill ${n}`);
   for (const s of p.skills || []) if (!existsSync(join(ROOT, s.path))) fail(slug, `skill path not found: ${s.path}`);
   if (p.network_status === "pending_tf_open_08" && p.network.length) fail(slug, "network must be empty while TF-OPEN-08 is pending");
-  if (p.network_status === "resolved" && (p.network.length < 8 || p.network.length > 15)) fail(slug, "resolved network needs 8 to 15 entries");
+  if (p.network_status === "resolved" && (p.network.length < 6 || p.network.length > 15)) fail(slug, "resolved network needs 6 to 15 entries");
+  for (const n of p.network || []) if (!(n.since < 2025)) fail(slug, `network entry ${n.name} must date from before 2025 (TF-OPEN-08 ruling)`);
+  for (const m of p.moments || []) if (!(m.date < "2025-01-01")) fail(slug, `moment ${m.event} must be before 2025`);
+  for (const k of ["hobbies", "sports", "laughs", "smiles", "regrets", "vacations", "frailties", "generosity", "modesty"]) if (!p.personal || !p.personal[k]) fail(slug, `personal.${k} missing`);
+  for (const m of p.moments || []) for (const s of m.shared_with || []) {
+    const other = personas.get(s);
+    if (!other) fail(slug, `moment shared with unknown panelist ${s}`);
+    else if (!(other.moments || []).some((x) => x.date === m.date)) fail(slug, `moment ${m.date} shared with ${s} is missing from ${s}'s moments`);
+  }
   for (const n of p.network || []) {
     if (!["follows", "cites", "shared_room"].includes(n.relationship_kind)) fail(slug, `bad relationship_kind for ${n.name}`);
     if (!n.person_id || !n.venue) fail(slug, `network entry ${n.name} needs person_id and venue`);

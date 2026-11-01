@@ -1,7 +1,0 @@
-# Draft network for Victoria Stroud.
-# PENDING TF-OPEN-08: do not add real names until Myke rules on the network wording.
-# Seed query once ruled: person_domain_tags where subdomain_code in ['D4'] domains,
-# read-only, anon key, guard assertion on project ycadmmngkdhvpcsrcuaq.
-slug: victoria-stroud
-status: pending_tf_open_08
-entries: []

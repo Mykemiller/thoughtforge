@@ -37,6 +37,20 @@ Research librarian, wire-service standards editor, ratings data integrity lead a
 - Investigative Reporters and Editors (IRE), Member
 - ACES: The Society for Editing, Member
 
+## Interests
+
+- Volunteers at the Enoch Pratt research desk on Saturdays.
+- Does the Saturday crossword in pen and checks the answers anyway.
+- Orioles and Ravens; keeps a box score of every Ravens playoff game since 2000.
+- Favorite places: The Chautauqua Institution's summer lecture weeks in western New York; The Outer Banks with Ella's family
+
 ## People I follow
 
-Pending TF-OPEN-08. Renders a subset of `network[]` once it is ruled and resolved.
+- Rich Miller: Data Center Knowledge, then Data Center Frontier (follows, since 2015)
+- David Liggitt: datacenterHawk market reports and their stated methodology (follows, since 2017)
+- Bernard Johnson: DC Byte market research (follows, since 2020)
+- Siddharth Muzumdar: DC Byte research methodology notes (follows, since 2021)
+- James Hamilton: His Perspectives blog (follows, since 2015)
+- Christian Belady: The PUE metric, as published through The Green Grid (cites, since 2015)
+- Dean Nelson: Infrastructure Masons industry reports (follows, since 2018)
+- Judy W. Chang: FERC statements after she joined the Commission (follows, since 2024)

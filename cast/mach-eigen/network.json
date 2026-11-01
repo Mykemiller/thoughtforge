@@ -1,0 +1,71 @@
+{
+  "slug": "mach-eigen",
+  "rule": "TF-OPEN-08 (2026-11-01): public settings before 2025 only",
+  "resolved_against": "ycadmmngkdhvpcsrcuaq people",
+  "entries": [
+    {
+      "person_id": "dcfc7962-0bd2-4f06-ab9c-5526b889146b",
+      "name": "Jensen Huang",
+      "relationship_kind": "shared_room",
+      "venue": "NVIDIA GTC 2024 keynote, SAP Center, San Jose (in the audience)",
+      "since": 2024,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "ac3de2e3-cdec-493e-a90f-36526a60edc6",
+      "name": "Prof. Deepak Divan",
+      "relationship_kind": "follows",
+      "venue": "Georgia Tech Center for Distributed Energy research",
+      "since": 2010,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "c023c8a4-727e-450e-ae96-6bedbf4bd452",
+      "name": "Prof. Alex Q. Huang",
+      "relationship_kind": "cites",
+      "venue": "FREEDM Systems Center research at NC State on solid-state transformers",
+      "since": 2008,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "2f234f30-86fb-48b7-9d96-359c74c0b13c",
+      "name": "Prof. Subhashish Bhattacharya",
+      "relationship_kind": "follows",
+      "venue": "FREEDM Systems Center medium-voltage converter research",
+      "since": 2008,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "8dcc9272-c41f-4794-962b-c376c740f619",
+      "name": "Giordano Albertazzi",
+      "relationship_kind": "follows",
+      "venue": "Vertiv's investor and product updates",
+      "since": 2023,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "7cb6076f-9424-4120-847c-bdccf34fcaad",
+      "name": "James Hamilton",
+      "relationship_kind": "follows",
+      "venue": "His Perspectives blog, especially the power-distribution posts",
+      "since": 2010,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "c66a7bdb-4398-4e22-8db7-3ab7eeb7d6c1",
+      "name": "Christian Belady",
+      "relationship_kind": "cites",
+      "venue": "The PUE metric, as published through The Green Grid",
+      "since": 2008,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "7b7de028-7b9b-428b-acdc-431d7f13cc75",
+      "name": "Dr. Peter De Bock",
+      "relationship_kind": "follows",
+      "venue": "ARPA-E's COOLERCHIPS program",
+      "since": 2023,
+      "resolution": "exact"
+    }
+  ]
+}

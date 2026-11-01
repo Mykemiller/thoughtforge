@@ -120,8 +120,134 @@
     "R14",
     "R22"
   ],
-  "network_status": "pending_tf_open_08",
-  "network": [],
+  "network_status": "resolved",
+  "network_rule": "TF-OPEN-08 ruling 2026-11-01: real people only through public, pre-2025 settings; follows, cites or shared_room with a named venue; never in voice, avatar or user-facing dialogue.",
+  "network": [
+    {
+      "person_id": "f5a2effa-eb55-438b-9ebc-f59075110349",
+      "name": "Prof. Dereje Agonafer",
+      "relationship_kind": "cites",
+      "venue": "His electronics-cooling research at the University of Texas at Arlington",
+      "since": 2008,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "929a397b-d510-45cf-a44f-81b12ae83acf",
+      "name": "Prof. Nenad Miljkovic",
+      "relationship_kind": "cites",
+      "venue": "His phase-change heat transfer research at the University of Illinois",
+      "since": 2016,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "875c834d-c219-4eee-961a-474b8d218d7b",
+      "name": "Dr. Evelyn Wang",
+      "relationship_kind": "follows",
+      "venue": "Her thermal research at MIT and her public work at ARPA-E",
+      "since": 2012,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "7b7de028-7b9b-428b-acdc-431d7f13cc75",
+      "name": "Dr. Peter De Bock",
+      "relationship_kind": "cites",
+      "venue": "ARPA-E's COOLERCHIPS program",
+      "since": 2023,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "c66a7bdb-4398-4e22-8db7-3ab7eeb7d6c1",
+      "name": "Christian Belady",
+      "relationship_kind": "cites",
+      "venue": "The PUE metric, as published through The Green Grid",
+      "since": 2010,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "7cb6076f-9424-4120-847c-bdccf34fcaad",
+      "name": "James Hamilton",
+      "relationship_kind": "follows",
+      "venue": "His Perspectives blog on hyperscale cooling",
+      "since": 2012,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "cf644ab6-25f7-482e-9da0-fba66528b18e",
+      "name": "Rich Whitmore",
+      "relationship_kind": "follows",
+      "venue": "Motivair's liquid-cooling product work",
+      "since": 2018,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    },
+    {
+      "person_id": "8de9ac83-a98b-4bd5-bf21-71f2ec376614",
+      "name": "Miranda Gardiner",
+      "relationship_kind": "follows",
+      "venue": "The iMasons Climate Accord's water commitments",
+      "since": 2022,
+      "evidence": "VOICE",
+      "basis": "Person and current role from the Supabase people spine; the connection is the panelist's (FIC) and sits in a public setting before 2025."
+    }
+  ],
+  "personal": {
+    "hobbies": [
+      "Cross-country skis with Astrid every winter weekend.",
+      "Brews beer at home and logs fermentation temperatures to two decimal places."
+    ],
+    "sports": "North Dakota State football by birthright; Colorado Avalanche by marriage.",
+    "laughs": "A PUE quoted without a boundary. Peter's chemistry puns.",
+    "smiles": "A clean measurement that agrees with the model.",
+    "regrets": "Left NREL before a cooling study she started was published; someone else presented it, correctly, and she wishes she had been in the room.",
+    "vacations": [
+      "Lofoten, Norway, to visit cousins",
+      "Moab every spring for the hiking"
+    ],
+    "frailties": "Corrects units mid-sentence, including at the dinner table and in birthday cards.",
+    "generosity": "Runs a physics workshop for middle school girls and buys the lab supplies herself.",
+    "modesty": "Answers 'Dr. Halverson' with 'Ingrid, please'."
+  },
+  "moments": [
+    {
+      "date": "2018-01-06",
+      "event": "FCS national championship, North Dakota State 17, James Madison 13",
+      "venue": "Toyota Stadium, Frisco, TX",
+      "what": "Flew in with her father, who wore his Bison hat on the plane.",
+      "shared_with": [],
+      "evidence": {
+        "event": "REAL-EVENT",
+        "attendance": "FIC"
+      }
+    },
+    {
+      "date": "2022-06-30",
+      "event": "Colorado Avalanche Stanley Cup parade",
+      "venue": "Downtown Denver",
+      "what": "Took Astrid out of school and stood on a newspaper box for a better view.",
+      "shared_with": [],
+      "evidence": {
+        "event": "REAL-EVENT",
+        "attendance": "FIC"
+      }
+    },
+    {
+      "date": "2023-11-13",
+      "event": "SC23 supercomputing conference",
+      "venue": "Colorado Convention Center, Denver",
+      "what": "Spent most of it in the liquid-cooling booths with a notebook.",
+      "shared_with": [],
+      "evidence": {
+        "event": "REAL-EVENT",
+        "attendance": "FIC"
+      }
+    }
+  ],
   "organizations": [
     {
       "name": "ASHRAE",
@@ -188,8 +314,8 @@
       "kind": "persona"
     },
     {
-      "name": "unit-discipline",
-      "path": "cast/ingrid-halverson/skills/unit-discipline/SKILL.md",
+      "name": "unit-check",
+      "path": "cast/ingrid-halverson/skills/unit-check/SKILL.md",
       "kind": "persona"
     },
     {
@@ -231,6 +357,7 @@
   "evidence_tags": [
     "FIC",
     "REAL-ORG",
+    "REAL-EVENT",
     "VOICE"
   ],
   "linear_issue": "TH-25"

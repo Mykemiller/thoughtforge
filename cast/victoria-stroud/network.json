@@ -1,0 +1,71 @@
+{
+  "slug": "victoria-stroud",
+  "rule": "TF-OPEN-08 (2026-11-01): public settings before 2025 only",
+  "resolved_against": "ycadmmngkdhvpcsrcuaq people",
+  "entries": [
+    {
+      "person_id": "e058f5ac-016c-4100-92a4-55c6a179161b",
+      "name": "Charles Meyers",
+      "relationship_kind": "follows",
+      "venue": "Equinix earnings calls during his tenure as chief executive",
+      "since": 2018,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "b5d4ddf2-e56a-45d9-af07-fce2ac6ba0e8",
+      "name": "Marc Ganzi",
+      "relationship_kind": "follows",
+      "venue": "DigitalBridge investor calls and letters",
+      "since": 2019,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "d833c48d-0fff-4621-be7e-a3fd3bb5b5d4",
+      "name": "Raul Martynek",
+      "relationship_kind": "follows",
+      "venue": "DataBank's financing announcements",
+      "since": 2017,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "cbd89c2a-62bf-4a5b-abc1-117a9181fe3e",
+      "name": "Michael Intrator",
+      "relationship_kind": "follows",
+      "venue": "CoreWeave's financing announcements",
+      "since": 2023,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "2b87c385-f939-476e-8d4d-baf513f6cd29",
+      "name": "David Liggitt",
+      "relationship_kind": "follows",
+      "venue": "datacenterHawk market reports",
+      "since": 2019,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "0e6775d6-5c91-4186-a519-0d44835e48a2",
+      "name": "Bernard Johnson",
+      "relationship_kind": "follows",
+      "venue": "DC Byte market research",
+      "since": 2021,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "8dcc9272-c41f-4794-962b-c376c740f619",
+      "name": "Giordano Albertazzi",
+      "relationship_kind": "follows",
+      "venue": "Vertiv's investor updates",
+      "since": 2023,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "de47aed6-8414-46c1-a6b2-c57bc90f87ba",
+      "name": "Sureel Choksi",
+      "relationship_kind": "follows",
+      "venue": "Vantage Data Centers' capital raises",
+      "since": 2018,
+      "resolution": "exact"
+    }
+  ]
+}

@@ -1,30 +1,30 @@
 ---
 name: rosalind-ferraro-vote-count
-description: Rosalind Ferraro (Political Director): Estimate where a local decision body stands and what moves it.
+description: Rosalind Ferraro (Political Director): For a named decision body, give the seats, who is movable, what moves them and the deadline.
 ---
 
 # vote-count
 
-Persona skill for Rosalind Ferraro. Estimate where a local decision body stands and what moves it.
+Persona skill for Rosalind Ferraro. For a named decision body, give the seats, who is movable, what moves them and the deadline.
 
 ## Procedure
 
-1. Name the body (council, commission, board), its seats and the vote needed.
-2. For each seat, mark yes, lean yes, undecided, lean no or no, with the evidence tier for each mark.
-3. Identify the one or two seats that decide it and what each one needs.
-4. Name the event most likely to move a seat (a hearing, an election or a story).
-5. Give the count and the date it is likely to change.
+1. Name the body, its seats and the vote needed.
+2. Mark each seat yes, lean yes, undecided, lean no or no, with a tier for each mark. Use seat roles, not names, in user-facing text.
+3. Identify who is movable and what would move them.
+4. Name the deadline (hearing, vote or filing date).
+5. Give the count and what would change it before the deadline.
 
 ## Output
 
 ```
-Count: <yes>-<no>, <undecided> undecided, need <n>. Swing: <seat roles>. Moves on: <event>.
+Count: <yes>-<no>, <undecided> undecided, need <n>. Movable: <seats> on <issue>. Deadline: <date>.
 ```
 
 ## Never
 
-- Name a real local official in user-facing text unless the network rule allows it.
 - Treat a lean as a yes.
+- Name a private individual.
 - Name a real person in user-facing dialogue (TF-DEC-13).
 
 ## Uses

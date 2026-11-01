@@ -39,6 +39,20 @@ Physicist working on heat from the package to the facility: Sandia, Intel, NREL,
 - Open Compute Project (OCP), Cooling Environments project participant
 - IEEE Electronics Packaging Society, Member, ITherm community
 
+## Interests
+
+- Cross-country skis with Astrid every winter weekend.
+- Brews beer at home and logs fermentation temperatures to two decimal places.
+- North Dakota State football by birthright; Colorado Avalanche by marriage.
+- Favorite places: Lofoten, Norway, to visit cousins; Moab every spring for the hiking
+
 ## People I follow
 
-Pending TF-OPEN-08. Renders a subset of `network[]` once it is ruled and resolved.
+- Prof. Dereje Agonafer: His electronics-cooling research at the University of Texas at Arlington (cites, since 2008)
+- Prof. Nenad Miljkovic: His phase-change heat transfer research at the University of Illinois (cites, since 2016)
+- Dr. Evelyn Wang: Her thermal research at MIT and her public work at ARPA-E (follows, since 2012)
+- Dr. Peter De Bock: ARPA-E's COOLERCHIPS program (cites, since 2023)
+- Christian Belady: The PUE metric, as published through The Green Grid (cites, since 2010)
+- James Hamilton: His Perspectives blog on hyperscale cooling (follows, since 2012)
+- Rich Whitmore: Motivair's liquid-cooling product work (follows, since 2018)
+- Miranda Gardiner: The iMasons Climate Accord's water commitments (follows, since 2022)

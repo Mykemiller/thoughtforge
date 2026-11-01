@@ -1,0 +1,71 @@
+{
+  "slug": "constance-wright",
+  "rule": "TF-OPEN-08 (2026-11-01): public settings before 2025 only",
+  "resolved_against": "ycadmmngkdhvpcsrcuaq people",
+  "entries": [
+    {
+      "person_id": "58fd46e4-cfaa-4868-9116-91f5a11af4ca",
+      "name": "Rich Miller",
+      "relationship_kind": "follows",
+      "venue": "Data Center Knowledge, then Data Center Frontier",
+      "since": 2015,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "2b87c385-f939-476e-8d4d-baf513f6cd29",
+      "name": "David Liggitt",
+      "relationship_kind": "follows",
+      "venue": "datacenterHawk market reports and their stated methodology",
+      "since": 2017,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "0e6775d6-5c91-4186-a519-0d44835e48a2",
+      "name": "Bernard Johnson",
+      "relationship_kind": "follows",
+      "venue": "DC Byte market research",
+      "since": 2020,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "d3eac439-0bd8-4c53-8a18-bbfd384c2b41",
+      "name": "Siddharth Muzumdar",
+      "relationship_kind": "follows",
+      "venue": "DC Byte research methodology notes",
+      "since": 2021,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "7cb6076f-9424-4120-847c-bdccf34fcaad",
+      "name": "James Hamilton",
+      "relationship_kind": "follows",
+      "venue": "His Perspectives blog",
+      "since": 2015,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "c66a7bdb-4398-4e22-8db7-3ab7eeb7d6c1",
+      "name": "Christian Belady",
+      "relationship_kind": "cites",
+      "venue": "The PUE metric, as published through The Green Grid",
+      "since": 2015,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "744e46cd-8c98-480a-8b17-621ffa071d6d",
+      "name": "Dean Nelson",
+      "relationship_kind": "follows",
+      "venue": "Infrastructure Masons industry reports",
+      "since": 2018,
+      "resolution": "exact"
+    },
+    {
+      "person_id": "a6a31d8a-3e64-456d-a81e-c26452fedcdc",
+      "name": "Judy W. Chang",
+      "relationship_kind": "follows",
+      "venue": "FERC statements after she joined the Commission",
+      "since": 2024,
+      "resolution": "exact"
+    }
+  ]
+}

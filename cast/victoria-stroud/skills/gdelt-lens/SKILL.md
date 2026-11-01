@@ -13,6 +13,12 @@ How Victoria Stroud uses the shared `gdelt-research` skill. Archetype: Forecaste
 - Does coverage momentum lead a financing delay or a sponsor exit?
 - Which features survive dedupe before they go into a risk view?
 
+## Procedure
+
+1. Collect Project autopsy outputs for comparable projects.
+2. Compute base rates: approved, delayed, withdrawn.
+3. Dedupe before building any feature; never resolve a question with GDELT.
+
 ## Guardrails this persona enforces
 
 - Dedupes before building any feature.

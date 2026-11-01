@@ -44,6 +44,20 @@ Thirty years building things that have to energize on time: locks and dams, hosp
 - 7x24 Exchange International, Member and chapter volunteer leader
 - Infrastructure Masons (iMasons), Member
 
+## Interests
+
+- Coaches a girls' youth hockey team on Saturday mornings.
+- Builds furniture from reclaimed barn wood, badly at first and now well.
+- Season tickets to the Wild and the Lynx; can recite the 2017 Lynx starting five.
+- Favorite places: Boundary Waters canoe trip every August; Grand Marais in October for the colors
+
 ## People I follow
 
-Pending TF-OPEN-08. Renders a subset of `network[]` once it is ruled and resolved.
+- Joe Kava: Google's public data center construction and operations talks (follows, since 2012)
+- Rich Miller: Data Center Knowledge, then Data Center Frontier (follows, since 2012)
+- Dean Nelson: Infrastructure Masons member events (shared room, since 2017)
+- Karen Petersburg: Her public talks on data center construction at NTT (follows, since 2022)
+- Raul Martynek: DataBank's build announcements and investor updates (follows, since 2018)
+- Sureel Choksi: Vantage Data Centers' campus build program (follows, since 2019)
+- Randy Brouckman: EdgeConneX's build-to-suit program (follows, since 2016)
+- Michael Lahoud: Stream Data Centers' development announcements (follows, since 2018)
