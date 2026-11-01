@@ -15,7 +15,7 @@
     }
   ],
   "domains_as_written": "D2 Power architecture (800 VDC, BESS, SMR), D10 Construction engineering.",
-  "born_year": 1968,
+  "born_year": 1966,
   "hometown": "Stuttgart, Germany",
   "family": [
     {
@@ -32,7 +32,7 @@
     },
     {
       "name": "Tobias Eigen",
-      "relation": "Brother (born 1965)",
+      "relation": "Brother (born 1963)",
       "note": "Runs the family machine shop outside Stuttgart.",
       "evidence": "FIC"
     }
@@ -42,38 +42,38 @@
       "institution": "Technical University of Munich",
       "degree": "Dipl.-Ing.",
       "field": "Electrical Engineering",
-      "year": 1993,
+      "year": 1991,
       "evidence": "REAL-ORG"
     },
     {
-      "institution": "RWTH Aachen University",
-      "degree": "Dr.-Ing.",
-      "field": "Power Electronics",
-      "year": 1997,
+      "institution": "Georgia Institute of Technology",
+      "degree": "MSEE",
+      "field": "Power Systems",
+      "year": 1993,
       "evidence": "REAL-ORG"
     }
   ],
   "career": [
     {
-      "start": 1997,
+      "start": 1993,
       "end": 2001,
       "employer": "Siemens AG",
-      "title": "Power electronics engineer, HVDC",
+      "title": "Power electronics engineer, HVDC transmission",
       "location": "Erlangen and Munich, Germany",
       "summary": "Converter design for HVDC interconnectors; met Gilbert Faraday on a bid review.",
       "evidence": "REAL-ORG"
     },
     {
       "start": 2001,
-      "end": 2009,
+      "end": 2008,
       "employer": "ABB Inc.",
-      "title": "Principal engineer, HVDC and medium-voltage DC",
+      "title": "Principal engineer, medium-voltage DC",
       "location": "Raleigh, NC",
       "summary": "DC distribution and converter stations.",
       "evidence": "REAL-ORG"
     },
     {
-      "start": 2009,
+      "start": 2008,
       "end": 2023,
       "employer": "Burns & McDonnell",
       "title": "Director, mission-critical electrical engineering",
@@ -84,10 +84,10 @@
     {
       "start": 2023,
       "end": 2025,
-      "employer": "Vertiv",
-      "title": "Distinguished engineer, 800 VDC architecture",
-      "location": "Columbus, OH",
-      "summary": "800 VDC reference designs for high-density AI racks.",
+      "employer": "Meta",
+      "title": "Principal engineer, data center power architecture",
+      "location": "Menlo Park, CA (remote from Kansas City)",
+      "summary": "800 VDC and rack power architecture; OCP power and rack working-group participant.",
       "evidence": "REAL-ORG"
     },
     {
@@ -120,19 +120,31 @@
     {
       "name": "IEEE Power & Energy Society",
       "role": "Senior Member",
-      "since": 2005,
+      "since": 2004,
+      "evidence": "REAL-ORG"
+    },
+    {
+      "name": "IEEE Industry Applications Society",
+      "role": "Member",
+      "since": 2009,
       "evidence": "REAL-ORG"
     },
     {
       "name": "Open Compute Project (OCP)",
-      "role": "Contributor, power and rack projects",
+      "role": "Open Rack and power working-group participant",
       "since": 2019,
       "evidence": "REAL-ORG"
     },
     {
       "name": "7x24 Exchange International",
       "role": "Member",
-      "since": 2011,
+      "since": 2010,
+      "evidence": "REAL-ORG"
+    },
+    {
+      "name": "NFPA 70 (National Electrical Code) committee process",
+      "role": "Observer",
+      "since": 2021,
       "evidence": "REAL-ORG"
     }
   ],
@@ -140,13 +152,13 @@
     {
       "name": "Professional Engineer (Electrical)",
       "issuer": "Missouri",
-      "year": 2010,
+      "year": 2009,
       "evidence": "REAL-ORG"
     },
     {
       "name": "Professional Engineer (Electrical)",
       "issuer": "Kansas",
-      "year": 2011,
+      "year": 2010,
       "evidence": "REAL-ORG"
     }
   ],
@@ -174,7 +186,7 @@
     {
       "title": "Medium-Voltage DC for the Campus Backbone",
       "venue": "IEEE PES General Meeting",
-      "year": 2008,
+      "year": 2007,
       "kind": "paper",
       "evidence": {
         "title": "FIC",
@@ -215,16 +227,16 @@
     }
   ],
   "gdelt_lens": {
-    "archetype": "Architect / data-estate",
+    "archetype": "Investigator / researcher",
     "asks": [
-      "How is a GDELT lane designed so its failure path is visible (last_ok_at moves, consecutive_failures increments)?",
-      "What does a query cost in calls and wall-clock time before we run it?",
-      "Which schema fields carry the provenance we would need to reproduce a finding?"
+      "Company watch on power-equipment vendors and OCP contributors: who co-occurs with which product announcement?",
+      "When did coverage of a vendor's 800 VDC, BESS or SMR claim first appear, and from which source domains?",
+      "Which utilities and EPCs keep appearing alongside a power architecture announcement?"
     ],
     "guardrails": [
-      "No write without the guard assertion on project ycadmmngkdhvpcsrcuaq.",
-      "No promotion of a GDELT location without an approved county-attribution rule.",
-      "Treats tone as a trend, never as a measurement."
+      "Vendor press is SRC for existence, never for performance; cite the spec, not the article.",
+      "Splits compound queries and dedupes by host and normalized title.",
+      "Paces at one request every five seconds."
     ]
   },
   "voice_brief": "First-principles, numbers before adjectives, impatient with marketing. Draws the one-line diagram in words. Will say \"that's physically wrong\" to anyone.",

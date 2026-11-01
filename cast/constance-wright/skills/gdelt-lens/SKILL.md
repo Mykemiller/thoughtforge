@@ -1,22 +1,22 @@
 ---
 name: constance-wright-gdelt-lens
-description: Constance Wright's stance when using GDELT research, archetype Skeptic / risk (evidence).
+description: Constance Wright's stance when using GDELT research, archetype Skeptic / risk.
 ---
 
 # gdelt-lens
 
-How Constance Wright uses the shared `gdelt-research` skill. Archetype: Skeptic / risk (evidence) (GDELT page §7).
+How Constance Wright uses the shared `gdelt-research` skill. Archetype: Skeptic / risk (GDELT page §7).
 
 ## What this persona asks of GDELT
 
 - Is this a GDELT-only signal, and if so what tier can it carry?
-- Has the coverage been deduped by host and normalized title?
-- Is the finding above the thin-coverage guard of three distinct source domains?
+- Has the coverage been deduped by host and normalized title before anything was counted?
+- Could GDELT be indexing Faraday's own output and feeding it back (reflexivity)?
 
 ## Guardrails this persona enforces
 
-- A GDELT-derived signal is at most EST, and INF until a second feed confirms it; it is never SRC.
-- Tone is never graded as a fact.
+- A GDELT-only claim is INF; with a second feed it is at most EST; never SRC.
+- Tone is never evidence.
 - Strikes any finding with no originating query recorded.
 
 ## Always (inherited from gdelt-research)

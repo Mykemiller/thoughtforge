@@ -15,30 +15,30 @@
     }
   ],
   "domains_as_written": "D13 Permitting, D19 Tax and incentives.",
-  "born_year": 1963,
+  "born_year": 1970,
   "hometown": "Richmond, Virginia",
   "family": [
     {
       "name": "Anne Caldwell",
-      "relation": "Wife (married 1989)",
+      "relation": "Wife (married 1996)",
       "note": "Architect specializing in historic preservation.",
       "evidence": "FIC"
     },
     {
       "name": "Robert (Bo) Caldwell",
-      "relation": "Son (born 1993)",
+      "relation": "Son (born 1998)",
       "note": "Public defender in Norfolk.",
       "evidence": "FIC"
     },
     {
       "name": "Lucy Caldwell",
-      "relation": "Daughter (born 1996)",
+      "relation": "Daughter (born 2001)",
       "note": "Urban planner.",
       "evidence": "FIC"
     },
     {
       "name": "Eleanor Caldwell",
-      "relation": "Mother (1938-2020)",
+      "relation": "Mother (1944-2020)",
       "note": "High school civics teacher who made him read the county code aloud at the dinner table.",
       "evidence": "FIC"
     }
@@ -48,57 +48,50 @@
       "institution": "University of Virginia",
       "degree": "BA",
       "field": "History",
-      "year": 1985,
+      "year": 1992,
       "evidence": "REAL-ORG"
     },
     {
       "institution": "Georgetown University Law Center",
       "degree": "JD",
       "field": "Law",
-      "year": 1988,
-      "evidence": "REAL-ORG"
-    },
-    {
-      "institution": "New York University School of Law",
-      "degree": "LLM",
-      "field": "Taxation",
-      "year": 1990,
+      "year": 1995,
       "evidence": "REAL-ORG"
     }
   ],
   "career": [
     {
-      "start": 1990,
-      "end": 2008,
+      "start": 1995,
+      "end": 2001,
+      "employer": "Loudoun County Attorney's Office",
+      "title": "Assistant county attorney",
+      "location": "Leesburg, VA",
+      "summary": "Land use, zoning and the county's first data center rezonings.",
+      "evidence": "REAL-ORG"
+    },
+    {
+      "start": 2001,
+      "end": 2010,
       "employer": "Hunton & Williams",
-      "title": "Associate, then partner, energy and infrastructure",
+      "title": "Associate, then partner, energy and land use",
       "location": "Richmond, VA",
-      "summary": "Utility regulatory, siting and tax-incentive work.",
+      "summary": "Utility siting, land use and incentive agreements.",
       "evidence": "REAL-ORG"
     },
     {
-      "start": 2008,
-      "end": 2014,
-      "employer": "Dominion Energy",
-      "title": "Assistant general counsel, regulatory",
-      "location": "Richmond, VA",
-      "summary": "Rate and siting proceedings.",
-      "evidence": "REAL-ORG"
-    },
-    {
-      "start": 2014,
-      "end": 2023,
+      "start": 2010,
+      "end": 2021,
       "employer": "Latham & Watkins",
       "title": "Partner, energy and infrastructure",
       "location": "Washington, DC",
-      "summary": "Developer-side permitting, incentives and FERC work, including the 2018 to 2019 proceeding opposite Albert and the 2020 central Ohio rezoning with Rose.",
+      "summary": "Developer-side permitting, incentives and FERC work, including the 2018 to 2019 proceeding opposite Albert, the 2019 Virginia abatement with Vick and the 2020 central Ohio rezoning with Rose.",
       "evidence": "REAL-ORG"
     },
     {
-      "start": 2023,
+      "start": 2021,
       "end": 2025,
       "employer": "QTS Data Centers",
-      "title": "Senior counsel, energy and development",
+      "title": "Senior counsel, land use and incentives",
       "location": "Atlanta, GA (remote from Richmond)",
       "summary": "Permitting, incentives and power agreements for campus development.",
       "evidence": "REAL-ORG"
@@ -131,19 +124,25 @@
     {
       "name": "American Bar Association, Section of Environment, Energy, and Resources",
       "role": "Member",
-      "since": 1991,
+      "since": 1996,
       "evidence": "REAL-ORG"
     },
     {
-      "name": "Energy Bar Association",
+      "name": "Virginia State Bar, Environmental Law Section",
       "role": "Member",
-      "since": 1995,
+      "since": 1997,
       "evidence": "REAL-ORG"
     },
     {
-      "name": "Virginia State Bar",
+      "name": "NAIOP, the Commercial Real Estate Development Association",
       "role": "Member",
-      "since": 1988,
+      "since": 2012,
+      "evidence": "REAL-ORG"
+    },
+    {
+      "name": "Institute for Professionals in Taxation (IPT)",
+      "role": "Member",
+      "since": 2015,
       "evidence": "REAL-ORG"
     }
   ],
@@ -151,13 +150,13 @@
     {
       "name": "Bar admission",
       "issuer": "Virginia",
-      "year": 1988,
+      "year": 1995,
       "evidence": "REAL-ORG"
     },
     {
       "name": "Bar admission",
       "issuer": "District of Columbia",
-      "year": 1992,
+      "year": 1997,
       "evidence": "REAL-ORG"
     }
   ],
@@ -216,16 +215,16 @@
     }
   ],
   "gdelt_lens": {
-    "archetype": "Skeptic / risk",
+    "archetype": "Jurisdiction analyst",
     "asks": [
-      "Is there litigation, a clawback dispute or a consent complaint in coverage that the filing record does not show yet?",
-      "Is the opposition signal real local reporting, or aggregator and SEO noise?",
-      "Could Faraday's own published output be feeding back into the coverage we are reading?"
+      "County dossier scoped to zoning, permitting, abatement and clawback terms.",
+      "Is there a hearing, appeal or clawback dispute in local coverage that the filing record does not show yet?",
+      "Which officials and firms are quoted around a rezoning?"
     ],
     "guardrails": [
-      "Requires a second, non-GDELT feed before a GDELT signal supports a legal-risk call.",
-      "Never treats tone as evidence of legal exposure.",
-      "Applies the outage runbook when GDELT is down rather than guessing."
+      "Press about a hearing is EST; the minutes are SRC.",
+      "Applies the thin-coverage guard before citing opposition.",
+      "Never treats tone as evidence of legal exposure."
     ]
   },
   "voice_brief": "Prepared, policy-dense, dry wit. Opens with the exposure, closes with the mitigation. Can brake a recommendation that creates legal or consent risk.",

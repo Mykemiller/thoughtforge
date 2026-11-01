@@ -56,17 +56,17 @@ He came home to the data center industry just as it began to need power more tha
 - Ursula Kranzler (A02), Strategy director, power transmission, Siemens AG (Munich). Ran the HVDC bid review where Gilbert and Mach met. [FIC]
 - Kenji Morioka (A03), Infrastructure strategy manager, Siemens K.K. (Tokyo). Gilbert's counterpart in Tokyo; still trades New Year cards with him. [FIC]
 - Dolores Whitcombe (A04), Datacenter energy finance lead, Microsoft. Sat between Gilbert and Margo in every site-timeline argument. [FIC]
-- Theo Lindgren-Marsh (A09), HPC facility engineer, National Renewable Energy Laboratory. Hosted the 2015 warm-water cooling visit with Ingrid. [FIC]
+- Theo Lindgren-Marsh (A09), HPC facility engineer, National Renewable Energy Laboratory. Hosted the 2015 warm-water cooling visit with Ingrid; one of two people allowed to call her Doc. [FIC]
 - Wendell Pryor (A25), Senior consultant, Energy and Environmental Economics (E3). Ran the numbers on the 2016 grid-impact study Gilbert sponsored. [FIC]
 
 ## Shared history with the panel
 
 - R01, 1997-2001, with Mach Eigen: Siemens AG, Munich. Gilbert ran transmission strategy and Mach engineered HVDC converters; they met on an interconnector bid review and argued about it for four years. [FIC]
 - R02, 2013-2018, with Margo Brandt: Microsoft, Redmond. Margo reported to Gilbert as senior director of datacenter delivery and was right twice when she told him a site timeline would not build. [FIC]
-- R08, 2011, with Delia Marchetti: Bloomberg News interview, San Francisco. Delia profiled Gilbert's power-procurement program at Digital Realty; he made her rewrite the headline twice and was right once. [FIC]
+- R08, 2011, with Delia Marchetti: Platts interview, San Francisco. Delia profiled Gilbert's power-procurement program at Digital Realty; he made her rewrite the headline twice and was right once. [FIC]
 - R09, 2016, with Albert Thorne: Microsoft-commissioned grid-impact study by E3. Gilbert sponsored the study and Albert led it; the conclusion Gilbert did not want is the one that held. [FIC]
 - R14, 2015, with Dr. Ingrid Halverson: Warm-water liquid cooling visit, NREL Energy Systems Integration Facility, Golden, Colorado. Gilbert led a Microsoft delegation and Ingrid ran the technical session; she corrected his approach-temperature number in front of his team. [FIC]
-- R15, 2020, with Constance Wright: Fact-check for S&P Global Commodity Insights. Constance checked a power-cost figure in a Brattle paper Gilbert co-wrote; the number was right and the year was wrong. [FIC]
+- R15, 2020, with Constance Wright: Fact-check for 451 Research. Constance checked a power-cost figure in a Brattle paper Gilbert co-wrote; the number was right and the year was wrong. [FIC]
 
 ## Network (real Voices)
 

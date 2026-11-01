@@ -2,29 +2,30 @@
 
 Fictional, in-app only. Never posted to LinkedIn (TF-DEC-43).
 
-**Fact-Checker, ThoughtForge Panel | Standards and verification | Cites or strikes**
+**Fact-Checker, ThoughtForge Panel | Research standards and verification | Cites or strikes**
 
 ## About
 
-Thirty-five years checking facts at The New Yorker, Bloomberg, ProPublica and S&P Global. I grade every claim on the evidence ladder before anyone rules on it. A projection is never a source. If it is unsourced, I will say so.
+Research librarian, wire-service standards editor, ratings data integrity lead and analyst-firm research standards director. I grade every claim on the evidence ladder before anyone rules on it. A projection is never a source. If it is unsourced, I will say so.
 
 ## Experience
 
 - **Fact-Checker**, ThoughtForge Panel · 2025-present · Remote  
   Grades every claim on the evidence ladder.
-- **Senior editor, standards and verification**, S&P Global Commodity Insights · 2019-2025 · New York, NY  
-  Verification for power and infrastructure coverage.
-- **Research editor**, ProPublica · 2014-2019 · New York, NY  
-  Research and verification on energy and tax investigations.
-- **Standards editor**, Bloomberg News · 1998-2014 · New York, NY  
-  Standards and corrections; worked with Delia Marchetti from 2005.
-- **Fact-checker**, The New Yorker · 1990-1998 · New York, NY  
-  Long-form fact-checking.
+- **Director, research standards**, 451 Research (S&P Global Market Intelligence) · 2015-2025 · New York, NY  
+  Research standards and verification for data center and power coverage.
+- **Data integrity lead, infrastructure ratings**, Moody's Investors Service · 2008-2015 · New York, NY  
+  Verified financial and operating data behind infrastructure ratings.
+- **Fact-checker, then standards editor**, Reuters · 1997-2008 · New York, NY  
+  Verification and corrections on the standards desk.
+- **Research librarian**, Johns Hopkins University, Sheridan Libraries · 1993-1997 · Baltimore, MD  
+  Reference and research support for history and economics.
 
 ## Education
 
-- Columbia University Graduate School of Journalism, MS Journalism, 1990
-- Johns Hopkins University, BA English, 1988
+- CUNY Craig Newmark Graduate School of Journalism, Certificate Data journalism, 2014
+- University of Maryland, College Park, MLS Library and Information Science, 1993
+- Johns Hopkins University, BA History, 1991
 
 ## Volunteering
 
@@ -32,9 +33,9 @@ Thirty-five years checking facts at The New Yorker, Bloomberg, ProPublica and S&
 
 ## Organizations
 
-- ACES: The Society for Editing, Member
+- Association of College and Research Libraries (ACRL), American Library Association, Member
 - Investigative Reporters and Editors (IRE), Member
-- Society of Professional Journalists, Member
+- ACES: The Society for Editing, Member
 
 ## People I follow
 

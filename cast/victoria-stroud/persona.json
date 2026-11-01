@@ -11,24 +11,24 @@
     }
   ],
   "domains_as_written": "D4 Capital markets, deal structure, cost of capital.",
-  "born_year": 1969,
+  "born_year": 1972,
   "hometown": "Charlotte, North Carolina",
   "family": [
     {
       "name": "Daniel Stroud",
-      "relation": "Husband (married 1995)",
+      "relation": "Husband (married 1998)",
       "note": "Jazz pianist and music teacher.",
       "evidence": "FIC"
     },
     {
       "name": "Henry Stroud",
-      "relation": "Son (born 2001)",
+      "relation": "Son (born 2003)",
       "note": "Public school math teacher.",
       "evidence": "FIC"
     },
     {
       "name": "Lorraine Pettigrew",
-      "relation": "Mother (born 1944)",
+      "relation": "Mother (born 1947)",
       "note": "Retired bank teller; taught Vick to count the drawer twice.",
       "evidence": "FIC"
     }
@@ -38,21 +38,21 @@
       "institution": "Duke University",
       "degree": "BS",
       "field": "Mathematics",
-      "year": 1991,
+      "year": 1994,
       "evidence": "REAL-ORG"
     },
     {
       "institution": "The Wharton School, University of Pennsylvania",
       "degree": "MBA",
       "field": "Finance",
-      "year": 1997,
+      "year": 2000,
       "evidence": "REAL-ORG"
     }
   ],
   "career": [
     {
-      "start": 1991,
-      "end": 1995,
+      "start": 1994,
+      "end": 1998,
       "employer": "NationsBank",
       "title": "Credit analyst",
       "location": "Charlotte, NC",
@@ -60,8 +60,8 @@
       "evidence": "REAL-ORG"
     },
     {
-      "start": 1997,
-      "end": 2006,
+      "start": 2000,
+      "end": 2008,
       "employer": "Goldman Sachs",
       "title": "Associate, then vice president, project finance",
       "location": "New York, NY",
@@ -69,21 +69,21 @@
       "evidence": "REAL-ORG"
     },
     {
-      "start": 2006,
-      "end": 2014,
-      "employer": "MUFG",
-      "title": "Director, project finance",
+      "start": 2008,
+      "end": 2019,
+      "employer": "Macquarie Infrastructure Partners",
+      "title": "Principal, then senior vice president",
       "location": "New York, NY",
-      "summary": "Power plant and renewables lending.",
+      "summary": "Equity investments in power and digital infrastructure, including the 2019 Virginia financing with a state abatement.",
       "evidence": "REAL-ORG"
     },
     {
-      "start": 2014,
-      "end": 2024,
-      "employer": "MUFG",
-      "title": "Managing director, digital infrastructure finance",
+      "start": 2019,
+      "end": 2025,
+      "employer": "Houlihan Lokey",
+      "title": "Managing director, digital infrastructure capital advisory",
       "location": "New York, NY",
-      "summary": "Data center lending, including the 2019 Virginia abatement financing, the 2021 to 2023 Midwest campus and 2023 diligence on a campus Margo was delivering.",
+      "summary": "Capital raising and structuring for data center developers, including the 2021 to 2023 Midwest campus and 2023 lender diligence on a campus Margo was delivering.",
       "evidence": "REAL-ORG"
     },
     {
@@ -114,13 +114,19 @@
     {
       "name": "CFA Institute",
       "role": "Charterholder",
-      "since": 2000,
+      "since": 2003,
       "evidence": "REAL-ORG"
     },
     {
-      "name": "CFA Society New York",
-      "role": "Member",
-      "since": 2000,
+      "name": "Global Infrastructure Investor Association (GIIA)",
+      "role": "Member through Macquarie",
+      "since": 2016,
+      "evidence": "REAL-ORG"
+    },
+    {
+      "name": "Nareit",
+      "role": "Associate member",
+      "since": 2020,
       "evidence": "REAL-ORG"
     },
     {
@@ -134,7 +140,7 @@
     {
       "name": "Chartered Financial Analyst (CFA)",
       "issuer": "CFA Institute",
-      "year": 2000,
+      "year": 2003,
       "evidence": "REAL-ORG"
     }
   ],
@@ -193,16 +199,16 @@
     }
   ],
   "gdelt_lens": {
-    "archetype": "Investigator / researcher",
+    "archetype": "Forecaster / Predictions",
     "asks": [
-      "Company watch: which sponsors, lenders and tenants co-occur with a borrower or developer over the last year?",
-      "Did coverage of a financing, a covenant breach or a sponsor exit appear before the filing?",
-      "Which executives are quoted on a deal, and is the quote consistent with the filing?"
+      "Base rates: of announced projects with opposition coverage above threshold, what share were approved, delayed or withdrawn?",
+      "Does coverage momentum lead a financing delay or a sponsor exit?",
+      "Which features survive dedupe before they go into a risk view?"
     ],
     "guardrails": [
-      "Splits compound queries and dedupes before counting.",
-      "Paces at one request every five seconds.",
-      "A quote from coverage is never a financial fact until a filing or term sheet confirms it."
+      "Dedupes before building any feature.",
+      "GDELT is one input, never a resolver.",
+      "Tone never prices risk."
     ]
   },
   "voice_brief": "Quiet authority, numbers first, sparing with words. Converts every technical choice into cost of capital and exit value. Not impressed by narrative.",

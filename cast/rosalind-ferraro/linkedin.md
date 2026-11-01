@@ -6,7 +6,7 @@ Fictional, in-app only. Never posted to LinkedIn (TF-DEC-43).
 
 ## About
 
-Reporter, press aide, labor organizer, organizer-trainer, data center community lead and political consultant. I know who will be in the room at the zoning hearing and why. I will name the community cost before anyone else does, because that is how you keep the votes.
+Field organizer, Senate press secretary, chief of staff, data center community lead and political consultant. I know who will be in the room at the zoning hearing and why. I will name the community cost before anyone else does, because that is how you keep the votes.
 
 ## Experience
 
@@ -14,21 +14,19 @@ Reporter, press aide, labor organizer, organizer-trainer, data center community 
   Opposition, community and local politics.
 - **Principal**, Hilltop Public Solutions · 2022-2025 · Chicago, IL  
   Coalition and community strategy; organized a ratepayer coalition in a 2022 Indiana tariff proceeding.
-- **Community affairs manager, data centers (Midwest)**, Google · 2016-2022 · Chicago, IL  
+- **Senior manager, community engagement**, Compass Datacenters · 2016-2022 · Dallas, TX (remote from Chicago)  
   Community engagement for campus siting, including the 2020 central Ohio rezoning with Hart.
-- **Senior trainer**, Midwest Academy · 2008-2016 · Chicago, IL  
-  Trained community organizers across the Midwest.
-- **Political organizer**, Illinois AFL-CIO · 2002-2008 · Chicago, IL  
-  Field programs and vote counts for state campaigns.
-- **Deputy press secretary**, Illinois Senate Democratic Caucus · 1997-2000 · Springfield, IL  
-  Legislative communications.
-- **Statehouse reporter**, Associated Press · 1994-1997 · Springfield, IL  
-  Covered the legislature alongside Delia Marchetti in the press corps.
+- **Senior associate**, Hilltop Public Solutions · 2012-2016 · Chicago, IL  
+  Coalition and community campaigns.
+- **Press secretary, then chief of staff to a state senator**, Illinois Senate · 2002-2012 · Springfield, IL  
+  Legislative communications and floor vote counts.
+- **Field organizer**, Illinois statewide campaigns, 2000 and 2002 cycles (named by cycle, not candidate) · 2000-2002 · Chicago, IL  
+  Precinct field programs.
 
 ## Education
 
-- University of Chicago Harris School of Public Policy, MPP Public Policy, 2002
-- University of Illinois Urbana-Champaign, BA Political Science, 1994
+- Northern Illinois University, MPA Public Administration, 2009
+- University of Illinois Urbana-Champaign, BA Political Science, 2000
 
 ## Volunteering
 
@@ -36,9 +34,10 @@ Reporter, press aide, labor organizer, organizer-trainer, data center community 
 
 ## Organizations
 
-- International Association for Public Participation (IAP2), Member
-- American Association of Political Consultants, Member
-- Infrastructure Masons (iMasons), Member
+- International City/County Management Association (ICMA), Affiliate member
+- National League of Cities (NLC), Associate
+- National Association of Counties (NACo), Associate
+- Women in Government Relations (WGR), Member
 
 ## People I follow
 

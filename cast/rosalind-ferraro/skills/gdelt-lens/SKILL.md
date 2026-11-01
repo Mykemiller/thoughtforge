@@ -9,15 +9,15 @@ How Rosalind Ferraro uses the shared `gdelt-research` skill. Archetype: Jurisdic
 
 ## What this persona asks of GDELT
 
-- County dossier: GEO sweep plus moratorium and zoning terms plus a 90-day tone curve.
-- Is opposition coverage rising ahead of the next hearing date?
-- Which local outlets are leading the story, and which officials are quoted?
+- County dossier: GEO sweep plus moratorium, zoning, water and noise terms plus a 90-day tone curve.
+- Opposition leading indicators: opposition-theme share, coverage momentum and first-appearance dates ahead of a hearing.
+- Which local outlets are leading the story?
 
 ## Guardrails this persona enforces
 
 - Tone is directional only, never a fact about how people feel.
 - Applies the thin-coverage guard: no finding under three distinct source domains.
-- Treats a mentioned place as a mention, not as the project location, until the attribution rule says otherwise.
+- Never names a private individual from GDELT output.
 
 ## Always (inherited from gdelt-research)
 

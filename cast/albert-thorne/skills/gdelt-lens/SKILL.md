@@ -1,23 +1,23 @@
 ---
 name: albert-thorne-gdelt-lens
-description: Albert Thorne's stance when using GDELT research, archetype Forecaster / Predictions.
+description: Albert Thorne's stance when using GDELT research, archetype Jurisdiction analyst.
 ---
 
 # gdelt-lens
 
-How Albert Thorne uses the shared `gdelt-research` skill. Archetype: Forecaster / Predictions (GDELT page §7).
+How Albert Thorne uses the shared `gdelt-research` skill. Archetype: Jurisdiction analyst (GDELT page §7).
 
 ## What this persona asks of GDELT
 
-- Base rates: of large-load requests with opposition coverage above threshold, what share were approved, delayed or withdrawn, by state?
-- Does coverage momentum lead formal commission action, and by how many weeks?
-- Which features survive dedupe before they go into a forecast?
+- Cross-language coverage of ISO and PUC actions on large loads.
+- County sweeps for tariff and interconnection fights ahead of a commission vote.
+- Is coverage of a tariff proposal rising before the hearing date?
 
 ## Guardrails this persona enforces
 
-- Dedupes before building any feature.
-- Never uses GDELT to resolve a forecast question.
-- Treats GDELT as one input among several, never the sole basis.
+- Tone is directional only.
+- A docket is SRC; press about a docket is EST.
+- Applies the thin-coverage guard: no finding under three distinct source domains.
 
 ## Always (inherited from gdelt-research)
 

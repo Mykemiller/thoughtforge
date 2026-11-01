@@ -6,20 +6,22 @@ Fictional, in-app only. Never posted to LinkedIn (TF-DEC-43).
 
 ## About
 
-Physicist working on heat from the package to the facility: Sandia, Intel, NREL and independent engineer reviews at Jacobs. I start from heat flux and approach temperature. If a cooling claim cannot show both, I will ask for them.
+Physicist working on heat from the package to the facility: Sandia, Intel, NREL, a liquid-cooling OEM and facility thermal review at Jacobs. I start from heat flux and approach temperature. If a cooling claim cannot show both, I will ask for them.
 
 ## Experience
 
 - **Science Advisor, Thermal Management**, ThoughtForge Panel · 2025-present · Remote  
   Cooling, thermal, chips and density.
-- **Principal technologist, critical facilities thermal**, Jacobs · 2018-2024 · Denver, CO  
-  Independent engineer reviews of cooling designs, including the 2021 to 2023 Midwest campus.
-- **Senior scientist, HPC data center thermal**, National Renewable Energy Laboratory · 2012-2018 · Golden, CO  
+- **Principal technologist, critical facilities thermal**, Jacobs · 2019-2025 · Denver, CO  
+  Facility thermal architecture and independent engineer reviews, including the 2021 to 2023 Midwest campus.
+- **Principal thermal engineer**, CoolIT Systems · 2016-2019 · Calgary, AB (remote from Golden)  
+  Direct liquid cooling cold plates and CDUs.
+- **Senior scientist, HPC data center thermal**, National Renewable Energy Laboratory · 2010-2016 · Golden, CO  
   Warm-water liquid cooling at the Energy Systems Integration Facility; ran the 2015 session for Gilbert's delegation.
-- **Thermal architect, package cooling**, Intel · 2005-2012 · Hillsboro, OR  
+- **Thermal architect, package cooling**, Intel · 2005-2010 · Hillsboro, OR  
   Package and heat-spreader thermal design.
 - **Postdoctoral appointee, thermal sciences**, Sandia National Laboratories · 2003-2005 · Albuquerque, NM  
-  Microscale heat transfer.
+  Microscale and two-phase heat transfer.
 
 ## Education
 
@@ -34,7 +36,8 @@ Physicist working on heat from the package to the facility: Sandia, Intel, NREL 
 
 - ASHRAE, Member, Technical Committee 9.9 (corresponding)
 - American Physical Society, Member
-- IEEE Electronics Packaging Society, Member
+- Open Compute Project (OCP), Cooling Environments project participant
+- IEEE Electronics Packaging Society, Member, ITherm community
 
 ## People I follow
 

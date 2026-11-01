@@ -15,24 +15,24 @@
     }
   ],
   "domains_as_written": "D5 Markets, D22 Media; translation for lay readers.",
-  "born_year": 1971,
+  "born_year": 1976,
   "hometown": "Joliet, Illinois",
   "family": [
     {
       "name": "Paul Reyes",
-      "relation": "Husband (married 2001)",
+      "relation": "Husband (married 2004)",
       "note": "High school history teacher in Evanston.",
       "evidence": "FIC"
     },
     {
       "name": "Gina Reyes-Marchetti",
-      "relation": "Daughter (born 2004)",
-      "note": "Journalism student.",
+      "relation": "Daughter (born 2007)",
+      "note": "First-year journalism student.",
       "evidence": "FIC"
     },
     {
       "name": "Teresa Marchetti",
-      "relation": "Mother (born 1945)",
+      "relation": "Mother (born 1950)",
       "note": "Ran a diner in Joliet for forty years; taught Delia that every story needs a regular who will read it.",
       "evidence": "FIC"
     }
@@ -42,21 +42,21 @@
       "institution": "Northwestern University, Medill School of Journalism",
       "degree": "BSJ",
       "field": "Journalism",
-      "year": 1993,
+      "year": 1998,
       "evidence": "REAL-ORG"
     },
     {
       "institution": "University of Illinois Springfield",
       "degree": "MA",
       "field": "Public Affairs Reporting",
-      "year": 1994,
+      "year": 1999,
       "evidence": "REAL-ORG"
     }
   ],
   "career": [
     {
-      "start": 1994,
-      "end": 1999,
+      "start": 1999,
+      "end": 2006,
       "employer": "Chicago Tribune",
       "title": "Statehouse reporter",
       "location": "Springfield, IL",
@@ -64,39 +64,30 @@
       "evidence": "REAL-ORG"
     },
     {
-      "start": 1999,
-      "end": 2005,
-      "employer": "The Wall Street Journal",
-      "title": "Energy reporter",
-      "location": "Houston, TX",
-      "summary": "Power markets, utilities and the post-Enron reckoning.",
-      "evidence": "REAL-ORG"
-    },
-    {
-      "start": 2005,
+      "start": 2006,
       "end": 2012,
-      "employer": "Bloomberg News",
-      "title": "Team leader, energy and utilities",
-      "location": "New York, NY",
-      "summary": "Led coverage of utilities and power markets.",
+      "employer": "Platts",
+      "title": "Power markets reporter, then senior editor",
+      "location": "Washington, DC",
+      "summary": "Energy trade coverage of utilities, FERC and power markets.",
       "evidence": "REAL-ORG"
     },
     {
       "start": 2012,
-      "end": 2018,
-      "employer": "Exelon",
-      "title": "Director, media relations",
-      "location": "Chicago, IL",
-      "summary": "Utility communications through mergers and rate cases.",
+      "end": 2016,
+      "employer": "Utility Dive",
+      "title": "Senior reporter",
+      "location": "Washington, DC",
+      "summary": "Utility business and grid coverage.",
       "evidence": "REAL-ORG"
     },
     {
-      "start": 2018,
+      "start": 2016,
       "end": 2024,
-      "employer": "Edelman",
-      "title": "Managing director, energy and infrastructure",
+      "employer": "Exelon",
+      "title": "Director, media relations",
       "location": "Chicago, IL",
-      "summary": "Crisis and community communications for utilities and data center developers.",
+      "summary": "Utility communications through rate cases, outages and large-load growth.",
       "evidence": "REAL-ORG"
     },
     {
@@ -124,21 +115,27 @@
   "network": [],
   "organizations": [
     {
-      "name": "Society of Environmental Journalists",
+      "name": "Society of Professional Journalists",
       "role": "Member",
-      "since": 2000,
-      "evidence": "REAL-ORG"
-    },
-    {
-      "name": "Public Relations Society of America (PRSA)",
-      "role": "Member",
-      "since": 2013,
+      "since": 1998,
       "evidence": "REAL-ORG"
     },
     {
       "name": "National Press Club",
       "role": "Member",
-      "since": 2006,
+      "since": 2007,
+      "evidence": "REAL-ORG"
+    },
+    {
+      "name": "Public Relations Society of America (PRSA)",
+      "role": "Member",
+      "since": 2017,
+      "evidence": "REAL-ORG"
+    },
+    {
+      "name": "Infrastructure Masons (iMasons)",
+      "role": "Member, marketing and communications track",
+      "since": 2021,
       "evidence": "REAL-ORG"
     }
   ],
@@ -157,7 +154,7 @@
     {
       "title": "How the Power Story Gets Told",
       "venue": "Society of Environmental Journalists Annual Conference",
-      "year": 2010,
+      "year": 2014,
       "kind": "talk",
       "evidence": {
         "title": "FIC",

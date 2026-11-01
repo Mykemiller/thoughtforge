@@ -15,30 +15,30 @@
     }
   ],
   "domains_as_written": "Cross-domain execution; D10 Construction, D14 Development.",
-  "born_year": 1971,
+  "born_year": 1974,
   "hometown": "Duluth, Minnesota",
   "family": [
     {
       "name": "Jonas Brandt",
-      "relation": "Husband (married 1998)",
+      "relation": "Husband (married 2000)",
       "note": "High school hockey coach in Edina, Minnesota.",
       "evidence": "FIC"
     },
     {
       "name": "Erik Brandt",
-      "relation": "Son (born 2002)",
+      "relation": "Son (born 2003)",
       "note": "Electrical apprentice, IBEW.",
       "evidence": "FIC"
     },
     {
       "name": "Leif Brandt",
-      "relation": "Son (born 2005)",
+      "relation": "Son (born 2006)",
       "note": "Civil engineering student.",
       "evidence": "FIC"
     },
     {
       "name": "Ruth Lindahl",
-      "relation": "Mother (born 1946)",
+      "relation": "Mother (born 1949)",
       "note": "Retired union electrician; the first person to tell Margo a schedule was a promise.",
       "evidence": "FIC"
     }
@@ -48,23 +48,23 @@
       "institution": "University of Minnesota",
       "degree": "BS",
       "field": "Civil Engineering",
-      "year": 1993,
+      "year": 1996,
       "evidence": "REAL-ORG"
     },
     {
       "institution": "University of St. Thomas Opus College of Business",
       "degree": "MBA",
       "field": "Evening program",
-      "year": 2004,
+      "year": 2006,
       "evidence": "REAL-ORG"
     }
   ],
   "career": [
     {
-      "start": 1993,
+      "start": 1996,
       "end": 1999,
       "employer": "U.S. Army Corps of Engineers, St. Paul District",
-      "title": "Civil engineer",
+      "title": "Field engineer",
       "location": "St. Paul, MN",
       "summary": "Lock and dam rehabilitation on the Upper Mississippi.",
       "evidence": "REAL-ORG"
@@ -73,7 +73,7 @@
       "start": 1999,
       "end": 2009,
       "employer": "Mortenson",
-      "title": "Project manager, then senior project manager",
+      "title": "Project engineer, then project manager",
       "location": "Minneapolis, MN",
       "summary": "Mission-critical and healthcare builds.",
       "evidence": "REAL-ORG"
@@ -84,7 +84,7 @@
       "employer": "Microsoft",
       "title": "Senior director, datacenter delivery",
       "location": "Redmond, WA",
-      "summary": "Delivered hyperscale regions; reported to Gilbert Faraday from 2013.",
+      "summary": "Ran hyperscale campus deliveries; reported to Gilbert Faraday from 2013.",
       "evidence": "REAL-ORG"
     },
     {
@@ -102,7 +102,7 @@
       "employer": "STACK Infrastructure",
       "title": "Vice president, construction, Americas",
       "location": "Denver, CO",
-      "summary": "Construction and development across North American campuses.",
+      "summary": "Construction and campus delivery across North America.",
       "evidence": "REAL-ORG"
     },
     {
@@ -134,13 +134,19 @@
     {
       "name": "Construction Management Association of America (CMAA)",
       "role": "Member",
-      "since": 2001,
+      "since": 2002,
       "evidence": "REAL-ORG"
     },
     {
-      "name": "AFCOM",
+      "name": "Design-Build Institute of America (DBIA)",
       "role": "Member",
-      "since": 2012,
+      "since": 2010,
+      "evidence": "REAL-ORG"
+    },
+    {
+      "name": "7x24 Exchange International",
+      "role": "Member and chapter volunteer leader",
+      "since": 2014,
       "evidence": "REAL-ORG"
     },
     {
@@ -148,19 +154,13 @@
       "role": "Member",
       "since": 2017,
       "evidence": "REAL-ORG"
-    },
-    {
-      "name": "7x24 Exchange International",
-      "role": "Member",
-      "since": 2014,
-      "evidence": "REAL-ORG"
     }
   ],
   "licenses": [
     {
       "name": "Professional Engineer (Civil)",
       "issuer": "Minnesota",
-      "year": 1998,
+      "year": 2001,
       "evidence": "REAL-ORG"
     },
     {

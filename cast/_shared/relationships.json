@@ -61,9 +61,9 @@
       "delia-marchetti",
       "rosalind-ferraro"
     ],
-    "where": "Illinois State Capitol press corps, Springfield",
-    "years": "1994-1997",
-    "what": "Delia covered the statehouse for the Chicago Tribune and Rose for the Associated Press; they split cab fare and scoops.",
+    "where": "Illinois State Capitol, Springfield",
+    "years": "2002-2006",
+    "what": "Delia covered the statehouse for the Chicago Tribune and Rose was a Senate press secretary; they traded gossip and the occasional scoop.",
     "associates": [
       "A11",
       "A12"
@@ -79,7 +79,7 @@
     ],
     "where": "Liquid-cooled AI campus, about 150 MW, in the Midwest",
     "years": "2021-2023",
-    "what": "Vick led the construction financing at MUFG, Mach was electrical engineer of record at Burns & McDonnell, and Ingrid reviewed the cooling design as independent engineer for Jacobs.",
+    "what": "Vick arranged the construction financing as the developer's capital adviser at Houlihan Lokey, Mach was electrical engineer of record at Burns & McDonnell, and Ingrid reviewed the cooling design as independent engineer for Jacobs.",
     "associates": [
       "A07",
       "A08"
@@ -92,12 +92,10 @@
       "delia-marchetti",
       "constance-wright"
     ],
-    "where": "Bloomberg News, New York",
-    "years": "2005-2012",
-    "what": "Delia led the energy and utilities team and Constance was a standards editor; Constance killed Delia's favorite lede in 2008.",
-    "associates": [
-      "A14"
-    ],
+    "where": "Fact-check for 451 Research of an Exelon press release",
+    "years": "2017",
+    "what": "Constance challenged a capacity figure in a release Delia had approved; Delia sent the source within the hour and rewrote the release anyway.",
+    "associates": [],
     "evidence": "FIC"
   },
   {
@@ -106,7 +104,7 @@
       "delia-marchetti",
       "gilbert-faraday"
     ],
-    "where": "Bloomberg News interview, San Francisco",
+    "where": "Platts interview, San Francisco",
     "years": "2011",
     "what": "Delia profiled Gilbert's power-procurement program at Digital Realty; he made her rewrite the headline twice and was right once.",
     "associates": [],
@@ -134,7 +132,7 @@
     ],
     "where": "Rezoning hearings for a data center campus in central Ohio",
     "years": "2020",
-    "what": "Rose led community engagement for the hyperscaler and Hart was its outside counsel; they disagreed about conceding on water and Rose won.",
+    "what": "Rose led community engagement for the developer and Hart was its outside counsel; they disagreed about conceding on water and Rose won.",
     "associates": [
       "A19"
     ],
@@ -148,7 +146,7 @@
     ],
     "where": "Indiana Utility Regulatory Commission large-load tariff proceeding",
     "years": "2022",
-    "what": "Albert testified as an independent expert and Rose organized a ratepayer coalition; she turned his testimony into a flyer.",
+    "what": "Albert testified for industrial consumers and Rose organized a ratepayer coalition; she turned his testimony into a flyer.",
     "associates": [],
     "evidence": "FIC"
   },
@@ -160,7 +158,7 @@
     ],
     "where": "Virginia campus financing with a state tax abatement and jobs clawback",
     "years": "2019",
-    "what": "Hart represented the sponsor and Vick ran lender diligence; they modeled the clawback together at 2 a.m.",
+    "what": "Hart represented the sponsor and Vick ran the investor's diligence; they modeled the clawback together at 2 a.m.",
     "associates": [],
     "evidence": "FIC"
   },
@@ -172,7 +170,7 @@
     ],
     "where": "Construction financing diligence on a STACK Infrastructure campus",
     "years": "2023",
-    "what": "Vick ran diligence for the bank group and stress-tested Margo's schedule; the schedule survived.",
+    "what": "Vick stress-tested Margo's schedule for the lender group; the schedule survived.",
     "associates": [
       "A28"
     ],
@@ -198,11 +196,11 @@
       "constance-wright",
       "gilbert-faraday"
     ],
-    "where": "Fact-check for S&P Global Commodity Insights",
+    "where": "Fact-check for 451 Research",
     "years": "2020",
     "what": "Constance checked a power-cost figure in a Brattle paper Gilbert co-wrote; the number was right and the year was wrong.",
     "associates": [
-      "A22"
+      "A15"
     ],
     "evidence": "FIC"
   },
@@ -212,11 +210,11 @@
       "constance-wright",
       "margo-brandt"
     ],
-    "where": "Fact-check for S&P Global Commodity Insights",
+    "where": "Fact-check for 451 Research",
     "years": "2021",
     "what": "Constance questioned a campus completion date and Margo sent the crane schedule within the hour.",
     "associates": [
-      "A22"
+      "A15"
     ],
     "evidence": "FIC"
   },
@@ -226,9 +224,9 @@
       "constance-wright",
       "mach-eigen"
     ],
-    "where": "Fact-check for Bloomberg News",
-    "years": "2012",
-    "what": "Constance checked Mach's converter-efficiency claim; he was right and sent three unrequested pages of derivation.",
+    "where": "Fact-check for 451 Research",
+    "years": "2018",
+    "what": "Constance checked Mach's converter-efficiency claim from a conference talk; he was right and sent three unrequested pages of derivation.",
     "associates": [],
     "evidence": "FIC"
   },
@@ -238,7 +236,7 @@
       "constance-wright",
       "albert-thorne"
     ],
-    "where": "Fact-check for ProPublica",
+    "where": "Fact-check for 451 Research",
     "years": "2016",
     "what": "Albert's queue-duration numbers held and his footnote did not.",
     "associates": [
@@ -252,7 +250,7 @@
       "constance-wright",
       "hartford-caldwell"
     ],
-    "where": "Fact-check for ProPublica",
+    "where": "Fact-check for 451 Research",
     "years": "2017",
     "what": "Hart insisted his quote be read back to him verbatim, twice, and then thanked her for the second reading.",
     "associates": [
@@ -266,7 +264,7 @@
       "constance-wright",
       "rosalind-ferraro"
     ],
-    "where": "Fact-check for ProPublica",
+    "where": "Fact-check for 451 Research",
     "years": "2018",
     "what": "Constance doubted a community-meeting attendance figure and Rose produced the sign-in sheets.",
     "associates": [
@@ -280,9 +278,9 @@
       "constance-wright",
       "victoria-stroud"
     ],
-    "where": "Fact-check for S&P Global Commodity Insights",
-    "years": "2022",
-    "what": "Vick confirmed a financing spread to the basis point and declined to say anything else.",
+    "where": "Data check for Moody's Investors Service",
+    "years": "2013",
+    "what": "Constance checked a financing spread in a deal file Vick had prepared; Vick confirmed it to the basis point and declined to say anything else.",
     "associates": [
       "A22"
     ],
@@ -294,12 +292,10 @@
       "constance-wright",
       "ingrid-halverson"
     ],
-    "where": "Fact-check for S&P Global Commodity Insights",
+    "where": "Fact-check for 451 Research",
     "years": "2023",
     "what": "Ingrid corrected Constance's units on a PUE claim and Constance corrected Ingrid's significant figures.",
-    "associates": [
-      "A22"
-    ],
+    "associates": [],
     "evidence": "FIC"
   }
 ]

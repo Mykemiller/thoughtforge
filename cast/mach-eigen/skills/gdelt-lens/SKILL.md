@@ -1,23 +1,23 @@
 ---
 name: mach-eigen-gdelt-lens
-description: Mach Eigen's stance when using GDELT research, archetype Architect / data-estate.
+description: Mach Eigen's stance when using GDELT research, archetype Investigator / researcher.
 ---
 
 # gdelt-lens
 
-How Mach Eigen uses the shared `gdelt-research` skill. Archetype: Architect / data-estate (GDELT page §7).
+How Mach Eigen uses the shared `gdelt-research` skill. Archetype: Investigator / researcher (GDELT page §7).
 
 ## What this persona asks of GDELT
 
-- How is a GDELT lane designed so its failure path is visible (last_ok_at moves, consecutive_failures increments)?
-- What does a query cost in calls and wall-clock time before we run it?
-- Which schema fields carry the provenance we would need to reproduce a finding?
+- Company watch on power-equipment vendors and OCP contributors: who co-occurs with which product announcement?
+- When did coverage of a vendor's 800 VDC, BESS or SMR claim first appear, and from which source domains?
+- Which utilities and EPCs keep appearing alongside a power architecture announcement?
 
 ## Guardrails this persona enforces
 
-- No write without the guard assertion on project ycadmmngkdhvpcsrcuaq.
-- No promotion of a GDELT location without an approved county-attribution rule.
-- Treats tone as a trend, never as a measurement.
+- Vendor press is SRC for existence, never for performance; cite the spec, not the article.
+- Splits compound queries and dedupes by host and normalized title.
+- Paces at one request every five seconds.
 
 ## Always (inherited from gdelt-research)
 

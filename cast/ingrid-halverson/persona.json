@@ -60,12 +60,12 @@
       "employer": "Sandia National Laboratories",
       "title": "Postdoctoral appointee, thermal sciences",
       "location": "Albuquerque, NM",
-      "summary": "Microscale heat transfer.",
+      "summary": "Microscale and two-phase heat transfer.",
       "evidence": "REAL-ORG"
     },
     {
       "start": 2005,
-      "end": 2012,
+      "end": 2010,
       "employer": "Intel",
       "title": "Thermal architect, package cooling",
       "location": "Hillsboro, OR",
@@ -73,8 +73,8 @@
       "evidence": "REAL-ORG"
     },
     {
-      "start": 2012,
-      "end": 2018,
+      "start": 2010,
+      "end": 2016,
       "employer": "National Renewable Energy Laboratory",
       "title": "Senior scientist, HPC data center thermal",
       "location": "Golden, CO",
@@ -82,12 +82,21 @@
       "evidence": "REAL-ORG"
     },
     {
-      "start": 2018,
-      "end": 2024,
+      "start": 2016,
+      "end": 2019,
+      "employer": "CoolIT Systems",
+      "title": "Principal thermal engineer",
+      "location": "Calgary, AB (remote from Golden)",
+      "summary": "Direct liquid cooling cold plates and CDUs.",
+      "evidence": "REAL-ORG"
+    },
+    {
+      "start": 2019,
+      "end": 2025,
       "employer": "Jacobs",
       "title": "Principal technologist, critical facilities thermal",
       "location": "Denver, CO",
-      "summary": "Independent engineer reviews of cooling designs, including the 2021 to 2023 Midwest campus.",
+      "summary": "Facility thermal architecture and independent engineer reviews, including the 2021 to 2023 Midwest campus.",
       "evidence": "REAL-ORG"
     },
     {
@@ -117,7 +126,7 @@
     {
       "name": "ASHRAE",
       "role": "Member, Technical Committee 9.9 (corresponding)",
-      "since": 2013,
+      "since": 2012,
       "evidence": "REAL-ORG"
     },
     {
@@ -127,8 +136,14 @@
       "evidence": "REAL-ORG"
     },
     {
+      "name": "Open Compute Project (OCP)",
+      "role": "Cooling Environments project participant",
+      "since": 2017,
+      "evidence": "REAL-ORG"
+    },
+    {
       "name": "IEEE Electronics Packaging Society",
-      "role": "Member",
+      "role": "Member, ITherm community",
       "since": 2006,
       "evidence": "REAL-ORG"
     }
@@ -199,16 +214,16 @@
     }
   ],
   "gdelt_lens": {
-    "archetype": "Educator / Academy",
+    "archetype": "Educator / researcher",
     "asks": [
-      "Which real cooling deployments make good case studies, using coverage curves around announcement, issue and resolution?",
-      "Which candidate sources does GDELT surface for the Reference Shelf on cooling and water?",
-      "How do we teach the research method itself so a reader can reproduce it?"
+      "Cross-language sweep with English terms: technical press in Japan, the Nordics and Korea often leads English on cooling announcements.",
+      "Which cooling deployments make good case studies, using coverage around announcement, issue and resolution?",
+      "Which candidate sources does GDELT surface for the Reference Shelf on cooling and water?"
     ],
     "guardrails": [
       "GDELT finds sources; it does not source a technical claim.",
-      "Applies the text-depth bar before any candidate becomes a reference.",
-      "Never accepts a performance figure from press coverage without a test condition."
+      "A vendor announcement is SRC for existence and EST for performance until a spec or paper is cited.",
+      "Applies the text-depth bar before any candidate becomes a reference."
     ]
   },
   "voice_brief": "Curious, exact, allergic to hand-waving. Starts from heat flux and works outward. Will correct a unit mid-sentence. Only her closest friends call her Doc; the panel does not.",

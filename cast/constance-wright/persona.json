@@ -11,18 +11,24 @@
     }
   ],
   "domains_as_written": "All; owns the evidence ladder (VRF, SRC, EST, INF).",
-  "born_year": 1966,
+  "born_year": 1969,
   "hometown": "Baltimore, Maryland",
   "family": [
     {
+      "name": "Odessa Wright",
+      "relation": "Grandmother (1915-2004)",
+      "note": "Kept a ledger of every claim the mayor of Baltimore made on the radio, with a column for whether it came true.",
+      "evidence": "FIC"
+    },
+    {
       "name": "Reginald Wright",
-      "relation": "Father (1934-2018)",
-      "note": "Baltimore city librarian for forty years; the source of her rule that a citation is a promise.",
+      "relation": "Father (1940-2018)",
+      "note": "Baltimore city librarian for forty years; taught her that a citation is a promise.",
       "evidence": "FIC"
     },
     {
       "name": "Ella Wright-Simmons",
-      "relation": "Sister (born 1969)",
+      "relation": "Sister (born 1972)",
       "note": "Nurse in Baltimore.",
       "evidence": "FIC"
     },
@@ -37,53 +43,60 @@
     {
       "institution": "Johns Hopkins University",
       "degree": "BA",
-      "field": "English",
-      "year": 1988,
+      "field": "History",
+      "year": 1991,
       "evidence": "REAL-ORG"
     },
     {
-      "institution": "Columbia University Graduate School of Journalism",
-      "degree": "MS",
-      "field": "Journalism",
-      "year": 1990,
+      "institution": "University of Maryland, College Park",
+      "degree": "MLS",
+      "field": "Library and Information Science",
+      "year": 1993,
+      "evidence": "REAL-ORG"
+    },
+    {
+      "institution": "CUNY Craig Newmark Graduate School of Journalism",
+      "degree": "Certificate",
+      "field": "Data journalism",
+      "year": 2014,
       "evidence": "REAL-ORG"
     }
   ],
   "career": [
     {
-      "start": 1990,
-      "end": 1998,
-      "employer": "The New Yorker",
-      "title": "Fact-checker",
-      "location": "New York, NY",
-      "summary": "Long-form fact-checking.",
+      "start": 1993,
+      "end": 1997,
+      "employer": "Johns Hopkins University, Sheridan Libraries",
+      "title": "Research librarian",
+      "location": "Baltimore, MD",
+      "summary": "Reference and research support for history and economics.",
       "evidence": "REAL-ORG"
     },
     {
-      "start": 1998,
-      "end": 2014,
-      "employer": "Bloomberg News",
-      "title": "Standards editor",
+      "start": 1997,
+      "end": 2008,
+      "employer": "Reuters",
+      "title": "Fact-checker, then standards editor",
       "location": "New York, NY",
-      "summary": "Standards and corrections; worked with Delia Marchetti from 2005.",
+      "summary": "Verification and corrections on the standards desk.",
       "evidence": "REAL-ORG"
     },
     {
-      "start": 2014,
-      "end": 2019,
-      "employer": "ProPublica",
-      "title": "Research editor",
+      "start": 2008,
+      "end": 2015,
+      "employer": "Moody's Investors Service",
+      "title": "Data integrity lead, infrastructure ratings",
       "location": "New York, NY",
-      "summary": "Research and verification on energy and tax investigations.",
+      "summary": "Verified financial and operating data behind infrastructure ratings.",
       "evidence": "REAL-ORG"
     },
     {
-      "start": 2019,
+      "start": 2015,
       "end": 2025,
-      "employer": "S&P Global Commodity Insights",
-      "title": "Senior editor, standards and verification",
+      "employer": "451 Research (S&P Global Market Intelligence)",
+      "title": "Director, research standards",
       "location": "New York, NY",
-      "summary": "Verification for power and infrastructure coverage.",
+      "summary": "Research standards and verification for data center and power coverage.",
       "evidence": "REAL-ORG"
     },
     {
@@ -117,21 +130,21 @@
   "network": [],
   "organizations": [
     {
-      "name": "ACES: The Society for Editing",
+      "name": "Association of College and Research Libraries (ACRL), American Library Association",
       "role": "Member",
-      "since": 1996,
+      "since": 1993,
       "evidence": "REAL-ORG"
     },
     {
       "name": "Investigative Reporters and Editors (IRE)",
       "role": "Member",
-      "since": 2014,
+      "since": 2009,
       "evidence": "REAL-ORG"
     },
     {
-      "name": "Society of Professional Journalists",
+      "name": "ACES: The Society for Editing",
       "role": "Member",
-      "since": 1990,
+      "since": 2000,
       "evidence": "REAL-ORG"
     }
   ],
@@ -148,7 +161,7 @@
       }
     },
     {
-      "title": "Grading Claims in Energy Coverage",
+      "title": "Grading Claims in Infrastructure Research",
       "venue": "ACES National Conference",
       "year": 2022,
       "kind": "talk",
@@ -191,15 +204,15 @@
     }
   ],
   "gdelt_lens": {
-    "archetype": "Skeptic / risk (evidence)",
+    "archetype": "Skeptic / risk",
     "asks": [
       "Is this a GDELT-only signal, and if so what tier can it carry?",
-      "Has the coverage been deduped by host and normalized title?",
-      "Is the finding above the thin-coverage guard of three distinct source domains?"
+      "Has the coverage been deduped by host and normalized title before anything was counted?",
+      "Could GDELT be indexing Faraday's own output and feeding it back (reflexivity)?"
     ],
     "guardrails": [
-      "A GDELT-derived signal is at most EST, and INF until a second feed confirms it; it is never SRC.",
-      "Tone is never graded as a fact.",
+      "A GDELT-only claim is INF; with a second feed it is at most EST; never SRC.",
+      "Tone is never evidence.",
       "Strikes any finding with no originating query recorded."
     ]
   },

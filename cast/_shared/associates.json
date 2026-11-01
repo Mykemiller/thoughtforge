@@ -112,7 +112,7 @@
       "mach-eigen",
       "ingrid-halverson"
     ],
-    "note": "Vick's deal lead on the Midwest campus financing.",
+    "note": "Lead lender on the Midwest campus financing Vick arranged.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
@@ -127,7 +127,7 @@
       "ingrid-halverson",
       "gilbert-faraday"
     ],
-    "note": "Hosted the 2015 warm-water cooling visit with Ingrid.",
+    "note": "Hosted the 2015 warm-water cooling visit with Ingrid; one of two people allowed to call her Doc.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
@@ -141,7 +141,7 @@
     "knows": [
       "ingrid-halverson"
     ],
-    "note": "Ingrid's closest friend since 2005, one of three people allowed to call her Doc.",
+    "note": "Ingrid's closest friend since 2005; one of two people allowed to call her Doc.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
@@ -171,7 +171,7 @@
       "rosalind-ferraro",
       "delia-marchetti"
     ],
-    "note": "Shared the AP desk with Rose and the pressroom with Delia.",
+    "note": "Shared the pressroom with Delia and returned Rose's calls first.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
@@ -180,8 +180,8 @@
   {
     "id": "A13",
     "name": "Lyle Hostetler",
-    "role": "Political organizer",
-    "firm": "Illinois AFL-CIO",
+    "role": "Field director",
+    "firm": "Illinois statewide campaign, 2002 cycle (named by cycle, not candidate)",
     "knows": [
       "rosalind-ferraro"
     ],
@@ -194,13 +194,13 @@
   {
     "id": "A14",
     "name": "Odette Marchand",
-    "role": "Energy editor",
-    "firm": "Bloomberg News",
+    "role": "Senior editor",
+    "firm": "Platts",
     "knows": [
       "delia-marchetti",
       "constance-wright"
     ],
-    "note": "Edited Delia; lost every argument with Constance.",
+    "note": "Delia's editor; still calls her to check a quote. Constance's source on a Platts correction in 2012.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
@@ -209,15 +209,15 @@
   {
     "id": "A15",
     "name": "Sam Aldous",
-    "role": "Data reporter",
-    "firm": "ProPublica",
+    "role": "Research analyst",
+    "firm": "451 Research",
     "knows": [
       "constance-wright",
       "albert-thorne",
       "hartford-caldwell",
       "rosalind-ferraro"
     ],
-    "note": "Constance's partner on the 2016 to 2018 interconnection and abatement stories.",
+    "note": "Constance's second reader on the 2016 to 2018 interconnection and incentive reports.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
@@ -226,12 +226,12 @@
   {
     "id": "A16",
     "name": "Winifred Tolliver",
-    "role": "Rates division staff economist",
+    "role": "Senior staff economist",
     "firm": "Public Utilities Commission of Ohio",
     "knows": [
       "albert-thorne"
     ],
-    "note": "Albert's first supervisor at PUCO.",
+    "note": "Albert's closest colleague on the PUCO staff.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
@@ -245,7 +245,7 @@
     "knows": [
       "albert-thorne"
     ],
-    "note": "Built the queue spreadsheets Albert still quotes from memory.",
+    "note": "Former PJM colleague who still passes Albert queue gossip.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
@@ -284,12 +284,12 @@
   {
     "id": "A20",
     "name": "Philippa Grange",
-    "role": "Assistant general counsel",
-    "firm": "Dominion Energy",
+    "role": "Senior paralegal",
+    "firm": "Latham & Watkins",
     "knows": [
       "hartford-caldwell"
     ],
-    "note": "Hart's colleague and later his toughest opposing counsel.",
+    "note": "Caught two filing errors that would have cost Hart's clients a hearing date.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
@@ -312,12 +312,13 @@
   {
     "id": "A22",
     "name": "Imogen Thackeray",
-    "role": "Senior editor, standards",
-    "firm": "S&P Global Commodity Insights",
+    "role": "Data analyst, infrastructure ratings",
+    "firm": "Moody's Investors Service",
     "knows": [
-      "constance-wright"
+      "constance-wright",
+      "victoria-stroud"
     ],
-    "note": "Constance's second reader on every flagged claim since 2019.",
+    "note": "The colleague Constance once trusted without checking, and the reason she still checks.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
@@ -331,7 +332,7 @@
     "knows": [
       "mach-eigen"
     ],
-    "note": "Ran the 800 VDC reference-design program with Mach.",
+    "note": "Vendor counterpart in the OCP 800 VDC work with Mach.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
@@ -340,12 +341,12 @@
   {
     "id": "A24",
     "name": "Celeste Ombra",
-    "role": "Senior vice president, energy practice",
-    "firm": "Edelman",
+    "role": "Senior manager, media relations",
+    "firm": "Exelon",
     "knows": [
       "delia-marchetti"
     ],
-    "note": "Delia's partner on utility crisis communications.",
+    "note": "Delia's partner through outages and rate cases.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
@@ -403,7 +404,7 @@
       "victoria-stroud",
       "margo-brandt"
     ],
-    "note": "Sat on the 2023 diligence that tested Margo's schedule.",
+    "note": "The lender's credit officer Vick argues with every quarter; sat on the 2023 diligence that tested Margo's schedule.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
@@ -412,15 +413,29 @@
   {
     "id": "A29",
     "name": "Miriam Ashdown",
-    "role": "Head of checking",
-    "firm": "The New Yorker",
+    "role": "Reference librarian (retired)",
+    "firm": "Johns Hopkins University, Sheridan Libraries",
     "knows": [
       "constance-wright"
     ],
-    "note": "Trained Constance to call a source back three times.",
+    "note": "Trained Constance; the one source she trusts without checking.",
     "evidence": {
       "name": "FIC",
       "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A30",
+    "name": "Hattie Brannock",
+    "role": "Elected board member of a suburban water district (fictional office holder)",
+    "firm": "a suburban Illinois water district (fictional)",
+    "knows": [
+      "rosalind-ferraro"
+    ],
+    "note": "The first call Rose makes on any site.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "FIC"
     }
   }
 ]

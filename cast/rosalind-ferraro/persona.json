@@ -15,31 +15,31 @@
     }
   ],
   "domains_as_written": "D18 Opposition and community, D13 local politics.",
-  "born_year": 1972,
+  "born_year": 1978,
   "hometown": "Chicago, Illinois (Bridgeport)",
   "family": [
     {
+      "name": "Angela Ferraro",
+      "relation": "Mother (born 1952)",
+      "note": "Ran for a county board seat in 1990 and lost by 212 votes; Rose has counted votes ever since.",
+      "evidence": "FIC"
+    },
+    {
       "name": "Marcus Bell",
-      "relation": "Husband (married 1999)",
-      "note": "Retired transit mechanic.",
+      "relation": "Husband (married 2005)",
+      "note": "Transit mechanic.",
       "evidence": "FIC"
     },
     {
       "name": "Simone Bell",
-      "relation": "Daughter (born 1999)",
-      "note": "Middle school teacher on the South Side.",
+      "relation": "Daughter (born 2007)",
+      "note": "High school senior and debate captain.",
       "evidence": "FIC"
     },
     {
       "name": "Miles Bell",
-      "relation": "Son (born 2003)",
-      "note": "Union carpenter apprentice.",
-      "evidence": "FIC"
-    },
-    {
-      "name": "Rosalind (Nonna) Ferraro",
-      "relation": "Grandmother (1921-2011)",
-      "note": "Ran a neighborhood grocery for fifty years and knew every family's credit line by heart.",
+      "relation": "Son (born 2010)",
+      "note": "Eighth grader who wants to be a carpenter.",
       "evidence": "FIC"
     }
   ],
@@ -48,60 +48,51 @@
       "institution": "University of Illinois Urbana-Champaign",
       "degree": "BA",
       "field": "Political Science",
-      "year": 1994,
+      "year": 2000,
       "evidence": "REAL-ORG"
     },
     {
-      "institution": "University of Chicago Harris School of Public Policy",
-      "degree": "MPP",
-      "field": "Public Policy",
-      "year": 2002,
+      "institution": "Northern Illinois University",
+      "degree": "MPA",
+      "field": "Public Administration",
+      "year": 2009,
       "evidence": "REAL-ORG"
     }
   ],
   "career": [
     {
-      "start": 1994,
-      "end": 1997,
-      "employer": "Associated Press",
-      "title": "Statehouse reporter",
-      "location": "Springfield, IL",
-      "summary": "Covered the legislature alongside Delia Marchetti in the press corps.",
-      "evidence": "REAL-ORG"
-    },
-    {
-      "start": 1997,
-      "end": 2000,
-      "employer": "Illinois Senate Democratic Caucus",
-      "title": "Deputy press secretary",
-      "location": "Springfield, IL",
-      "summary": "Legislative communications.",
+      "start": 2000,
+      "end": 2002,
+      "employer": "Illinois statewide campaigns, 2000 and 2002 cycles (named by cycle, not candidate)",
+      "title": "Field organizer",
+      "location": "Chicago, IL",
+      "summary": "Precinct field programs.",
       "evidence": "REAL-ORG"
     },
     {
       "start": 2002,
-      "end": 2008,
-      "employer": "Illinois AFL-CIO",
-      "title": "Political organizer",
-      "location": "Chicago, IL",
-      "summary": "Field programs and vote counts for state campaigns.",
+      "end": 2012,
+      "employer": "Illinois Senate",
+      "title": "Press secretary, then chief of staff to a state senator",
+      "location": "Springfield, IL",
+      "summary": "Legislative communications and floor vote counts.",
       "evidence": "REAL-ORG"
     },
     {
-      "start": 2008,
+      "start": 2012,
       "end": 2016,
-      "employer": "Midwest Academy",
-      "title": "Senior trainer",
+      "employer": "Hilltop Public Solutions",
+      "title": "Senior associate",
       "location": "Chicago, IL",
-      "summary": "Trained community organizers across the Midwest.",
+      "summary": "Coalition and community campaigns.",
       "evidence": "REAL-ORG"
     },
     {
       "start": 2016,
       "end": 2022,
-      "employer": "Google",
-      "title": "Community affairs manager, data centers (Midwest)",
-      "location": "Chicago, IL",
+      "employer": "Compass Datacenters",
+      "title": "Senior manager, community engagement",
+      "location": "Dallas, TX (remote from Chicago)",
       "summary": "Community engagement for campus siting, including the 2020 central Ohio rezoning with Hart.",
       "evidence": "REAL-ORG"
     },
@@ -129,7 +120,8 @@
     "A12",
     "A13",
     "A15",
-    "A19"
+    "A19",
+    "A30"
   ],
   "relationships": [
     "R05",
@@ -141,21 +133,27 @@
   "network": [],
   "organizations": [
     {
-      "name": "International Association for Public Participation (IAP2)",
-      "role": "Member",
+      "name": "International City/County Management Association (ICMA)",
+      "role": "Affiliate member",
       "since": 2010,
       "evidence": "REAL-ORG"
     },
     {
-      "name": "American Association of Political Consultants",
-      "role": "Member",
-      "since": 2022,
+      "name": "National League of Cities (NLC)",
+      "role": "Associate",
+      "since": 2017,
       "evidence": "REAL-ORG"
     },
     {
-      "name": "Infrastructure Masons (iMasons)",
+      "name": "National Association of Counties (NACo)",
+      "role": "Associate",
+      "since": 2018,
+      "evidence": "REAL-ORG"
+    },
+    {
+      "name": "Women in Government Relations (WGR)",
       "role": "Member",
-      "since": 2019,
+      "since": 2013,
       "evidence": "REAL-ORG"
     }
   ],
@@ -173,7 +171,7 @@
     },
     {
       "title": "The Water Story Runs First",
-      "venue": "iMasons Everywhere Midwest",
+      "venue": "NACo Annual Conference",
       "year": 2023,
       "kind": "talk",
       "evidence": {
@@ -217,14 +215,14 @@
   "gdelt_lens": {
     "archetype": "Jurisdiction analyst",
     "asks": [
-      "County dossier: GEO sweep plus moratorium and zoning terms plus a 90-day tone curve.",
-      "Is opposition coverage rising ahead of the next hearing date?",
-      "Which local outlets are leading the story, and which officials are quoted?"
+      "County dossier: GEO sweep plus moratorium, zoning, water and noise terms plus a 90-day tone curve.",
+      "Opposition leading indicators: opposition-theme share, coverage momentum and first-appearance dates ahead of a hearing.",
+      "Which local outlets are leading the story?"
     ],
     "guardrails": [
       "Tone is directional only, never a fact about how people feel.",
       "Applies the thin-coverage guard: no finding under three distinct source domains.",
-      "Treats a mentioned place as a mention, not as the project location, until the attribution rule says otherwise."
+      "Never names a private individual from GDELT output."
     ]
   },
   "voice_brief": "Relentless drive and vote-counting instinct, delivered with warmth, directness, and moral clarity. Knows who is in the room at the zoning hearing and why. Names the community cost before anyone else does.",

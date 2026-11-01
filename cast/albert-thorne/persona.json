@@ -11,30 +11,30 @@
     }
   ],
   "domains_as_written": "D3 Grid, interconnection, FERC, ISOs, PUCs.",
-  "born_year": 1964,
+  "born_year": 1968,
   "hometown": "Columbus, Ohio",
   "family": [
     {
       "name": "Margaret (Meg) Thorne",
-      "relation": "Wife (married 1990)",
+      "relation": "Wife (married 1994)",
       "note": "Pediatrician in Bexley, Ohio.",
       "evidence": "FIC"
     },
     {
       "name": "Iris Thorne",
-      "relation": "Daughter (born 1997)",
+      "relation": "Daughter (born 1999)",
       "note": "Transmission planner at a regional utility.",
       "evidence": "FIC"
     },
     {
       "name": "June Thorne",
-      "relation": "Daughter (born 1997)",
+      "relation": "Daughter (born 1999)",
       "note": "Labor lawyer; Iris's twin.",
       "evidence": "FIC"
     },
     {
       "name": "Harold Thorne",
-      "relation": "Father (1936-2015)",
+      "relation": "Father (1940-2015)",
       "note": "Steelworker in Mansfield, Ohio; Albert's first lesson in what a rate increase means at a kitchen table.",
       "evidence": "FIC"
     }
@@ -44,50 +44,41 @@
       "institution": "The Ohio State University",
       "degree": "BA",
       "field": "Economics",
-      "year": 1986,
+      "year": 1990,
       "evidence": "REAL-ORG"
     },
     {
       "institution": "University of Wisconsin-Madison",
       "degree": "PhD",
       "field": "Economics (regulation and energy markets)",
-      "year": 1992,
+      "year": 1996,
       "evidence": "REAL-ORG"
     }
   ],
   "career": [
     {
-      "start": 1992,
-      "end": 1998,
-      "employer": "Public Utilities Commission of Ohio",
-      "title": "Staff economist, rates and tariffs",
-      "location": "Columbus, OH",
-      "summary": "Rate cases and tariff design.",
-      "evidence": "REAL-ORG"
-    },
-    {
-      "start": 1998,
-      "end": 2007,
+      "start": 1996,
+      "end": 2004,
       "employer": "PJM Interconnection",
-      "title": "Senior analyst, then manager, interconnection planning",
+      "title": "Market design analyst, then senior analyst",
       "location": "Valley Forge, PA",
-      "summary": "Queue process and system impact studies.",
+      "summary": "Capacity market and interconnection rules.",
       "evidence": "REAL-ORG"
     },
     {
-      "start": 2007,
-      "end": 2014,
-      "employer": "Federal Energy Regulatory Commission",
-      "title": "Advisor, Office of Energy Policy and Innovation",
-      "location": "Washington, DC",
-      "summary": "Transmission and interconnection policy.",
+      "start": 2004,
+      "end": 2010,
+      "employer": "Public Utilities Commission of Ohio",
+      "title": "Senior advisor, utility rates and tariffs staff",
+      "location": "Columbus, OH",
+      "summary": "Advised commissioners on rate cases and tariff design.",
       "evidence": "REAL-ORG"
     },
     {
-      "start": 2014,
+      "start": 2010,
       "end": 2021,
       "employer": "Energy and Environmental Economics (E3)",
-      "title": "Director",
+      "title": "Director, large-load interconnection",
       "location": "San Francisco, CA (remote from Columbus)",
       "summary": "Grid-impact studies and expert testimony, including the 2016 study Gilbert sponsored and the 2018 to 2019 FERC proceeding opposite Hart.",
       "evidence": "REAL-ORG"
@@ -95,10 +86,10 @@
     {
       "start": 2021,
       "end": 2025,
-      "employer": "Resources for the Future",
-      "title": "Senior fellow",
+      "employer": "Electricity Consumers Resource Council (ELCON)",
+      "title": "Director, grid policy",
       "location": "Washington, DC",
-      "summary": "Research on large-load interconnection and cost allocation.",
+      "summary": "Large-load tariff and interconnection policy for industrial consumers, including 2022 testimony in Indiana.",
       "evidence": "REAL-ORG"
     },
     {
@@ -128,21 +119,21 @@
   "network": [],
   "organizations": [
     {
-      "name": "United States Association for Energy Economics (USAEE)",
+      "name": "International Association for Energy Economics (IAEE)",
       "role": "Member",
-      "since": 1993,
-      "evidence": "REAL-ORG"
-    },
-    {
-      "name": "IEEE Power & Energy Society",
-      "role": "Member",
-      "since": 1999,
+      "since": 1994,
       "evidence": "REAL-ORG"
     },
     {
       "name": "Energy Bar Association",
       "role": "Associate member",
-      "since": 2009,
+      "since": 2011,
+      "evidence": "REAL-ORG"
+    },
+    {
+      "name": "NARUC staff subcommittee on rate design",
+      "role": "Participant while at PUCO",
+      "since": 2005,
       "evidence": "REAL-ORG"
     }
   ],
@@ -150,7 +141,7 @@
   "publications": [
     {
       "title": "Paper Timelines and Real Ones: Interconnection Queue Durations",
-      "venue": "Resources for the Future working paper series",
+      "venue": "IAEE International Conference",
       "year": 2023,
       "kind": "paper",
       "evidence": {
@@ -212,16 +203,16 @@
     }
   ],
   "gdelt_lens": {
-    "archetype": "Forecaster / Predictions",
+    "archetype": "Jurisdiction analyst",
     "asks": [
-      "Base rates: of large-load requests with opposition coverage above threshold, what share were approved, delayed or withdrawn, by state?",
-      "Does coverage momentum lead formal commission action, and by how many weeks?",
-      "Which features survive dedupe before they go into a forecast?"
+      "Cross-language coverage of ISO and PUC actions on large loads.",
+      "County sweeps for tariff and interconnection fights ahead of a commission vote.",
+      "Is coverage of a tariff proposal rising before the hearing date?"
     ],
     "guardrails": [
-      "Dedupes before building any feature.",
-      "Never uses GDELT to resolve a forecast question.",
-      "Treats GDELT as one input among several, never the sole basis."
+      "Tone is directional only.",
+      "A docket is SRC; press about a docket is EST.",
+      "Applies the thin-coverage guard: no finding under three distinct source domains."
     ]
   },
   "voice_brief": "Precise, academic, unflappable. Cites the docket, the tariff section, the queue position. Distinguishes what the rule says from how the ISO actually behaves.",
