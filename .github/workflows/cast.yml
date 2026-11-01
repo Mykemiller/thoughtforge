@@ -15,6 +15,7 @@ jobs:
       - run: npm test
       - run: npm run validate:cast
       - run: npm run resolve:network:snapshot
+      - run: npm run audit:cast -- --stdout
   smoke-gdelt:
     # Live call to GDELT. Non-blocking: GDELT answers shared GitHub runner IPs with HTTP 429 at times.
     runs-on: ubuntu-latest

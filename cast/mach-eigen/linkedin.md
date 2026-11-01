@@ -47,7 +47,7 @@ Power engineer by training: HVDC at Siemens, medium-voltage DC at ABB, mission-c
 
 - Restores vintage German motorcycles in a heated garage in Kansas City.
 - Bakes Christmas stollen every December and gives it to everyone at work.
-- Lifelong VfB Stuttgart supporter; adopted the Chiefs in 2009 and claims he saw the Mahomes era coming.
+- Lifelong VfB Stuttgart supporter; adopted the Chiefs in 2009 and claims he saw the 2019 title run coming.
 - Favorite places: Hiking the Dolomites with Sabine every September; Christmas markets in Stuttgart with his brother's family
 
 ## People I follow

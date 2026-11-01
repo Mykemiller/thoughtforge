@@ -9,7 +9,8 @@
     "resolve:network:dry": "tsx scripts/resolve-network.ts --slug _fixtures --snapshot cast/_fixtures/people-snapshot.json --dry-run",
     "resolve:network:snapshot": "tsx scripts/resolve-network.ts --all --snapshot cast/_fixtures/people-snapshot.json",
     "test": "tsx --test scripts/tests/tooling.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "audit:cast": "tsx scripts/audit-cast.ts"
   },
   "engines": {
     "node": ">=20"

@@ -43,9 +43,9 @@ At 451 Research she ran research standards for data center and power coverage. A
 
 ## Real-world moments (public events before 2025)
 
-- 1995-09-06: Cal Ripken Jr. plays game 2,131, Oriole Park at Camden Yards, Baltimore. Was there with her father; she kept the ticket stub in a frame next to her grandmother's ledger. [REAL-EVENT; attendance FIC]
+- 1995-09-06: Orioles vs. Angels, consecutive-games record night (game 2,131), Oriole Park at Camden Yards, Baltimore. Was there with her father; she kept the ticket stub in a frame next to her grandmother's ledger. [REAL-EVENT; attendance FIC]
 - 2013-02-03: Super Bowl XLVII, Ravens 34, 49ers 31, Watched at her sister Ella's in Baltimore. Timed the stadium blackout to the minute and has the notes to prove it. [REAL-EVENT; attendance FIC]
-- 2023-05-13: Taylor Swift, The Eras Tour, Lincoln Financial Field, Philadelphia. Took her niece Nora; fact-checked the setlist against the tour's previous night in real time. [REAL-EVENT; attendance FIC]
+- 2023-05-13: The Eras Tour, Philadelphia opening night, Lincoln Financial Field, Philadelphia. Took her niece Nora; fact-checked the setlist against the tour's previous night in real time. [REAL-EVENT; attendance FIC]
 
 ## Family
 

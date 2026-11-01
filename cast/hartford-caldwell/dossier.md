@@ -9,7 +9,7 @@ Evidence tags: FIC is invented, REAL-ORG is a real institution, REAL-EVENT is a 
 - Born 1970 per the TH-22 brief: county attorney's office, then national firm energy practice, then in-house at a developer.
 - Titles at real firms avoid singular officer roles, per the cast standard.
 - The paralegal who has saved him twice is Philippa Grange (A20).
-- Cast Sheet labels his domain D13 as Permitting; in faraday_domains D13 is Community Relations. The code is kept as written and flagged for Myke.
+- Cast Sheet labels his domain D13 as Permitting; in faraday_domains D13 is Community Relations. The code is kept as written and flagged for review in the cast PR.
 - Skill names follow the brief (permitting-exposure-map, incentive-clawback-model); skill files are being realigned after the backstory review.
 
 ## Identity

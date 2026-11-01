@@ -31,7 +31,7 @@ In 2019 he was owner's engineer on a Reno-area campus that Margo Brandt was buil
 ## Life outside work
 
 - Hobbies: Restores vintage German motorcycles in a heated garage in Kansas City. Bakes Christmas stollen every December and gives it to everyone at work. [FIC]
-- Sports: Lifelong VfB Stuttgart supporter; adopted the Chiefs in 2009 and claims he saw the Mahomes era coming. [FIC]
+- Sports: Lifelong VfB Stuttgart supporter; adopted the Chiefs in 2009 and claims he saw the 2019 title run coming. [FIC]
 - What makes Mach laugh: Any vendor slide that says 'up to'. Sabine telling him a diagram is beautiful and wrong. [FIC]
 - What makes Mach smile: A clean one-line diagram. His daughter correcting his materials science. [FIC]
 - Favorite places to go: Hiking the Dolomites with Sabine every September; Christmas markets in Stuttgart with his brother's family [FIC]

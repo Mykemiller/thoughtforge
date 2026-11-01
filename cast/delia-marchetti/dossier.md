@@ -9,7 +9,7 @@ Evidence tags: FIC is invented, REAL-ORG is a real institution, REAL-EVENT is a 
 - Born 1976 per the TH-20 brief: statehouse reporter, then energy trade press, then utility communications, then the panel.
 - The Springfield press corps years with Rose are 2002 to 2006 (R05), when Rose was a Senate press secretary.
 - The editor who still calls to check a quote is Odette Marchand (A14), her Platts editor.
-- Cast Sheet labels her domain D5 as Markets; in faraday_domains D5 is Hyperscaler Activity. The code is kept as written and flagged for Myke.
+- Cast Sheet labels her domain D5 as Markets; in faraday_domains D5 is Hyperscaler Activity. The code is kept as written and flagged for review in the cast PR.
 
 ## Identity
 
@@ -42,7 +42,7 @@ She crossed over to run media relations at Exelon through outages, rate cases an
 
 ## Real-world moments (public events before 2025)
 
-- 2015-07-31: Lollapalooza, Paul McCartney headlining, Grant Park, Chicago. Took her mother; they both sang every word of "Hey Jude". [REAL-EVENT; attendance FIC]
+- 2015-07-31: Lollapalooza 2015, opening-night headline set, Grant Park, Chicago. Took her mother; they both sang every word of the encore. [REAL-EVENT; attendance FIC]
 - 2016-11-02: World Series Game 7, Cubs 8, Indians 7 (10 innings), Watched at a bar on Clark Street, Chicago. Called Rose at 12:47 a.m. and said nothing for ten seconds. Rose hung up on her. With Rosalind Ferraro. [REAL-EVENT; attendance FIC]
 
 ## Family
