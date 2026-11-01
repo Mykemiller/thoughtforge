@@ -1,0 +1,305 @@
+[
+  {
+    "id": "R01",
+    "participants": [
+      "gilbert-faraday",
+      "mach-eigen"
+    ],
+    "where": "Siemens AG, Munich",
+    "years": "1997-2001",
+    "what": "Gilbert ran transmission strategy and Mach engineered HVDC converters; they met on an interconnector bid review and argued about it for four years.",
+    "associates": [
+      "A02"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R02",
+    "participants": [
+      "gilbert-faraday",
+      "margo-brandt"
+    ],
+    "where": "Microsoft, Redmond",
+    "years": "2013-2018",
+    "what": "Margo reported to Gilbert as senior director of datacenter delivery and was right twice when she told him a site timeline would not build.",
+    "associates": [
+      "A04"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R03",
+    "participants": [
+      "margo-brandt",
+      "mach-eigen"
+    ],
+    "where": "Hyperscale campus near Reno, Nevada (Mortenson as builder, Burns & McDonnell as owner's engineer)",
+    "years": "2019",
+    "what": "Margo ran delivery for the builder and Mach was the owner's electrical engineer; they rebuilt the energization sequence in a week.",
+    "associates": [
+      "A05"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R04",
+    "participants": [
+      "albert-thorne",
+      "hartford-caldwell"
+    ],
+    "where": "FERC proceeding on cost allocation for a large-load transmission upgrade",
+    "years": "2018-2019",
+    "what": "Albert testified for a state-commission coalition and Hart represented the developer; they were on opposite sides and each still quotes the other's best line.",
+    "associates": [
+      "A18"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R05",
+    "participants": [
+      "delia-marchetti",
+      "rosalind-ferraro"
+    ],
+    "where": "Illinois State Capitol press corps, Springfield",
+    "years": "1994-1997",
+    "what": "Delia covered the statehouse for the Chicago Tribune and Rose for the Associated Press; they split cab fare and scoops.",
+    "associates": [
+      "A11",
+      "A12"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R06",
+    "participants": [
+      "victoria-stroud",
+      "mach-eigen",
+      "ingrid-halverson"
+    ],
+    "where": "Liquid-cooled AI campus, about 150 MW, in the Midwest",
+    "years": "2021-2023",
+    "what": "Vick led the construction financing at MUFG, Mach was electrical engineer of record at Burns & McDonnell, and Ingrid reviewed the cooling design as independent engineer for Jacobs.",
+    "associates": [
+      "A07",
+      "A08"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R07",
+    "participants": [
+      "delia-marchetti",
+      "constance-wright"
+    ],
+    "where": "Bloomberg News, New York",
+    "years": "2005-2012",
+    "what": "Delia led the energy and utilities team and Constance was a standards editor; Constance killed Delia's favorite lede in 2008.",
+    "associates": [
+      "A14"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R08",
+    "participants": [
+      "delia-marchetti",
+      "gilbert-faraday"
+    ],
+    "where": "Bloomberg News interview, San Francisco",
+    "years": "2011",
+    "what": "Delia profiled Gilbert's power-procurement program at Digital Realty; he made her rewrite the headline twice and was right once.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R09",
+    "participants": [
+      "gilbert-faraday",
+      "albert-thorne"
+    ],
+    "where": "Microsoft-commissioned grid-impact study by E3",
+    "years": "2016",
+    "what": "Gilbert sponsored the study and Albert led it; the conclusion Gilbert did not want is the one that held.",
+    "associates": [
+      "A25"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R10",
+    "participants": [
+      "hartford-caldwell",
+      "rosalind-ferraro"
+    ],
+    "where": "Rezoning hearings for a data center campus in central Ohio",
+    "years": "2020",
+    "what": "Rose led community engagement for the hyperscaler and Hart was its outside counsel; they disagreed about conceding on water and Rose won.",
+    "associates": [
+      "A19"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R11",
+    "participants": [
+      "albert-thorne",
+      "rosalind-ferraro"
+    ],
+    "where": "Indiana Utility Regulatory Commission large-load tariff proceeding",
+    "years": "2022",
+    "what": "Albert testified as an independent expert and Rose organized a ratepayer coalition; she turned his testimony into a flyer.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R12",
+    "participants": [
+      "hartford-caldwell",
+      "victoria-stroud"
+    ],
+    "where": "Virginia campus financing with a state tax abatement and jobs clawback",
+    "years": "2019",
+    "what": "Hart represented the sponsor and Vick ran lender diligence; they modeled the clawback together at 2 a.m.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R13",
+    "participants": [
+      "margo-brandt",
+      "victoria-stroud"
+    ],
+    "where": "Construction financing diligence on a STACK Infrastructure campus",
+    "years": "2023",
+    "what": "Vick ran diligence for the bank group and stress-tested Margo's schedule; the schedule survived.",
+    "associates": [
+      "A28"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R14",
+    "participants": [
+      "ingrid-halverson",
+      "gilbert-faraday"
+    ],
+    "where": "Warm-water liquid cooling visit, NREL Energy Systems Integration Facility, Golden, Colorado",
+    "years": "2015",
+    "what": "Gilbert led a Microsoft delegation and Ingrid ran the technical session; she corrected his approach-temperature number in front of his team.",
+    "associates": [
+      "A09"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R15",
+    "participants": [
+      "constance-wright",
+      "gilbert-faraday"
+    ],
+    "where": "Fact-check for S&P Global Commodity Insights",
+    "years": "2020",
+    "what": "Constance checked a power-cost figure in a Brattle paper Gilbert co-wrote; the number was right and the year was wrong.",
+    "associates": [
+      "A22"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R16",
+    "participants": [
+      "constance-wright",
+      "margo-brandt"
+    ],
+    "where": "Fact-check for S&P Global Commodity Insights",
+    "years": "2021",
+    "what": "Constance questioned a campus completion date and Margo sent the crane schedule within the hour.",
+    "associates": [
+      "A22"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R17",
+    "participants": [
+      "constance-wright",
+      "mach-eigen"
+    ],
+    "where": "Fact-check for Bloomberg News",
+    "years": "2012",
+    "what": "Constance checked Mach's converter-efficiency claim; he was right and sent three unrequested pages of derivation.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R18",
+    "participants": [
+      "constance-wright",
+      "albert-thorne"
+    ],
+    "where": "Fact-check for ProPublica",
+    "years": "2016",
+    "what": "Albert's queue-duration numbers held and his footnote did not.",
+    "associates": [
+      "A15"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R19",
+    "participants": [
+      "constance-wright",
+      "hartford-caldwell"
+    ],
+    "where": "Fact-check for ProPublica",
+    "years": "2017",
+    "what": "Hart insisted his quote be read back to him verbatim, twice, and then thanked her for the second reading.",
+    "associates": [
+      "A15"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R20",
+    "participants": [
+      "constance-wright",
+      "rosalind-ferraro"
+    ],
+    "where": "Fact-check for ProPublica",
+    "years": "2018",
+    "what": "Constance doubted a community-meeting attendance figure and Rose produced the sign-in sheets.",
+    "associates": [
+      "A15"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R21",
+    "participants": [
+      "constance-wright",
+      "victoria-stroud"
+    ],
+    "where": "Fact-check for S&P Global Commodity Insights",
+    "years": "2022",
+    "what": "Vick confirmed a financing spread to the basis point and declined to say anything else.",
+    "associates": [
+      "A22"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R22",
+    "participants": [
+      "constance-wright",
+      "ingrid-halverson"
+    ],
+    "where": "Fact-check for S&P Global Commodity Insights",
+    "years": "2023",
+    "what": "Ingrid corrected Constance's units on a PUE claim and Constance corrected Ingrid's significant figures.",
+    "associates": [
+      "A22"
+    ],
+    "evidence": "FIC"
+  }
+]

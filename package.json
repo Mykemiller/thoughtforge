@@ -1,0 +1,11 @@
+{
+  "name": "thoughtforge",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate:cast": "node scripts/validate-cast.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

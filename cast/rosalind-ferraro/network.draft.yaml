@@ -1,0 +1,7 @@
+# Draft network for Rosalind Ferraro.
+# PENDING TF-OPEN-08: do not add real names until Myke rules on the network wording.
+# Seed query once ruled: person_domain_tags where subdomain_code in ['D18', 'D13'] domains,
+# read-only, anon key, guard assertion on project ycadmmngkdhvpcsrcuaq.
+slug: rosalind-ferraro
+status: pending_tf_open_08
+entries: []

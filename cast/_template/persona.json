@@ -1,0 +1,108 @@
+{
+  "$schema": "../_schema/persona.schema.json",
+  "slug": "first-last",
+  "display_name": "",
+  "short_name": "",
+  "role": "",
+  "idf_domains": [
+    {
+      "code": "D0",
+      "name": ""
+    }
+  ],
+  "domains_as_written": "",
+  "born_year": 1970,
+  "hometown": "",
+  "family": [
+    {
+      "name": "",
+      "relation": "",
+      "note": "",
+      "evidence": "FIC"
+    }
+  ],
+  "education": [
+    {
+      "institution": "",
+      "degree": "",
+      "field": "",
+      "year": 0,
+      "evidence": "REAL-ORG"
+    }
+  ],
+  "career": [
+    {
+      "start": 0,
+      "end": null,
+      "employer": "",
+      "title": "",
+      "location": "",
+      "summary": "",
+      "evidence": "REAL-ORG"
+    }
+  ],
+  "associates": [
+    "A00"
+  ],
+  "relationships": [
+    "R00"
+  ],
+  "network_status": "pending_tf_open_08",
+  "network": [],
+  "organizations": [
+    {
+      "name": "",
+      "role": "",
+      "since": 0,
+      "evidence": "REAL-ORG"
+    }
+  ],
+  "licenses": [],
+  "publications": [
+    {
+      "title": "",
+      "venue": "",
+      "year": 0,
+      "kind": "talk",
+      "evidence": {
+        "title": "FIC",
+        "venue": "REAL-ORG"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "name": "gdelt-lens",
+      "path": "cast/first-last/skills/gdelt-lens/SKILL.md",
+      "kind": "persona"
+    },
+    {
+      "name": "gdelt-research",
+      "path": "cast/_shared/skills/gdelt-research/SKILL.md",
+      "kind": "shared"
+    },
+    {
+      "name": "evidence-ladder",
+      "path": "cast/_shared/skills/evidence-ladder/SKILL.md",
+      "kind": "shared"
+    },
+    {
+      "name": "faraday-retrieval",
+      "path": "cast/_shared/skills/faraday-retrieval/SKILL.md",
+      "kind": "shared"
+    }
+  ],
+  "gdelt_lens": {
+    "archetype": "",
+    "asks": [],
+    "guardrails": []
+  },
+  "voice_brief": "Copy verbatim from Cast Sheet v1.",
+  "sample_line": "",
+  "evidence_tags": [
+    "FIC",
+    "REAL-ORG",
+    "VOICE"
+  ],
+  "linear_issue": "TH-00"
+}

@@ -1,0 +1,7 @@
+# Draft network for Mach Eigen.
+# PENDING TF-OPEN-08: do not add real names until Myke rules on the network wording.
+# Seed query once ruled: person_domain_tags where subdomain_code in ['D2', 'D10'] domains,
+# read-only, anon key, guard assertion on project ycadmmngkdhvpcsrcuaq.
+slug: mach-eigen
+status: pending_tf_open_08
+entries: []
