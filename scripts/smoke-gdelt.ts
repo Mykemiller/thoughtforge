@@ -11,8 +11,10 @@ import { docUrl, parseTimeline, sleep, PACE_MS } from "./lib/gdelt.ts";
 const QUERY = '"data center moratorium"';
 const TIMEOUT_MS = 30_000;
 
+// HTTP 429 is GDELT's rate limit (it also throttles shared CI runner IPs); report it as such.
 async function once(url: string): Promise<string> {
   const res = await fetch(url, { signal: AbortSignal.timeout(TIMEOUT_MS), headers: { "user-agent": "thoughtforge-smoke/1.0" } });
+  if (res.status === 429) return "Please limit requests to one every 5 seconds (HTTP 429).";
   if (!res.ok) throw new Error(`HTTP ${res.status} from GDELT`);
   return res.text();
 }
@@ -23,9 +25,10 @@ async function main() {
   console.log(url);
 
   let parsed = parseTimeline(await once(url));
-  if (!parsed.ok && parsed.rateLimited) {
-    console.log(`rate limited, waiting ${PACE_MS / 1000}s and retrying once`);
-    await sleep(PACE_MS);
+  for (const wait of [PACE_MS, PACE_MS * 3]) {
+    if (parsed.ok || !parsed.rateLimited) break;
+    console.log(`rate limited, waiting ${wait / 1000}s and retrying`);
+    await sleep(wait);
     parsed = parseTimeline(await once(url));
   }
   if (!parsed.ok) {

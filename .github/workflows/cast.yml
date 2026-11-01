@@ -16,7 +16,7 @@ jobs:
       - run: npm run validate:cast
       - run: npm run resolve:network:snapshot
   smoke-gdelt:
-    # Live call to GDELT. Non-blocking: GDELT rate-limits shared runner IPs at times.
+    # Live call to GDELT. Non-blocking: GDELT answers shared GitHub runner IPs with HTTP 429 at times.
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
@@ -24,6 +24,4 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20, cache: npm }
       - run: npm ci
-      - name: Reach GDELT (diagnostic)
-        run: curl -sS -m 40 -o /dev/null -w "HTTP %{http_code} in %{time_total}s\n" "https://api.gdeltproject.org/api/v2/doc/doc?query=%22data%20center%20moratorium%22&mode=timelinevol&format=json&timespan=90d" || true
       - run: npm run smoke:gdelt
