@@ -2,3 +2,12 @@
 .env
 node_modules/
 .vercel
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# panel sync: originals are never committed
+/tmp/

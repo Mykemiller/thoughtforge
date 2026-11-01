@@ -1,0 +1,65 @@
+# Re-sync the ten panel headshots from HeyGen and commit the WebP pairs.
+#
+# Manual only (workflow_dispatch). Two ways to run it:
+#   1. Live: set the repo secret HEYGEN_API_KEY and run with no inputs.
+#   2. Offline: paste a looks dump into `looks_json` (see scripts/sync-panel-headshots.ts
+#      header for the shape). Used when the API is not reachable from the caller.
+# The key is read from process.env only and is never printed or written.
+name: Panel headshot sync
+
+on:
+  workflow_dispatch:
+    inputs:
+      looks_json:
+        description: "Optional offline look dump (JSON keyed by HeyGen group id). Leave empty to call the HeyGen API."
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: panel-sync-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Sync headshots (offline fixture)
+        if: ${{ inputs.looks_json != '' }}
+        env:
+          LOOKS_JSON: ${{ inputs.looks_json }}
+        run: |
+          printf '%s' "$LOOKS_JSON" > "$RUNNER_TEMP/looks.json"
+          npm run panel:sync -- --looks "$RUNNER_TEMP/looks.json"
+
+      - name: Sync headshots (HeyGen API)
+        if: ${{ inputs.looks_json == '' }}
+        env:
+          HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
+        run: npm run panel:sync
+
+      - name: Commit synced assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/panel src/data/panel.ts
+          if git diff --cached --quiet; then
+            echo "No headshot changes."
+            exit 0
+          fi
+          git commit -m "feat(panel): sync headshots from HeyGen"
+          git push origin HEAD:${{ github.ref_name }}
