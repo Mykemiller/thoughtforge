@@ -42,6 +42,7 @@ async function main() {
 }
 
 main().catch((e) => {
-  console.error(`smoke:gdelt FAIL: ${e instanceof Error ? e.message : String(e)}`);
+  const cause = e instanceof Error && e.cause ? ` (cause: ${(e.cause as Error).message ?? String(e.cause)})` : "";
+  console.error(`smoke:gdelt FAIL: ${e instanceof Error ? e.message : String(e)}${cause}`);
   process.exit(1);
 });
