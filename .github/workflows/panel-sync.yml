@@ -8,11 +8,6 @@
 name: Panel headshot sync
 
 on:
-  # TEMPORARY (one-time seed from this branch): runs when the committed look
-  # fixture changes. Removed once the headshots are committed.
-  push:
-    branches: [feat/meet-the-panel]
-    paths: [scripts/panel-looks.fixture.json]
   workflow_dispatch:
     inputs:
       looks_json:
@@ -51,8 +46,6 @@ jobs:
           if [ -n "$LOOKS_JSON" ]; then
             printf '%s' "$LOOKS_JSON" > "$RUNNER_TEMP/looks.json"
             echo "path=$RUNNER_TEMP/looks.json" >> "$GITHUB_OUTPUT"
-          elif [ -f scripts/panel-looks.fixture.json ]; then
-            echo "path=scripts/panel-looks.fixture.json" >> "$GITHUB_OUTPUT"
           else
             echo "path=" >> "$GITHUB_OUTPUT"
           fi
