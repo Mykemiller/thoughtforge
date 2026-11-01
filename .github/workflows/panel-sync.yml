@@ -8,6 +8,11 @@
 name: Panel headshot sync
 
 on:
+  # TEMPORARY (one-time seed from this branch): runs when the committed look
+  # fixture changes. Removed once the headshots are committed.
+  push:
+    branches: [feat/meet-the-panel]
+    paths: [scripts/panel-looks.fixture.json]
   workflow_dispatch:
     inputs:
       looks_json:
@@ -38,16 +43,26 @@ jobs:
 
       - run: npm ci
 
-      - name: Sync headshots (offline fixture)
-        if: ${{ inputs.looks_json != '' }}
+      - name: Resolve look fixture
+        id: fixture
         env:
           LOOKS_JSON: ${{ inputs.looks_json }}
         run: |
-          printf '%s' "$LOOKS_JSON" > "$RUNNER_TEMP/looks.json"
-          npm run panel:sync -- --looks "$RUNNER_TEMP/looks.json"
+          if [ -n "$LOOKS_JSON" ]; then
+            printf '%s' "$LOOKS_JSON" > "$RUNNER_TEMP/looks.json"
+            echo "path=$RUNNER_TEMP/looks.json" >> "$GITHUB_OUTPUT"
+          elif [ -f scripts/panel-looks.fixture.json ]; then
+            echo "path=scripts/panel-looks.fixture.json" >> "$GITHUB_OUTPUT"
+          else
+            echo "path=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Sync headshots (offline fixture)
+        if: ${{ steps.fixture.outputs.path != '' }}
+        run: npm run panel:sync -- --looks "${{ steps.fixture.outputs.path }}"
 
       - name: Sync headshots (HeyGen API)
-        if: ${{ inputs.looks_json == '' }}
+        if: ${{ steps.fixture.outputs.path == '' }}
         env:
           HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
         run: npm run panel:sync
