@@ -1,0 +1,52 @@
+# Draft network for margo-brandt. Input to scripts/resolve-network.ts, which writes network.json.
+# Rules: docs/network-rules.md (TF-OPEN-08, ruled 2026-11-01). Real people only, public settings before 2025.
+slug: margo-brandt
+entries:
+  - name: "Joe Kava"
+    relationship_kind: follows
+    venue: "Google's public data center construction and operations talks"
+    since: 2012
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: dc4bda26-f2c2-464a-8bc3-9fd87b33cb40
+  - name: "Rich Miller"
+    relationship_kind: follows
+    venue: "Data Center Knowledge, then Data Center Frontier"
+    since: 2012
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 58fd46e4-cfaa-4868-9116-91f5a11af4ca
+  - name: "Dean Nelson"
+    relationship_kind: shared_room
+    venue: "Infrastructure Masons member events"
+    since: 2017
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 744e46cd-8c98-480a-8b17-621ffa071d6d
+  - name: "Karen Petersburg"
+    relationship_kind: follows
+    venue: "Her public talks on data center construction at NTT"
+    since: 2022
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: dce16fd8-e428-4e32-b8c8-410f7d214817
+  - name: "Raul Martynek"
+    relationship_kind: follows
+    venue: "DataBank's build announcements and investor updates"
+    since: 2018
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: d833c48d-0fff-4621-be7e-a3fd3bb5b5d4
+  - name: "Sureel Choksi"
+    relationship_kind: follows
+    venue: "Vantage Data Centers' campus build program"
+    since: 2019
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: de47aed6-8414-46c1-a6b2-c57bc90f87ba
+  - name: "Randy Brouckman"
+    relationship_kind: follows
+    venue: "EdgeConneX's build-to-suit program"
+    since: 2016
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 36c94fd7-d348-4124-9cd0-7de4599b6f7d
+  - name: "Michael Lahoud"
+    relationship_kind: follows
+    venue: "Stream Data Centers' development announcements"
+    since: 2018
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: d2523769-9000-46da-8165-7fdfae063c43

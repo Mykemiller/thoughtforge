@@ -74,6 +74,19 @@ for (const [slug, p] of personas) {
     if (!n.person_id || !n.venue) fail(slug, `network entry ${n.name} needs person_id and venue`);
     if (fictionalNames.has(String(n.name).toLowerCase())) fail(slug, `fictional name in network: ${n.name}`);
   }
+  // network.json is written by scripts/resolve-network.ts and must agree with persona.json (TH-15).
+  if (p.network_status === "resolved") {
+    const nj = join(CAST, slug, "network.json");
+    if (!existsSync(join(CAST, slug, "network.draft.yaml"))) fail(slug, "missing network.draft.yaml");
+    if (existsSync(join(CAST, slug, "network.unresolved.yaml"))) fail(slug, "network.unresolved.yaml exists: resolve or remove those names first");
+    if (!existsSync(nj)) fail(slug, "missing network.json: run npm run resolve:network");
+    else {
+      const entries = JSON.parse(readFileSync(nj, "utf8")).entries || [];
+      const ids = new Set(entries.filter((e) => e.resolution === "exact" || e.resolution === "alias").map((e) => e.person_id));
+      for (const n of p.network || []) if (!ids.has(n.person_id)) fail(slug, `network entry ${n.name} is not resolved in network.json`);
+      if (entries.length !== (p.network || []).length) fail(slug, `network.json has ${entries.length} entries, persona.json has ${(p.network || []).length}`);
+    }
+  }
   for (const f of ["dossier.md", "linkedin.md"]) if (!existsSync(join(CAST, slug, f))) fail(slug, `missing ${f}`);
 }
 

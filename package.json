@@ -3,9 +3,24 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "validate:cast": "node scripts/validate-cast.mjs"
+    "validate:cast": "node scripts/validate-cast.mjs",
+    "smoke:gdelt": "tsx scripts/smoke-gdelt.ts",
+    "resolve:network": "tsx scripts/resolve-network.ts",
+    "resolve:network:dry": "tsx scripts/resolve-network.ts --slug _fixtures --snapshot cast/_fixtures/people-snapshot.json --dry-run",
+    "resolve:network:snapshot": "tsx scripts/resolve-network.ts --all --snapshot cast/_fixtures/people-snapshot.json",
+    "test": "tsx --test scripts/tests/tooling.test.ts",
+    "typecheck": "tsc --noEmit"
   },
   "engines": {
     "node": ">=20"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
   }
 }

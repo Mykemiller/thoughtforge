@@ -13,4 +13,4 @@ Each panelist then adds a `gdelt-lens` skill and two persona skills under `cast/
 - Default GDELT lookback is 90 days and default max rows is 250.
 - The BigQuery fallback is stubbed until CC-GDELT-RESEARCH-SKILL-1.0 is gated.
 - Write-back is gated on `CAST_GDELT_WRITEBACK` (default `false`) and on the guard assertion for project `ycadmmngkdhvpcsrcuaq`.
-- Still to build under TH-14: `scripts/smoke-gdelt.ts` (one `timelinevol` query for "data center moratorium" that prints the row count).
+- Smoke test: `npm run smoke:gdelt` runs one DOC 2.0 `timelinevol` query for "data center moratorium" over 90 days and prints the row count (`scripts/smoke-gdelt.ts`). It exits 1 on an empty timeline or on GDELT's plain-text error answers, and retries once after 5 seconds when rate limited. `npm test` covers the parsing offline.

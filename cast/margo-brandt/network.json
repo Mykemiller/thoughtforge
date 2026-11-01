@@ -1,71 +1,145 @@
 {
   "slug": "margo-brandt",
-  "rule": "TF-OPEN-08 (2026-11-01): public settings before 2025 only",
+  "rule": "TF-OPEN-08 (2026-11-01): real people only, public settings before 2025; follows, cites or shared_room with a named venue",
   "resolved_against": "ycadmmngkdhvpcsrcuaq people",
+  "source": "snapshot cast/_fixtures/people-snapshot.json (taken 2026-11-01)",
+  "resolved_on": "2026-11-01",
   "entries": [
     {
       "person_id": "dc4bda26-f2c2-464a-8bc3-9fd87b33cb40",
       "name": "Joe Kava",
+      "canonical_name": "Joe Kava",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Google's public data center construction and operations talks",
       "since": 2012,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Google / Chemours (Board)",
+        "role": "VP, Global Data Centers (active); Board Member",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D5",
+      "domain_tags": []
     },
     {
       "person_id": "58fd46e4-cfaa-4868-9116-91f5a11af4ca",
       "name": "Rich Miller",
+      "canonical_name": "Rich Miller",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Data Center Knowledge, then Data Center Frontier",
       "since": 2012,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Data Center Frontier / Data Center Knowledge",
+        "role": "Founder & Editor",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D22",
+      "domain_tags": []
     },
     {
       "person_id": "744e46cd-8c98-480a-8b17-621ffa071d6d",
       "name": "Dean Nelson",
+      "canonical_name": "Dean Nelson",
+      "resolution": "exact",
       "relationship_kind": "shared_room",
       "venue": "Infrastructure Masons member events",
       "since": 2017,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "iMasons (Infrastructure Masons)",
+        "role": "Chairman & Founder",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D22",
+      "domain_tags": []
     },
     {
       "person_id": "dce16fd8-e428-4e32-b8c8-410f7d214817",
       "name": "Karen Petersburg",
+      "canonical_name": "Karen Petersburg",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Her public talks on data center construction at NTT",
       "since": 2022,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "NTT Global Data Centers",
+        "role": "SVP, Global Data Center Construction",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D14",
+      "domain_tags": []
     },
     {
       "person_id": "d833c48d-0fff-4621-be7e-a3fd3bb5b5d4",
       "name": "Raul Martynek",
+      "canonical_name": "Raul Martynek",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "DataBank's build announcements and investor updates",
       "since": 2018,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "DataBank (DigitalBridge / SoftBank)",
+        "role": "CEO",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D14",
+      "domain_tags": []
     },
     {
       "person_id": "de47aed6-8414-46c1-a6b2-c57bc90f87ba",
       "name": "Sureel Choksi",
+      "canonical_name": "Sureel Choksi",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Vantage Data Centers' campus build program",
       "since": 2019,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Vantage Data Centers",
+        "role": "CEO",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D14",
+      "domain_tags": []
     },
     {
       "person_id": "36c94fd7-d348-4124-9cd0-7de4599b6f7d",
       "name": "Randy Brouckman",
+      "canonical_name": "Randy Brouckman",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "EdgeConneX's build-to-suit program",
       "since": 2016,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "EdgeConneX (EQT-backed)",
+        "role": "CEO & Co-Founder",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D14",
+      "domain_tags": []
     },
     {
       "person_id": "d2523769-9000-46da-8165-7fdfae063c43",
       "name": "Michael Lahoud",
+      "canonical_name": "Michael Lahoud",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Stream Data Centers' development announcements",
       "since": 2018,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Stream Data Centers",
+        "role": "CEO",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D14",
+      "domain_tags": []
     }
   ]
 }

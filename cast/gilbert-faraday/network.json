@@ -1,71 +1,158 @@
 {
   "slug": "gilbert-faraday",
-  "rule": "TF-OPEN-08 (2026-11-01): public settings before 2025 only",
+  "rule": "TF-OPEN-08 (2026-11-01): real people only, public settings before 2025; follows, cites or shared_room with a named venue",
   "resolved_against": "ycadmmngkdhvpcsrcuaq people",
+  "source": "snapshot cast/_fixtures/people-snapshot.json (taken 2026-11-01)",
+  "resolved_on": "2026-11-01",
   "entries": [
     {
       "person_id": "c66a7bdb-4398-4e22-8db7-3ab7eeb7d6c1",
       "name": "Christian Belady",
+      "canonical_name": "Christian Belady",
+      "resolution": "exact",
       "relationship_kind": "cites",
       "venue": "The PUE metric, as published through The Green Grid",
       "since": 2008,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Former Microsoft",
+        "role": "Board Member & Advisor",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D5",
+      "domain_tags": []
     },
     {
       "person_id": "7cb6076f-9424-4120-847c-bdccf34fcaad",
       "name": "James Hamilton",
+      "canonical_name": "James Hamilton",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "His Perspectives blog on hyperscale infrastructure",
       "since": 2009,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Amazon Web Services (AWS)",
+        "role": "Distinguished Engineer / VP",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D5",
+      "domain_tags": []
     },
     {
       "person_id": "dc4bda26-f2c2-464a-8bc3-9fd87b33cb40",
       "name": "Joe Kava",
+      "canonical_name": "Joe Kava",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Google's public data center talks and sustainability reports",
       "since": 2012,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Google / Chemours (Board)",
+        "role": "VP, Global Data Centers (active); Board Member",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D5",
+      "domain_tags": []
     },
     {
       "person_id": "58fd46e4-cfaa-4868-9116-91f5a11af4ca",
       "name": "Rich Miller",
+      "canonical_name": "Rich Miller",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Data Center Knowledge, then Data Center Frontier",
       "since": 2008,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Data Center Frontier / Data Center Knowledge",
+        "role": "Founder & Editor",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D22",
+      "domain_tags": []
     },
     {
       "person_id": "744e46cd-8c98-480a-8b17-621ffa071d6d",
       "name": "Dean Nelson",
+      "canonical_name": "Dean Nelson",
+      "resolution": "exact",
       "relationship_kind": "shared_room",
       "venue": "Infrastructure Masons member events, from the group's founding",
       "since": 2016,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "iMasons (Infrastructure Masons)",
+        "role": "Chairman & Founder",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D22",
+      "domain_tags": []
     },
     {
       "person_id": "e058f5ac-016c-4100-92a4-55c6a179161b",
       "name": "Charles Meyers",
+      "canonical_name": "Charles Meyers",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Equinix earnings calls during his tenure as chief executive",
       "since": 2019,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Equinix",
+        "role": "President & CEO",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D4",
+      "domain_tags": []
     },
     {
       "person_id": "dcfc7962-0bd2-4f06-ab9c-5526b889146b",
       "name": "Jensen Huang",
+      "canonical_name": "Jensen Huang",
+      "resolution": "exact",
       "relationship_kind": "shared_room",
       "venue": "NVIDIA GTC 2024 keynote, SAP Center, San Jose (in the audience)",
       "since": 2024,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "NVIDIA",
+        "role": "Founder, President & CEO",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D1",
+      "domain_tags": [
+        "D1.1",
+        "D1.6",
+        "D4.6",
+        "D9.1",
+        "D9.3",
+        "D9.4"
+      ]
     },
     {
       "person_id": "445363de-67f7-48e5-b180-dab5f73db0b0",
       "name": "David Rosner",
+      "canonical_name": "David Rosner",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "FERC statements after he joined the Commission",
       "since": 2024,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Federal Energy Regulatory Commission — Commissioner",
+        "role": "Commissioner",
+        "source": "office_occupancies"
+      },
+      "primary_domain_code": "D3",
+      "domain_tags": [
+        "D3.4",
+        "D3.1",
+        "D3.3",
+        "D3.5",
+        "D18.2"
+      ]
     }
   ]
 }

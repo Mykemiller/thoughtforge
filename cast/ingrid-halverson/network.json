@@ -1,71 +1,145 @@
 {
   "slug": "ingrid-halverson",
-  "rule": "TF-OPEN-08 (2026-11-01): public settings before 2025 only",
+  "rule": "TF-OPEN-08 (2026-11-01): real people only, public settings before 2025; follows, cites or shared_room with a named venue",
   "resolved_against": "ycadmmngkdhvpcsrcuaq people",
+  "source": "snapshot cast/_fixtures/people-snapshot.json (taken 2026-11-01)",
+  "resolved_on": "2026-11-01",
   "entries": [
     {
       "person_id": "f5a2effa-eb55-438b-9ebc-f59075110349",
       "name": "Prof. Dereje Agonafer",
+      "canonical_name": "Prof. Dereje Agonafer",
+      "resolution": "exact",
       "relationship_kind": "cites",
       "venue": "His electronics-cooling research at the University of Texas at Arlington",
       "since": 2008,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "University of Texas at Arlington",
+        "role": "Presidential Distinguished Professor, Mechanical & Aerospace Engineering",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D2",
+      "domain_tags": []
     },
     {
       "person_id": "929a397b-d510-45cf-a44f-81b12ae83acf",
       "name": "Prof. Nenad Miljkovic",
+      "canonical_name": "Prof. Nenad Miljkovic",
+      "resolution": "exact",
       "relationship_kind": "cites",
       "venue": "His phase-change heat transfer research at the University of Illinois",
       "since": 2016,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "University of Illinois Urbana-Champaign (UIUC)",
+        "role": "Founder Professor of Mechanical Science & Engineering; Director, ACRC",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D2",
+      "domain_tags": []
     },
     {
       "person_id": "875c834d-c219-4eee-961a-474b8d218d7b",
       "name": "Dr. Evelyn Wang",
+      "canonical_name": "Dr. Evelyn Wang",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Her thermal research at MIT and her public work at ARPA-E",
       "since": 2012,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "MIT (returning; former ARPA-E)",
+        "role": "Former Director, ARPA-E",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D2",
+      "domain_tags": []
     },
     {
       "person_id": "7b7de028-7b9b-428b-acdc-431d7f13cc75",
       "name": "Dr. Peter De Bock",
+      "canonical_name": "Dr. Peter De Bock",
+      "resolution": "exact",
       "relationship_kind": "cites",
       "venue": "ARPA-E's COOLERCHIPS program",
       "since": 2023,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Eaton",
+        "role": "VP, Data Center Energy & Cooling",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D2",
+      "domain_tags": []
     },
     {
       "person_id": "c66a7bdb-4398-4e22-8db7-3ab7eeb7d6c1",
       "name": "Christian Belady",
+      "canonical_name": "Christian Belady",
+      "resolution": "exact",
       "relationship_kind": "cites",
       "venue": "The PUE metric, as published through The Green Grid",
       "since": 2010,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Former Microsoft",
+        "role": "Board Member & Advisor",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D5",
+      "domain_tags": []
     },
     {
       "person_id": "7cb6076f-9424-4120-847c-bdccf34fcaad",
       "name": "James Hamilton",
+      "canonical_name": "James Hamilton",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "His Perspectives blog on hyperscale cooling",
       "since": 2012,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Amazon Web Services (AWS)",
+        "role": "Distinguished Engineer / VP",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D5",
+      "domain_tags": []
     },
     {
       "person_id": "cf644ab6-25f7-482e-9da0-fba66528b18e",
       "name": "Rich Whitmore",
+      "canonical_name": "Rich Whitmore",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Motivair's liquid-cooling product work",
       "since": 2018,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Motivair by Schneider Electric",
+        "role": "President & CEO",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D20",
+      "domain_tags": []
     },
     {
       "person_id": "8de9ac83-a98b-4bd5-bf21-71f2ec376614",
       "name": "Miranda Gardiner",
+      "canonical_name": "Miranda Gardiner",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "The iMasons Climate Accord's water commitments",
       "since": 2022,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "iMasons Climate Accord",
+        "role": "Executive Director",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D22",
+      "domain_tags": []
     }
   ]
 }

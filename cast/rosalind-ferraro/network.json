@@ -1,55 +1,129 @@
 {
   "slug": "rosalind-ferraro",
-  "rule": "TF-OPEN-08 (2026-11-01): public settings before 2025 only",
+  "rule": "TF-OPEN-08 (2026-11-01): real people only, public settings before 2025; follows, cites or shared_room with a named venue",
   "resolved_against": "ycadmmngkdhvpcsrcuaq people",
+  "source": "snapshot cast/_fixtures/people-snapshot.json (taken 2026-11-01)",
+  "resolved_on": "2026-11-01",
   "entries": [
     {
       "person_id": "845b75d9-4b14-4b73-bdbc-2c062b509d70",
       "name": "Ann McCabe",
+      "canonical_name": "Ann McCabe",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Illinois Commerce Commission open meetings",
       "since": 2013,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Illinois Commerce Commission — Commissioner",
+        "role": "Commissioner",
+        "source": "office_occupancies"
+      },
+      "primary_domain_code": "D3",
+      "domain_tags": [
+        "D3.3",
+        "D3.1",
+        "D3.4",
+        "D3.5",
+        "D18.2"
+      ]
     },
     {
       "person_id": "93119654-a18b-419e-92ca-89a5bfa95136",
       "name": "David E. Ziegner",
+      "canonical_name": "David E. Ziegner",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Indiana Utility Regulatory Commission open meetings, including the 2022 large-load proceeding",
       "since": 2022,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Indiana Utility Regulatory Commission — Commissioner",
+        "role": "Commissioner",
+        "source": "office_occupancies"
+      },
+      "primary_domain_code": "D3",
+      "domain_tags": [
+        "D3.3",
+        "D3.1",
+        "D3.4",
+        "D3.5",
+        "D18.2"
+      ]
     },
     {
       "person_id": "6ec82d28-98a8-4a1b-b906-c84fd663933e",
       "name": "Jenifer French",
+      "canonical_name": "Jenifer French",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Public Utilities Commission of Ohio open meetings during her tenure as chair",
       "since": 2021,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Public Utilities Commission of Ohio — Commissioner",
+        "role": "Chair",
+        "source": "office_occupancies"
+      },
+      "primary_domain_code": "D3",
+      "domain_tags": [
+        "D3.3",
+        "D3.1",
+        "D3.4",
+        "D3.5",
+        "D18.2"
+      ]
     },
     {
       "person_id": "8de9ac83-a98b-4bd5-bf21-71f2ec376614",
       "name": "Miranda Gardiner",
+      "canonical_name": "Miranda Gardiner",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "The iMasons Climate Accord's community and water commitments",
       "since": 2022,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "iMasons Climate Accord",
+        "role": "Executive Director",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D22",
+      "domain_tags": []
     },
     {
       "person_id": "dc4bda26-f2c2-464a-8bc3-9fd87b33cb40",
       "name": "Joe Kava",
+      "canonical_name": "Joe Kava",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Google's public statements on data center water and community commitments",
       "since": 2016,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Google / Chemours (Board)",
+        "role": "VP, Global Data Centers (active); Board Member",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D5",
+      "domain_tags": []
     },
     {
       "person_id": "58fd46e4-cfaa-4868-9116-91f5a11af4ca",
       "name": "Rich Miller",
+      "canonical_name": "Rich Miller",
+      "resolution": "exact",
       "relationship_kind": "follows",
       "venue": "Data Center Frontier's coverage of local opposition",
       "since": 2016,
-      "resolution": "exact"
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Data Center Frontier / Data Center Knowledge",
+        "role": "Founder & Editor",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D22",
+      "domain_tags": []
     }
   ]
 }

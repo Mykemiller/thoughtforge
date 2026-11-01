@@ -53,7 +53,8 @@ cast/
   _template/{dossier.md, persona.json, linkedin.md}
   _shared/{associates.json, relationships.json, timeline.md, real-orgs.yaml}
   _shared/skills/{gdelt-research, evidence-ladder, faraday-retrieval}/SKILL.md
-  <slug>/{dossier.md, persona.json, linkedin.md, network.draft.yaml}
+  <slug>/{dossier.md, persona.json, linkedin.md, network.draft.yaml, network.json}
+  _fixtures/{network.draft.yaml, people-snapshot.json}
   <slug>/skills/<skill>/SKILL.md
 ```
 
@@ -67,3 +68,4 @@ cast/
 - Every network entry and every moment dates from before 2025, and a shared moment appears in both panelists' dossiers.
 - Every personal field is present.
 - Every skill path in the manifest exists.
+- `network.json` (written by `npm run resolve:network`) resolves every `persona.json` network entry, and no `network.unresolved.yaml` is left behind.

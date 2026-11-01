@@ -1,0 +1,52 @@
+# Draft network for ingrid-halverson. Input to scripts/resolve-network.ts, which writes network.json.
+# Rules: docs/network-rules.md (TF-OPEN-08, ruled 2026-11-01). Real people only, public settings before 2025.
+slug: ingrid-halverson
+entries:
+  - name: "Prof. Dereje Agonafer"
+    relationship_kind: cites
+    venue: "His electronics-cooling research at the University of Texas at Arlington"
+    since: 2008
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: f5a2effa-eb55-438b-9ebc-f59075110349
+  - name: "Prof. Nenad Miljkovic"
+    relationship_kind: cites
+    venue: "His phase-change heat transfer research at the University of Illinois"
+    since: 2016
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 929a397b-d510-45cf-a44f-81b12ae83acf
+  - name: "Dr. Evelyn Wang"
+    relationship_kind: follows
+    venue: "Her thermal research at MIT and her public work at ARPA-E"
+    since: 2012
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 875c834d-c219-4eee-961a-474b8d218d7b
+  - name: "Dr. Peter De Bock"
+    relationship_kind: cites
+    venue: "ARPA-E's COOLERCHIPS program"
+    since: 2023
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 7b7de028-7b9b-428b-acdc-431d7f13cc75
+  - name: "Christian Belady"
+    relationship_kind: cites
+    venue: "The PUE metric, as published through The Green Grid"
+    since: 2010
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: c66a7bdb-4398-4e22-8db7-3ab7eeb7d6c1
+  - name: "James Hamilton"
+    relationship_kind: follows
+    venue: "His Perspectives blog on hyperscale cooling"
+    since: 2012
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 7cb6076f-9424-4120-847c-bdccf34fcaad
+  - name: "Rich Whitmore"
+    relationship_kind: follows
+    venue: "Motivair's liquid-cooling product work"
+    since: 2018
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: cf644ab6-25f7-482e-9da0-fba66528b18e
+  - name: "Miranda Gardiner"
+    relationship_kind: follows
+    venue: "The iMasons Climate Accord's water commitments"
+    since: 2022
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 8de9ac83-a98b-4bd5-bf21-71f2ec376614
