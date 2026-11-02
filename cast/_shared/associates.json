@@ -1,0 +1,441 @@
+[
+  {
+    "id": "A01",
+    "name": "Hal Brennecke",
+    "role": "Transmission planning supervisor (retired)",
+    "firm": "Puget Sound Power & Light",
+    "knows": [
+      "gilbert-faraday"
+    ],
+    "note": "Gilbert's first boss; taught him to read a load-flow study before forming an opinion.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A02",
+    "name": "Ursula Kranzler",
+    "role": "Strategy director, power transmission",
+    "firm": "Siemens AG (Munich)",
+    "knows": [
+      "gilbert-faraday",
+      "mach-eigen"
+    ],
+    "note": "Ran the HVDC bid review where Gilbert and Mach met.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A03",
+    "name": "Kenji Morioka",
+    "role": "Infrastructure strategy manager",
+    "firm": "Siemens K.K. (Tokyo)",
+    "knows": [
+      "gilbert-faraday"
+    ],
+    "note": "Gilbert's counterpart in Tokyo; still trades New Year cards with him.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A04",
+    "name": "Dolores Whitcombe",
+    "role": "Datacenter energy finance lead",
+    "firm": "Microsoft",
+    "knows": [
+      "gilbert-faraday",
+      "margo-brandt"
+    ],
+    "note": "Sat between Gilbert and Margo in every site-timeline argument.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A05",
+    "name": "Rafael Sandoval-Pike",
+    "role": "General superintendent",
+    "firm": "Mortenson",
+    "knows": [
+      "margo-brandt",
+      "mach-eigen"
+    ],
+    "note": "Ran the field on the Reno-area campus in 2019.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A06",
+    "name": "Bettina Achterberg",
+    "role": "HVDC systems engineer",
+    "firm": "ABB Inc. (Raleigh)",
+    "knows": [
+      "mach-eigen"
+    ],
+    "note": "Mach's sparring partner on medium-voltage DC for eight years.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A07",
+    "name": "Corwin Ashby",
+    "role": "Senior electrical engineer",
+    "firm": "Burns & McDonnell",
+    "knows": [
+      "mach-eigen",
+      "victoria-stroud",
+      "ingrid-halverson"
+    ],
+    "note": "Mach's deputy on the Midwest liquid-cooled campus.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A08",
+    "name": "Noreen Faulkner-Hale",
+    "role": "Vice president, project finance",
+    "firm": "MUFG",
+    "knows": [
+      "victoria-stroud",
+      "mach-eigen",
+      "ingrid-halverson"
+    ],
+    "note": "Lead lender on the Midwest campus financing Vick arranged.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A09",
+    "name": "Theo Lindgren-Marsh",
+    "role": "HPC facility engineer",
+    "firm": "National Renewable Energy Laboratory",
+    "knows": [
+      "ingrid-halverson",
+      "gilbert-faraday"
+    ],
+    "note": "Hosted the 2015 warm-water cooling visit with Ingrid; one of two people allowed to call her Doc.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A10",
+    "name": "Marisol Quintero-Ames",
+    "role": "Package thermal engineer",
+    "firm": "Intel",
+    "knows": [
+      "ingrid-halverson"
+    ],
+    "note": "Ingrid's closest friend since 2005; one of two people allowed to call her Doc.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A11",
+    "name": "Frank Delahunt",
+    "role": "Springfield bureau chief",
+    "firm": "Chicago Tribune",
+    "knows": [
+      "delia-marchetti",
+      "rosalind-ferraro"
+    ],
+    "note": "Delia's first editor; bought Rose her first statehouse coffee.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A12",
+    "name": "Ginny Prowse",
+    "role": "Statehouse correspondent",
+    "firm": "Associated Press (Springfield)",
+    "knows": [
+      "rosalind-ferraro",
+      "delia-marchetti"
+    ],
+    "note": "Shared the pressroom with Delia and returned Rose's calls first.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A13",
+    "name": "Lyle Hostetler",
+    "role": "Field director",
+    "firm": "Illinois statewide campaign, 2002 cycle (named by cycle, not candidate)",
+    "knows": [
+      "rosalind-ferraro"
+    ],
+    "note": "Taught Rose to count votes on an index card.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A14",
+    "name": "Odette Marchand",
+    "role": "Senior editor",
+    "firm": "Platts",
+    "knows": [
+      "delia-marchetti",
+      "constance-wright"
+    ],
+    "note": "Delia's editor; still calls her to check a quote. Constance's source on a Platts correction in 2012.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A15",
+    "name": "Sam Aldous",
+    "role": "Research analyst",
+    "firm": "451 Research",
+    "knows": [
+      "constance-wright",
+      "albert-thorne",
+      "hartford-caldwell",
+      "rosalind-ferraro"
+    ],
+    "note": "Constance's second reader on the 2016 to 2018 interconnection and incentive reports.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A16",
+    "name": "Winifred Tolliver",
+    "role": "Senior staff economist",
+    "firm": "Public Utilities Commission of Ohio",
+    "knows": [
+      "albert-thorne"
+    ],
+    "note": "Albert's closest colleague on the PUCO staff.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A17",
+    "name": "Grant Ellery",
+    "role": "Interconnection planning engineer",
+    "firm": "PJM Interconnection",
+    "knows": [
+      "albert-thorne"
+    ],
+    "note": "Former PJM colleague who still passes Albert queue gossip.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A18",
+    "name": "Beatrice Lomax",
+    "role": "Partner, energy regulatory",
+    "firm": "Latham & Watkins",
+    "knows": [
+      "hartford-caldwell",
+      "albert-thorne"
+    ],
+    "note": "Hart's co-counsel on the 2018 to 2019 FERC proceeding; cross-examined Albert.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A19",
+    "name": "Desmond Whitlow",
+    "role": "County planning director",
+    "firm": "a central Ohio county (fictional office holder)",
+    "knows": [
+      "rosalind-ferraro",
+      "hartford-caldwell"
+    ],
+    "note": "Ran the 2020 rezoning hearing Rose and Hart worked.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "FIC"
+    }
+  },
+  {
+    "id": "A20",
+    "name": "Philippa Grange",
+    "role": "Senior paralegal",
+    "firm": "Latham & Watkins",
+    "knows": [
+      "hartford-caldwell"
+    ],
+    "note": "Caught two filing errors that would have cost Hart's clients a hearing date.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A21",
+    "name": "Lionel Fairbanks",
+    "role": "Managing director, project finance",
+    "firm": "Goldman Sachs",
+    "knows": [
+      "victoria-stroud"
+    ],
+    "note": "Vick's first boss in project finance; 'the term sheet is the story.'",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A22",
+    "name": "Imogen Thackeray",
+    "role": "Data analyst, infrastructure ratings",
+    "firm": "Moody's Investors Service",
+    "knows": [
+      "constance-wright",
+      "victoria-stroud"
+    ],
+    "note": "The colleague Constance once trusted without checking, and the reason she still checks.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A23",
+    "name": "Augustin Reval",
+    "role": "Program lead, 800 VDC",
+    "firm": "Vertiv",
+    "knows": [
+      "mach-eigen"
+    ],
+    "note": "Vendor counterpart in the OCP 800 VDC work with Mach.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A24",
+    "name": "Celeste Ombra",
+    "role": "Senior manager, media relations",
+    "firm": "Exelon",
+    "knows": [
+      "delia-marchetti"
+    ],
+    "note": "Delia's partner through outages and rate cases.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A25",
+    "name": "Wendell Pryor",
+    "role": "Senior consultant",
+    "firm": "Energy and Environmental Economics (E3)",
+    "knows": [
+      "albert-thorne",
+      "gilbert-faraday"
+    ],
+    "note": "Ran the numbers on the 2016 grid-impact study Gilbert sponsored.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A26",
+    "name": "Kaija Rautio",
+    "role": "Project engineer, locks and dams",
+    "firm": "U.S. Army Corps of Engineers, St. Paul District",
+    "knows": [
+      "margo-brandt"
+    ],
+    "note": "Margo's first mentor; 'the river sets the deadline.'",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A27",
+    "name": "Bram Hollister",
+    "role": "Construction director",
+    "firm": "STACK Infrastructure",
+    "knows": [
+      "margo-brandt"
+    ],
+    "note": "Ran the Americas field teams under Margo.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A28",
+    "name": "Teodora Vance",
+    "role": "Credit officer, project finance",
+    "firm": "MUFG",
+    "knows": [
+      "victoria-stroud",
+      "margo-brandt"
+    ],
+    "note": "The lender's credit officer Vick argues with every quarter; sat on the 2023 diligence that tested Margo's schedule.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A29",
+    "name": "Miriam Ashdown",
+    "role": "Reference librarian (retired)",
+    "firm": "Johns Hopkins University, Sheridan Libraries",
+    "knows": [
+      "constance-wright"
+    ],
+    "note": "Trained Constance; the one source she trusts without checking.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "REAL-ORG"
+    }
+  },
+  {
+    "id": "A30",
+    "name": "Hattie Brannock",
+    "role": "Elected board member of a suburban water district (fictional office holder)",
+    "firm": "a suburban Illinois water district (fictional)",
+    "knows": [
+      "rosalind-ferraro"
+    ],
+    "note": "The first call Rose makes on any site.",
+    "evidence": {
+      "name": "FIC",
+      "firm": "FIC"
+    }
+  }
+]

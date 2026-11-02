@@ -1,0 +1,157 @@
+{
+  "slug": "victoria-stroud",
+  "rule": "TF-OPEN-08 (2026-11-01): real people only, public settings before 2025; follows, cites or shared_room with a named venue",
+  "resolved_against": "ycadmmngkdhvpcsrcuaq people",
+  "source": "snapshot cast/_fixtures/people-snapshot.json (taken 2026-11-01)",
+  "resolved_on": "2026-11-01",
+  "entries": [
+    {
+      "person_id": "e058f5ac-016c-4100-92a4-55c6a179161b",
+      "name": "Charles Meyers",
+      "canonical_name": "Charles Meyers",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "Equinix earnings calls during his tenure as chief executive",
+      "since": 2018,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Equinix",
+        "role": "President & CEO",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D4",
+      "domain_tags": []
+    },
+    {
+      "person_id": "b5d4ddf2-e56a-45d9-af07-fce2ac6ba0e8",
+      "name": "Marc Ganzi",
+      "canonical_name": "Marc Ganzi",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "DigitalBridge investor calls and letters",
+      "since": 2019,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "DigitalBridge",
+        "role": "CEO",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D4",
+      "domain_tags": [
+        "D4.1",
+        "D6.2"
+      ]
+    },
+    {
+      "person_id": "d833c48d-0fff-4621-be7e-a3fd3bb5b5d4",
+      "name": "Raul Martynek",
+      "canonical_name": "Raul Martynek",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "DataBank's financing announcements",
+      "since": 2017,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "DataBank (DigitalBridge / SoftBank)",
+        "role": "CEO",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D14",
+      "domain_tags": []
+    },
+    {
+      "person_id": "cbd89c2a-62bf-4a5b-abc1-117a9181fe3e",
+      "name": "Michael Intrator",
+      "canonical_name": "Michael Intrator",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "CoreWeave's financing announcements",
+      "since": 2023,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "CoreWeave, Inc.",
+        "role": "CEO and President",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D6",
+      "domain_tags": [
+        "D4.6",
+        "D6.1"
+      ]
+    },
+    {
+      "person_id": "2b87c385-f939-476e-8d4d-baf513f6cd29",
+      "name": "David Liggitt",
+      "canonical_name": "David Liggitt",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "datacenterHawk market reports",
+      "since": 2019,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Data Center Hawk",
+        "role": "iM100 Award Winner",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D22",
+      "domain_tags": []
+    },
+    {
+      "person_id": "0e6775d6-5c91-4186-a519-0d44835e48a2",
+      "name": "Bernard Johnson",
+      "canonical_name": "Bernard Johnson",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "DC Byte market research",
+      "since": 2021,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "DC Byte",
+        "role": "CEO",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D22",
+      "domain_tags": []
+    },
+    {
+      "person_id": "8dcc9272-c41f-4794-962b-c376c740f619",
+      "name": "Giordano Albertazzi",
+      "canonical_name": "Giordano Albertazzi",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "Vertiv's investor updates",
+      "since": 2023,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Vertiv Holdings Co",
+        "role": "Chief Executive Officer",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D20",
+      "domain_tags": [
+        "D2.1",
+        "D2.3",
+        "D7.1",
+        "D10.1",
+        "D20.1"
+      ]
+    },
+    {
+      "person_id": "de47aed6-8414-46c1-a6b2-c57bc90f87ba",
+      "name": "Sureel Choksi",
+      "canonical_name": "Sureel Choksi",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "Vantage Data Centers' capital raises",
+      "since": 2018,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Vantage Data Centers",
+        "role": "CEO",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D14",
+      "domain_tags": []
+    }
+  ]
+}

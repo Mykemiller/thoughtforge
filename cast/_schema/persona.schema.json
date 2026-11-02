@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://faraday-thoughtforge.com/schema/persona.schema.json",
+  "title": "ThoughtForge panelist persona",
+  "type": "object",
+  "required": [
+    "slug",
+    "display_name",
+    "short_name",
+    "role",
+    "idf_domains",
+    "born_year",
+    "hometown",
+    "family",
+    "education",
+    "career",
+    "associates",
+    "relationships",
+    "network_status",
+    "network",
+    "organizations",
+    "skills",
+    "gdelt_lens",
+    "voice_brief",
+    "evidence_tags",
+    "personal",
+    "moments"
+  ],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z]+(-[a-z]+)+$"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "short_name": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "idf_domains": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "name"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^D[0-9]{1,2}$"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "domains_as_written": {
+      "type": "string"
+    },
+    "born_year": {
+      "type": "integer",
+      "minimum": 1962,
+      "maximum": 1985
+    },
+    "hometown": {
+      "type": "string"
+    },
+    "family": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "relation",
+          "evidence"
+        ],
+        "properties": {
+          "evidence": {
+            "const": "FIC"
+          }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "institution",
+          "degree",
+          "year",
+          "evidence"
+        ],
+        "properties": {
+          "evidence": {
+            "const": "REAL-ORG"
+          }
+        }
+      }
+    },
+    "career": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": [
+          "start",
+          "employer",
+          "title",
+          "evidence"
+        ],
+        "properties": {
+          "start": {
+            "type": "integer"
+          },
+          "end": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "evidence": {
+            "enum": [
+              "FIC",
+              "REAL-ORG"
+            ]
+          }
+        }
+      }
+    },
+    "associates": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "string",
+        "pattern": "^A[0-9]{2}$"
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string",
+        "pattern": "^R[0-9]{2}$"
+      }
+    },
+    "network_status": {
+      "enum": [
+        "pending_tf_open_08",
+        "resolved"
+      ]
+    },
+    "network": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "person_id",
+          "name",
+          "relationship_kind",
+          "venue",
+          "evidence",
+          "since"
+        ],
+        "properties": {
+          "person_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "relationship_kind": {
+            "enum": [
+              "follows",
+              "cites",
+              "shared_room"
+            ]
+          },
+          "venue": {
+            "type": "string"
+          },
+          "evidence": {
+            "const": "VOICE"
+          },
+          "since": {
+            "type": "integer",
+            "maximum": 2024
+          }
+        }
+      }
+    },
+    "organizations": {
+      "type": "array",
+      "minItems": 3
+    },
+    "licenses": {
+      "type": "array"
+    },
+    "publications": {
+      "type": "array"
+    },
+    "skills": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "path",
+          "kind"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "persona",
+              "shared"
+            ]
+          }
+        }
+      }
+    },
+    "gdelt_lens": {
+      "type": "object",
+      "required": [
+        "archetype",
+        "asks",
+        "guardrails"
+      ]
+    },
+    "voice_brief": {
+      "type": "string"
+    },
+    "sample_line": {
+      "type": "string"
+    },
+    "evidence_tags": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "FIC",
+          "REAL-ORG",
+          "REAL-EVENT",
+          "VOICE"
+        ]
+      }
+    },
+    "linear_issue": {
+      "type": "string"
+    },
+    "personal": {
+      "type": "object",
+      "required": [
+        "hobbies",
+        "sports",
+        "laughs",
+        "smiles",
+        "regrets",
+        "vacations",
+        "frailties",
+        "generosity",
+        "modesty"
+      ]
+    },
+    "moments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "date",
+          "event",
+          "venue",
+          "what"
+        ],
+        "properties": {
+          "date": {
+            "type": "string",
+            "pattern": "^(19|20)[0-2][0-9]-"
+          }
+        }
+      }
+    }
+  },
+  "if": {
+    "properties": {
+      "network_status": {
+        "const": "resolved"
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "network": {
+        "minItems": 6,
+        "maxItems": 15
+      }
+    }
+  }
+}

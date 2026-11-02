@@ -1,0 +1,9 @@
+# TH-32 decisions log
+
+One plain-English sentence per decision, US Central timestamps. Decisions TF-DEC-50 to TF-DEC-56 were made before this run; entries below record what the run itself settled.
+
+- 2026-11-01 20:52 CT — Branch `th-32-v1-app` was cut from `origin/main` (3547334), then `origin/feat/meet-the-panel` (dab889f) was fast-forwarded in, then `origin/th-cast-bring-to-life` (3ad56ee) was merged with three conflicts (`package.json`, `package-lock.json`, `tsconfig.json`) resolved as recorded next (TF-DEC-52).
+- 2026-11-01 20:55 CT — `package.json` keeps the app branch as base, drops `"type": "module"`, unions both `scripts` blocks and both dependency sets at the higher version where both named a package, and keeps `engines.node >= 20`; `package-lock.json` was deleted and regenerated with `npm install`.
+- 2026-11-01 20:55 CT — `tsconfig.json` keeps the Next config at the root with `scripts` added to `exclude`; `tsconfig.scripts.json` carries the cast branch's `NodeNext` config over `scripts/**/*.ts`; `npm run typecheck` runs both.
+- 2026-11-01 20:57 CT — Because the root is no longer `"type": "module"`, the cast scripts (which use `import.meta.url` and top-level `await`) are made ESM by a one-line `scripts/package.json` containing `{"type": "module"}`, which both `tsc -p tsconfig.scripts.json` and `tsx` honor; this keeps the Next app CommonJS-compatible without renaming any script.
+- 2026-11-01 20:58 CT — `vercel env pull .env.local` was blocked by the Claude Code permission classifier (credential materialization) and was not retried; the pre-existing `.env.local` from 2026-10-31 contains only `VERCEL_OIDC_TOKEN`, so this run had no `ANTHROPIC_API_KEY`, Supabase keys or other secrets and everything live-dependent was built to degrade and exercised with `TF_MOCK=1`.

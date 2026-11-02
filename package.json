@@ -2,29 +2,41 @@
   "name": "thoughtforge",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
-    "panel:sync": "tsx scripts/sync-panel-headshots.ts"
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.scripts.json",
+    "test": "tsx --test scripts/tests/tooling.test.ts",
+    "panel:sync": "tsx scripts/sync-panel-headshots.ts",
+    "validate:cast": "node scripts/validate-cast.mjs",
+    "smoke:gdelt": "tsx scripts/smoke-gdelt.ts",
+    "resolve:network": "tsx scripts/resolve-network.ts",
+    "resolve:network:dry": "tsx scripts/resolve-network.ts --slug _fixtures --snapshot cast/_fixtures/people-snapshot.json --dry-run",
+    "resolve:network:snapshot": "tsx scripts/resolve-network.ts --all --snapshot cast/_fixtures/people-snapshot.json",
+    "audit:cast": "tsx scripts/audit-cast.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
     "next": "16.4.3",
     "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "react-dom": "19.3.1",
+    "yaml": "^2.9.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^22",
+    "@types/node": "^22.20.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
     "sharp": "^0.35.5",
     "tailwindcss": "^4",
-    "tsx": "^4",
-    "typescript": "^5"
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
   }
 }

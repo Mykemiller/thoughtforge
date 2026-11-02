@@ -1,0 +1,349 @@
+[
+  {
+    "id": "R01",
+    "participants": [
+      "gilbert-faraday",
+      "mach-eigen"
+    ],
+    "where": "Siemens AG, Munich",
+    "years": "1997-2001",
+    "what": "Gilbert ran transmission strategy and Mach engineered HVDC converters; they met on an interconnector bid review and argued about it for four years.",
+    "associates": [
+      "A02"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R02",
+    "participants": [
+      "gilbert-faraday",
+      "margo-brandt"
+    ],
+    "where": "Microsoft, Redmond",
+    "years": "2013-2018",
+    "what": "Margo reported to Gilbert as senior director of datacenter delivery and was right twice when she told him a site timeline would not build.",
+    "associates": [
+      "A04"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R03",
+    "participants": [
+      "margo-brandt",
+      "mach-eigen"
+    ],
+    "where": "Hyperscale campus near Reno, Nevada (Mortenson as builder, Burns & McDonnell as owner's engineer)",
+    "years": "2019",
+    "what": "Margo ran delivery for the builder and Mach was the owner's electrical engineer; they rebuilt the energization sequence in a week.",
+    "associates": [
+      "A05"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R04",
+    "participants": [
+      "albert-thorne",
+      "hartford-caldwell"
+    ],
+    "where": "FERC proceeding on cost allocation for a large-load transmission upgrade",
+    "years": "2018-2019",
+    "what": "Albert testified for a state-commission coalition and Hart represented the developer; they were on opposite sides and each still quotes the other's best line.",
+    "associates": [
+      "A18"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R05",
+    "participants": [
+      "delia-marchetti",
+      "rosalind-ferraro"
+    ],
+    "where": "Illinois State Capitol, Springfield",
+    "years": "2002-2006",
+    "what": "Delia covered the statehouse for the Chicago Tribune and Rose was a Senate press secretary; they traded gossip and the occasional scoop.",
+    "associates": [
+      "A11",
+      "A12"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R06",
+    "participants": [
+      "victoria-stroud",
+      "mach-eigen",
+      "ingrid-halverson"
+    ],
+    "where": "Liquid-cooled AI campus, about 150 MW, in the Midwest",
+    "years": "2021-2023",
+    "what": "Vick arranged the construction financing as the developer's capital adviser at Houlihan Lokey, Mach was electrical engineer of record at Burns & McDonnell, and Ingrid reviewed the cooling design as independent engineer for Jacobs.",
+    "associates": [
+      "A07",
+      "A08"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R07",
+    "participants": [
+      "delia-marchetti",
+      "constance-wright"
+    ],
+    "where": "Fact-check for 451 Research of an Exelon press release",
+    "years": "2017",
+    "what": "Constance challenged a capacity figure in a release Delia had approved; Delia sent the source within the hour and rewrote the release anyway.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R08",
+    "participants": [
+      "delia-marchetti",
+      "gilbert-faraday"
+    ],
+    "where": "Platts interview, San Francisco",
+    "years": "2011",
+    "what": "Delia profiled Gilbert's power-procurement program at Digital Realty; he made her rewrite the headline twice and was right once.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R09",
+    "participants": [
+      "gilbert-faraday",
+      "albert-thorne"
+    ],
+    "where": "Microsoft-commissioned grid-impact study by E3",
+    "years": "2016",
+    "what": "Gilbert sponsored the study and Albert led it; the conclusion Gilbert did not want is the one that held.",
+    "associates": [
+      "A25"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R10",
+    "participants": [
+      "hartford-caldwell",
+      "rosalind-ferraro"
+    ],
+    "where": "Rezoning hearings for a data center campus in central Ohio",
+    "years": "2020",
+    "what": "Rose led community engagement for the developer and Hart was its outside counsel; they disagreed about conceding on water and Rose won.",
+    "associates": [
+      "A19"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R11",
+    "participants": [
+      "albert-thorne",
+      "rosalind-ferraro"
+    ],
+    "where": "Indiana Utility Regulatory Commission large-load tariff proceeding",
+    "years": "2022",
+    "what": "Albert testified for industrial consumers and Rose organized a ratepayer coalition; she turned his testimony into a flyer.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R12",
+    "participants": [
+      "hartford-caldwell",
+      "victoria-stroud"
+    ],
+    "where": "Virginia campus financing with a state tax abatement and jobs clawback",
+    "years": "2019",
+    "what": "Hart represented the sponsor and Vick ran the investor's diligence; they modeled the clawback together at 2 a.m.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R13",
+    "participants": [
+      "margo-brandt",
+      "victoria-stroud"
+    ],
+    "where": "Construction financing diligence on a STACK Infrastructure campus",
+    "years": "2023",
+    "what": "Vick stress-tested Margo's schedule for the lender group; the schedule survived.",
+    "associates": [
+      "A28"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R14",
+    "participants": [
+      "ingrid-halverson",
+      "gilbert-faraday"
+    ],
+    "where": "Warm-water liquid cooling visit, NREL Energy Systems Integration Facility, Golden, Colorado",
+    "years": "2015",
+    "what": "Gilbert led a Microsoft delegation and Ingrid ran the technical session; she corrected his approach-temperature number in front of his team.",
+    "associates": [
+      "A09"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R15",
+    "participants": [
+      "constance-wright",
+      "gilbert-faraday"
+    ],
+    "where": "Fact-check for 451 Research",
+    "years": "2020",
+    "what": "Constance checked a power-cost figure in a Brattle paper Gilbert co-wrote; the number was right and the year was wrong.",
+    "associates": [
+      "A15"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R16",
+    "participants": [
+      "constance-wright",
+      "margo-brandt"
+    ],
+    "where": "Fact-check for 451 Research",
+    "years": "2021",
+    "what": "Constance questioned a campus completion date and Margo sent the crane schedule within the hour.",
+    "associates": [
+      "A15"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R17",
+    "participants": [
+      "constance-wright",
+      "mach-eigen"
+    ],
+    "where": "Fact-check for 451 Research",
+    "years": "2018",
+    "what": "Constance checked Mach's converter-efficiency claim from a conference talk; he was right and sent three unrequested pages of derivation.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R18",
+    "participants": [
+      "constance-wright",
+      "albert-thorne"
+    ],
+    "where": "Fact-check for 451 Research",
+    "years": "2016",
+    "what": "Albert's queue-duration numbers held and his footnote did not.",
+    "associates": [
+      "A15"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R19",
+    "participants": [
+      "constance-wright",
+      "hartford-caldwell"
+    ],
+    "where": "Fact-check for 451 Research",
+    "years": "2017",
+    "what": "Hart insisted his quote be read back to him verbatim, twice, and then thanked her for the second reading.",
+    "associates": [
+      "A15"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R20",
+    "participants": [
+      "constance-wright",
+      "rosalind-ferraro"
+    ],
+    "where": "Fact-check for 451 Research",
+    "years": "2018",
+    "what": "Constance doubted a community-meeting attendance figure and Rose produced the sign-in sheets.",
+    "associates": [
+      "A15"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R21",
+    "participants": [
+      "constance-wright",
+      "victoria-stroud"
+    ],
+    "where": "Data check for Moody's Investors Service",
+    "years": "2013",
+    "what": "Constance checked a financing spread in a deal file Vick had prepared; Vick confirmed it to the basis point and declined to say anything else.",
+    "associates": [
+      "A22"
+    ],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R22",
+    "participants": [
+      "constance-wright",
+      "ingrid-halverson"
+    ],
+    "where": "Fact-check for 451 Research",
+    "years": "2023",
+    "what": "Ingrid corrected Constance's units on a PUE claim and Constance corrected Ingrid's significant figures.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R23",
+    "participants": [
+      "victoria-stroud",
+      "albert-thorne"
+    ],
+    "where": "NCAA men's basketball final, Lucas Oil Stadium, Indianapolis",
+    "years": "2015",
+    "what": "Vick cheered for Duke one row in front of Albert, who cheered for Wisconsin; they met arguing about a foul call and have argued about everything since.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R24",
+    "participants": [
+      "gilbert-faraday",
+      "mach-eigen"
+    ],
+    "where": "NVIDIA GTC 2024 keynote, SAP Center, San Jose",
+    "years": "2024",
+    "what": "Sat together in the upper bowl; Gilbert timed the claims and Mach checked the power math on a napkin.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R25",
+    "participants": [
+      "hartford-caldwell",
+      "victoria-stroud"
+    ],
+    "where": "NCAA tournament, Spectrum Center, Charlotte",
+    "years": "2018",
+    "what": "Vick took Hart to dinner after Virginia lost to UMBC and let him talk about it for two hours.",
+    "associates": [],
+    "evidence": "FIC"
+  },
+  {
+    "id": "R26",
+    "participants": [
+      "delia-marchetti",
+      "rosalind-ferraro"
+    ],
+    "where": "World Series Game 7, Chicago",
+    "years": "2016",
+    "what": "Delia, a Cubs fan, called Rose, a White Sox fan, at 12:47 a.m. after the final out and said nothing. Rose hung up.",
+    "associates": [],
+    "evidence": "FIC"
+  }
+]

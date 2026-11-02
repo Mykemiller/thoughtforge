@@ -1,0 +1,28 @@
+name: cast
+on:
+  pull_request:
+    paths: ["cast/**", "scripts/**", "docs/**", "package.json", "package-lock.json"]
+  workflow_dispatch:
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run validate:cast
+      - run: npm run resolve:network:snapshot
+      - run: npm run audit:cast -- --stdout
+  smoke-gdelt:
+    # Live call to GDELT. Non-blocking: GDELT answers shared GitHub runner IPs with HTTP 429 at times.
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci
+      - run: npm run smoke:gdelt

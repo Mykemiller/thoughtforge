@@ -1,0 +1,148 @@
+{
+  "_about": "Full people-spine scan for scripts/audit-cast.ts check 1, run read-only through the Supabase connector because this repo's tooling cannot reach the database with the anon key. Every candidate phrase was matched against all people canonical names and aliases (equal, alias, or containing a full name). Rerun when audit:cast reports the scan as stale.",
+  "project_ref": "ycadmmngkdhvpcsrcuaq",
+  "taken_at": "2026-11-01",
+  "people_total": 1734,
+  "candidates_checked": 671,
+  "candidates_sha256": "d716748f2c5844f7a134dbca419b5b3a8b6159dbeaa237b62901f51b0cc4a115",
+  "coverage_note": "Full pass covered 669 of the 671 phrases; a second pass covered all 299 two- and three-word, name-shaped phrases. Neither pass found a match outside the networks.",
+  "matches": [
+    {
+      "phrase": "Ann McCabe",
+      "canonical_name": "Ann McCabe",
+      "person_id": "845b75d9-4b14-4b73-bdbc-2c062b509d70"
+    },
+    {
+      "phrase": "Bernard Johnson",
+      "canonical_name": "Bernard Johnson",
+      "person_id": "0e6775d6-5c91-4186-a519-0d44835e48a2"
+    },
+    {
+      "phrase": "Charles Meyers",
+      "canonical_name": "Charles Meyers",
+      "person_id": "e058f5ac-016c-4100-92a4-55c6a179161b"
+    },
+    {
+      "phrase": "Christian Belady",
+      "canonical_name": "Christian Belady",
+      "person_id": "c66a7bdb-4398-4e22-8db7-3ab7eeb7d6c1"
+    },
+    {
+      "phrase": "Dan Loosemore",
+      "canonical_name": "Dan Loosemore",
+      "person_id": "79067511-ee26-47d8-ba6b-caba32b96616"
+    },
+    {
+      "phrase": "David Liggitt",
+      "canonical_name": "David Liggitt",
+      "person_id": "2b87c385-f939-476e-8d4d-baf513f6cd29"
+    },
+    {
+      "phrase": "David Rosner",
+      "canonical_name": "David Rosner",
+      "person_id": "445363de-67f7-48e5-b180-dab5f73db0b0"
+    },
+    {
+      "phrase": "Dean Nelson",
+      "canonical_name": "Dean Nelson",
+      "person_id": "744e46cd-8c98-480a-8b17-621ffa071d6d"
+    },
+    {
+      "phrase": "Giordano Albertazzi",
+      "canonical_name": "Giordano Albertazzi",
+      "person_id": "8dcc9272-c41f-4794-962b-c376c740f619"
+    },
+    {
+      "phrase": "Ilissa Miller",
+      "canonical_name": "Ilissa Miller",
+      "person_id": "62c42180-d5b3-49e8-9990-4add1c6fd08b"
+    },
+    {
+      "phrase": "James Hamilton",
+      "canonical_name": "James Hamilton",
+      "person_id": "7cb6076f-9424-4120-847c-bdccf34fcaad"
+    },
+    {
+      "phrase": "Jenifer French",
+      "canonical_name": "Jenifer French",
+      "person_id": "6ec82d28-98a8-4a1b-b906-c84fd663933e"
+    },
+    {
+      "phrase": "Jensen Huang",
+      "canonical_name": "Jensen Huang",
+      "person_id": "dcfc7962-0bd2-4f06-ab9c-5526b889146b"
+    },
+    {
+      "phrase": "Joe Kava",
+      "canonical_name": "Joe Kava",
+      "person_id": "dc4bda26-f2c2-464a-8bc3-9fd87b33cb40"
+    },
+    {
+      "phrase": "Karen Petersburg",
+      "canonical_name": "Karen Petersburg",
+      "person_id": "dce16fd8-e428-4e32-b8c8-410f7d214817"
+    },
+    {
+      "phrase": "Marc Ganzi",
+      "canonical_name": "Marc Ganzi",
+      "person_id": "b5d4ddf2-e56a-45d9-af07-fce2ac6ba0e8"
+    },
+    {
+      "phrase": "Michael Intrator",
+      "canonical_name": "Michael Intrator",
+      "person_id": "cbd89c2a-62bf-4a5b-abc1-117a9181fe3e"
+    },
+    {
+      "phrase": "Michael Lahoud",
+      "canonical_name": "Michael Lahoud",
+      "person_id": "d2523769-9000-46da-8165-7fdfae063c43"
+    },
+    {
+      "phrase": "Miranda Gardiner",
+      "canonical_name": "Miranda Gardiner",
+      "person_id": "8de9ac83-a98b-4bd5-bf21-71f2ec376614"
+    },
+    {
+      "phrase": "Randy Brouckman",
+      "canonical_name": "Randy Brouckman",
+      "person_id": "36c94fd7-d348-4124-9cd0-7de4599b6f7d"
+    },
+    {
+      "phrase": "Raul Martynek",
+      "canonical_name": "Raul Martynek",
+      "person_id": "d833c48d-0fff-4621-be7e-a3fd3bb5b5d4"
+    },
+    {
+      "phrase": "Rich Miller",
+      "canonical_name": "Rich Miller",
+      "person_id": "58fd46e4-cfaa-4868-9116-91f5a11af4ca"
+    },
+    {
+      "phrase": "Rich Whitmore",
+      "canonical_name": "Rich Whitmore",
+      "person_id": "cf644ab6-25f7-482e-9da0-fba66528b18e"
+    },
+    {
+      "phrase": "Siddharth Muzumdar",
+      "canonical_name": "Siddharth Muzumdar",
+      "person_id": "d3eac439-0bd8-4c53-8a18-bbfd384c2b41"
+    },
+    {
+      "phrase": "Sureel Choksi",
+      "canonical_name": "Sureel Choksi",
+      "person_id": "de47aed6-8414-46c1-a6b2-c57bc90f87ba"
+    }
+  ],
+  "surname_only_hits": [
+    "English",
+    "Gilbert",
+    "Golden",
+    "Jacobs",
+    "Mansfield",
+    "Nora",
+    "Power",
+    "Rose",
+    "Washington"
+  ],
+  "surname_only_note": "Single words that equal some person's surname. Reviewed: places (Golden, Mansfield, Washington), a firm (Jacobs), ordinary words (English, Power) and fictional first names (Gilbert, Nora, Rose). Not person references."
+}
