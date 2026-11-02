@@ -23,7 +23,8 @@
     "inspect:artifacts": "tsx scripts/inspect-artifacts.ts",
     "apply:migration": "tsx scripts/apply-migration.ts",
     "screenshots": "tsx scripts/screenshots.ts",
-    "mirror:cast": "tsx scripts/mirror-cast-to-notion.ts"
+    "mirror:cast": "tsx scripts/mirror-cast-to-notion.ts",
+    "plan:voices": "tsx scripts/plan-panel-voices.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.3.0",
