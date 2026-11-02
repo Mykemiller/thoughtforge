@@ -1,0 +1,72 @@
+/**
+ * npm run email:preview -- --kind briefing --slug delia-marchetti [--date YYYY-MM-DD]
+ * npm run email:preview -- --kind signal-takeaway --all [--signal-file path.txt --signal-subject "..."]
+ *
+ * Prints composed emails to the terminal. Never sends, never writes a row.
+ * Composes live when ANTHROPIC_API_KEY is set; TF_MOCK=1 gives a canned compose;
+ * with neither it prints the envelope and says plainly that nothing was composed (exit 2).
+ */
+import { readFileSync } from "node:fs";
+import { composeEmail, anthropicModel, mockModel, subjectFor } from "./compose";
+import { isMockCompose } from "./env";
+import { loadEmailPanelists } from "./panelists";
+import { centralDate } from "./rotation";
+import { SAMPLE_SIGNAL } from "./sample-signal";
+import { formatDryRun, makeMessageId } from "./send";
+import { EMAIL_KINDS, type EmailKind, type SignalInput } from "./types";
+
+function arg(name: string): string | undefined {
+  const i = process.argv.indexOf(`--${name}`);
+  return i >= 0 ? process.argv[i + 1] : undefined;
+}
+const flag = (name: string) => process.argv.includes(`--${name}`);
+
+async function main(): Promise<number> {
+  const kind = (arg("kind") ?? "briefing") as EmailKind;
+  if (!EMAIL_KINDS.includes(kind)) {
+    console.error(`--kind must be one of ${EMAIL_KINDS.join(", ")}`);
+    return 1;
+  }
+  const panelists = loadEmailPanelists();
+  const slug = arg("slug");
+  const chosen = flag("all") ? panelists : panelists.filter((p) => p.slug === slug);
+  if (!chosen.length) {
+    console.error(`--slug must be one of ${panelists.map((p) => p.slug).join(", ")} (or pass --all)`);
+    return 1;
+  }
+  const date = arg("date") ?? centralDate(new Date());
+  const signalFile = arg("signal-file");
+  const signal: SignalInput | undefined =
+    kind !== "signal-takeaway" ? undefined : signalFile ? { subject: arg("signal-subject") ?? "Faraday Signal", text: readFileSync(signalFile, "utf8") } : SAMPLE_SIGNAL;
+
+  const mock = isMockCompose();
+  const live = Boolean(process.env.ANTHROPIC_API_KEY) && !mock;
+  if (!mock && !live) {
+    for (const p of chosen) {
+      console.log(`From: ${p.from}\nSubject (format): ${subjectFor(kind, p, { date, signal }, "<5 to 8 word hook>")}`);
+    }
+    console.log(
+      "\nNOT COMPOSED: ANTHROPIC_API_KEY is not set, so no model was called. Re-run with TF_MOCK=1 for a canned compose, or with the key set for a real one.",
+    );
+    return 2;
+  }
+  console.log(`[email:preview] ${kind} for ${chosen.length} panelist(s), ${date}, compose: ${mock ? "TF_MOCK canned (no model call)" : "live model"}\n`);
+  let failed = 0;
+  for (const p of chosen) {
+    try {
+      const email = await composeEmail({ panelist: p, kind, context: { date, signal } }, mock ? mockModel : anthropicModel);
+      process.stdout.write(
+        formatDryRun({ from: p.from, to: "", replyTo: "", subject: email.subject, text: email.body, messageId: makeMessageId(), idempotencyKey: "" }).replace(
+          "DRY_RUN: not sent",
+          "PREVIEW: not sent, not stored",
+        ),
+      );
+    } catch (e) {
+      failed++;
+      console.error(`[email:preview] ${p.slug}: ${e instanceof Error ? e.message : String(e)}`);
+    }
+  }
+  return failed ? 1 : 0;
+}
+
+main().then((code) => process.exit(code));
