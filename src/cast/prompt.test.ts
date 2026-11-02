@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { loadCastFrom, loadCastWithShared } from "./loader";
+import { checkSlugs, loadCastWithShared } from "./loader";
 import { composePanelistCore, composeSystemPrompt, estimateTokens, PROMPT_TOKEN_LIMIT, EVIDENCE_LADDER_CONTRACT } from "./prompt";
 
 const cast = loadCastWithShared();
@@ -19,7 +19,9 @@ test("the cast loads ten members in manifest order and validates against the sch
 });
 
 test("a slug mismatch between cast/ and the manifest fails with the slug named", () => {
-  assert.throws(() => loadCastFrom("cast/_template"), /cast loader/);
+  assert.throws(() => checkSlugs(["mach-eigen", "extra-person"], ["mach-eigen"]), /cast\/extra-person exists but is not in src\/data\/panel.ts/);
+  assert.throws(() => checkSlugs(["mach-eigen"], ["mach-eigen", "margo-brandt"]), /margo-brandt is in src\/data\/panel.ts but cast\/margo-brandt is missing/);
+  assert.doesNotThrow(() => checkSlugs(["a-b", "c-d"], ["c-d", "a-b"]));
 });
 
 test("every panelist's fixed prompt stays under the 6,000-token budget", () => {

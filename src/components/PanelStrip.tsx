@@ -4,7 +4,7 @@ import { PANEL_SORTED, panelAlt } from "@/src/data/panel";
 
 /**
  * Landing-page headshot strip: ten round thumbnails (96px desktop, 72px
- * mobile) in a 5×2 / 2-wide grid, each deep-linking to /panel#<slug>.
+ * mobile) in a 5×2 / 2-wide grid, each linking to the panelist page /panel/<slug>.
  */
 export function PanelStrip() {
   return (
@@ -33,7 +33,7 @@ export function PanelStrip() {
           {PANEL_SORTED.map((m) => (
             <li key={m.slug} className="flex justify-center">
               <Link
-                href={`/panel#${m.slug}`}
+                href={`/panel/${m.slug}`}
                 className="group flex w-full max-w-[9.5rem] flex-col items-center gap-3 rounded-card p-2 text-center"
               >
                 <span className="relative block h-[72px] w-[72px] overflow-hidden rounded-full ring-2 ring-line transition-shadow group-hover:ring-accent sm:h-24 sm:w-24">
