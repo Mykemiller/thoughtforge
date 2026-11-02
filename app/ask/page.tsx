@@ -14,8 +14,9 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function AskPage() {
+export default async function AskPage({ searchParams }: { searchParams: Promise<{ denied?: string }> }) {
   const locked = (await headers()).get("x-tf-locked") === "1";
+  const denied = locked && (await searchParams).denied === "1";
   const bySlug = new Map(PANEL_SORTED.map((m) => [m.slug, m]));
   const panelists = PANEL_ORDER.map((s) => bySlug.get(s)!);
 
@@ -41,11 +42,42 @@ export default async function AskPage() {
               Ask the Panel is open to its owner only while the panel is in its first season. The panelists themselves are public:
               you can read who they are and how they argue.
             </p>
+            <form method="get" action="/ask" className="mt-6 flex flex-col gap-2" aria-describedby={denied ? "magic-word-denied" : undefined}>
+              <label htmlFor="magic-word" className="text-sm font-semibold text-ink">
+                Say the magic word to talk to the panel
+              </label>
+              <div className="flex flex-col gap-2 sm:flex-row">
+                <input
+                  id="magic-word"
+                  name="key"
+                  type="password"
+                  autoComplete="off"
+                  autoCapitalize="off"
+                  spellCheck={false}
+                  required
+                  placeholder="Magic word"
+                  className="min-h-11 flex-1 rounded-card border border-line bg-surface px-4 text-base text-ink placeholder:text-ink-muted/70 focus:border-accent"
+                />
+                <button
+                  type="submit"
+                  className="inline-flex min-h-11 items-center justify-center rounded-card bg-primary px-5 text-sm font-semibold text-surface hover:bg-primary/90"
+                >
+                  Enter
+                </button>
+              </div>
+              {denied ? (
+                <p id="magic-word-denied" role="alert" className="text-sm text-accent">
+                  That was not the word. Try again.
+                </p>
+              ) : (
+                <p className="text-xs text-ink-muted">The word stays in this browser for 90 days.</p>
+              )}
+            </form>
             <Link
               href="/panel"
-              className="mt-5 inline-flex min-h-11 items-center rounded-card bg-primary px-5 text-sm font-semibold text-surface hover:bg-primary/90"
+              className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-primary underline-offset-4 hover:underline"
             >
-              Meet the Panel
+              Meet the Panel →
             </Link>
           </section>
         ) : (

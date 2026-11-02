@@ -7,7 +7,9 @@
  *  - ?key=<TF_ACCESS_KEY>                               -> set the cookie (httpOnly, secure,
  *                                                          sameSite lax, 90 days) and redirect
  *                                                          to the same path without the query
- *  - otherwise                                          -> /ask renders locked (x-tf-locked: 1),
+ *  - otherwise                                          -> /ask renders locked (x-tf-locked: 1) with a
+ *                                                          magic-word form; a wrong ?key= redirects to
+ *                                                          /ask?denied=1 so the page can say so;
  *                                                          /api/ask answers 401
  *  - TF_ACCESS_KEY unset (local dev)                    -> allow everything, warn once
  */
@@ -51,6 +53,13 @@ export async function proxy(req: NextRequest) {
 
   if (pathname.startsWith("/api/")) {
     return NextResponse.json({ error: "Ask the Panel is private." }, { status: 401 });
+  }
+  if (presented) {
+    // Wrong magic word: redirect so the guess never stays in the address bar; ?denied=1 lets the page say so.
+    const clean = req.nextUrl.clone();
+    clean.searchParams.delete("key");
+    clean.searchParams.set("denied", "1");
+    return NextResponse.redirect(clean);
   }
   const headers = new Headers(req.headers);
   headers.set("x-tf-locked", "1");
