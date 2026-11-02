@@ -76,13 +76,23 @@ try {
     await page.screenshot({ path: `${OUT}/ask-locked.png`, fullPage: false });
     const api = await page.request.post("http://localhost:3992/api/ask", { data: { question: "x" } });
     if (api.status() !== 401) throw new Error(`locked /api/ask returned ${api.status()}, expected 401`);
-    await page.goto(`http://localhost:3992/ask?key=${key}`, { waitUntil: "networkidle" });
+    // Wrong magic word: still locked, says so, and the guess is not left in the address bar.
+    await page.fill("#magic-word", "not-the-word");
+    await page.click("form button[type=submit]");
+    await page.waitForSelector("text=That was not the word.");
+    if (page.url().includes("key=")) throw new Error("a wrong ?key= was left in the address bar");
+    if ((await ctx.cookies()).some((x) => x.name === "tf_access")) throw new Error("a wrong magic word set the cookie");
+    await page.screenshot({ path: `${OUT}/ask-locked-denied.png`, fullPage: false });
+    // Right magic word through the form.
+    await page.fill("#magic-word", key);
+    await page.click("form button[type=submit]");
+    await page.waitForURL((u) => u.pathname === "/ask" && !u.searchParams.has("key"));
     if (page.url().includes("key=")) throw new Error("the ?key= query was not stripped on redirect");
     const cookies = await ctx.cookies();
     const c = cookies.find((x) => x.name === "tf_access");
     if (!c || !c.httpOnly || c.value.length !== 64) throw new Error("tf_access cookie not set as expected");
     await page.waitForSelector("#question");
-    console.log("wrote ask-locked.png; ?key= exchange set an httpOnly 64-hex tf_access cookie and unlocked /ask; locked /api/ask answered 401");
+    console.log("wrote ask-locked.png, ask-locked-denied.png; wrong word denied without a cookie; the magic-word form set an httpOnly 64-hex tf_access cookie and unlocked /ask; locked /api/ask answered 401");
     await ctx.close();
   } finally {
     locked.kill();
