@@ -23,6 +23,7 @@
     "inspect:artifacts": "tsx scripts/inspect-artifacts.ts",
     "apply:migration": "tsx scripts/apply-migration.ts",
     "screenshots": "tsx scripts/screenshots.ts",
+    "mirror:cast": "tsx scripts/mirror-cast-to-notion.ts",
     "email:preview": "tsx src/email/preview.ts",
     "email:dry-run": "DRY_RUN=1 tsx src/email/dry-run.ts",
     "plan:voices": "tsx scripts/plan-panel-voices.ts"
@@ -39,6 +40,7 @@
     "yaml": "^2.9.1"
   },
   "devDependencies": {
+    "@notionhq/client": "^5.30.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^22.20.5",
     "@types/react": "^19",
