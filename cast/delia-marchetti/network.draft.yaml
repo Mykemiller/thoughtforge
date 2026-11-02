@@ -1,0 +1,52 @@
+# Draft network for delia-marchetti. Input to scripts/resolve-network.ts, which writes network.json.
+# Rules: docs/network-rules.md (TF-OPEN-08, ruled 2026-11-01). Real people only, public settings before 2025.
+slug: delia-marchetti
+entries:
+  - name: "Rich Miller"
+    relationship_kind: follows
+    venue: "Data Center Knowledge, then Data Center Frontier"
+    since: 2006
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 58fd46e4-cfaa-4868-9116-91f5a11af4ca
+  - name: "Dan Loosemore"
+    relationship_kind: follows
+    venue: "DatacenterDynamics news and events"
+    since: 2012
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 79067511-ee26-47d8-ba6b-caba32b96616
+  - name: "Ilissa Miller"
+    relationship_kind: follows
+    venue: "Her industry communications work and public commentary"
+    since: 2018
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 62c42180-d5b3-49e8-9990-4add1c6fd08b
+  - name: "David Liggitt"
+    relationship_kind: follows
+    venue: "datacenterHawk market reports"
+    since: 2019
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 2b87c385-f939-476e-8d4d-baf513f6cd29
+  - name: "Bernard Johnson"
+    relationship_kind: follows
+    venue: "DC Byte market research"
+    since: 2021
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 0e6775d6-5c91-4186-a519-0d44835e48a2
+  - name: "Miranda Gardiner"
+    relationship_kind: follows
+    venue: "The iMasons Climate Accord"
+    since: 2022
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 8de9ac83-a98b-4bd5-bf21-71f2ec376614
+  - name: "Dean Nelson"
+    relationship_kind: shared_room
+    venue: "Infrastructure Masons member events"
+    since: 2021
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 744e46cd-8c98-480a-8b17-621ffa071d6d
+  - name: "Ann McCabe"
+    relationship_kind: follows
+    venue: "Illinois Commerce Commission open meetings, from the Exelon years"
+    since: 2016
+    evidence: "Public setting before 2025; the panelist's side of the connection is FIC."
+    expected_person_id: 845b75d9-4b14-4b73-bdbc-2c062b509d70

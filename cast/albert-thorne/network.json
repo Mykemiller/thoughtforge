@@ -1,0 +1,187 @@
+{
+  "slug": "albert-thorne",
+  "rule": "TF-OPEN-08 (2026-11-01): real people only, public settings before 2025; follows, cites or shared_room with a named venue",
+  "resolved_against": "ycadmmngkdhvpcsrcuaq people",
+  "source": "snapshot cast/_fixtures/people-snapshot.json (taken 2026-11-01)",
+  "resolved_on": "2026-11-01",
+  "entries": [
+    {
+      "person_id": "445363de-67f7-48e5-b180-dab5f73db0b0",
+      "name": "David Rosner",
+      "canonical_name": "David Rosner",
+      "resolution": "exact",
+      "relationship_kind": "cites",
+      "venue": "FERC statements after he joined the Commission",
+      "since": 2024,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Federal Energy Regulatory Commission — Commissioner",
+        "role": "Commissioner",
+        "source": "office_occupancies"
+      },
+      "primary_domain_code": "D3",
+      "domain_tags": [
+        "D3.4",
+        "D3.1",
+        "D3.3",
+        "D3.5",
+        "D18.2"
+      ]
+    },
+    {
+      "person_id": "a6a31d8a-3e64-456d-a81e-c26452fedcdc",
+      "name": "Judy W. Chang",
+      "canonical_name": "Judy W. Chang",
+      "resolution": "exact",
+      "relationship_kind": "cites",
+      "venue": "FERC statements after she joined the Commission",
+      "since": 2024,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Federal Energy Regulatory Commission — Commissioner",
+        "role": "Commissioner",
+        "source": "office_occupancies"
+      },
+      "primary_domain_code": "D3",
+      "domain_tags": [
+        "D3.4",
+        "D3.1",
+        "D3.3",
+        "D3.5",
+        "D18.2"
+      ]
+    },
+    {
+      "person_id": "e98867c7-a983-49d1-b95f-e88de42a563a",
+      "name": "Lindsay S. See",
+      "canonical_name": "Lindsay S. See",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "FERC statements after she joined the Commission",
+      "since": 2024,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Federal Energy Regulatory Commission — Commissioner",
+        "role": "Commissioner",
+        "source": "office_occupancies"
+      },
+      "primary_domain_code": "D3",
+      "domain_tags": [
+        "D3.4",
+        "D3.1",
+        "D3.3",
+        "D3.5",
+        "D18.2"
+      ]
+    },
+    {
+      "person_id": "6ec82d28-98a8-4a1b-b906-c84fd663933e",
+      "name": "Jenifer French",
+      "canonical_name": "Jenifer French",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "Public Utilities Commission of Ohio open meetings during her tenure as chair",
+      "since": 2021,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Public Utilities Commission of Ohio — Commissioner",
+        "role": "Chair",
+        "source": "office_occupancies"
+      },
+      "primary_domain_code": "D3",
+      "domain_tags": [
+        "D3.3",
+        "D3.1",
+        "D3.4",
+        "D3.5",
+        "D18.2"
+      ]
+    },
+    {
+      "person_id": "93119654-a18b-419e-92ca-89a5bfa95136",
+      "name": "David E. Ziegner",
+      "canonical_name": "David E. Ziegner",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "Indiana Utility Regulatory Commission orders and open meetings",
+      "since": 2013,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Indiana Utility Regulatory Commission — Commissioner",
+        "role": "Commissioner",
+        "source": "office_occupancies"
+      },
+      "primary_domain_code": "D3",
+      "domain_tags": [
+        "D3.3",
+        "D3.1",
+        "D3.4",
+        "D3.5",
+        "D18.2"
+      ]
+    },
+    {
+      "person_id": "845b75d9-4b14-4b73-bdbc-2c062b509d70",
+      "name": "Ann McCabe",
+      "canonical_name": "Ann McCabe",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "Illinois Commerce Commission orders and open meetings",
+      "since": 2013,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Illinois Commerce Commission — Commissioner",
+        "role": "Commissioner",
+        "source": "office_occupancies"
+      },
+      "primary_domain_code": "D3",
+      "domain_tags": [
+        "D3.3",
+        "D3.1",
+        "D3.4",
+        "D3.5",
+        "D18.2"
+      ]
+    },
+    {
+      "person_id": "2b1a8c9c-313f-412e-bed7-4bc986369e11",
+      "name": "Samuel T. Towell",
+      "canonical_name": "Samuel T. Towell",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "Virginia State Corporation Commission orders",
+      "since": 2024,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Virginia State Corporation Commission — Commissioner",
+        "role": "Commissioner",
+        "source": "office_occupancies"
+      },
+      "primary_domain_code": "D3",
+      "domain_tags": [
+        "D3.3",
+        "D3.1",
+        "D3.4",
+        "D3.5",
+        "D18.2"
+      ]
+    },
+    {
+      "person_id": "58fd46e4-cfaa-4868-9116-91f5a11af4ca",
+      "name": "Rich Miller",
+      "canonical_name": "Rich Miller",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "Data Center Frontier's large-load and grid coverage",
+      "since": 2017,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Data Center Frontier / Data Center Knowledge",
+        "role": "Founder & Editor",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D22",
+      "domain_tags": []
+    }
+  ]
+}

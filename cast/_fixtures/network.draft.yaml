@@ -1,0 +1,22 @@
+# Resolver fixture (Linear TH-15). Three names, one per outcome:
+#   exact      James Hamilton matches people.canonical_name
+#   alias      "Albertazzi Giordano" matches an entry in people.aliases
+#   unresolved "Jim Hamiltn" is a typo and must land in network.unresolved.yaml, never in people
+# Run: npm run resolve:network:dry
+slug: _fixtures
+entries:
+  - name: James Hamilton
+    relationship_kind: follows
+    venue: His Perspectives blog on hyperscale infrastructure
+    since: 2009
+    evidence: Public blog before 2025.
+  - name: Albertazzi Giordano
+    relationship_kind: shared_room
+    venue: Vertiv investor day webcast
+    since: 2023
+    evidence: Public webcast before 2025.
+  - name: Jim Hamiltn
+    relationship_kind: follows
+    venue: Misspelled on purpose
+    since: 2015
+    evidence: Should not resolve.

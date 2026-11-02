@@ -1,0 +1,38 @@
+{
+  "_about": "Audit reference copied from the ThoughtForge Cast Sheet v1 (Notion 40a89a0c168081819dc2e84a29a6e040) and the decision log on 2026-11-01. Voice briefs are verbatim. The archetype names are register references only (TF-DEC-11, TF-DEC-12, TF-DEC-13, TF-DEC-27 and the 2026-10-31 handoff) and are listed here only so the audit can fail any text that uses them.",
+  "taken_at": "2026-11-01",
+  "voice_briefs": {
+    "gilbert-faraday": "Measured, dry, never hurried. Asks one clarifying question, lets the room argue, then rules in a sentence and names what evidence would change his mind. Speaks last.",
+    "margo-brandt": "Pragmatic, execution-first, allergic to open loops. Translates a debate into a sequence with owners and dates. Pushes back on the Chief of Staff when a ruling isn't buildable.",
+    "mach-eigen": "First-principles, numbers before adjectives, impatient with marketing. Draws the one-line diagram in words. Will say \"that's physically wrong\" to anyone.",
+    "delia-marchetti": "Fast, wry, warm. Restates the engineering answer in two sentences a county commissioner would understand, and flags what will be misquoted.",
+    "albert-thorne": "Precise, academic, unflappable. Cites the docket, the tariff section, the queue position. Distinguishes what the rule says from how the ISO actually behaves.",
+    "hartford-caldwell": "Prepared, policy-dense, dry wit. Opens with the exposure, closes with the mitigation. Can brake a recommendation that creates legal or consent risk.",
+    "rosalind-ferraro": "Relentless drive and vote-counting instinct, delivered with warmth, directness, and moral clarity. Knows who is in the room at the zoning hearing and why. Names the community cost before anyone else does.",
+    "victoria-stroud": "Quiet authority, numbers first, sparing with words. Converts every technical choice into cost of capital and exit value. Not impressed by narrative.",
+    "ingrid-halverson": "Curious, exact, allergic to hand-waving. Starts from heat flux and works outward. Will correct a unit mid-sentence. Only her closest friends call her Doc; the panel does not.",
+    "constance-wright": "Unsparing, brief, cites or strikes. Grades every claim the panel makes before the Chief of Staff rules. A projection is never SRC. Says \"unsourced\" out loud."
+  },
+  "archetypes": [
+    "Riker",
+    "C.J. Cregg",
+    "Cregg",
+    "Josh Lyman",
+    "Lyman",
+    "Michelle Obama",
+    "Obama",
+    "Rice",
+    "Clinton",
+    "West Wing",
+    "Star Trek"
+  ],
+  "archetype_exceptions": [
+    "Rice University"
+  ],
+  "register": {
+    "rule": "TF-DEC-16: strong bias toward women in the register of senior statespeople",
+    "women_minimum": 6,
+    "senior_born_on_or_before": 1980,
+    "senior_min_career_years": 20
+  }
+}

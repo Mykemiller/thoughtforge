@@ -29,6 +29,12 @@ export default function HomePage() {
           >
             Meet the Panel
           </Link>
+          <Link
+            href="/ask"
+            className="inline-flex min-h-11 items-center rounded-card border border-primary px-5 text-sm font-semibold text-primary hover:bg-muted"
+          >
+            Ask the panel
+          </Link>
         </div>
       </section>
 

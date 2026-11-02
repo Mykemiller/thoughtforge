@@ -1,0 +1,158 @@
+{
+  "slug": "mach-eigen",
+  "rule": "TF-OPEN-08 (2026-11-01): real people only, public settings before 2025; follows, cites or shared_room with a named venue",
+  "resolved_against": "ycadmmngkdhvpcsrcuaq people",
+  "source": "snapshot cast/_fixtures/people-snapshot.json (taken 2026-11-01)",
+  "resolved_on": "2026-11-01",
+  "entries": [
+    {
+      "person_id": "dcfc7962-0bd2-4f06-ab9c-5526b889146b",
+      "name": "Jensen Huang",
+      "canonical_name": "Jensen Huang",
+      "resolution": "exact",
+      "relationship_kind": "shared_room",
+      "venue": "NVIDIA GTC 2024 keynote, SAP Center, San Jose (in the audience)",
+      "since": 2024,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "NVIDIA",
+        "role": "Founder, President & CEO",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D1",
+      "domain_tags": [
+        "D1.1",
+        "D1.6",
+        "D4.6",
+        "D9.1",
+        "D9.3",
+        "D9.4"
+      ]
+    },
+    {
+      "person_id": "ac3de2e3-cdec-493e-a90f-36526a60edc6",
+      "name": "Prof. Deepak Divan",
+      "canonical_name": "Prof. Deepak Divan",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "Georgia Tech Center for Distributed Energy research",
+      "since": 2010,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Georgia Institute of Technology",
+        "role": "Professor Emeritus; Director, Center for Distributed Energy",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D2",
+      "domain_tags": []
+    },
+    {
+      "person_id": "c023c8a4-727e-450e-ae96-6bedbf4bd452",
+      "name": "Prof. Alex Q. Huang",
+      "canonical_name": "Prof. Alex Q. Huang",
+      "resolution": "exact",
+      "relationship_kind": "cites",
+      "venue": "FREEDM Systems Center research at NC State on solid-state transformers",
+      "since": 2008,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "University of Texas at Austin",
+        "role": "Dula D. Cockrell Centennial Chair in Engineering, ECE",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D2",
+      "domain_tags": []
+    },
+    {
+      "person_id": "2f234f30-86fb-48b7-9d96-359c74c0b13c",
+      "name": "Prof. Subhashish Bhattacharya",
+      "canonical_name": "Prof. Subhashish Bhattacharya",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "FREEDM Systems Center medium-voltage converter research",
+      "since": 2008,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "NC State University / FREEDM Systems Center",
+        "role": "Duke Energy Distinguished Professor, ECE; Founding Faculty, FREEDM Systems Center",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D2",
+      "domain_tags": []
+    },
+    {
+      "person_id": "8dcc9272-c41f-4794-962b-c376c740f619",
+      "name": "Giordano Albertazzi",
+      "canonical_name": "Giordano Albertazzi",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "Vertiv's investor and product updates",
+      "since": 2023,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Vertiv Holdings Co",
+        "role": "Chief Executive Officer",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D20",
+      "domain_tags": [
+        "D2.1",
+        "D2.3",
+        "D7.1",
+        "D10.1",
+        "D20.1"
+      ]
+    },
+    {
+      "person_id": "7cb6076f-9424-4120-847c-bdccf34fcaad",
+      "name": "James Hamilton",
+      "canonical_name": "James Hamilton",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "His Perspectives blog, especially the power-distribution posts",
+      "since": 2010,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Amazon Web Services (AWS)",
+        "role": "Distinguished Engineer / VP",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D5",
+      "domain_tags": []
+    },
+    {
+      "person_id": "c66a7bdb-4398-4e22-8db7-3ab7eeb7d6c1",
+      "name": "Christian Belady",
+      "canonical_name": "Christian Belady",
+      "resolution": "exact",
+      "relationship_kind": "cites",
+      "venue": "The PUE metric, as published through The Green Grid",
+      "since": 2008,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Former Microsoft",
+        "role": "Board Member & Advisor",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D5",
+      "domain_tags": []
+    },
+    {
+      "person_id": "7b7de028-7b9b-428b-acdc-431d7f13cc75",
+      "name": "Dr. Peter De Bock",
+      "canonical_name": "Dr. Peter De Bock",
+      "resolution": "exact",
+      "relationship_kind": "follows",
+      "venue": "ARPA-E's COOLERCHIPS program",
+      "since": 2023,
+      "evidence": "Public setting before 2025; the panelist's side of the connection is FIC.",
+      "current_affiliation": {
+        "employer": "Eaton",
+        "role": "VP, Data Center Energy & Cooling",
+        "source": "person_affiliations"
+      },
+      "primary_domain_code": "D2",
+      "domain_tags": []
+    }
+  ]
+}
