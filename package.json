@@ -23,6 +23,8 @@
     "inspect:artifacts": "tsx scripts/inspect-artifacts.ts",
     "apply:migration": "tsx scripts/apply-migration.ts",
     "screenshots": "tsx scripts/screenshots.ts",
+    "email:preview": "tsx src/email/preview.ts",
+    "email:dry-run": "DRY_RUN=1 tsx src/email/dry-run.ts",
     "plan:voices": "tsx scripts/plan-panel-voices.ts"
   },
   "dependencies": {
@@ -32,6 +34,7 @@
     "next": "16.4.3",
     "react": "19.3.1",
     "react-dom": "19.3.1",
+    "resend": "^6.37.0",
     "server-only": "^0.0.1",
     "yaml": "^2.9.1"
   },
