@@ -1,0 +1,69 @@
+# Voice per panelist (Linear TH-4). PROPOSED, not confirmed.
+# Myke confirms each pick before any HeyGen credits are spent (paid spend rule).
+# All voices are HeyGen library voices with the ElevenLabs engine available
+# (engine: elevenlabs). No voice is cloned from a real person (TF-DEC-13).
+# Avatar look ids come from src/data/panel.ts (heygenGroupId / chosenLookId).
+# Gender of each voice matches the panelist's backstory pronouns.
+engine: elevenlabs
+status: proposed   # proposed -> confirmed (Myke) -> rendered
+panelists:
+  gilbert-faraday:
+    voice_id: 0c104eaa19e649b898057beef0094997
+    voice_name: "Willoughby - Distinguished & Patient"
+    gender: male
+    why: Senior statesman who chairs and speaks last; patient, unhurried delivery.
+    intro: "I'm Gilbert Faraday. I'll ask one question, let the panel argue, and then I'll rule, and tell you what would change my mind."
+  margo-brandt:
+    voice_id: fd9050d8553349daa13a36a5a3f2fe49
+    voice_name: "Bronwyn - Knowledgeable & Direct"
+    gender: female
+    why: Pragmatic executor; direct, no wasted words.
+    intro: "Margo Brandt. Once Gilbert rules, I turn it into owners, dates and the one item on the critical path."
+  mach-eigen:
+    voice_id: f91cc0b0eea44f8391f080d2de079ea2
+    voice_name: "Clay - Clear & Analytical"
+    gender: male
+    why: First-principles engineer; numbers before adjectives.
+    intro: "Mach Eigen, chief engineer. Give me the rack density and the power factor, and I'll tell you whether the design is physically possible."
+  delia-marchetti:
+    voice_id: 776f9d2ff401499a8f1f2bcb4ca46004
+    voice_name: "Joanna - Warm & Conversational"
+    gender: female
+    why: Plain-spoken translator for lay readers; warm and conversational.
+    intro: "I'm Delia Marchetti. My job is to say it in two sentences a county commissioner would repeat, and to catch the line that ends up on page one."
+  albert-thorne:
+    voice_id: b50db2127b854791b6e16815c3e9b824
+    voice_name: "Alistaire - Authoritative & Articulate"
+    gender: male
+    why: Regulatory specialist who cites the docket; articulate and precise.
+    intro: "Albert Thorne. I'll tell you what the tariff says, and then how the queue actually behaves, which is rarely the same thing."
+  hartford-caldwell:
+    voice_id: b5c5b28db1ea408abc7d851202983bdb
+    voice_name: "Roderic - Authoritative & Refined"
+    gender: male
+    why: Counsel who can stop a recommendation; measured, refined authority.
+    intro: "Hart Caldwell, counsel. I open with the exposure and close with the mitigation."
+  rosalind-ferraro:
+    voice_id: 00e580506bd44675a7432225d76053ac
+    voice_name: "Deanne - Authoritative & Kind"
+    gender: female
+    why: Political director who names the community cost first; firm but kind.
+    intro: "I'm Rose Ferraro. Before you pick a site, I want to know who will be in the room at the zoning hearing, and why."
+  victoria-stroud:
+    voice_id: c318a6b1bab142849041019f58c97a6b
+    voice_name: "Janine - Composed & Insightful"
+    gender: female
+    why: Economic advisor moved by numbers, not narrative; composed.
+    intro: "Vick Stroud. I'll translate every technical choice into basis points, and tell you what a credit committee will say."
+  ingrid-halverson:
+    voice_id: 527463ee4b2b458dafa661419d1846a6
+    voice_name: "Penelope - Scholarly & Graceful"
+    gender: female
+    why: Physicist who starts from the heat; scholarly and exact.
+    intro: "Ingrid Halverson. I start from the heat at the die and work outward, and I will check your units."
+  constance-wright:
+    voice_id: 55e722394d154366a157a518d2d0d4dc
+    voice_name: "Nicola - Sharp & Sophisticated"
+    gender: female
+    why: Fact-checker who says "unsourced" out loud; sharp and exact.
+    intro: "Constance Wright. Every claim gets a grade: verified, sourced, estimated or inferred. Cite it or strike it."
