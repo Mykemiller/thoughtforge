@@ -22,7 +22,8 @@
     "ingest:artifact": "tsx scripts/ingest-artifact.ts",
     "inspect:artifacts": "tsx scripts/inspect-artifacts.ts",
     "apply:migration": "tsx scripts/apply-migration.ts",
-    "screenshots": "tsx scripts/screenshots.ts"
+    "screenshots": "tsx scripts/screenshots.ts",
+    "plan:voices": "tsx scripts/plan-panel-voices.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.3.0",
