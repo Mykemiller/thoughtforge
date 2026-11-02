@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/*
+ * ThoughtForge tokens.
+ * Values mirror the TH-10 Claude Design canvas and are PLACEHOLDERS until the
+ * Cyber Teal / Metallic Turquoise / Dark Charcoal hexes are sampled from the
+ * master logo (TF-DEC-33). Change them here only.
+ */
+@theme {
+  --color-surface: #ffffff;
+  --color-primary: #1f3f46;        /* dark teal: masthead, ruling, buttons */
+  --color-accent: #3fa7a8;         /* turquoise: tagline, focus, contested */
+  --color-ink: #14202b;            /* body text */
+  --color-ink-muted: #5b6b73;      /* secondary text */
+  --color-muted: #eef4f4;          /* panels, roster background */
+  --color-line: #d3dee0;           /* borders */
+
+  --font-sans: var(--font-inter), Inter, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius-card: 8px;
+}
+
+:root {
+  --nav-height: 72px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Deep-link targets (/panel#slug) must clear the sticky nav. */
+[id].anchor-target {
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+/* One focus style everywhere: accent ring, offset from the element. */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -23,6 +23,7 @@ Answered Delia
 Answers Dr
 Arlington
 Army Corps of Engineers
+Ask the Panel
 Asks of GDELT
 Associated Press
 Association of College and Research Libraries
@@ -187,6 +188,7 @@ Energy and Environmental Economics
 English
 Enoch Pratt
 Enoch Pratt Free Library
+Enter
 Environmental Law Section
 Equinix
 Eras Tour
@@ -204,7 +206,9 @@ FERC and PUCs What
 FIFA World Cup
 FREEDM Systems Center
 Facility Water
+Fact-Checker
 Faraday
+Faraday Intelligence
 Fare Thee Well
 Fargo
 First Officer
@@ -390,6 +394,7 @@ Mechanical Engineering
 Media
 Medill School of Journalism
 Medium-Voltage DC
+Meet the Panel
 Meg
 Menlo Park
 MetLife Stadium
@@ -466,6 +471,7 @@ PJM Interconnection
 PRSA International Conference
 Pacific Northwest
 Pacific Science Center
+Panel
 Paper Timelines and Real Ones
 Paul District
 Paul Reyes
@@ -606,6 +612,7 @@ Thomas
 Thomas Faraday
 Thomas Opus College of Business
 ThoughtForge
+ThoughtForge Faraday Intelligence
 ThoughtForge Panel
 ThoughtForge Panel Community
 ThoughtForge Panel Grid

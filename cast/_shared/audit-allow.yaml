@@ -245,3 +245,8 @@ terms:
   - "Use GDELT"
   - "Voice Kind Venue Since"
   - "Voices"
+
+# App copy in scope since TH-32 (page titles and section labels in app/ and src/components). Vocabulary, never a person.
+ui_copy:
+  - "Ask the Panel"
+  - "Meet the Panel"

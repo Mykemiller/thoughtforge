@@ -1,0 +1,86 @@
+{
+  "session_id": "00000000-0000-4000-8000-000000000001",
+  "question": "A 300 MW AI campus in the Midwest breaks ground next spring. Should we commit the first two halls to 800 VDC rack distribution now, or stay on 415 VAC and revisit in 2027?",
+  "artifacts": [
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "title": "Open Rack V3 power specification, revision 2024",
+      "publisher": "Open Compute Project",
+      "url": "https://www.opencompute.org/",
+      "published_at": "2024-06-01",
+      "excerpt": "Mock excerpt for the demo: busbar current ratings, connector families and the shelf-level power envelope for the rack standard the panel discusses.",
+      "source": "primary",
+      "origin": "faraday"
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "title": "Large-load interconnection study backlog, quarterly update",
+      "publisher": "Midwest regional transmission organization (mock)",
+      "url": "https://www.misoenergy.org/",
+      "published_at": "2025-09-15",
+      "excerpt": "Mock excerpt for the demo: counts of large-load study requests, median months from request to agreement, and the share withdrawn before energization.",
+      "source": "primary",
+      "origin": "faraday"
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "title": "Trade-press survey of rack power vendors, autumn 2025",
+      "publisher": "Example datacenter trade publication (mock)",
+      "url": "https://example.com/mock-survey",
+      "published_at": "2025-10-02",
+      "excerpt": "Mock excerpt for the demo: vendor-reported lead times for high-voltage DC rectifier shelves and busbar assemblies, and the number of vendors shipping at volume.",
+      "source": "secondary",
+      "origin": "faraday"
+    },
+    {
+      "id": "44444444-4444-4444-8444-444444444444",
+      "title": "Panel ruling: Should a 150 MW campus pre-buy transformers before the interconnection agreement is signed",
+      "publisher": "ThoughtForge",
+      "url": null,
+      "published_at": "2026-10-20",
+      "excerpt": "Mock excerpt for the demo: the panel's earlier ruling on long-lead equipment, which held that pre-buying is justified when the deposit is recoverable and the lead time exceeds the study window.",
+      "source": "panel",
+      "origin": "tf_artifacts"
+    }
+  ],
+  "replies": {
+    "margo-brandt": "Buildability first. If we commit halls one and two to 800 VDC, the critical path moves from the switchgear to the rectifier shelves and the DC busbar, and that is a vendor count problem, not a design problem. The trade survey the panel saw lists only a handful of vendors shipping high-voltage DC shelves at volume, with quoted lead times in the fifty-to-seventy-week range [SRC: Trade-press survey of rack power vendors, autumn 2025]. Our hall-one energization date sits about sixty weeks out [EST], so we would be placing orders this quarter against a spec that the rack standard still revises [SRC: Open Rack V3 power specification, revision 2024]. My sequence: hall one on 415 VAC with the busway sized for a later DC conversion, hall two designed dual-path with the decision point at steel-up, roughly month nine [INF]. That keeps the ribbon-cutting date and gives Mach a real option instead of a wish. Owners and dates on every step, or it does not count.",
+    "mach-eigen": "Start from the busbar. At one megawatt per rack on 415 VAC three-phase you are pushing roughly fourteen hundred amps per rack with the power factor stated, and the copper and connector mass stops making sense well before that [EST]. At 800 VDC the same rack is about twelve hundred fifty amps, and the rectification moves out of the rack into a shelf where it belongs [EST]. The physics is settled; the published rack standard already defines the shelf and the busbar envelope [SRC: Open Rack V3 power specification, revision 2024]. What is not settled is the vendor base, and Margo is right that this is a count problem. So the engineering answer is: design every hall for DC at the busway and the shelf positions, build hall one on AC because the shelves are not here, and make hall two the first DC hall [INF]. Anyone who tells you AC scales to the 2027 rack densities without a conversion loss penalty is saying something physically wrong, and I will say so to the vendor.",
+    "delia-marchetti": "Here is the sentence that ends up on page one if we get this wrong: a county that just approved a three hundred megawatt campus learns the developer bet the first two halls on a power standard most people have never heard of. That is a framing risk, not a technical one, and it is manageable if we lead with the plain-English version [INF]. The version that holds up: we are building the halls to accept the next generation of equipment without tearing them open, and the first hall uses the same power equipment every hospital in the state runs [INF]. The interconnection backlog is the story the local press already follows [SRC: Large-load interconnection study backlog, quarterly update], so our announcement should tie the power design to shortening that timeline, not to a vendor roadmap. I would hold any mention of 800 VDC out of the groundbreaking release entirely and put it in the engineering briefing six months later, when there is something installed to point at [INF].",
+    "albert-thorne": "The tariff does not care what voltage you run inside the fence; the interconnection study does care about load shape and ramp [INF]. The regional transmission organization's quarterly update puts the median large-load study at well over two years from request to agreement, with a meaningful share of requests withdrawn before energization [SRC: Large-load interconnection study backlog, quarterly update]. That is the binding constraint, and it is indifferent to the 800 VDC decision [INF]. Where the decision does touch the docket: a DC architecture with battery shelves at the rack lets us file a flatter demand profile and a credible curtailment commitment, and flat profiles have been moving up the queue in recent large-load orders [EST]. So the policy answer is to make the architecture choice serve the filing. Commit to DC for hall two only if the study schedule can absorb an amended load profile without resetting the clock, which the current rules allow once without penalty [INF]. Plan for the real timeline, not the rule's.",
+    "hartford-caldwell": "Exposure first. Committing two halls to a standard with a thin vendor base creates a single-source dependency, and single-source dependencies are where warranty, delay and force-majeure clauses get tested [INF]. The mitigation is contractual, not technical: dual-sourced shelf supply with a step-in right, liquidated damages indexed to the energization date, and a conversion-ready clause in the general contractor's scope so hall one's AC build does not foreclose the DC retrofit [INF]. On incentives, the state abatement we are negotiating is keyed to capital invested by a date, not to a technology, so the DC decision is neutral to clawback risk as long as the schedule holds [INF]. I am not braking this. Nothing here is hard to undo; a hall built conversion-ready can go either way for the cost of the shelves. I would brake if anyone proposed skipping the dual-path design to save the busway premium, because that converts a reversible choice into a sunk one.",
+    "rosalind-ferraro": "Who is in the room at the next county meeting: the neighbors who heard three hundred megawatts and thought about their own bills, the local electrical contractors who want the work, and two commissioners up for re-election [INF]. None of them will ask about 800 VDC. They will ask whether the campus flattens or spikes the grid, and the interconnection backlog is already their reference point because it has been in the regional press for a year [SRC: Large-load interconnection study backlog, quarterly update]. The DC architecture helps me only if we can say, truthfully, that it lets the campus curtail on request, and that the first hall uses equipment local contractors already know how to install [INF]. Count the votes: the contractors are for us if hall one is conventional, neutral if it is not. Say the community cost out loud before anyone else does: more load on a stressed grid. Then show the curtailment commitment in writing. That is how the second vote holds.",
+    "victoria-stroud": "Lenders price novelty, so let me translate. A credit committee will see a two-hall commitment to 800 VDC as technology risk layered on construction risk, and that costs something like twenty-five to fifty basis points on the construction facility until the first hall is energized and performing [EST]. A conversion-ready AC first hall carries a busway premium in the low single-digit percent of hall electrical cost [EST], which is cheap insurance against both the lead-time risk Margo named and the exit discount a single-standard campus would carry in a 2029 sale [INF]. The panel's prior ruling on pre-buying transformers set a usable test: pre-commit when the deposit is recoverable and the lead time exceeds the study window [SRC: Panel ruling: Should a 150 MW campus pre-buy transformers before the interconnection agreement is signed]. Apply it here: order shelves for hall two with a recoverable deposit, do not pre-commit hall one. Narrative does not clear committee; recoverable deposits do.",
+    "ingrid-halverson": "Start from the heat, not the voltage. At the rack densities that justify 800 VDC, every kilowatt that does not get rectified inside the rack is a kilowatt the cooling loop never sees, and shelf-level rectification moves that loss to a place with its own heat rejection path [EST]. The rack standard defines the shelf envelope and the airflow boundary, which is the number my model actually needs [SRC: Open Rack V3 power specification, revision 2024]. So the thermal case for DC is real, but it is a second-order gain of a few percent of IT load, not the headline [EST]. The first-order question is the facility loop: at a thirty-plus kelvin approach the coolant distribution unit sizing changes, and that is independent of the power architecture [INF]. My recommendation matches Mach's on the engineering and Margo's on the sequence: design both halls for liquid-to-chip with the facility loop sized for the 2027 density, build hall one on AC, and instrument it so the hall-two DC decision rests on measured heat, not vendor slides. Units on every number, please."
+  },
+  "factcheck": {
+    "items": [
+      {
+        "panelist": "margo-brandt",
+        "claim": "quoted lead times in the fifty-to-seventy-week range",
+        "tag_given": "SRC",
+        "tag_should_be": "EST",
+        "note": "The survey reports vendor self-declared lead times; vendor projections are at most EST, never SRC."
+      },
+      {
+        "panelist": "albert-thorne",
+        "claim": "flat profiles have been moving up the queue in recent large-load orders",
+        "tag_given": "EST",
+        "tag_should_be": "INF",
+        "note": "No retrieved artifact supports the queue-position claim; without a second source it is inference."
+      }
+    ],
+    "verdicts": {
+      "margo-brandt": "One downgrade: vendor lead times are EST, not SRC. Sequence stands. Proceed.",
+      "mach-eigen": "Busbar amperage is EST with the method stated; the shelf envelope is SRC to the rack standard. Clean. Proceed.",
+      "delia-marchetti": "All framing claims correctly tagged INF; the backlog citation is SRC. Proceed.",
+      "albert-thorne": "One downgrade: the queue-position claim is INF without a second feed. Study timeline is SRC. Proceed.",
+      "hartford-caldwell": "Every exposure claim tagged INF as it should be. Nothing to strike. Proceed.",
+      "rosalind-ferraro": "Backlog citation is SRC; the rest is correctly INF. Proceed.",
+      "victoria-stroud": "Basis-point range is EST with a stated basis; the prior ruling is SRC, correctly not VRF. Proceed.",
+      "ingrid-halverson": "Thermal gain is EST; the shelf envelope is SRC. Units present throughout. Proceed."
+    }
+  },
+  "ruling": "The question was whether to commit the first two halls to 800 VDC now or stay on 415 VAC until 2027. Nobody on this panel argued for a pure AC campus, and nobody argued for committing both halls to DC this quarter. The ruling: build every hall conversion-ready at the busway and shelf positions, build hall one on 415 VAC, and make hall two the first 800 VDC hall with shelves ordered on a recoverable deposit, decision point at steel-up. Margo's sequence and Mach's engineering agree once the vendor count is treated as a schedule fact rather than a design opinion. Hart confirmed nothing in this path is hard to undo, and Vick's test from our prior transformer ruling, pre-commit only when the deposit is recoverable and the lead time exceeds the study window, is the right gate for the hall-two order. Albert and Rose both pointed at the real constraint, the interconnection study, and the DC architecture earns its place only if it buys us a flatter, curtailable profile we can put in the filing. Ingrid's point stands: the thermal gain is second-order, so the DC case rests on the busbar math and the filing, not on cooling.\n\nDissent on the record: Mach wanted hall one on DC as well; I overrule him on schedule, not on physics.\n\nWhat would change my mind: a third shelf vendor shipping at volume with lead times inside forty weeks [EST], or a study-queue ruling that penalizes an amended load profile.",
+  "error": null
+}
