@@ -20,9 +20,12 @@
  * The chosen look id is written back to src/data/panel.ts as `chosenLookId`
  * so the choice is reproducible.
  *
- * Image spec (Decision §5): center-crop to square, 800×800 WebP q82 as
- * public/panel/<slug>.webp and 320×320 as public/panel/<slug>-thumb.webp.
- * Originals are never written to the repo.
+ * Image spec (Decision §5, amended TH-33): crop the original to the largest
+ * square, horizontally centred and vertically centred on the member's
+ * `cropFocusY` (0..1 of the original height, default 0.5 = plain centre
+ * crop), then encode 800×800 WebP q82 as public/panel/<slug>.webp and
+ * 320×320 as public/panel/<slug>-thumb.webp. Originals are never written to
+ * the repo. Geometry lives in scripts/lib/headshot-crop.ts.
  *
  * Manifest write-back: `src/data/panel.ts` keeps one member per line. For
  * each member we find the line containing `heygenGroupId: "<id>"` and either
@@ -36,14 +39,22 @@
  * { "<groupId>": [ { id, name, created_at, image_url|preview_image_url } ] }.
  * Used when the API is unreachable from the build host but the look listing
  * (and its signed image URLs) is available another way. Selection, image
- * processing, and manifest write-back are identical in both modes.
+ * processing, and manifest write-back are identical in both modes. In this
+ * mode an image_url may also be a file:// URL (used by the tests).
  *
- * Flags: --looks <file>  --manifest <file>  --out <dir>  --dry-run
+ * Single member (TH-33):
+ *   npm run panel:sync -- --only <slug>
+ * Re-syncs only the listed slug(s) (comma-separated). The manifest must still
+ * carry exactly ten members; the other members' assets are not touched.
+ *
+ * Flags: --looks <file>  --manifest <file>  --out <dir>  --only <slug[,slug]>  --dry-run
  */
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import sharp from "sharp";
+import { squareCropBox } from "./lib/headshot-crop.ts";
 
 type Look = {
   id: string;
@@ -61,6 +72,7 @@ type ManifestMember = {
   role: string;
   heygenGroupId: string;
   preferredLookId?: string;
+  cropFocusY?: number; // 0..1, default 0.5 (centre); see src/data/panel.ts
 };
 
 const HEYGEN_BASE = "https://api.heygen.com";
@@ -80,6 +92,7 @@ const ROOT = process.cwd();
 const MANIFEST_PATH = path.resolve(ROOT, arg("manifest") ?? "src/data/panel.ts");
 const OUT_DIR = path.resolve(ROOT, arg("out") ?? "public/panel");
 const LOOKS_FIXTURE = arg("looks");
+const ONLY = arg("only")?.split(",").map((s) => s.trim()).filter(Boolean);
 const DRY_RUN = flag("dry-run");
 
 // ---------------------------------------------------------------- manifest
@@ -107,7 +120,15 @@ function parseManifest(src: string): ManifestMember[] {
     if (!slug || !name || !role) {
       throw new Error(`Manifest line carries heygenGroupId but is missing slug/name/role: ${line.trim()}`);
     }
-    members.push({ slug, name, role, heygenGroupId: group[1], preferredLookId: pick("preferredLookId") });
+    const focusRaw = /\bcropFocusY:\s*([0-9.]+)/.exec(line)?.[1];
+    let cropFocusY: number | undefined;
+    if (focusRaw !== undefined) {
+      cropFocusY = Number.parseFloat(focusRaw);
+      if (Number.isNaN(cropFocusY) || cropFocusY < 0 || cropFocusY > 1) {
+        throw new Error(`Manifest member ${slug} has cropFocusY ${focusRaw}; it must be a number in 0..1`);
+      }
+    }
+    members.push({ slug, name, role, heygenGroupId: group[1], preferredLookId: pick("preferredLookId"), cropFocusY });
   }
   return members;
 }
@@ -117,6 +138,7 @@ function writeChosenLook(src: string, groupId: string, lookId: string): string {
   const idx = lines.findIndex((l) => isMemberLine(l) && l.includes(`heygenGroupId: "${groupId}"`));
   if (idx < 0) throw new Error(`Could not find manifest line for group ${groupId}`);
   const line = lines[idx];
+  if (line.includes(`chosenLookId: "${lookId}"`)) return src; // same look as last sync: nothing to write
   lines[idx] = /chosenLookId:\s*"[^"]*"/.test(line)
     ? line.replace(/chosenLookId:\s*"[^"]*"/, `chosenLookId: "${lookId}"`)
     : line.replace(`heygenGroupId: "${groupId}",`, `heygenGroupId: "${groupId}", chosenLookId: "${lookId}",`);
@@ -193,16 +215,22 @@ function imageUrl(l: Look): string {
 // ---------------------------------------------------------------- images
 
 async function download(url: string): Promise<Buffer> {
+  if (url.startsWith("file://")) return readFile(fileURLToPath(url));
   const res = await fetch(url);
   if (!res.ok) throw new Error(`image download → HTTP ${res.status}`);
   return Buffer.from(await res.arrayBuffer());
 }
 
-async function squareWebp(input: Buffer, size: number): Promise<Buffer> {
-  // Center-crop to square via cover fit, then encode WebP at the spec quality.
-  return sharp(input, { failOn: "error" })
-    .rotate()
-    .resize(size, size, { fit: "cover", position: "centre" })
+async function squareWebp(input: Buffer, size: number, focusY = 0.5): Promise<Buffer> {
+  // Apply EXIF orientation first so the measured dimensions match the pixels
+  // we crop, then take the focal-point square and encode WebP at spec quality.
+  const rotated = await sharp(input, { failOn: "error" }).rotate().toBuffer();
+  const { width, height } = await sharp(rotated).metadata();
+  if (!width || !height) throw new Error("could not read image dimensions");
+  const box = squareCropBox(width, height, focusY);
+  return sharp(rotated)
+    .extract({ left: box.left, top: box.top, width: box.size, height: box.size })
+    .resize(size, size)
     .webp({ quality: QUALITY })
     .toBuffer();
 }
@@ -215,6 +243,14 @@ async function main() {
   if (members.length !== 10) {
     throw new Error(`Expected exactly 10 panel members in the manifest (TF-DEC-31), found ${members.length}`);
   }
+  let targets = members;
+  if (ONLY && ONLY.length > 0) {
+    const known = new Set(members.map((m) => m.slug));
+    const unknown = ONLY.filter((s) => !known.has(s));
+    if (unknown.length > 0) throw new Error(`--only names unknown slug(s): ${unknown.join(", ")}`);
+    targets = members.filter((m) => ONLY.includes(m.slug));
+  }
+  console.log(`Syncing ${targets.length} of ${members.length} members${ONLY ? ` (--only ${ONLY.join(",")})` : ""}.`);
 
   let fixture: Record<string, Look[]> | null = null;
   let apiKey: string | undefined;
@@ -239,8 +275,8 @@ async function main() {
   const failures: string[] = [];
   let updated = manifestSrc;
 
-  for (const m of members) {
-    console.log(`→ ${m.slug}`);
+  for (const m of targets) {
+    console.log(`→ ${m.slug}${m.cropFocusY !== undefined ? ` (cropFocusY ${m.cropFocusY})` : ""}`);
     try {
       const looks = fixture ? fixture[m.heygenGroupId] ?? [] : await fetchLooksLive(m.heygenGroupId, apiKey!);
       if (looks.length === 0) {
@@ -248,7 +284,8 @@ async function main() {
       }
       const look = chooseLook(looks, m.preferredLookId);
       const original = await download(imageUrl(look));
-      const [full, thumb] = await Promise.all([squareWebp(original, FULL), squareWebp(original, THUMB)]);
+      const focusY = m.cropFocusY ?? 0.5;
+      const [full, thumb] = await Promise.all([squareWebp(original, FULL, focusY), squareWebp(original, THUMB, focusY)]);
       const fullPath = path.join(OUT_DIR, `${m.slug}.webp`);
       const thumbPath = path.join(OUT_DIR, `${m.slug}-thumb.webp`);
       if (!DRY_RUN) {

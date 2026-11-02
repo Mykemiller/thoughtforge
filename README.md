@@ -9,6 +9,7 @@ Ten original AI advisors argue a datacenter question in the open and hand back o
 | **Meet the Panel** | `/panel`, `/panel/<slug>` | The roster from the cast files in `cast/`: headshot, role, voice brief, then a full bio page per panelist (About, Experience, Education, Life outside work, Voices they follow, Working with the panel). Public. |
 | **Ask the Panel** | `/ask`, `POST /api/ask` | Eight domain panelists answer in parallel, the Fact-Checker grades every claim on the VRF/SRC/EST/INF ladder and marks what she downgrades, and the Chief of Staff rules last with a dissent line and what would change his mind. Streams over server-sent events. Private (see Access). |
 | **Artifact path** | `npm run ingest:artifact`, `tf_artifacts` | Two ways in, one table: Markdown files with front matter, and every finished panel session. Retrieval reads that table and the Faraday artifact library in the same Supabase project. See `docs/artifacts.md`. |
+| **Panel email** | `GET /api/email/cron`, `POST /api/email/signal` | Week 1 of TH-31: the ten panelists email Myke from `first.last@panel.faraday-thoughtforge.com` (Resend), plain text, Reply-To on Fastmail. A weekday morning note from a rotating chair, a Tue/Thu cold open, and one takeaway each on every Faraday Signal, in one thread. Outbound only. See `src/email/README.md`. |
 
 ## Running locally
 
@@ -36,7 +37,7 @@ If `TF_ACCESS_KEY` is unset the gate is open and logs one warning; set it to loc
 
 ## Environment variables (names only)
 
-`ANTHROPIC_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `ELEVENLABS_API_KEY`, `HEYGEN_API_KEY`, `TF_ACCESS_KEY`, `TF_MOCK`. See `.env.example`. Secrets live on the Vercel project `thoughtforge` (team `project-foundry`); code reads them from `process.env` only. The Supabase project of record is `ycadmmngkdhvpcsrcuaq`; every database path asserts that first and refuses the decoy project.
+`ANTHROPIC_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `ELEVENLABS_API_KEY`, `HEYGEN_API_KEY`, `TF_ACCESS_KEY`, `TF_MOCK`, and for panel email `RESEND_API_KEY`, `PANEL_RECIPIENT_EMAIL`, `PANEL_REPLY_TO`, `PANEL_CRON_SECRET`, `CRON_SECRET` (same value as `PANEL_CRON_SECRET`), `DRY_RUN`. See `.env.example`. Secrets live on the Vercel project `thoughtforge` (team `project-foundry`); code reads them from `process.env` only. The Supabase project of record is `ycadmmngkdhvpcsrcuaq`; every database path asserts that first and refuses the decoy project.
 
 ## Access
 
@@ -60,8 +61,13 @@ npm test               # node:test via tsx: cast tooling, loader, prompt budget,
 npm run validate:cast  # cast standard (docs/cast-standard.md)
 npm run audit:cast -- --stdout   # TH-30 QA gate, now with the app's UI copy in scope
 npm run build
+npm run email:preview -- --kind briefing --slug delia-marchetti   # compose one panel email; never sends
 npm run screenshots    # Playwright: docs/screenshots/*.png from production builds (mock and locked)
 ```
+
+## Panel email cron
+
+`vercel.json` runs `/api/email/cron` at `0 13 * * 1-5`: 13:00 UTC is 07:00 CST. During daylight time (CDT) Myke moves it to `0 12 * * 1-5`. Details, DRY_RUN and the Fastmail/Resend split: `src/email/README.md`.
 
 ## Cast
 
