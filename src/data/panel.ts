@@ -25,12 +25,19 @@ export type PanelMember = {
   chosenLookId?: string;
   image: string; // "/panel/<slug>.webp"
   thumb: string; // "/panel/<slug>-thumb.webp"
+  /**
+   * Vertical focal point of the face in the HeyGen ORIGINAL, 0..1 (0 = top
+   * edge, 1 = bottom edge). `npm run panel:sync` centres the square crop on
+   * this row. Undefined = 0.5, the plain centre crop every member got before
+   * TH-33. Set it only when a member's original is composed off-centre.
+   */
+  cropFocusY?: number;
 };
 
 // prettier-ignore
 export const PANEL: PanelMember[] = [
   { order: 1,  slug: "gilbert-faraday",   name: "Gilbert Faraday",      role: "Chief of Staff",     specialty: "Rulings, synthesis, final call",                                   heygenGroupId: "aadfa9fef6faa4547f531565fe79cec6", chosenLookId: "aadfa9fef6faa4547f531565fe79cec6", image: "/panel/gilbert-faraday.webp",   thumb: "/panel/gilbert-faraday-thumb.webp",   bio: "Chairs the panel. Asks one question, lets the panel argue, then rules, and always states what evidence would change his mind. Speaks last." },
-  { order: 2,  slug: "margo-brandt",      name: "Margo Brandt",         role: "First Officer",      specialty: "Construction, development, execution sequencing",                 heygenGroupId: "bf3127845753467f8a6b8a68d450176c", chosenLookId: "d70d92d1adfb49c9bca85d281115fb19", image: "/panel/margo-brandt.webp",      thumb: "/panel/margo-brandt-thumb.webp",      bio: "Deputy Chief of Staff. Turns every ruling into a sequence with owners and dates, and checks lead times before anyone falls in love with a design." },
+  { order: 2,  slug: "margo-brandt",      name: "Margo Brandt",         role: "First Officer",      specialty: "Construction, development, execution sequencing",                 heygenGroupId: "bf3127845753467f8a6b8a68d450176c", chosenLookId: "d70d92d1adfb49c9bca85d281115fb19", cropFocusY: 0.36, image: "/panel/margo-brandt.webp",      thumb: "/panel/margo-brandt-thumb.webp",      bio: "Deputy Chief of Staff. Turns every ruling into a sequence with owners and dates, and checks lead times before anyone falls in love with a design." },
   { order: 3,  slug: "mach-eigen",        name: "Mach Eigen",           role: "Chief Engineer",     specialty: "Power architecture: 800 VDC, BESS, SMR, construction engineering", heygenGroupId: "b62c9bacbb686ca245ae54f45c3297b0", chosenLookId: "e153df7a9df9614ef43f329fa6acc24f", image: "/panel/mach-eigen.webp",        thumb: "/panel/mach-eigen-thumb.webp",        bio: "Works from first principles. Numbers before adjectives. If a design is physically wrong, he says so, to anyone, including the vendor." },
   { order: 4,  slug: "delia-marchetti",   name: "Delia Marchetti",      role: "Press Lead",         specialty: "Markets, media, public framing",                                   heygenGroupId: "30b40d70f6277d73d7dcdbb239abf8a1", chosenLookId: "affee02bb67049a681bec2b57b7ac226", image: "/panel/delia-marchetti.webp",   thumb: "/panel/delia-marchetti-thumb.webp",   bio: "Translates the engineering answer into two sentences a county commissioner understands, and flags the line that ends up on page one before it does." },
   { order: 5,  slug: "albert-thorne",     name: "Albert Thorne",        role: "Policy",             specialty: "Grid policy, interconnection, FERC, ISOs, PUCs",                   heygenGroupId: "286965e14cca575302d4329251c4add9", chosenLookId: "286965e14cca575302d4329251c4add9", image: "/panel/albert-thorne.webp",     thumb: "/panel/albert-thorne-thumb.webp",     bio: "Distinguishes what the rule says from how the system actually behaves. Plans for the real timeline, cites the docket and the tariff section, and is rarely surprised." },
