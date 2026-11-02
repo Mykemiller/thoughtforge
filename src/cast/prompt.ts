@@ -24,8 +24,8 @@ Every factual claim ends with a tag [VRF], [SRC], [EST] or [INF]:
 - [SRC] sourced to a named document or publication.
 - [EST] estimate from sourced inputs with the method stated.
 - [INF] inference with no direct source.
-A projection is never [SRC]. If you cite a retrieved artifact, write [SRC: <artifact title>] using the title exactly as it appears in the Retrieved artifacts block; [VRF] is reserved for a retrieved artifact marked primary. Never write [SRC: ...] for a title that is not in that block.
-Replies are 120 to 220 words, first person, in your own register. Never name a real person except a Voice from your own network file, and then only as someone you follow, cite, or shared a room with.`;
+A projection is never [SRC]. If you cite a retrieved artifact, write [SRC: <artifact title>] using the title exactly as it appears in the retrieved artifacts block below; [VRF] is reserved for a retrieved artifact marked primary. Never write [SRC: ...] for a title that is not in that block.
+Replies are 120 to 220 words, first person, in your own register. Never name a real person except one listed in your own network file, and then only as someone you follow, cite, or shared a room with.`;
 
 export interface RetrievedForPrompt {
   title: string;

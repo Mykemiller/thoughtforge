@@ -43,6 +43,31 @@ const skillFiles = (slug: string) =>
   readdirSync(join(CAST, slug, "skills"), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => `cast/${slug}/skills/${d.name}/SKILL.md`);
 const sharedSkillFiles = readdirSync(join(CAST, "_shared/skills"), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => `cast/_shared/skills/${d.name}/SKILL.md`);
 
+// ---------- UI copy in scope (TH-32) ----------
+const UI_COPY_ROOTS = ["app", "src/components", "src/cast/prompt.ts", "src/ask/orchestrate.ts", "src/ask/render.ts"];
+function walk(dir: string): string[] {
+  return readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((d) =>
+    d.isDirectory() ? walk(`${dir}/${d.name}`) : /\.(tsx?|ts)$/.test(d.name) && !d.name.endsWith(".test.ts") ? [`${dir}/${d.name}`] : []);
+}
+function uiCopyFiles(): string[] {
+  return UI_COPY_ROOTS.flatMap((r) => (existsSync(join(ROOT, r)) && !/\.tsx?$/.test(r) ? walk(r) : existsSync(join(ROOT, r)) ? [r] : [])).sort();
+}
+/**
+ * Pull the prose out of a TS/TSX file: string and template literals, plus JSX text nodes in .tsx.
+ * Code stays out: identifiers, class names and all-caps labels (THE PANEL, TF_ACCESS_KEY) are not copy.
+ */
+function uiCopyText(src: string, isTsx: boolean): string {
+  const out: string[] = [];
+  const clean = (t: string) =>
+    t.replace(/\\n/g, "\n").replace(/^\s*#+\s*/gm, "").replace(/\$\{[^}]*\}/g, " ").replace(/\b[A-Z][A-Z0-9_]+\b/g, " ");
+  for (const m of src.matchAll(/"((?:[^"\\\n]|\\.)*)"|'((?:[^'\\\n]|\\.)*)'|`((?:[^`\\]|\\.)*)`/g)) {
+    const lit = m[1] ?? m[2] ?? m[3] ?? "";
+    if (/\s/.test(lit.trim()) && !/^[a-z0-9\-:\/\[\]().%#@_,\s]+$/.test(lit) && !/^\.?\.?\//.test(lit)) out.push(clean(lit));
+  }
+  if (isTsx) for (const m of src.matchAll(/>([^<>{}]*[A-Za-z][^<>{}]*)</g)) if (/\s/.test(m[1].trim()) && !/[;=()]/.test(m[1])) out.push(clean(m[1]));
+  return out.join("\n");
+}
+
 // ---------- lexicon ----------
 const fictionalNames: string[] = [];
 for (const p of personas.values()) {
@@ -103,6 +128,9 @@ const results: Result[] = [];
     for (const f of skillFiles(slug)) scan(f, read(f), [], true);
   }
   for (const f of sharedSkillFiles) scan(f, read(f), [], true);
+  // TH-32: the app's own user-facing copy and prompt text are in scope too (string literals and
+  // JSX text only; identifiers are code, not copy). No Voice is allowed there (TF-DEC-13).
+  for (const f of uiCopyFiles()) scan(f, uiCopyText(read(f), f.endsWith(".tsx")), [], true);
 
   const candidates = [...allCandidates].sort();
   const sha = createHash("sha256").update(candidates.join("\n")).digest("hex");

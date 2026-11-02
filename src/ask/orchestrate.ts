@@ -26,7 +26,7 @@ const PANELIST_TURN = `## This turn
 Answer the user's question below as yourself, in 120 to 220 words, first person. Lead with your domain's answer, state disagreement with the likely view of another panelist if you have one, and tag every factual claim. Do not address the user as a group and do not summarize the other panelists.`;
 
 const FACTCHECK_TURN = (slugs: readonly string[]) => `## This turn
-You are grading the eight replies below before the Chief of Staff rules. For every claim whose tag you downgrade, record it. A projection tagged [SRC] is always downgraded to [EST]. A [SRC: title] whose title is not in the Retrieved artifacts block is downgraded to [INF]. A [VRF] on anything but a primary retrieved artifact is downgraded to [SRC] or lower.
+You are grading the eight replies below before the Chief of Staff rules. For every claim whose tag you downgrade, record it. A projection tagged [SRC] is always downgraded to [EST]. A [SRC: title] whose title is not in the retrieved artifacts block is downgraded to [INF]. A [VRF] on anything but a primary retrieved artifact is downgraded to [SRC] or lower.
 Return ONLY compact JSON, no prose, in this exact shape:
 {"verdicts":{${slugs.map((s) => `"${s}":"<one line>"`).join(",")}},"items":[{"panelist":"<slug>","claim":"<short quote>","tag_given":"SRC","tag_should_be":"EST","note":"<why>"}]}
 Keep each verdict under 25 words and each item under 40 words. Use the slugs exactly as given.`;

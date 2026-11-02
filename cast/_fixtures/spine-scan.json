@@ -3,9 +3,9 @@
   "project_ref": "ycadmmngkdhvpcsrcuaq",
   "taken_at": "2026-11-01",
   "people_total": 1734,
-  "candidates_checked": 671,
-  "candidates_sha256": "d716748f2c5844f7a134dbca419b5b3a8b6159dbeaa237b62901f51b0cc4a115",
-  "coverage_note": "Full pass covered 669 of the 671 phrases; a second pass covered all 299 two- and three-word, name-shaped phrases. Neither pass found a match outside the networks.",
+  "candidates_checked": 678,
+  "candidates_sha256": "c73a9a1e53c9d1c96194d5d76dd44d9cc03e2bb0c0fb27fdd5153ac9424b3bcf",
+  "coverage_note": "Full pass covered 669 of the 671 phrases; a second pass covered all 299 two- and three-word, name-shaped phrases. Neither pass found a match outside the networks. Refreshed 2026-11-01 21:25 CT for TH-32: the app's UI copy and prompt text joined the candidate list (7 new phrases: Ask the Panel, Enter, Fact-Checker, Faraday Intelligence, Meet the Panel, Panel, ThoughtForge Faraday Intelligence); all 7 were checked read-only against all 1,734 people (equal canonical name, equal alias, or containing a full canonical name) with no match. The 25 earlier matches are unchanged.",
   "matches": [
     {
       "phrase": "Ann McCabe",
