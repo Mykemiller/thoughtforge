@@ -22,7 +22,8 @@
     "ingest:artifact": "tsx scripts/ingest-artifact.ts",
     "inspect:artifacts": "tsx scripts/inspect-artifacts.ts",
     "apply:migration": "tsx scripts/apply-migration.ts",
-    "screenshots": "tsx scripts/screenshots.ts"
+    "screenshots": "tsx scripts/screenshots.ts",
+    "mirror:cast": "tsx scripts/mirror-cast-to-notion.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.3.0",
@@ -35,6 +36,7 @@
     "yaml": "^2.9.1"
   },
   "devDependencies": {
+    "@notionhq/client": "^5.30.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^22.20.5",
     "@types/react": "^19",
