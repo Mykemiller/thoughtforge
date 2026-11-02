@@ -77,3 +77,21 @@ $$;
 
 revoke all on function public.tf_search_faraday_artifacts(text, int) from public, anon;
 grant execute on function public.tf_search_faraday_artifacts(text, int) to service_role;
+
+-- Read-only schema discovery used by scripts/inspect-artifacts.ts (PostgREST cannot read
+-- information_schema directly). Service role only.
+create or replace function public.tf_inspect_artifact_columns()
+returns table (table_name text, column_name text, data_type text)
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select c.table_name::text, c.column_name::text, c.data_type::text
+  from information_schema.columns c
+  where c.table_schema = 'public' and c.table_name like 'artifact%'
+  order by c.table_name, c.ordinal_position;
+$$;
+
+revoke all on function public.tf_inspect_artifact_columns() from public, anon;
+grant execute on function public.tf_inspect_artifact_columns() to service_role;

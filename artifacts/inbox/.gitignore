@@ -1,0 +1,5 @@
+# Staging area: everything here is ignored except the README and the example.
+*
+!.gitignore
+!README.md
+!_example.md

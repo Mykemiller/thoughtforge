@@ -11,14 +11,17 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.scripts.json",
-    "test": "tsx --test scripts/tests/tooling.test.ts src/*/*.test.ts",
+    "test": "tsx --test scripts/tests/*.test.ts src/*/*.test.ts",
     "panel:sync": "tsx scripts/sync-panel-headshots.ts",
     "validate:cast": "node scripts/validate-cast.mjs",
     "smoke:gdelt": "tsx scripts/smoke-gdelt.ts",
     "resolve:network": "tsx scripts/resolve-network.ts",
     "resolve:network:dry": "tsx scripts/resolve-network.ts --slug _fixtures --snapshot cast/_fixtures/people-snapshot.json --dry-run",
     "resolve:network:snapshot": "tsx scripts/resolve-network.ts --all --snapshot cast/_fixtures/people-snapshot.json",
-    "audit:cast": "tsx scripts/audit-cast.ts"
+    "audit:cast": "tsx scripts/audit-cast.ts",
+    "ingest:artifact": "tsx scripts/ingest-artifact.ts",
+    "inspect:artifacts": "tsx scripts/inspect-artifacts.ts",
+    "apply:migration": "tsx scripts/apply-migration.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.3.0",
