@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { Monogram } from "./Monogram";
 
-/** Primary nav. "Panel" is last by design (new links go after it). */
+/** Primary nav. Order: Home, Panel, then the newest capability. */
 const NAV = [
   { href: "/", label: "Home" },
   { href: "/panel", label: "Panel" },
+  { href: "/ask", label: "Ask the panel" },
 ] as const;
 
 export function SiteNav() {
