@@ -9,7 +9,20 @@ import { DryRunSender } from "./send";
 import { MemoryEmailStore } from "./store";
 
 const SECRET = "test-secret-0123456789abcdef";
-const env: EmailEnv = { dryRun: true, mockCompose: true, resendApiKey: null, recipient: "r@example.com", replyTo: "p@example.com", cronSecret: SECRET, supabaseUrl: "https://ycadmmngkdhvpcsrcuaq.supabase.co" };
+const env: EmailEnv = {
+  dryRun: true,
+  mockCompose: true,
+  resendApiKey: null,
+  recipient: "r@example.com",
+  replyTo: "p@example.com",
+  cronSecret: SECRET,
+  supabaseUrl: "https://ycadmmngkdhvpcsrcuaq.supabase.co",
+  webhookSecret: null,
+  signalMode: "thread",
+  readerName: "Myke",
+  replyAllowlist: ["r@example.com"],
+  maxRepliesPerThreadPerDay: 6,
+};
 
 function httpDeps(over: Partial<HttpDeps> = {}) {
   const store = new MemoryEmailStore();
@@ -18,6 +31,9 @@ function httpDeps(over: Partial<HttpDeps> = {}) {
     cronSecret: () => SECRET,
     env: () => env,
     build: () => ({ panelists: loadEmailPanelists(), compose: composerFor(mockModel), sender, store, recipient: env.recipient, replyTo: env.replyTo, sleep: async () => {} }),
+    buildInbound: () => {
+      throw new Error("not used in this test");
+    },
     now: () => new Date("2026-11-03T13:00:00Z"),
     ...over,
   };

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { loadCast } from "../cast/loader";
-import { EMAIL_ORDER, fromHeader, loadEmailPanelists, localPart, SENDING_DOMAIN, signature } from "./panelists";
+import { bareAddress, EMAIL_ORDER, fromHeader, loadEmailPanelists, localPart, panelistByAddress, replyInboxFor, SENDING_DOMAIN, signature } from "./panelists";
 
 test("email order matches the cast manifest order (TF-DEC-31)", () => {
   assert.deepEqual([...EMAIL_ORDER], loadCast().map((m) => m.slug));
@@ -36,4 +36,29 @@ test("local part and From header helpers", () => {
 
 test("signature is two lines: name and role, then the panel line", () => {
   assert.equal(signature({ name: "Mach Eigen", role: "Chief Engineer" }), "Mach Eigen, Chief Engineer\nThoughtForge panel, Faraday Intelligence");
+});
+
+test("per-panelist Reply-To: firstname@ on the root domain, never a nickname, never the panel subdomain (TF-DEC-83)", () => {
+  const by = new Map(loadEmailPanelists().map((p) => [p.slug, p.replyTo]));
+  assert.deepEqual(
+    [...by.entries()],
+    [
+      ["gilbert-faraday", "gilbert@faraday-thoughtforge.com"],
+      ["margo-brandt", "margo@faraday-thoughtforge.com"],
+      ["mach-eigen", "mach@faraday-thoughtforge.com"],
+      ["delia-marchetti", "delia@faraday-thoughtforge.com"],
+      ["albert-thorne", "albert@faraday-thoughtforge.com"],
+      ["hartford-caldwell", "hartford@faraday-thoughtforge.com"],
+      ["rosalind-ferraro", "rosalind@faraday-thoughtforge.com"],
+      ["victoria-stroud", "victoria@faraday-thoughtforge.com"],
+      ["ingrid-halverson", "ingrid@faraday-thoughtforge.com"],
+      ["constance-wright", "constance@faraday-thoughtforge.com"],
+    ],
+  );
+  assert.equal(replyInboxFor("hartford-nakamura"), "hartford@faraday-thoughtforge.com");
+  const ps = loadEmailPanelists();
+  assert.equal(panelistByAddress(ps, '"Margo Brandt" <margo.brandt@panel.faraday-thoughtforge.com>')?.slug, "margo-brandt");
+  assert.equal(panelistByAddress(ps, "MARGO@faraday-thoughtforge.com")?.slug, "margo-brandt");
+  assert.equal(panelistByAddress(ps, "panel@faraday-thoughtforge.com"), undefined);
+  assert.equal(bareAddress("Dr. Ingrid Halverson <Ingrid.Halverson@panel.faraday-thoughtforge.com>"), "ingrid.halverson@panel.faraday-thoughtforge.com");
 });

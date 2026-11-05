@@ -15,8 +15,11 @@ export interface OutboundEmail {
   replyTo: string;
   subject: string;
   text: string;
-  /** Our own Message-ID, set as a header and stored for Week 2 threading. */
+  /** Our own Message-ID, set as a header and stored for threading. */
   messageId: string;
+  /** Threading headers for replies (TH-47): the Message-ID being answered and the chain so far. */
+  inReplyTo?: string;
+  references?: string[];
   /** Sent as Resend's Idempotency-Key: kind/send_date/panelist_slug. */
   idempotencyKey: string;
 }
@@ -33,6 +36,14 @@ export interface Sender {
 
 export const makeMessageId = () => `<${randomUUID()}@${SENDING_DOMAIN}>`;
 
+/** Message-ID always; In-Reply-To and References only on replies, so mail clients thread them. */
+export function threadingHeaders(email: Pick<OutboundEmail, "messageId" | "inReplyTo" | "references">): Record<string, string> {
+  const h: Record<string, string> = { "Message-ID": email.messageId };
+  if (email.inReplyTo) h["In-Reply-To"] = email.inReplyTo;
+  if (email.references?.length) h["References"] = email.references.join(" ");
+  return h;
+}
+
 export class ResendSender implements Sender {
   private readonly resend: Resend;
   constructor(apiKey: string) {
@@ -46,7 +57,7 @@ export class ResendSender implements Sender {
         replyTo: email.replyTo,
         subject: email.subject,
         text: email.text,
-        headers: { "Message-ID": email.messageId },
+        headers: threadingHeaders(email),
       },
       { idempotencyKey: email.idempotencyKey },
     );
@@ -62,9 +73,10 @@ export function formatDryRun(email: OutboundEmail): string {
     "----- DRY_RUN: not sent -----",
     `From: ${email.from}`,
     "To: $PANEL_RECIPIENT_EMAIL",
-    "Reply-To: $PANEL_REPLY_TO",
+    `Reply-To: ${email.replyTo.endsWith("@faraday-thoughtforge.com") ? email.replyTo : "$PANEL_REPLY_TO"}`,
     `Subject: ${email.subject}`,
     `Message-ID: ${email.messageId}`,
+    ...(email.inReplyTo ? [`In-Reply-To: ${email.inReplyTo}`] : []),
     "",
     email.text,
     "----- end -----",

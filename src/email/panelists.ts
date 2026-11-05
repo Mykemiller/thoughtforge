@@ -9,6 +9,18 @@ import type { EmailPanelist } from "./types";
 
 /** Resend sends from this subdomain only; the root domain's mail stays on Fastmail. */
 export const SENDING_DOMAIN = "panel.faraday-thoughtforge.com";
+/** Each panelist's own Fastmail inbox lives on the root domain: firstname@ (TF-DEC-83). */
+export const REPLY_INBOX_DOMAIN = "faraday-thoughtforge.com";
+
+/**
+ * "hartford-caldwell" -> "hartford@faraday-thoughtforge.com". The first token of the
+ * slug, never the nickname (hart, rose, vick, doc), so the mailbox names Myke created hold.
+ */
+export function replyInboxFor(slug: string): string {
+  const first = slug.split("-")[0];
+  if (!first) throw new Error(`email: cannot derive a reply inbox from slug "${slug}"`);
+  return `${first}@${REPLY_INBOX_DOMAIN}`;
+}
 
 /** Sender order for rotation and for Signal takeaways (the TH-31 table, identical to the manifest order). */
 export const EMAIL_ORDER = [
@@ -52,6 +64,7 @@ export function toEmailPanelist(member: CastMember): EmailPanelist {
     role: p.role,
     address,
     from: fromHeader(p.display_name, address),
+    replyTo: replyInboxFor(member.slug),
     domains: p.idf_domains.map((d) => `${d.code} ${d.name}`).join(", "),
     voiceBrief: p.voice_brief,
     sampleLine: p.sample_line,
@@ -68,6 +81,18 @@ export function loadEmailPanelists(): EmailPanelist[] {
     if (!m) throw new Error(`email: ${slug} is missing from the cast`);
     return toEmailPanelist(m);
   });
+}
+
+/** Lower-cased bare address out of "Name <a@b>" or "a@b". */
+export function bareAddress(header: string): string {
+  const m = header.match(/<([^>]+)>/);
+  return (m ? m[1] : header).trim().toLowerCase();
+}
+
+/** The panelist whose sending address or reply inbox matches, else undefined. */
+export function panelistByAddress(panelists: readonly EmailPanelist[], address: string): EmailPanelist | undefined {
+  const a = bareAddress(address);
+  return panelists.find((p) => p.address === a || p.replyTo === a);
 }
 
 export function signature(p: Pick<EmailPanelist, "name" | "role">): string {
