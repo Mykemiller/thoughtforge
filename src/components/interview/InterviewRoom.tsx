@@ -8,7 +8,9 @@ import type { Artifact } from "@/src/retrieval";
 import { parseEvents } from "@/src/ask/sse";
 import { mergeArtifacts, type InterviewEvent, type InterviewMessage } from "@/src/interview/sse";
 import { replyCount, transcriptMarkdown } from "@/src/interview/transcript";
+import { SentenceBuffer } from "@/src/voice/sentences";
 import { ReplyText } from "@/src/components/ask/ReplyText";
+import { useMic, useSpeaker, useVoiceStatus } from "./useVoice";
 
 export interface InterviewRoomProps {
   member: PanelMember;
@@ -34,6 +36,17 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
   const endRef = useRef<HTMLDivElement>(null);
   const busy = phase !== "idle";
 
+  // Voice (TH-50): status once per panelist, a speaker queue fed sentence by sentence, dictation in.
+  const voice = useVoiceStatus(member.slug);
+  const [voiceOn, setVoiceOn] = useState(true);
+  const speakerEnabled = voiceOn && Boolean(voice?.available) && !mock;
+  const { unlock, speak, stop: stopSpeaking, speaking, lastError: voiceError, clearError: clearVoiceError } = useSpeaker(member.slug, speakerEnabled);
+  const sentences = useRef(new SentenceBuffer());
+  const onDictated = useCallback((text: string) => {
+    if (text) setDraft((d) => (d ? `${d} ${text}` : text));
+  }, []);
+  const mic = useMic(onDictated, stopSpeaking);
+
   useEffect(() => {
     endRef.current?.scrollIntoView({ block: "nearest" });
   }, [transcript, live]);
@@ -46,6 +59,11 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
       return;
     }
     setError(null);
+    clearVoiceError();
+    mic.stopMic();
+    stopSpeaking(); // barge-in: a new question ends the previous answer's audio
+    unlock();
+    sentences.current.reset();
     const next: InterviewMessage[] = [...transcript, { role: "user", content: q }];
     const started = startedAt ?? new Date().toISOString();
     setStartedAt(started);
@@ -93,6 +111,9 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
             reply += ev.text;
             setLive(reply);
             setPhase("replying");
+            for (const phrase of sentences.current.push(ev.text)) speak(phrase);
+          } else if (ev.type === "reply_end") {
+            for (const phrase of sentences.current.flush()) speak(phrase);
           } else if (ev.type === "error") {
             setError(ev.message);
           } else if (ev.type === "done") {
@@ -114,7 +135,7 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
       setLive("");
       setPhase("idle");
     }
-  }, [draft, busy, maxChars, transcript, startedAt, sessionId, artifacts, member.slug]);
+  }, [draft, busy, maxChars, transcript, startedAt, sessionId, artifacts, member.slug, clearVoiceError, mic, stopSpeaking, unlock, speak]);
 
   const onKey = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
@@ -148,7 +169,9 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
     <div className="flex flex-col gap-8">
       {/* Who */}
       <header className="flex items-start gap-4">
-        <Image src={member.image} alt={`${member.name}, ${member.role}`} width={96} height={96} className="h-20 w-20 rounded-full object-cover ring-2 ring-primary sm:h-24 sm:w-24" priority />
+        <span className={`relative inline-flex shrink-0 rounded-full ${speaking ? "ring-4 ring-accent animate-pulse" : "ring-2 ring-primary"}`} aria-label={speaking ? `${member.name} is speaking` : undefined}>
+          <Image src={member.image} alt={`${member.name}, ${member.role}`} width={96} height={96} className="h-20 w-20 rounded-full object-cover sm:h-24 sm:w-24" priority />
+        </span>
         <div className="min-w-0">
           <p className="font-mono text-xs tracking-[0.08em] text-ink-muted">1:1 INTERVIEW</p>
           <h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">{member.name}</h1>
@@ -162,6 +185,28 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
             <Link href="/interview" className="font-semibold text-primary underline-offset-4 hover:underline">
               Pick someone else
             </Link>
+          </p>
+          <p className="mt-2 flex flex-wrap items-center gap-2 text-xs text-ink-muted">
+            {voice === null ? (
+              <span>Checking voice…</span>
+            ) : voice.available ? (
+              <>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (voiceOn) stopSpeaking();
+                    setVoiceOn((v) => !v);
+                  }}
+                  aria-pressed={voiceOn}
+                  className="inline-flex min-h-8 items-center rounded-card border border-line px-2 font-mono text-[11px] uppercase tracking-[0.08em] text-primary hover:bg-muted"
+                >
+                  Voice {voiceOn ? "on" : "off"}
+                </button>
+                <span>{member.name.split(" ")[0]} speaks in the voice &ldquo;{voice.voice_name}&rdquo;.</span>
+              </>
+            ) : (
+              <span>Text only for now: {voice.reason}</span>
+            )}
           </p>
         </div>
       </header>
@@ -235,6 +280,11 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
           {error}
         </div>
       ) : null}
+      {voiceError || mic.micError ? (
+        <p role="status" className="text-xs text-ink-muted">
+          {voiceError ? `Voice: ${voiceError} (the transcript is unaffected).` : null} {mic.micError}
+        </p>
+      ) : null}
 
       {/* Composer */}
       <form
@@ -250,12 +300,15 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
         <textarea
           id="message"
           value={draft}
-          onChange={(e) => setDraft(e.target.value)}
+          onChange={(e) => {
+            if (speaking) stopSpeaking(); // barge-in
+            setDraft(e.target.value);
+          }}
           onKeyDown={onKey}
           rows={3}
           maxLength={maxChars + 50}
           disabled={busy}
-          placeholder={`Ask ${member.name.split(" ")[0]} something, or tap a question from the arc.`}
+          placeholder={mic.listening ? (mic.interim ? mic.interim : "Listening…") : `Ask ${member.name.split(" ")[0]} something, or tap a question from the arc.`}
           className="w-full resize-y rounded-card border border-line bg-surface p-4 text-base leading-relaxed text-ink placeholder:text-ink-muted/70 focus:border-accent disabled:opacity-70"
         />
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -264,6 +317,22 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
             {mock ? " · demo mode: canned replies, nothing saved" : ""}
           </span>
           <div className="flex gap-2">
+            {mic.supported ? (
+              <button
+                type="button"
+                onClick={() => (mic.listening ? mic.stopMic() : mic.startMic())}
+                disabled={busy}
+                aria-pressed={mic.listening}
+                className={`inline-flex min-h-11 items-center rounded-card border px-4 text-sm font-semibold disabled:opacity-50 ${mic.listening ? "border-accent bg-accent/10 text-ink" : "border-line text-primary hover:bg-muted"}`}
+              >
+                {mic.listening ? "Stop listening" : "Speak"}
+              </button>
+            ) : null}
+            {speaking ? (
+              <button type="button" onClick={stopSpeaking} className="inline-flex min-h-11 items-center rounded-card border border-line px-4 text-sm font-semibold text-primary hover:bg-muted">
+                Quiet
+              </button>
+            ) : null}
             {transcript.length ? (
               <button type="button" onClick={exportTranscript} disabled={busy} className="inline-flex min-h-11 items-center rounded-card border border-line px-4 text-sm font-semibold text-primary hover:bg-muted disabled:opacity-50">
                 Export transcript
@@ -280,7 +349,7 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
           </div>
         </div>
         <p className="text-xs text-ink-muted">
-          Cmd/Ctrl + Enter to send.
+          Cmd/Ctrl + Enter to send.{mic.supported ? " Speak uses your browser's dictation; the text shows here before it is sent." : " This browser has no dictation; type your questions."}
           {sessionId ? ` Session ${sessionId}${lastSaved === false ? " (last turn not saved)" : lastSaved ? ", saved after every reply" : ""}.` : ""}
           {artifacts.length ? ` ${artifacts.length} source${artifacts.length === 1 ? "" : "s"} seen so far.` : ""}
         </p>

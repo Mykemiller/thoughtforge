@@ -251,3 +251,4 @@ ui_copy:
   - "Ask the Panel"
   - "Meet the Panel"
   - "Interviews" # 1:1 Interviews page title (TH-49)
+  - "ElevenLabs" # voice vendor named in /api/interview/voice copy (TH-50)

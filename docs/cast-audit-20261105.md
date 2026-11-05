@@ -1,6 +1,6 @@
 # Cast audit 2026-11-05
 
-Generated Nov 5, 2026, 6:54 AM CT by `npm run audit:cast` (Linear TH-30). Overall: **PASS**. This report is input to Myke's sign-off, which stays his; nothing from the cast reaches production, ElevenLabs or HeyGen until he signs.
+Generated Nov 5, 2026, 11:53 AM CT by `npm run audit:cast` (Linear TH-30). Overall: **PASS**. This report is input to Myke's sign-off, which stays his; nothing from the cast reaches production, ElevenLabs or HeyGen until he signs.
 
 | # | Check | Result |
 | --- | --- | --- |
@@ -13,7 +13,7 @@ Generated Nov 5, 2026, 6:54 AM CT by `npm run audit:cast` (Linear TH-30). Overal
 
 ## 1. Real-name audit: PASS
 
-680 distinct proper nouns. Classified per file: FIC 350, REAL-ORG 512, REAL-EVENT 0, VOICE 152, reviewed non-person 543, unclassified 0. Spine scan 2026-11-05 over this candidate list against all 1734 people: 25 full-name matches, each checked above against the panelist's network. Full pass covered 669 of the 671 phrases; a second pass covered all 299 two- and three-word, name-shaped phrases. Neither pass found a match outside the networks. Refreshed 2026-11-01 21:25 CT for TH-32: the app's UI copy and prompt text joined the candidate list (7 new phrases: Ask the Panel, Enter, Fact-Checker, Faraday Intelligence, Meet the Panel, Panel, ThoughtForge Faraday Intelligence); all 7 were checked read-only against all 1,734 people (equal canonical name, equal alias, or containing a full canonical name) with no match. The 25 earlier matches are unchanged. Refreshed 2026-11-05 for TH-49: the two new UI phrases (Interviews, You) were checked through the connector against all 1,734 people and matched nobody; the earlier matches are unchanged.
+681 distinct proper nouns. Classified per file: FIC 350, REAL-ORG 512, REAL-EVENT 0, VOICE 152, reviewed non-person 544, unclassified 0. Spine scan 2026-11-05 over this candidate list against all 1734 people: 25 full-name matches, each checked above against the panelist's network. Full pass covered 669 of the 671 phrases; a second pass covered all 299 two- and three-word, name-shaped phrases. Neither pass found a match outside the networks. Refreshed 2026-11-01 21:25 CT for TH-32: the app's UI copy and prompt text joined the candidate list (7 new phrases: Ask the Panel, Enter, Fact-Checker, Faraday Intelligence, Meet the Panel, Panel, ThoughtForge Faraday Intelligence); all 7 were checked read-only against all 1,734 people (equal canonical name, equal alias, or containing a full canonical name) with no match. The 25 earlier matches are unchanged. Refreshed 2026-11-05 for TH-49: the two new UI phrases (Interviews, You) were checked through the connector against all 1,734 people and matched nobody; the earlier matches are unchanged. Refreshed again for TH-50: the new phrase "ElevenLabs" (vendor name in voice copy) was checked through the connector against all 1,734 people and matched nobody.
 
 No exceptions.
 
