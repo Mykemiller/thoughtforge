@@ -1,5 +1,5 @@
 /**
- * Access gate for /ask and /api/ask (TH-32 §6, TF-DEC-05: audience is the owner only).
+ * Access gate for /ask, /api/ask and, since TH-49, /interview and /api/interview (TH-32 §6, TF-DEC-05: audience is the owner only).
  * Next 16 "proxy" file (the pack named middleware.ts; Next 16 deprecates that convention
  * in favour of proxy.ts with the same request/response API).
  *
@@ -52,7 +52,7 @@ export async function proxy(req: NextRequest) {
   }
 
   if (pathname.startsWith("/api/")) {
-    return NextResponse.json({ error: "Ask the Panel is private." }, { status: 401 });
+    return NextResponse.json({ error: "This room is private." }, { status: 401 });
   }
   if (presented) {
     // Wrong magic word: redirect so the guess never stays in the address bar; ?denied=1 lets the page say so.
@@ -67,5 +67,5 @@ export async function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/ask", "/ask/:path*", "/api/ask", "/api/ask/:path*"],
+  matcher: ["/ask", "/ask/:path*", "/api/ask", "/api/ask/:path*", "/interview", "/interview/:path*", "/api/interview", "/api/interview/:path*"],
 };

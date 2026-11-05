@@ -6,6 +6,7 @@ const NAV = [
   { href: "/", label: "Home" },
   { href: "/panel", label: "Panel" },
   { href: "/ask", label: "Ask the panel" },
+  { href: "/interview", label: "1:1" },
 ] as const;
 
 export function SiteNav() {

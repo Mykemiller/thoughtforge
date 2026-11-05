@@ -44,7 +44,7 @@ const skillFiles = (slug: string) =>
 const sharedSkillFiles = readdirSync(join(CAST, "_shared/skills"), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => `cast/_shared/skills/${d.name}/SKILL.md`);
 
 // ---------- UI copy in scope (TH-32) ----------
-const UI_COPY_ROOTS = ["app", "src/components", "src/cast/prompt.ts", "src/ask/orchestrate.ts", "src/ask/render.ts"];
+const UI_COPY_ROOTS = ["app", "src/components", "src/cast/prompt.ts", "src/ask/orchestrate.ts", "src/ask/render.ts", "src/interview/run.ts", "src/interview/mock.ts"];
 function walk(dir: string): string[] {
   return readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((d) =>
     d.isDirectory() ? walk(`${dir}/${d.name}`) : /\.(tsx?|ts)$/.test(d.name) && !d.name.endsWith(".test.ts") ? [`${dir}/${d.name}`] : []);
