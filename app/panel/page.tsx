@@ -11,6 +11,18 @@ export const metadata: Metadata = {
   alternates: { canonical: "/panel" },
 };
 
+/** Full-panel group portraits shown above the individual cards. */
+const GROUP_PHOTOS = [
+  {
+    src: "/panel/group-formal.webp",
+    alt: "The ten ThoughtForge advisors posed together at a boardroom table.",
+  },
+  {
+    src: "/panel/group-candid.webp",
+    alt: "The ten ThoughtForge advisors in conversation around a boardroom table at sunset.",
+  },
+] as const;
+
 function MemberCard({ member, cast, priority }: { member: PanelMember; cast: CastMember; priority: boolean }) {
   const href = `/panel/${member.slug}`;
   return (
@@ -60,6 +72,22 @@ export default function PanelPage() {
         <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Meet the Panel</h1>
         <p className="mt-4 text-lg text-ink-muted">Ten advisors. One ruling. Every decision argued in the open.</p>
       </header>
+
+      <ul className="mt-10 grid gap-6 md:grid-cols-2" role="list" aria-label="Panel group photos">
+        {GROUP_PHOTOS.map((photo, i) => (
+          <li key={photo.src} className="overflow-hidden rounded-card border border-line bg-surface">
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              width={1088}
+              height={608}
+              priority={i === 0}
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="aspect-[1088/608] w-full object-cover"
+            />
+          </li>
+        ))}
+      </ul>
 
       <ul className="mt-12 grid gap-8 md:grid-cols-2" role="list">
         {PANEL_SORTED.map((m, i) => (
