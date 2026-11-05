@@ -46,14 +46,17 @@ export interface PanelSession {
   error: string | null;
 }
 
-export function encodeEvent(ev: AskEvent): string {
+/** Any event the app streams: /api/ask (AskEvent) or /api/interview (src/interview/sse.ts). */
+export type StreamEvent = { type: string } & Record<string, unknown>;
+
+export function encodeEvent(ev: StreamEvent): string {
   const { type, ...data } = ev;
   return `event: ${type}\ndata: ${JSON.stringify(data)}\n\n`;
 }
 
 /** Parse a complete SSE text body (or any prefix of whole frames) back into events. */
-export function parseEvents(text: string): AskEvent[] {
-  const out: AskEvent[] = [];
+export function parseEvents<T extends StreamEvent = AskEvent>(text: string): T[] {
+  const out: T[] = [];
   for (const frame of text.split(/\n\n/)) {
     if (!frame.trim()) continue;
     let type: string | null = null;
@@ -64,7 +67,7 @@ export function parseEvents(text: string): AskEvent[] {
     }
     if (!type) continue;
     const data = dataLines.length ? JSON.parse(dataLines.join("\n")) : {};
-    out.push({ type, ...data } as AskEvent);
+    out.push({ type, ...data } as T);
   }
   return out;
 }

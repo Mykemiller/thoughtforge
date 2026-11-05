@@ -31,7 +31,9 @@ function timingSafeEqualHex(a: string, b: string): boolean {
   return diff === 0;
 }
 
-/** Paths the gate protects. Everything else stays public (TF-DEC-05). */
+/** Paths the gate protects: Ask the Panel and the 1:1 interviews (TH-49). Everything else stays public (TF-DEC-05). */
+export const GATED_PREFIXES = ["/ask", "/api/ask", "/interview", "/api/interview"] as const;
+
 export function isGatedPath(pathname: string): boolean {
-  return pathname === "/ask" || pathname.startsWith("/ask/") || pathname === "/api/ask" || pathname.startsWith("/api/ask/");
+  return GATED_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`));
 }
