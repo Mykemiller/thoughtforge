@@ -8,6 +8,7 @@ export interface VoiceEntry {
   gender: "male" | "female";
   why: string;
   intro: string;
+  video_id?: string; // HeyGen intro video, set once rendered
 }
 export interface VoicesFile {
   engine: string;
@@ -62,6 +63,7 @@ export function validateVoices(v: VoicesFile, panel: PanelRow[], forbidden: stri
     seen.set(e.voice_id, slug);
     if (!["male", "female"].includes(e.gender)) errs.push(`${slug}: gender must be male or female`);
     if (!e.intro?.trim()) errs.push(`${slug}: intro is empty`);
+    if (v.status === "rendered" && !/^[0-9a-f]{32}$/.test(e.video_id ?? "")) errs.push(`${slug}: status is rendered but video_id is missing`);
     for (const f of forbidden) if (e.intro?.includes(f)) errs.push(`${slug}: intro names "${f}"`);
   }
   return errs;

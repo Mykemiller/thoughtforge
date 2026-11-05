@@ -1,0 +1,57 @@
+# Copy the ten HeyGen intro videos into public/panel/intro/ and commit them (Linear TH-4).
+#
+# HeyGen video URLs are signed and expire, so the Meet the Panel pages serve
+# committed copies. This job only reads videos that already exist; it renders
+# nothing and spends no credits. HEYGEN_API_KEY comes from the repo secret and
+# is never printed.
+#
+# Runs by hand (workflow_dispatch), and on a push to any branch other than main
+# that changes cast/_shared/voices.yaml, so a PR that adds video ids gets its
+# assets committed to the same branch. It never commits to main.
+name: Panel intro sync
+
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore: [main]
+    paths: [cast/_shared/voices.yaml, scripts/sync-panel-intros.ts, .github/workflows/panel-intros.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: panel-intros-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.ref_name != 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Copy intros from HeyGen
+        env:
+          HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
+        run: npm run panel:intros
+
+      - name: Commit intro assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/panel/intro
+          if git diff --cached --quiet; then
+            echo "No intro changes."
+            exit 0
+          fi
+          git commit -m "feat(panel): copy intro videos from HeyGen (TH-4)"
+          git push origin HEAD:${{ github.ref_name }}
