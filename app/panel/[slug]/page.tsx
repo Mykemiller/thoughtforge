@@ -6,6 +6,7 @@ import { PANEL, panelAlt } from "@/src/data/panel";
 import { getMember } from "@/src/cast/load";
 import { panelStaticParams } from "@/src/cast/params";
 import { aboutFromLinkedin, education, experience, formatDegree, formatSpan, lifeOutsideWork, voices } from "@/src/cast/bio";
+import { getIntro } from "@/src/cast/intro";
 
 type Params = { slug: string };
 
@@ -48,6 +49,7 @@ export default async function PanelistPage({ params }: { params: Promise<Params>
   const schools = education(member);
   const life = lifeOutsideWork(member);
   const net = voices(member);
+  const intro = getIntro(slug);
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16">
@@ -82,6 +84,28 @@ export default async function PanelistPage({ params }: { params: Promise<Params>
           </p>
         </div>
       </header>
+
+      {intro ? (
+        <section id="intro" aria-labelledby="intro-heading" className="mt-10 max-w-3xl">
+          <h2 id="intro-heading" className="font-mono text-xs tracking-[0.08em] text-ink-muted">
+            INTRO
+          </h2>
+          <video
+            className="mt-4 w-full rounded-card border border-line bg-muted"
+            controls
+            playsInline
+            preload="metadata"
+            poster={manifest.image}
+            aria-describedby="intro-transcript"
+          >
+            <source src={intro.src} type="video/mp4" />
+            {intro.captions ? <track kind="captions" src={intro.captions} srcLang="en" label="English" default /> : null}
+          </video>
+          <p id="intro-transcript" className="mt-3 text-sm leading-relaxed text-ink-muted">
+            Transcript: &ldquo;{intro.transcript}&rdquo; AI-generated video of a fictional panelist.
+          </p>
+        </section>
+      ) : null}
 
       <div className="mt-12 max-w-3xl">
         <Section id="about" title="About">
