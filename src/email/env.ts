@@ -12,6 +12,11 @@
  *               only together with DRY_RUN=1, so a canned email can never go out.
  */
 import { assertProjectOfRecord, SupabaseProjectError } from "../lib/supabase";
+import { SIGNAL_MODES, type SignalMode } from "./types";
+
+export const DEFAULT_SIGNAL_MODE: SignalMode = "thread";
+export const DEFAULT_READER_NAME = "Myke";
+export const DEFAULT_MAX_REPLIES = 6;
 
 export const EMAIL_ENV_NAMES = [
   "RESEND_API_KEY",
@@ -24,6 +29,9 @@ export const EMAIL_ENV_NAMES = [
 ] as const;
 export type EmailEnvName = (typeof EMAIL_ENV_NAMES)[number];
 
+/** TH-47 additions. Optional: inbound needs the webhook secret, the rest have defaults. */
+export const INBOUND_ENV_NAMES = ["RESEND_WEBHOOK_SECRET", "PANEL_SIGNAL_MODE", "PANEL_RECIPIENT_NAME", "PANEL_REPLY_ALLOWLIST", "PANEL_REPLY_MAX_PER_THREAD_PER_DAY"] as const;
+
 export interface EmailEnv {
   dryRun: boolean;
   mockCompose: boolean;
@@ -32,6 +40,13 @@ export interface EmailEnv {
   replyTo: string;
   cronSecret: string;
   supabaseUrl: string;
+  /** Null when unset; the inbound route answers 503 then. */
+  webhookSecret: string | null;
+  signalMode: SignalMode;
+  readerName: string;
+  /** Lower-cased addresses allowed to write to the panel; defaults to the recipient. */
+  replyAllowlist: string[];
+  maxRepliesPerThreadPerDay: number;
 }
 
 export class EmailEnvError extends Error {
@@ -83,9 +98,23 @@ export function readEmailEnv(env: Env = process.env): EmailEnv {
       invalid.push(`NEXT_PUBLIC_SUPABASE_URL (${err.message})`);
     }
   }
+  const mode = value("PANEL_SIGNAL_MODE") || DEFAULT_SIGNAL_MODE;
+  if (!(SIGNAL_MODES as readonly string[]).includes(mode)) invalid.push(`PANEL_SIGNAL_MODE (must be ${SIGNAL_MODES.join(" or ")})`);
+  const allowlist = (value("PANEL_REPLY_ALLOWLIST") || value("PANEL_RECIPIENT_EMAIL"))
+    .split(",")
+    .map((a) => a.trim().toLowerCase())
+    .filter(Boolean);
+  if (value("PANEL_REPLY_ALLOWLIST") && allowlist.some((a) => !EMAIL_RE.test(a))) invalid.push("PANEL_REPLY_ALLOWLIST (not a comma-separated list of email addresses)");
+  const maxReplies = value("PANEL_REPLY_MAX_PER_THREAD_PER_DAY") ? Number(value("PANEL_REPLY_MAX_PER_THREAD_PER_DAY")) : DEFAULT_MAX_REPLIES;
+  if (!Number.isInteger(maxReplies) || maxReplies < 1) invalid.push("PANEL_REPLY_MAX_PER_THREAD_PER_DAY (must be a positive integer)");
   if (missing.length || invalid.length) throw new EmailEnvError(missing, invalid);
 
   return {
+    webhookSecret: value("RESEND_WEBHOOK_SECRET") || null,
+    signalMode: mode as SignalMode,
+    readerName: value("PANEL_RECIPIENT_NAME") || DEFAULT_READER_NAME,
+    replyAllowlist: allowlist,
+    maxRepliesPerThreadPerDay: maxReplies,
     dryRun,
     mockCompose,
     resendApiKey: dryRun ? null : value("RESEND_API_KEY"),

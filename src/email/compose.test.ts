@@ -10,6 +10,7 @@ import {
   finalizeBody,
   mockModel,
   parseModelOutput,
+  replySubject,
   signalSubject,
   TAKEAWAY_OPENER,
   userPrompt,
@@ -103,4 +104,61 @@ test("TF_MOCK canned compose produces a marked placeholder for every panelist an
       assert.ok(e.body.endsWith(signature(p)));
     }
   }
+});
+
+test("opener rule and reader name are in every persona system prompt; length rule follows the kind", () => {
+  for (const kind of ["briefing", "cold-open", "signal-takeaway", "reply"] as const) {
+    const sys = emailSystemPrompt(delia, kind);
+    assert.ok(sys.includes("## Opener"), `${kind} lacks the opener rule`);
+    assert.ok(sys.includes("Use the reader's first name once"));
+    assert.ok(!sys.includes("Do not open with a greeting that names anyone"));
+  }
+  assert.ok(emailSystemPrompt(delia, "reply").includes("80 to 200 words"));
+  assert.ok(emailSystemPrompt(delia, "roundtable-opener").includes("At most 60 words"));
+});
+
+test("briefing prompt: with a digest it names the edition and asks the opener to; without one it says nothing landed", () => {
+  const withDigest = userPrompt("briefing", delia, { date: "2026-11-05", signal: { ...SAMPLE_SIGNAL, editionDate: "2026-11-05" } });
+  assert.match(withDigest, /edition 2026-11-05/);
+  assert.match(withDigest, /Your opener names that edition/);
+  assert.ok(withDigest.includes(SAMPLE_SIGNAL.text));
+  assert.match(withDigest, /note to Myke/);
+  const without = userPrompt("briefing", delia, { date: "2026-11-05" });
+  assert.match(without, /No Signal Digest has landed/);
+  assert.match(without, /Your opener says so plainly/);
+  assert.match(userPrompt("cold-open", delia, { date: "2026-11-05", readerName: "Sam" }), /writing to Sam unprompted/);
+});
+
+test("reply prompt carries the thread oldest first with the reader's name, and the reply subject never stacks Re:", async () => {
+  const thread = [
+    { author: "Delia Marchetti", side: "panelist" as const, date: "2026-11-05", text: "My note." },
+    { author: "Myke", side: "reader" as const, date: "2026-11-05", text: "Why that order?" },
+  ];
+  const p = userPrompt("reply", delia, { date: "2026-11-05", thread, replySubject: "Re: Morning note from Delia: x" });
+  assert.ok(p.indexOf("Delia Marchetti wrote on 2026-11-05") < p.indexOf("Myke wrote on 2026-11-05"));
+  assert.match(p, /acknowledges what Myke said/);
+  assert.equal(replySubject("Re: Morning note from Delia: x"), "Re: Morning note from Delia: x");
+  assert.equal(replySubject("Morning note from Delia: x"), "Re: Morning note from Delia: x");
+  assert.equal(replySubject("Fwd: Re: Faraday Daily Signal Digest · 2026-11-05"), "Re: Faraday Daily Signal Digest · 2026-11-05");
+  const r = await composeEmail({ panelist: delia, kind: "reply", context: { date: "2026-11-05", thread, replySubject: "Re: Morning note from Delia: x" } }, fixed(`Myke, the order is deliberate. ${LONG}`));
+  assert.equal(r.subject, "Re: Morning note from Delia: x");
+  assert.ok(r.body.endsWith(signature(delia)));
+  assert.throws(() => userPrompt("reply", delia, { date: "2026-11-05" }), /needs context.thread/);
+});
+
+test("roundtable opener: fixed subject, at most two paragraphs, no signature appended", async () => {
+  const sig = { ...SAMPLE_SIGNAL, editionDate: "2026-11-05" };
+  const r = await composeEmail({ panelist: hart, kind: "roundtable-opener", context: { date: "2026-11-05", signal: sig } }, fixed("Here is today's edition.\n\nTen takeaways follow.\n\nA third paragraph that is cut."));
+  assert.equal(r.subject, `Panel roundtable: Re: ${SAMPLE_SIGNAL.subject}`);
+  assert.equal(r.body, "Here is today's edition.\n\nTen takeaways follow.");
+  assert.ok(!r.body.includes(signature(hart)));
+  assert.match(userPrompt("roundtable-opener", hart, { date: "2026-11-05", signal: sig }), /Write the opener only/);
+});
+
+test("mock model names the edition it was given, so previews show the opener contract", async () => {
+  const sig = { ...SAMPLE_SIGNAL, editionDate: "2026-11-05" };
+  const b = await composeEmail({ panelist: delia, kind: "briefing", context: { date: "2026-11-05", signal: sig } }, mockModel);
+  assert.match(b.body.split("\n")[0], /2026-11-05/);
+  const t = await composeEmail({ panelist: delia, kind: "signal-takeaway", context: { date: "2026-11-05", signal: sig } }, mockModel);
+  assert.match(t.body.split("\n")[1], /2026-11-05/);
 });

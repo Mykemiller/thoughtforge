@@ -252,3 +252,10 @@ ui_copy:
   - "Meet the Panel"
   - "Interviews" # 1:1 Interviews page title (TH-49)
   - "ElevenLabs" # voice vendor named in /api/interview/voice copy (TH-50)
+  # Panel email prompt and inbound copy, in scope since TH-47 (src/email). Product and feed names, never a person.
+  - "Faraday Daily Signal Digest"
+  - "Faraday Signal Digest"
+  - "Faraday Signal"
+  - "Signal Digest"
+  - "Signal"
+  - "Gmail"

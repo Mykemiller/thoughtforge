@@ -8,12 +8,15 @@
  * CRON_SECRET must be set to the same value as PANEL_CRON_SECRET (README).
  */
 import { createHash, timingSafeEqual } from "node:crypto";
+import { Resend } from "resend";
 import { composerFor, anthropicModel, mockModel } from "./compose";
 import { EmailEnvError, readEmailEnv, type EmailEnv } from "./env";
+import { handleReceived, svixHeaders, verifyWebhook, WebhookError, type InboundDeps } from "./inbound";
 import { loadEmailPanelists } from "./panelists";
+import type { InboundMessage, ReplyDeps } from "./reply";
 import { parseSignalBody, runDaily, runSignal, SignalInputError, type Outcome, type RunDeps } from "./run";
 import { DryRunSender, ResendSender } from "./send";
-import { supabaseEmailStore } from "./store";
+import { supabaseStores } from "./store";
 
 const sha = (s: string) => createHash("sha256").update(s, "utf8").digest();
 
@@ -30,25 +33,73 @@ export interface HttpDeps {
   cronSecret: () => string | undefined;
   env: () => EmailEnv;
   build: (env: EmailEnv) => RunDeps;
+  /** Inbound wiring (TH-47): the Resend fetch and the reply/digest stores. */
+  buildInbound: (env: EmailEnv, run: RunDeps) => InboundDeps;
   now: () => Date;
 }
 
 export function buildRunDeps(env: EmailEnv): RunDeps {
+  const stores = supabaseStores(env.supabaseUrl);
   return {
     panelists: loadEmailPanelists(),
     compose: composerFor(env.mockCompose ? mockModel : anthropicModel),
     sender: env.dryRun ? new DryRunSender() : new ResendSender(env.resendApiKey!),
-    store: supabaseEmailStore(env.supabaseUrl),
+    store: stores.emails,
+    digests: stores.digests,
     recipient: env.recipient,
     replyTo: env.replyTo,
+    readerName: env.readerName,
+    signalMode: env.signalMode,
     log: (line) => console.log(line),
   };
+}
+
+/** GET /emails/receiving/{id} through the SDK: headers, text and html of a received email. */
+export function resendFetcher(apiKey: string): (id: string) => Promise<InboundMessage> {
+  const resend = new Resend(apiKey);
+  return async (id) => {
+    const { data, error } = await resend.emails.receiving.get(id);
+    if (error || !data) throw new Error(`resend receiving.get: ${error?.name ?? "error"}: ${error?.message ?? "no data"}`);
+    return {
+      id: data.id,
+      from: data.from,
+      to: data.to ?? [],
+      subject: data.subject ?? "",
+      text: data.text,
+      html: data.html,
+      headers: data.headers,
+      messageId: data.message_id,
+      receivedAt: data.created_at,
+    };
+  };
+}
+
+export function buildInboundDeps(env: EmailEnv, run: RunDeps): InboundDeps {
+  const stores = supabaseStores(env.supabaseUrl);
+  const reply: ReplyDeps = {
+    panelists: run.panelists,
+    compose: run.compose,
+    sender: run.sender,
+    store: run.store,
+    threads: stores.threads,
+    inbound: stores.inbound,
+    readerName: env.readerName,
+    maxRepliesPerThreadPerDay: env.maxRepliesPerThreadPerDay,
+    log: run.log,
+  };
+  const fetchEmail = env.resendApiKey
+    ? resendFetcher(env.resendApiKey)
+    : async () => {
+        throw new Error("inbound needs RESEND_API_KEY to fetch the received email (DRY_RUN cannot read mail)");
+      };
+  return { fetchEmail, run, reply, digests: stores.digests, replyAllowlist: env.replyAllowlist, signalMode: env.signalMode, now: () => new Date(), log: run.log };
 }
 
 export const defaultHttpDeps: HttpDeps = {
   cronSecret: () => process.env.PANEL_CRON_SECRET?.trim() || undefined,
   env: () => readEmailEnv(),
   build: buildRunDeps,
+  buildInbound: buildInboundDeps,
   now: () => new Date(),
 };
 
@@ -90,4 +141,36 @@ export async function handleSignal(req: Request, deps: HttpDeps = defaultHttpDep
   }
   const result = await runSignal(input, deps.now(), g.run);
   return json({ dry_run: g.env.dryRun, ...result }, statusFor(result.outcomes));
+}
+
+/**
+ * POST /api/email/inbound: the Resend email.received webhook. Auth is the Svix signature,
+ * not the cron bearer. 503 when the secret is unset, 401 on a bad signature, 200 for every
+ * handled or ignored message, 500 only on a real failure (Resend retries those).
+ */
+export async function handleInbound(req: Request, deps: HttpDeps = defaultHttpDeps): Promise<Response> {
+  let env: EmailEnv;
+  try {
+    env = deps.env();
+  } catch (e) {
+    if (e instanceof EmailEnvError) return json({ error: e.message }, 500);
+    throw e;
+  }
+  if (!env.webhookSecret) return json({ error: "panel inbound is not configured: RESEND_WEBHOOK_SECRET is not set" }, 503);
+  const raw = await req.text();
+  let event;
+  try {
+    event = verifyWebhook(raw, svixHeaders(req.headers), env.webhookSecret, deps.now());
+  } catch (e) {
+    if (e instanceof WebhookError) return json({ error: e.message }, 401);
+    throw e;
+  }
+  const run = deps.build(env);
+  try {
+    const result = await handleReceived(event, deps.buildInbound(env, run));
+    return json({ dry_run: env.dryRun, ...result });
+  } catch (e) {
+    console.error(`[email:inbound] failed: ${e instanceof Error ? e.message : String(e)}`);
+    return json({ error: "inbound handling failed; see logs" }, 500);
+  }
 }

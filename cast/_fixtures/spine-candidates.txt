@@ -209,7 +209,10 @@ FREEDM Systems Center
 Facility Water
 Fact-Checker
 Faraday
+Faraday Daily Signal Digest
 Faraday Intelligence
+Faraday Signal
+Faraday Signal Digest
 Fare Thee Well
 Fargo
 First Officer
@@ -240,6 +243,7 @@ Giordano Albertazzi
 Girls Who Invest
 Global Infrastructure Investor Association
 Global Market Intelligence
+Gmail
 Golden
 Goldman Sachs
 Google
@@ -574,6 +578,8 @@ Siemens
 Siemens AG
 Siemens HVDC
 Siemens K.K
+Signal
+Signal Digest
 Simone Bell
 Size the UPS
 Skeptic

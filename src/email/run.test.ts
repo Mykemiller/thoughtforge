@@ -109,7 +109,9 @@ test("Signal: ten emails, cast order, identical Re: subject, ten distinct From, 
   assert.equal(sent[0].subject, `Re: ${SAMPLE_SIGNAL.subject}`);
   assert.equal(new Set(sent.map((e) => e.from)).size, 10);
   assert.ok(sent.every((e) => e.text.startsWith("My most important takeaway:\n")));
-  assert.ok(sent.every((e) => e.replyTo === "panel@example.com" && e.to === "recipient@example.com"));
+  // Thread mode: each takeaway replies to its own panelist's inbox (TF-DEC-83), never panel@.
+  assert.ok(sent.every((e, i) => e.replyTo === panelists[i].replyTo && e.to === "recipient@example.com"));
+  assert.equal(sent[1].replyTo, "margo@faraday-thoughtforge.com");
   assert.deepEqual(sleeps, Array(9).fill(SIGNAL_SPACING_MS));
   assert.ok(store.list().every((row) => row.thread_key === r.subject && row.send_date === "2026-11-03" && row.kind === "signal-takeaway"));
   const again = await runSignal({ ...SAMPLE_SIGNAL, edition_date: "2026-11-03" }, at("2026-11-03"), d);
