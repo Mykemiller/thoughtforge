@@ -4,7 +4,7 @@
 **Written:** 2026-11-07, US Central. **Replaces:** the Linear draft "ThoughtForge Product Spec v0.1 (TH-2)", saved verbatim in `docs/specs/thoughtforge-spec-v0.1-snapshot.md`.
 **Home:** this file is canonical; the repo is the source of record (TF-DEC-40). Linear keeps the v0.1 draft as history.
 
-How to read this document. Every statement cites a file, a table or a decision id. Anything that could not be checked in code or in a decision record is listed under §12, Open questions, and is not asserted here. "As built" means the `main` branch at commit `5acc3a6`.
+How to read this document. Every statement cites a file, a table or a decision id. Anything that could not be checked in code or in a decision record is listed under §12, Open questions, and is not asserted here. "As built" means the `main` branch at commit `2bb7f6e`, which includes the TF-DEC-92 rename (PR #17, TH-64).
 
 ---
 
@@ -111,13 +111,13 @@ The v0.1 voice rules carry over as prompt guidance only, with no code check: abs
 | Stage 1 | Mach Eigen | Chief Engineer | `mach-eigen` |
 | Stage 1 | Delia Marchetti | Press Lead | `delia-marchetti` |
 | Stage 1 | Albert Thorne | Policy | `albert-thorne` |
-| Stage 1 | Hartford Caldwell ("Hart") | Counsel | `hartford-caldwell` |
+| Stage 1 | Hartford Nakamura ("Hart") | Counsel | `hartford-nakamura` |
 | Stage 1 | Rosalind Ferraro ("Rose") | Political Director | `rosalind-ferraro` |
 | Stage 1 | Victoria Stroud ("Vick") | Economic Advisor | `victoria-stroud` |
 | Stage 1 | Dr. Ingrid Halverson | Science Advisor, Thermal Management | `ingrid-halverson` |
 | Stage 2 | Constance Wright | Fact-Checker | `constance-wright` |
 
-Names come from `cast/*/persona.json` (`display_name`), and the turn order from `PANEL_ORDER`, `FACT_CHECKER` and `CHIEF_OF_STAFF` in `src/ask/roster.ts`. **Hart's name:** TF-DEC-92 renames him to Hartford Nakamura, but the rename has not landed in code. The folder, manifest, persona and roster still say Caldwell, and only `src/email/panelists.test.ts` knows `hartford-nakamura`, as an email alias (`docs/voices/tf-dec-103-candidates.md`). This spec records names and does not rename anyone (drift D5; §12, Q1).
+Names come from `cast/*/persona.json` (`display_name`), and the turn order from `PANEL_ORDER`, `FACT_CHECKER` and `CHIEF_OF_STAFF` in `src/ask/roster.ts`. **Hart's name:** TF-DEC-92 renamed Hartford Caldwell to Hartford Nakamura. The rename has landed in the folder, manifest, persona and roster (`cast/hartford-nakamura/`, `src/data/panel.ts`, `src/ask/roster.ts`; PR #17, TH-64). This spec records the name and does not rename anyone (drift D5).
 
 **Gilbert Faraday and Mach Eigen** play their ThoughtForge roles. Their Faraday Brand Bible biographies are prior-career background only (TF-DEC-38; `docs/cast-standard.md`). This closes the v0.1 name note.
 
@@ -157,7 +157,7 @@ Names come from `cast/*/persona.json` (`display_name`), and the turn order from 
 - Work is tracked in Linear under team key TH. Build work runs from self-contained prompts (TF-DEC-18). Myke approves every PR (TF-DEC-19).
 - Release names use the YY-WW-vXX format (TF-DEC-20), for example `26-45-v01`.
 - Each build run keeps a decisions log of one plain-English sentence per decision, with US Central timestamps, in `docs/decisions-th*.md`.
-- Checks: `npm run typecheck`, `npm test` (178 tests passing on 2026-11-07), `npm run validate:cast`, `npm run audit:cast` and `npm run build` (`README.md`).
+- Checks: `npm run typecheck`, `npm test` (190 tests passing on 2026-11-07), `npm run validate:cast`, `npm run audit:cast` and `npm run build` (`README.md`).
 - Cast changes land in `cast/` through a reviewed PR. Notion receives a read-only mirror via `npm run mirror:cast` (TF-DEC-40; TH-28).
 
 ## 10. Acceptance criteria (v0.1 items 1 to 7, checked against `main`)
@@ -184,7 +184,7 @@ Each row is a v0.1 statement that no longer holds.
 | D2 | A live web/industry lookup tier (OCP Academy, OCP Summit, DCD, Coverage Matrix) | Not built in panel sessions. GDELT is used only by panel email | §4.3; `src/email/context/news.ts` |
 | D3 | Supabase gives the app a read-only role | Service role. It reads the Faraday library and writes `tf_*` tables | `src/lib/supabase.ts`, `src/ask/save.ts` |
 | D4 | Panelists speak in turn and challenge each other live | Eight answer in parallel and blind, then grading, then the ruling (TF-DEC-08) | `src/ask/orchestrate.ts` |
-| D5 | Counsel is "Hartford Caldwell" (no decision noted) | TF-DEC-92 renames him to Hartford Nakamura, but code still says Caldwell everywhere except one email alias test | `cast/hartford-caldwell/`, `src/data/panel.ts`, `src/ask/roster.ts`, `src/email/panelists.test.ts` |
+| D5 | Counsel is "Hartford Caldwell" | Renamed Hartford Nakamura by TF-DEC-92, and the rename has landed in code | `cast/hartford-nakamura/persona.json`, `src/data/panel.ts`, `src/ask/roster.ts`; TH-64 |
 | D6 | Gilbert Faraday / Mach Eigen name question "not yet decided" | Closed: they play ThoughtForge roles, with Brand Bible bios as background only | TF-DEC-38; `docs/cast-standard.md` |
 | D7 | An evidence tier on each reply plus a confidence label on each claim, as separate objects | One tag per claim. No reply-level tier and no separate confidence label | `src/ask/render.ts`, `EvidenceBadge.tsx` |
 | D8 | Each disagreement shown, labelled by panelist | Shown through Fact-Checker downgrades on the claim and the ruling's dissent line. Panelist-to-panelist disagreement is only what each reply volunteers | `AskPanel.tsx`, `RULING_TURN` |
@@ -200,7 +200,7 @@ Each row is a v0.1 statement that no longer holds.
 
 ## 12. Open questions for Myke
 
-1. **Hart's name (TF-DEC-92).** Should the Caldwell to Nakamura rename land in code (folder, manifest, persona, roster, UI)? That is a subscriber-facing rename, so it is outside this run.
+1. **Hart's name (TF-DEC-92).** Closed: the rename landed in PR #17 (TH-64). Nothing is left to decide.
 2. **Reply-level tier.** Do you want a computed reply tier (for example, the lowest tag the ruling rests on) and a separate confidence label, or should v1.0 adopt one claim tag as the rule and retire the v0.1 wording?
 3. **Voice rules.** Absence-is-not-evidence and people-versus-document are prompt-only. Do you want a Fact-Checker check for them?
 4. **Brake.** Should the Counsel / Program & Quality brake become a real mechanism (for example, a ruling flag), or stay persona text?
