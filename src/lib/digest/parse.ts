@@ -226,11 +226,17 @@ export function readEml(raw: string): EmlContent {
   return { subject: headers.subject ? decodeEncodedWords(headers.subject).replace(/\s+/g, " ").trim() : null, messageId: mid, html, text };
 }
 
-/** An .eml starts with RFC 822 headers; an HTML export starts with markup. */
+/**
+ * An .eml starts with RFC 822 headers; an HTML export starts with markup.
+ * The whole header block (up to the first blank line) is checked, not a fixed prefix: Gmail's "Download message"
+ * export carries ~5 KB of Received / ARC / DKIM headers before Subject and Content-Type.
+ */
 export function looksLikeEml(raw: string): boolean {
-  const head = raw.slice(0, 4000).replace(/^﻿/, "");
-  if (/^\s*</.test(head)) return false;
-  return /^[A-Za-z][A-Za-z0-9-]*:\s/m.test(head) && /^(content-type|subject|from|mime-version):/im.test(head);
+  const text = raw.replace(/^﻿/, "");
+  if (/^\s*</.test(text.slice(0, 200))) return false;
+  const end = text.search(/\r?\n\r?\n/);
+  const head = end >= 0 ? text.slice(0, end) : text.slice(0, 65536);
+  return /^[A-Za-z][A-Za-z0-9-]*:\s/.test(head) && /^(content-type|subject|from|mime-version):/im.test(head);
 }
 
 // ---------- signal extraction ----------
