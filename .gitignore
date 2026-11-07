@@ -11,3 +11,7 @@ next-env.d.ts
 
 # panel sync: originals are never committed
 /tmp/
+
+# TH-36: exported Signal Digest emails are dropped here and never committed
+/inbox/digests/*
+!/inbox/digests/README.md

@@ -53,6 +53,17 @@ npm run ingest:artifact -- artifacts/inbox
 
 Format and a fictional example: `artifacts/inbox/README.md`, `artifacts/inbox/_example.md`. Every completed panel session is also saved as a `source = 'panel'` artifact, so later panels can cite earlier rulings as `[SRC]`. Full detail in `docs/artifacts.md`.
 
+## Ingesting Signal Digests (Panel Podcast)
+
+Export a Faraday Daily Signal Digest from Gmail as `.eml` (or save its HTML), drop it into `inbox/digests/` (gitignored), and run:
+
+```bash
+npm run ingest:digest -- inbox/digests --dry-run   # parse only, prints JSON, never touches Supabase
+npm run ingest:digest -- inbox/digests             # upsert tf_signal_digests + replace tf_digest_signals per digest_date
+```
+
+`pnpm ingest:digest <file|dir>` works the same way. The CLI refuses any Supabase project other than `ycadmmngkdhvpcsrcuaq` and exits non-zero if a digest yields fewer than 80% of the signals its subject line states. Gmail export steps and field mapping: `docs/podcast/digest-ingest.md`.
+
 ## Checks
 
 ```bash

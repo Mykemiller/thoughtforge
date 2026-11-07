@@ -20,6 +20,7 @@
     "resolve:network:snapshot": "tsx scripts/resolve-network.ts --all --snapshot cast/_fixtures/people-snapshot.json",
     "audit:cast": "tsx scripts/audit-cast.ts",
     "ingest:artifact": "tsx scripts/ingest-artifact.ts",
+    "ingest:digest": "tsx scripts/ingest-digest.ts",
     "inspect:artifacts": "tsx scripts/inspect-artifacts.ts",
     "apply:migration": "tsx scripts/apply-migration.ts",
     "screenshots": "tsx scripts/screenshots.ts",
