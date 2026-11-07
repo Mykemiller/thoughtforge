@@ -24,6 +24,7 @@
     "apply:migration": "tsx scripts/apply-migration.ts",
     "screenshots": "tsx scripts/screenshots.ts",
     "mirror:cast": "tsx scripts/mirror-cast-to-notion.ts",
+    "interview:notes": "tsx scripts/interview-notes.ts",
     "email:preview": "tsx src/email/preview.ts",
     "email:dry-run": "DRY_RUN=1 tsx src/email/dry-run.ts",
     "plan:voices": "tsx scripts/plan-panel-voices.ts",

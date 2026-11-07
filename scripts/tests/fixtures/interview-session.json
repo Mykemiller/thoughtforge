@@ -1,0 +1,24 @@
+{
+  "id": "00000000-0000-4000-8000-0000000000a1",
+  "kind": "interview",
+  "panelist": "gilbert-faraday",
+  "asked_at": "2026-11-09T15:00:00.000Z",
+  "transcript": [
+    { "role": "user", "content": "Where did you start, and what did that teach you that you still use?" },
+    { "role": "assistant", "content": "Tacoma. My father kept the waterfront running at three in the morning, and I learned that a system either works or it does not. I still ask what breaks first." },
+    { "role": "user", "content": "What piece of work are you proudest of, and why?" },
+    { "role": "assistant", "content": "A substation sequence we rebuilt in a winter. The crew foreman at Kettle Ridge Yard taught me more about sequencing than any model did." },
+    { "role": "user", "content": "What do you get wrong most often?" },
+    { "role": "assistant", "content": "I take too long on anything that is not urgent. Helen marks the adjectives, which helps." },
+    { "role": "user", "content": "How do you want to be argued with, and who does it best?" },
+    { "role": "assistant", "content": "With the number first. Margo does it best." },
+    { "role": "user", "content": "Who on this panel do you learn the most from, and who tests your patience?" },
+    { "role": "assistant", "content": "Constance, every week. Delia tests my patience, kindly." },
+    { "role": "user", "content": "What are the implications and ramifications of the 2026-11-03 midterms for data center development, from your seat? Where do you agree with the chair's provisional ruling, and where would you push back?" },
+    { "role": "assistant", "content": "I wrote the ruling, so I will defend it. Underwrite 36 months to energization, EST. The spread is 25 to 75 bps, EST, and I want a second feed before I upgrade it.\n\nCounty boards will move faster than 40 percent of developers expect. I heard Marc Ganzi say so once, which is not a source." },
+    { "role": "user", "content": "What should ThoughtForge be careful not to become?" },
+    { "role": "assistant", "content": "A panel that rules faster than the evidence allows." },
+    { "role": "user", "content": "One thing you would want a subscriber to know about you." },
+    { "role": "assistant", "content": "I sail the San Juan Islands and restore clocks. Both reward patience." }
+  ]
+}
