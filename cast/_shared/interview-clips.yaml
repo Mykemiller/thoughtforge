@@ -1,0 +1,48 @@
+# Pre-rendered interview face clips (Linear TH-51, wave 2).
+#
+# Myke's 2026-11-07 decision: no streaming avatar. The fixed segments of a 1:1
+# interview are short HeyGen pre-rendered clips; everything live stays voice-only
+# (ElevenLabs, TH-50). Shown only when TF_INTERVIEW_FACE=1.
+#
+#   intro       reuses the TH-4 intro video already in public/panel/intro/ (voices.yaml)
+#   transition  played once, at the midpoint of the interview arc
+#   outro       played once, when the arc is finished or the guest wraps up
+#
+# Each line is rendered with the panelist's chosenLookId (src/data/panel.ts) and the
+# HeyGen voice in voices.yaml, the same pairing as the intros. No real person's
+# likeness or voice (TF-DEC-13). Lines use only the panelist's own fictional name.
+#
+# status per line: proposed -> confirmed (Myke) -> rendered (video_id set).
+# `npm run interview:clips` copies rendered clips to public/panel/interview/
+# (HeyGen URLs expire). The room plays a clip only once its MP4 is in the repo.
+panelists:
+  gilbert-faraday:
+    transition: { status: proposed, line: "Good. That's half the picture. Let's take the next question." }
+    outro: { status: proposed, line: "That's enough for me to rule on. Thank you for your time." }
+  margo-brandt:
+    transition: { status: proposed, line: "Right. That one's closed. What's next on the list?" }
+    outro: { status: proposed, line: "We're done. You'll have owners and dates by the end of the day." }
+  mach-eigen:
+    transition: { status: rendered, video_id: 0ac4dcf55b2489e0f23cc99b9886adc7, line: "Good. That's the baseline. Next question, and bring numbers." }
+    outro: { status: proposed, line: "That's it. If the numbers change, call me before you change the design." }
+  delia-marchetti:
+    transition: { status: proposed, line: "Okay, that's the headline. Let's get to the next one." }
+    outro: { status: proposed, line: "Thanks. I know which line I'd lead with, and which one I'd cut." }
+  albert-thorne:
+    transition: { status: proposed, line: "Noted. Let's move to the next question." }
+    outro: { status: proposed, line: "Thank you. Read the tariff before you read the press release." }
+  hartford-nakamura:
+    transition: { status: proposed, line: "Understood. Next question." }
+    outro: { status: proposed, line: "Thank you. Now you know the exposure, and the mitigation." }
+  rosalind-ferraro:
+    transition: { status: proposed, line: "Good. Let's keep going. Who's next in the room?" }
+    outro: { status: proposed, line: "Thank you. Go meet the neighbors before you meet the commission." }
+  victoria-stroud:
+    transition: { status: proposed, line: "Fine. Next question." }
+    outro: { status: proposed, line: "Thank you. Bring the model, and I'll tell you what a lender will say." }
+  ingrid-halverson:
+    transition: { status: proposed, line: "Good. Let's move outward to the next question." }
+    outro: { status: proposed, line: "Thank you. And next time, bring the delta-T." }
+  constance-wright:
+    transition: { status: proposed, line: "Noted, and graded. Next question." }
+    outro: { status: proposed, line: "That's all. Anything you can't cite, strike." }

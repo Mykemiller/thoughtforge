@@ -86,3 +86,43 @@ The HeyGen group behind Mach Eigen is named **"Konrad Eigen"** in HeyGen (look "
 - [HeyGen API Pricing (ugcgen.ai)](https://ugcgen.ai/heygen-api-pricing)
 
 Pages were read through search summaries only. Fetching them directly was blocked by the network policy.
+
+---
+
+## Wave 2: pre-rendered clips for the fixed segments (2026-11-07)
+
+**Decision (Myke, 2026-11-07):** no streaming avatar. Use HeyGen pre-rendered, non-streaming clips for the fixed segments of the interview. Everything live stays voice-only (TH-50). This needs no LiveAvatar plan.
+
+### What is built (behind `TF_INTERVIEW_FACE=1`, off by default)
+
+| Segment | Clip | When it plays |
+|---|---|---|
+| Intro | The existing TH-4 intro video, `public/panel/intro/<slug>.mp4` (all ten are in the repo) | On room open, behind a "Play introduction" tap (browsers block sound before a gesture) |
+| Transition | `public/panel/interview/<slug>-transition.mp4` | Once, after the reply at the arc midpoint (reply 5 of 9) |
+| Outro | `public/panel/interview/<slug>-outro.mp4` | Once, when the arc is finished or the guest taps "Wrap up" |
+
+- `src/interview/face-cues.ts` decides which segment plays next. It is client-safe and pure. A clip never plays while a reply is streaming or being spoken.
+- `src/interview/face.ts` reads the flag and finds the clips on the server. A transition or outro is offered only when its line is `rendered` in `cast/_shared/interview-clips.yaml` **and** its MP4 is in the repo. HeyGen URLs are signed and expire, so the room never points at one.
+- `src/components/interview/InterviewFace.tsx` is the player. It has captions, a transcript line, Skip, and barge-in (a new question stops the clip). On any video error it hides itself and the TH-50 headshot room carries on.
+- `npm run interview:clips` copies rendered clips from HeyGen into `public/panel/interview/` and writes the captions. It renders nothing. Offline mode is `--urls`.
+- With the flag off, `faceClipsFor()` returns null, so the room has no video element and nothing changes. A browser check confirmed this.
+
+### Lines
+
+`cast/_shared/interview-clips.yaml` holds one transition line and one outro line per panelist, each in that panelist's own voice brief and fictional name. All are `proposed` except Mach Eigen's transition. Myke confirms or edits the lines before the other 19 are rendered.
+
+### Test clip (1 of 1 allowed)
+
+- 2026-11-07 10:20 CT. HeyGen `create_video_from_avatar` with look `e153df7a9df9614ef43f329fa6acc24f` (Mach Eigen), voice `f91cc0b0…` (his intro voice), 720p, default engine (Avatar IV). Script: "Good. That's the baseline. Next question, and bring numbers."
+- Result: video `0ac4dcf55b2489e0f23cc99b9886adc7`, completed in about 64 s, **4.31 s** long.
+- Premium credits went from 523 before the render to 520 after, so the clip cost **3 credits**. At that rate the other 19 lines cost about 57 credits.
+- The MP4 is **not in the repo**. Its host (files2.heygen.ai) is blocked by this session's network policy. Myke runs `npm run interview:clips` with `HEYGEN_API_KEY` set to pull it in. Until then the room skips the transition, as designed.
+
+### Verification
+
+- `npm run typecheck` is clean. `npm test` gives **210/210** pass, including 10 new tests in `src/interview/face.test.ts` and `scripts/tests/interview-clips.test.ts`.
+- `next build` passes. A headless Chromium run against `next start` with `TF_MOCK=1` showed:
+  - flag on: the intro appears with a play button, and Skip hides it;
+  - the transition appears after mock reply 5, and not before;
+  - flag off: no face section and no video element;
+  - a corrupt clip file: the face hides itself after Play and the headshot room stays.
