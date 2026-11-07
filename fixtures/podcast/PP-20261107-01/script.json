@@ -1,0 +1,171 @@
+{
+  "episode_id": "PP-20261107-01",
+  "show": "The ThoughtForge Panel",
+  "title": "November 7, 2026: Power Architecture, Real Estate & Site Selection",
+  "segments": [
+    {
+      "kind": "cold_open",
+      "turns": [
+        {
+          "speaker": "gilbert-faraday",
+          "text": "Good morning, and welcome to the panel. Three stories this week, and as usual two of us will disagree. What matters for a site selector is whether the capacity can actually be energized on the date promised. The honest answer is that the data supports a narrower claim than the one being made. That is the number to hold onto, because everything downstream is arithmetic on it. Anyone planning around this should ask who carries the cost if the schedule moves.",
+          "est_seconds": 32.4
+        }
+      ]
+    },
+    {
+      "kind": "signal",
+      "signal_id": "digest-2026-11-07-33",
+      "turns": [
+        {
+          "speaker": "gilbert-faraday",
+          "text": "Here is the first thing to know. ING is auctioning $500 million in data center loans, including exposure to OpenAI's Stargate infrastructure project. Capital is available, so the binding limit is power, land and people, in that order. What matters for a site selector is whether the capacity can actually be energized on the date promised.",
+          "est_seconds": 22.4
+        },
+        {
+          "speaker": "albert-thorne",
+          "text": "My read is simple, and I will commit to it. ING is auctioning $500 million in data center loans, including exposure to OpenAI's Stargate infrastructure project. A careful operator would plan for the slower case and treat the faster case as upside. The constraint here is rarely the headline figure and usually the schedule behind it. I would want to see the contract terms before treating this as settled. None of this changes the direction of travel, only the pace and who benefits first.",
+          "est_seconds": 33.6
+        },
+        {
+          "speaker": "mach-eigen",
+          "text": "I disagree with that on the timeline, and I will say why. ING is auctioning $500 million in data center loans, including exposure to OpenAI's Stargate infrastructure project. We have seen this pattern before, and it tends to resolve slower than the first reports suggest. There is a version of this story that is good news and a version that is a warning, and the details decide which. I would not read too much into a single announcement until the filings back it up.",
+          "est_seconds": 33.6
+        },
+        {
+          "speaker": "gilbert-faraday",
+          "text": "So let me pin it down. The risk is not that the demand disappears, it is that the supply chain cannot keep pace with it. A careful operator would plan for the slower case and treat the faster case as upside.",
+          "est_seconds": 16.4
+        },
+        {
+          "speaker": "albert-thorne",
+          "text": "I will hold my ground on the main point. ING is auctioning $500 million in data center loans, including exposure to OpenAI's Stargate infrastructure project. The part people skip is the interconnection and permitting sequence, which sets the real critical path. Capital is available, so the binding limit is power, land and people, in that order. What matters for a site selector is whether the capacity can actually be energized on the date promised.",
+          "est_seconds": 29.6
+        },
+        {
+          "speaker": "mach-eigen",
+          "text": "I will move a little, but not on the central claim. That reading is reasonable, but it leans on an assumption nobody has tested yet. If I am wrong, it will be because a regulator or a utility moves faster than I have assumed. The risk is not that the demand disappears, it is that the supply chain cannot keep pace with it. A careful operator would plan for the slower case and treat the faster case as upside.",
+          "est_seconds": 31.6
+        },
+        {
+          "speaker": "gilbert-faraday",
+          "text": "Here is my ruling. The constraint here is rarely the headline figure and usually the schedule behind it. I would want to see the contract terms before treating this as settled. None of this changes the direction of travel, only the pace and who benefits first. We have seen this pattern before, and it tends to resolve slower than the first reports suggest. The disagreement is whether the stated timeline is credible or optimistic.",
+          "est_seconds": 29.6
+        }
+      ]
+    },
+    {
+      "kind": "signal",
+      "signal_id": "digest-2026-11-07-34",
+      "turns": [
+        {
+          "speaker": "gilbert-faraday",
+          "text": "Here is the first thing to know. Oracle and Tencent canceled a data center partnership deal under U.S. The evidence is thinner than the confidence in the coverage, and that gap is worth naming. If the timeline slips by a quarter, the economics change more than most people expect.",
+          "est_seconds": 19.6
+        },
+        {
+          "speaker": "albert-thorne",
+          "text": "My read is simple, and I will commit to it. Oracle and Tencent canceled a data center partnership deal under U.S. There is a version of this story that is good news and a version that is a warning, and the details decide which. I would not read too much into a single announcement until the filings back it up. The part people skip is the interconnection and permitting sequence, which sets the real critical path.",
+          "est_seconds": 30.4
+        },
+        {
+          "speaker": "mach-eigen",
+          "text": "I disagree with that on the timeline, and I will say why. Oracle and Tencent canceled a data center partnership deal under U.S. That reading is reasonable, but it leans on an assumption nobody has tested yet. If I am wrong, it will be because a regulator or a utility moves faster than I have assumed. The risk is not that the demand disappears, it is that the supply chain cannot keep pace with it.",
+          "est_seconds": 30
+        },
+        {
+          "speaker": "gilbert-faraday",
+          "text": "So let me pin it down. The honest answer is that the data supports a narrower claim than the one being made. That is the number to hold onto, because everything downstream is arithmetic on it. Anyone planning around this should ask who carries the cost if the schedule moves.",
+          "est_seconds": 20
+        },
+        {
+          "speaker": "albert-thorne",
+          "text": "I will hold my ground on the main point. Oracle and Tencent canceled a data center partnership deal under U.S. The honest answer is that the data supports a narrower claim than the one being made. That is the number to hold onto, because everything downstream is arithmetic on it. Anyone planning around this should ask who carries the cost if the schedule moves. The evidence is thinner than the confidence in the coverage, and that gap is worth naming.",
+          "est_seconds": 32
+        },
+        {
+          "speaker": "mach-eigen",
+          "text": "I will move a little, but not on the central claim. Anyone planning around this should ask who carries the cost if the schedule moves. The evidence is thinner than the confidence in the coverage, and that gap is worth naming. If the timeline slips by a quarter, the economics change more than most people expect. That reading is reasonable, but it leans on an assumption nobody has tested yet.",
+          "est_seconds": 28
+        },
+        {
+          "speaker": "gilbert-faraday",
+          "text": "Here is my ruling. The honest answer is that the data supports a narrower claim than the one being made. That is the number to hold onto, because everything downstream is arithmetic on it. Anyone planning around this should ask who carries the cost if the schedule moves. The evidence is thinner than the confidence in the coverage, and that gap is worth naming. The disagreement is whether the stated timeline is credible or optimistic.",
+          "est_seconds": 30
+        }
+      ]
+    },
+    {
+      "kind": "signal",
+      "signal_id": "digest-2026-11-07-35",
+      "turns": [
+        {
+          "speaker": "gilbert-faraday",
+          "text": "Here is the first thing to know. Google acquired a developed data center site in southeast Wyoming from Crusoe Energy with plans for a 1.8GW campus, leveraging existing site work, approvals, and power infrastructure completed. I would not read too much into a single announcement until the filings back it up.",
+          "est_seconds": 20.4
+        },
+        {
+          "speaker": "albert-thorne",
+          "text": "My read is simple, and I will commit to it. Google acquired a developed data center site in southeast Wyoming from Crusoe Energy with plans for a 1.8GW campus, leveraging existing site work, approvals, and power infrastructure completed. A careful operator would plan for the slower case and treat the faster case as upside. The constraint here is rarely the headline figure and usually the schedule behind it. I would want to see the contract terms before treating this as settled.",
+          "est_seconds": 32.4
+        },
+        {
+          "speaker": "mach-eigen",
+          "text": "I disagree with that on the timeline, and I will say why. Google acquired a developed data center site in southeast Wyoming from Crusoe Energy with plans for a 1.8GW campus, leveraging existing site work, approvals, and power infrastructure completed. The honest answer is that the data supports a narrower claim than the one being made. That is the number to hold onto, because everything downstream is arithmetic on it. Anyone planning around this should ask who carries the cost if the schedule moves.",
+          "est_seconds": 33.6
+        },
+        {
+          "speaker": "gilbert-faraday",
+          "text": "So let me pin it down. That is the number to hold onto, because everything downstream is arithmetic on it. Anyone planning around this should ask who carries the cost if the schedule moves. The evidence is thinner than the confidence in the coverage, and that gap is worth naming.",
+          "est_seconds": 20
+        },
+        {
+          "speaker": "albert-thorne",
+          "text": "I will hold my ground on the main point. Google acquired a developed data center site in southeast Wyoming from Crusoe Energy with plans for a 1.8GW campus, leveraging existing site work, approvals, and power infrastructure completed. That is the number to hold onto, because everything downstream is arithmetic on it. Anyone planning around this should ask who carries the cost if the schedule moves. The evidence is thinner than the confidence in the coverage, and that gap is worth naming.",
+          "est_seconds": 32.4
+        },
+        {
+          "speaker": "mach-eigen",
+          "text": "I will move a little, but not on the central claim. The constraint here is rarely the headline figure and usually the schedule behind it. I would want to see the contract terms before treating this as settled. None of this changes the direction of travel, only the pace and who benefits first. We have seen this pattern before, and it tends to resolve slower than the first reports suggest.",
+          "est_seconds": 28
+        },
+        {
+          "speaker": "gilbert-faraday",
+          "text": "Here is my ruling. What matters for a site selector is whether the capacity can actually be energized on the date promised. The honest answer is that the data supports a narrower claim than the one being made. That is the number to hold onto, because everything downstream is arithmetic on it. Anyone planning around this should ask who carries the cost if the schedule moves. The disagreement is whether the stated timeline is credible or optimistic.",
+          "est_seconds": 30.8
+        }
+      ]
+    },
+    {
+      "kind": "the_read",
+      "turns": [
+        {
+          "speaker": "gilbert-faraday",
+          "text": "The Read. Across all three stories, the same pattern shows up. What matters for a site selector is whether the capacity can actually be energized on the date promised. The honest answer is that the data supports a narrower claim than the one being made. That is the number to hold onto, because everything downstream is arithmetic on it. Anyone planning around this should ask who carries the cost if the schedule moves.",
+          "est_seconds": 29.2
+        },
+        {
+          "speaker": "gilbert-faraday",
+          "text": "My call for the week. Anyone planning around this should ask who carries the cost if the schedule moves. The evidence is thinner than the confidence in the coverage, and that gap is worth naming. If the timeline slips by a quarter, the economics change more than most people expect. What would change my mind is a signed contract with a dated energization schedule.",
+          "est_seconds": 25.6
+        }
+      ]
+    },
+    {
+      "kind": "sign_off",
+      "turns": [
+        {
+          "speaker": "gilbert-faraday",
+          "text": "That is the panel for today. Thank you both, and we will be back tomorrow. What matters for a site selector is whether the capacity can actually be energized on the date promised.",
+          "est_seconds": 13.2
+        }
+      ]
+    }
+  ],
+  "pronunciation_terms": [
+    "8GW",
+    "ING",
+    "OpenAI"
+  ],
+  "word_count": 1712
+}
