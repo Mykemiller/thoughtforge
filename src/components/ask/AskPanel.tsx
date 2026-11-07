@@ -170,6 +170,13 @@ export function AskPanel({ panelists, factChecker, chiefOfStaff, roster, maxChar
         <p className="text-xs text-ink-muted">Cmd/Ctrl + Enter to submit.</p>
       </form>
 
+      {!mock && (session.retrievalNotes?.length || session.save?.saved === false) ? (
+        <div role="status" className="space-y-1 rounded border-l-4 border-amber-500 bg-amber-50 px-3 py-1.5 text-sm text-amber-900">
+          {session.retrievalNotes?.length ? <p>Retrieval was degraded: {session.retrievalNotes.join("; ")}</p> : null}
+          {session.save?.saved === false ? <p>This session was not saved: {session.save.note ?? "no reason given"}</p> : null}
+        </div>
+      ) : null}
+
       {error ? (
         <div role="alert" className="rounded-card border border-accent bg-accent/10 p-4 text-sm text-ink">
           {error}

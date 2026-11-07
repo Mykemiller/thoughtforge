@@ -4,7 +4,9 @@
  * source = 'panel' so later panels can cite the ruling as [SRC].
  * Degrades: any failure is returned as a note, never thrown.
  */
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { getServiceClient, hasServiceEnv } from "../lib/supabase";
+import { describeError } from "../lib/errors";
 import type { PanelSession } from "./sse";
 import { PANEL_ORDER } from "./roster";
 import { loadCast } from "../cast/loader";
@@ -19,10 +21,10 @@ export function panelArtifactBody(session: PanelSession): string {
   return [`# Ruling\n${session.ruling}`, ...replies].join("\n\n");
 }
 
-export async function saveSession(session: PanelSession, modelVersions: Record<string, string>): Promise<{ saved: boolean; note?: string }> {
-  if (!hasServiceEnv()) return { saved: false, note: "not saved: Supabase env not set" };
+export async function saveSession(session: PanelSession, modelVersions: Record<string, string>, client?: SupabaseClient): Promise<{ saved: boolean; note?: string }> {
+  if (!client && !hasServiceEnv()) return { saved: false, note: "not saved: Supabase env not set" };
   try {
-    const sb = getServiceClient();
+    const sb = client ?? getServiceClient();
     const sessionRow = {
       id: session.session_id,
       asked_at: new Date().toISOString(),
@@ -49,6 +51,6 @@ export async function saveSession(session: PanelSession, modelVersions: Record<s
     if (a.error) throw a.error;
     return { saved: true };
   } catch (err) {
-    return { saved: false, note: `not saved: ${err instanceof Error ? err.message : String(err)}` };
+    return { saved: false, note: `not saved: ${describeError(err)}` };
   }
 }

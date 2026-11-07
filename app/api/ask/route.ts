@@ -10,6 +10,7 @@ import { hasAnthropicKey, modelVersions, runPanel } from "@/src/ask/orchestrate"
 import { isMock, runMock } from "@/src/ask/mock";
 import { acquire, release } from "@/src/ask/inflight";
 import { saveSession } from "@/src/ask/save";
+import { runLive } from "@/src/ask/live";
 import { LIMITS } from "@/src/ask/roster";
 
 export const runtime = "nodejs";
@@ -55,13 +56,10 @@ export async function POST(req: NextRequest): Promise<Response> {
           emit({ type: "error", message: "ANTHROPIC_API_KEY is not set on this deployment, so the panel cannot convene. Set TF_MOCK=1 to demo with the canned session." });
           emit({ type: "done", session_id: sessionId });
         } else {
-          const { artifacts, notes } = wantRetrieval ? await retrieve(question) : { artifacts: [], notes: [] };
-          for (const n of notes) console.warn(`[ask] ${n}`);
-          emit({ type: "retrieval", artifacts });
-          session = await runPanel({ question, artifacts, sessionId, emit, signal: req.signal });
-          emit({ type: "done", session_id: sessionId });
-          const saved = await saveSession(session, modelVersions());
-          if (!saved.saved) console.warn(`[ask] ${saved.note}`);
+          await runLive(
+            { question, wantRetrieval, sessionId, emit, signal: req.signal },
+            { retrieve, runPanel, saveSession: (sess) => saveSession(sess, modelVersions()), warn: (m) => console.warn(m) },
+          );
         }
       } catch (err) {
         emit({ type: "error", message: err instanceof Error ? err.message : "The panel could not complete this session." });

@@ -13,6 +13,7 @@
  * mismatch returns fewer (or zero) artifacts and never throws to the caller.
  */
 import { getServiceClient, hasServiceEnv } from "../lib/supabase";
+import { describeError } from "../lib/errors";
 import { tierForUrl, type ArtifactSource } from "./primary";
 
 export interface Artifact {
@@ -80,8 +81,8 @@ export async function retrieve(question: string): Promise<RetrievalResult> {
   if (!hasServiceEnv()) return { artifacts: [], notes: ["retrieval skipped: Supabase env not set"] };
   const results = await Promise.allSettled([sourceA(question), sourceB(question)]);
   const [a, b] = results;
-  const fromA = a.status === "fulfilled" ? a.value : (notes.push(`source A unavailable: ${String((a as PromiseRejectedResult).reason?.message ?? a.reason)}`), []);
-  const fromB = b.status === "fulfilled" ? b.value : (notes.push(`source B unavailable: ${String((b as PromiseRejectedResult).reason?.message ?? b.reason)}`), []);
+  const fromA = a.status === "fulfilled" ? a.value : (notes.push(`source A unavailable: ${describeError((a as PromiseRejectedResult).reason)}`), []);
+  const fromB = b.status === "fulfilled" ? b.value : (notes.push(`source B unavailable: ${describeError((b as PromiseRejectedResult).reason)}`), []);
   // Interleave so a strong Faraday hit is not pushed out by eight weak local rows.
   const merged: Artifact[] = [];
   const seen = new Set<string>();
