@@ -134,6 +134,10 @@ const results: Result[] = [];
     const net = networkNames(slug);
     scan(`cast/${slug}/dossier.md`, read(`cast/${slug}/dossier.md`), net, false);
     scan(`cast/${slug}/linkedin.md`, read(`cast/${slug}/linkedin.md`), net, false);
+    // TH-52: interview notes (transcript plus held/drifted/new) are in scope like the dossier.
+    // "Myke" is the interviewer's speaker label (src/interview/transcript.ts), not a name to classify.
+    if (existsSync(join(CAST, slug, "interview-notes.md")))
+      scan(`cast/${slug}/interview-notes.md`, read(`cast/${slug}/interview-notes.md`).replace(/\bMyke\b/g, "the interviewer"), net, false);
     scan(`cast/${slug}/persona.json voice_brief`, `${personas.get(slug).voice_brief}\n${personas.get(slug).sample_line ?? ""}`, [], true);
     for (const f of skillFiles(slug)) scan(f, read(f), [], true);
   }

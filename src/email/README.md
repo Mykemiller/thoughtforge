@@ -18,6 +18,36 @@ Myke replies to Margo  ----> margo@faraday-thoughtforge.com
                                                               runReply: Margo alone, thread in context  --Resend-->  "Re: ..." in the same thread
 ```
 
+## The panel day (TH-66)
+
+The weekday cron no longer sends one briefing. At 07:00 Central it plans the whole day, builds the context once, composes every email, sends the first now and hands the rest to Resend with `scheduledAt` (one cron, works on any Vercel plan; the day is one unit). Saturday's 09:00 cron sends one weekend note. Sunday sends nothing. Cap: `PANEL_MAX_DAILY` (default 5).
+
+| Local time (Central) | Slot | Kind sent | Who | Words |
+| --- | --- | --- | --- | --- |
+| 07:00 | `morning-note` | `briefing` | the TH-31 chair | 180 to 300 |
+| 08:30 Tue/Thu | `cold-open` | `cold-open` | TH-31 weekly seed, next free panelist on a clash | 120 to 220 |
+| 10:30 | `thread-reply` | `thread-reply` (In-Reply-To the morning note, same `thread_key`) | chair + 3 in cast order | 80 to 160 |
+| 12:45 | `aside` | `aside` | chair + 6 | 50 to 120 |
+| 16:30 | `signal-or-news` | Signal roundtable hosted by this panelist when an edition landed in the last 24h and its takeaways have not gone out; otherwise `news-take` | chair + 8 | 120 to 220 |
+| Sat 09:00 | `weekend-note` | `weekend-note` | Saturday's chair | 60 to 120 |
+
+Nobody appears twice in a day and every panelist appears at least twice a week (`day-plan.test.ts` checks a year). Every send carries our own `Message-ID`, assigned when the day is planned, so the 10:30 reply can point at the 07:00 note before either is delivered.
+
+**Context lanes** (`src/email/context/`), built once per day; each one is empty rather than an error, and an empty lane is never mentioned:
+
+- `projects`: Linear team TH issues updated in the last 36 hours (title, state, newest comment), via `LINEAR_API_KEY`. Issue numbers are stripped; panelists use titles.
+- `signal`: the newest `tf_signal_digests` row within four days, top five items.
+- `news`: three to five headlines from the last 24 hours (GDELT DOC through `scripts/lib/gdelt.ts`; one request, headline and outlet only).
+- `personal`: each dossier's "Life outside work" and "Family" bullets (teams, hobbies, what makes them laugh, favorite places, family).
+- `sports`: last night's finals for today's panelists' teams from ESPN's public scoreboard JSON. No result fetched means no result claimed ("didn't catch the end").
+- `thread`: the day's earlier emails, so later slots read the morning note.
+
+**Guard.** `bodyProblems` rejects any sentence about missing input ("no Signal Digest has landed", "I have no fresh news item", "nothing new landed") and any issue number; one retry, then the slot fails rather than send it.
+
+**State.** `tf_email_day_plans` holds the plan (slots, panelists, times, Message-IDs, composed text, statuses). `scheduled` means a re-run does nothing; `partial` means the next run resends only what failed, with the same Message-IDs. `tf_email_messages.slot` joins the unique key.
+
+`npm run email:preview -- --date 2026-11-09` prints the whole day without sending (TF_MOCK=1 uses fixture lanes from `sample-day.ts`); `npm run email:dry-run -- --date 2026-11-10` runs it twice through the real code to show the second run does nothing.
+
 ## What goes out
 
 | Kind | When | From | Subject |

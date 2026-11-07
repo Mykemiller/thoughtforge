@@ -4,12 +4,31 @@
  * TH-47: inbound (Signal Digest feed and replies), roundtable mode, per-panelist Reply-To,
  * and the context opener on every persona email.
  */
+import type { SlotContext } from "./context/types";
 
-export const EMAIL_KINDS = ["briefing", "cold-open", "signal-takeaway", "roundtable-opener", "reply"] as const;
+export const EMAIL_KINDS = [
+  "briefing",
+  "cold-open",
+  "signal-takeaway",
+  "roundtable-opener",
+  "reply",
+  // TH-66: the panel day.
+  "thread-reply",
+  "aside",
+  "news-take",
+  "weekend-note",
+] as const;
 export type EmailKind = (typeof EMAIL_KINDS)[number];
 
 /** Kinds a panelist writes as a note to the reader (the opener rule applies to all of them). */
-export const PERSONA_KINDS: readonly EmailKind[] = ["briefing", "cold-open", "signal-takeaway", "reply"];
+export const PERSONA_KINDS: readonly EmailKind[] = ["briefing", "cold-open", "signal-takeaway", "reply", "thread-reply", "aside", "news-take", "weekend-note"];
+
+/**
+ * The slots of a panel day (TH-66). A slot is a time of day and a job; the kind it sends is
+ * decided when the day is planned (signal-or-news becomes a Signal roundtable or a news-take).
+ */
+export const DAY_SLOTS = ["morning-note", "cold-open", "thread-reply", "aside", "signal-or-news", "weekend-note"] as const;
+export type DaySlot = (typeof DAY_SLOTS)[number];
 
 /** How the ten Signal takeaways go out (TF-DEC-82). */
 export const SIGNAL_MODES = ["thread", "roundtable"] as const;
@@ -35,6 +54,8 @@ export interface EmailPanelist {
   sampleLine?: string;
   backstory: string;
   lifeOutsideWork: string;
+  /** The dossier's "Family" section (fictional people), for the personal lane (TH-66). */
+  family?: string;
 }
 
 export interface SignalInput {
@@ -63,8 +84,10 @@ export interface ComposeContext {
   signal?: SignalInput;
   /** Required for kind "reply": the thread so far, oldest first, ending with the reader's message. */
   thread?: ThreadMessage[];
-  /** For kind "reply": the subject being answered (the reply subject is derived from it). */
+  /** For kind "reply" and "thread-reply": the subject being answered (the reply subject is derived from it). */
   replySubject?: string;
+  /** TH-66: the slice of the day's context lanes this email may draw on. */
+  day?: SlotContext;
 }
 
 export interface ComposeInput {
@@ -92,12 +115,16 @@ export interface EmailRow {
   message_id: string | null;
   in_reply_to: string | null;
   thread_key: string | null;
+  /** TH-66: the day slot this row was sent for; null for Signal takeaways, roundtables and replies. */
+  slot?: DaySlot | null;
 }
 
 export interface EmailKey {
   kind: EmailKind;
   send_date: string;
   panelist_slug: string;
+  /** TH-66: part of the unique key; absent means null. */
+  slot?: DaySlot | null;
 }
 
 /** One row of public.tf_email_inbound (TH-47). */

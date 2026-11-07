@@ -1,4 +1,5 @@
 /**
+ * npm run email:preview -- --date 2026-11-09          (TH-66: the whole panel day, no --kind)
  * npm run email:preview -- --kind briefing --slug delia-marchetti [--date YYYY-MM-DD] [--file digest.txt]
  * npm run email:preview -- --kind signal-takeaway --all [--file path.txt --signal-subject "..." --edition YYYY-MM-DD]
  * npm run email:preview -- --kind signal-takeaway --mode roundtable --file fixtures/digests/sample.txt
@@ -7,17 +8,25 @@
  * --file is the Signal text for briefing (as the latest digest in front of the chair), for
  * signal-takeaway and roundtable, or the reader's message for a reply. (--signal-file still works.)
  * Prints composed emails to the terminal. Never sends, never writes a row.
+ * Day mode (no --kind) runs the real runPanelDay with an in-memory store and a printing sender:
+ * TF_MOCK=1 uses the fixture day context (src/email/sample-day.ts); with ANTHROPIC_API_KEY the lanes
+ * are fetched live (LINEAR_API_KEY for projects; no Supabase read, so no Signal lane).
  * Composes live when ANTHROPIC_API_KEY is set; TF_MOCK=1 gives a canned compose;
  * with neither it prints the envelope and says plainly that nothing was composed (exit 2).
  */
 import { readFileSync } from "node:fs";
-import { composeEmail, anthropicModel, mockModel, subjectFor } from "./compose";
+import { composeEmail, composerFor, anthropicModel, mockModel, subjectFor } from "./compose";
 import { isMockCompose } from "./env";
 import { loadEmailPanelists } from "./panelists";
 import { centralDate, chairFor } from "./rotation";
+import { buildDayContext } from "./context";
+import { centralToUtc, planDay, SLOT_TIMES } from "./day-plan";
+import { runPanelDay } from "./day-run";
 import { assembleRoundtable } from "./run";
+import { sampleDayContext } from "./sample-day";
+import { MemoryDayPlanStore, MemoryEmailStore } from "./store";
 import { SAMPLE_SIGNAL } from "./sample-signal";
-import { formatDryRun, makeMessageId } from "./send";
+import { DryRunSender, formatDryRun, makeMessageId } from "./send";
 import { EMAIL_KINDS, SIGNAL_MODES, type EmailKind, type SignalInput, type SignalMode, type ThreadMessage } from "./types";
 
 function arg(name: string): string | undefined {
@@ -26,7 +35,48 @@ function arg(name: string): string | undefined {
 }
 const flag = (name: string) => process.argv.includes(`--${name}`);
 
+/** TH-66: the whole day for --date, through runPanelDay, printed instead of sent. */
+async function previewDay(): Promise<number> {
+  const panelists = loadEmailPanelists();
+  const date = arg("date") ?? centralDate(new Date());
+  const plan = planDay(date, panelists.map((p) => p.slug), { maxDaily: Number(process.env.PANEL_MAX_DAILY) || undefined });
+  console.log(`[email:preview] panel day ${date}: ${plan.slots.length} email(s)`);
+  for (const s of plan.slots) console.log(`  ${s.local} CT  ${s.slot.padEnd(15)} ${s.slug}`);
+  if (!plan.slots.length) return 0;
+  const mock = isMockCompose();
+  const live = Boolean(process.env.ANTHROPIC_API_KEY) && !mock;
+  if (!mock && !live) {
+    console.log("\nNOT COMPOSED: ANTHROPIC_API_KEY is not set, so no model was called. Re-run with TF_MOCK=1 for a canned compose, or with the key set for a real one.");
+    return 2;
+  }
+  const first = plan.slots[0].slot;
+  const now = new Date(centralToUtc(date, SLOT_TIMES[first]));
+  const context = mock
+    ? sampleDayContext(date, panelists)
+    : await buildDayContext(date, now, panelists, plan.slots.map((s) => s.slug), { linearApiKey: process.env.LINEAR_API_KEY, log: (l) => console.error(l) });
+  console.log(
+    `[email:preview] compose: ${mock ? "TF_MOCK canned (no model call), fixture lanes" : "live model, live lanes"}; lanes: projects ${context.projects.length}, signal ${context.signal?.items.length ?? 0}, news ${context.news.length}, sports ${Object.values(context.sports).flat().length}\n`,
+  );
+  const sender = new DryRunSender((s) => void process.stdout.write(s.replace("DRY_RUN: not sent", "PREVIEW: not sent, not stored")));
+  const result = await runPanelDay(now, {
+    panelists,
+    compose: composerFor(mock ? mockModel : anthropicModel),
+    sender,
+    store: new MemoryEmailStore(),
+    dayPlans: new MemoryDayPlanStore(),
+    recipient: "preview@example.invalid",
+    replyTo: "$PANEL_REPLY_TO",
+    readerName: process.env.PANEL_RECIPIENT_NAME || undefined,
+    lanes: { offline: true },
+    context,
+  });
+  const failed = result.slots.filter((s) => s.status === "failed");
+  for (const f of failed) console.error(`[email:preview] ${f.slot} ${f.slug}: ${f.reason}`);
+  return failed.length ? 1 : 0;
+}
+
 async function main(): Promise<number> {
+  if (!arg("kind")) return previewDay();
   const kind = (arg("kind") ?? "briefing") as EmailKind;
   if (!EMAIL_KINDS.includes(kind)) {
     console.error(`--kind must be one of ${EMAIL_KINDS.join(", ")}`);

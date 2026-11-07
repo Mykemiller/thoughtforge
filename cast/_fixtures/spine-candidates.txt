@@ -42,6 +42,8 @@ BS Mechanical Engineering
 BSJ Journalism
 Bakes Christmas
 Baltimore
+Baltimore Orioles
+Baltimore Ravens
 Bank Stadium
 Basis
 Beatrice Lomax
@@ -81,9 +83,12 @@ Charlotte
 Chartered Financial Analyst
 Chautauqua Institution
 Chicago
+Chicago Blackhawks
+Chicago Cubs
 Chicago Public Library Foundation
 Chicago Tribune
 Chicago Tribune and Rose
+Chicago White Sox
 Chief Engineer
 Chief of Staff
 Chiefs
@@ -168,6 +173,7 @@ Door County
 Downtown Denver
 Dr
 Duke
+Duke Blue Devils
 Duke University
 Duluth
 EPCs
@@ -338,6 +344,7 @@ June Thorne
 Jurisdiction
 Kaija Rautio
 Kansas City
+Kansas City Chiefs
 Karen Petersburg
 Kenji Morioka
 Kenji Nakamura
@@ -419,6 +426,8 @@ Midwest
 Miles
 Miles Bell
 Minneapolis
+Minnesota Lynx
+Minnesota Wild
 Miranda Gardiner
 Miriam Ashdown
 Missouri and Kansas
@@ -458,6 +467,7 @@ North America
 North Carolina
 North Dakota
 North Dakota State
+North Dakota State Bison
 Northern Illinois University
 Northwestern University
 Notion
@@ -469,6 +479,7 @@ Odessa Wright
 Odette Marchand
 Ohio
 Ohio State
+Ohio State Buckeyes
 Ohio State University
 Olaf College
 Olaf Halverson
@@ -577,6 +588,8 @@ Schedules Are Promises
 Science Advisor
 Search Faraday
 Seattle
+Seattle Mariners
+Seattle Seahawks
 Section of Environment
 Senate
 Senior Member
@@ -671,9 +684,11 @@ Utility Dive
 Valley Forge
 Vantage Data Centers'
 Vertiv
+VfB Stuttgart
 Vick
 Victoria Stroud
 Virginia
+Virginia Cavaliers
 Virginia Department of Highways
 Virginia Legal Aid Society
 Virginia State Bar
@@ -695,5 +710,6 @@ Wild
 Williams Arena
 Winifred Tolliver
 Wisconsin
+Wisconsin Badgers
 World Series Game
 You

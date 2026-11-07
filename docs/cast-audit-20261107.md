@@ -1,6 +1,6 @@
 # Cast audit 2026-11-07
 
-Generated Nov 6, 2026, 10:39 PM CT by `npm run audit:cast` (Linear TH-30). Overall: **WARN**. This report is input to Myke's sign-off, which stays his; nothing from the cast reaches production, ElevenLabs or HeyGen until he signs.
+Generated Nov 6, 2026, 11:33 PM CT by `npm run audit:cast` (Linear TH-30). Overall: **WARN**. This report is input to Myke's sign-off, which stays his; nothing from the cast reaches production, ElevenLabs or HeyGen until he signs.
 
 | # | Check | Result |
 | --- | --- | --- |
@@ -13,7 +13,7 @@ Generated Nov 6, 2026, 10:39 PM CT by `npm run audit:cast` (Linear TH-30). Overa
 
 ## 1. Real-name audit: WARN
 
-699 distinct proper nouns. Classified per file: FIC 358, REAL-ORG 517, REAL-EVENT 0, VOICE 152, reviewed non-person 563, unclassified 0. Spine scan is stale (taken 2026-11-05 over a different candidate list); rerun it before sign-off.
+715 distinct proper nouns. Classified per file: FIC 360, REAL-ORG 517, REAL-EVENT 0, VOICE 152, reviewed non-person 582, unclassified 0. Spine scan is stale (taken 2026-11-05 over a different candidate list); rerun it before sign-off.
 
 No exceptions.
 
