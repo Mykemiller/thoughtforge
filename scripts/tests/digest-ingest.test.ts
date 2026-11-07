@@ -33,6 +33,22 @@ test("real digest .eml: subject, date, message id and every signal", () => {
   assert.ok(d.raw_text && d.raw_text.startsWith("FARADAY DAILY SIGNAL DIGEST"));
 });
 
+test("Gmail 'Download message' export: >4 KB of transport headers before Subject still parses as .eml", () => {
+  // Gmail prepends Delivered-To / Received / ARC / DKIM headers (~5 KB) ahead of From, Subject and Content-Type.
+  const fold = (name: string, n: number) => `${name}: i=1; a=rsa-sha256; d=example.com;\r\n` + Array.from({ length: n }, () => `        b=${"A".repeat(64)}\r\n`).join("");
+  const transport = "Delivered-To: reader@example.com\r\n" +
+    "Received: by 2002:a05:6358::1 with SMTP id x;\r\n        Mon, 28 Sep 2026 01:00:18 -0700 (PDT)\r\n" +
+    fold("ARC-Seal", 30) + fold("ARC-Message-Signature", 30) + fold("DKIM-Signature", 20);
+  assert.ok(transport.length > 6000);
+  const raw = transport + read(EML).replace(/^X-Fixture-Note:[^\n]*\n/, "");
+  assert.equal(looksLikeEml(raw), true);
+  const d = parseDigest(raw, { filename: "gmail-export.eml" });
+  assert.equal(d.subject, "Faraday Daily Signal Digest — 40 signals · 2026-11-07");
+  assert.equal(d.signal_count, 40);
+  assert.equal(d.signals.length, 40);
+  assert.equal(parseYield(d), 1);
+});
+
 test("real digest: first signal fields, IDF domain verbatim from the section heading", () => {
   const s = parseDigest(read(EML)).signals[0];
   assert.equal(s.idf_domain, "Industry Media & Analyst Coverage");
