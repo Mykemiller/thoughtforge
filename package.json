@@ -31,7 +31,8 @@
     "plan:voices": "tsx scripts/plan-panel-voices.ts",
     "panel:intros": "tsx scripts/sync-panel-intros.ts",
     "probe:factcheck": "tsx scripts/probe-factcheck.ts",
-    "interview:clips": "tsx scripts/sync-interview-clips.ts"
+    "interview:clips": "tsx scripts/sync-interview-clips.ts",
+    "team:photos": "tsx scripts/team-photos.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.3.0",
@@ -46,6 +47,7 @@
     "yaml": "^2.9.1"
   },
   "devDependencies": {
+    "@google/genai": "^3.0.0",
     "@notionhq/client": "^5.30.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^22.20.5",
