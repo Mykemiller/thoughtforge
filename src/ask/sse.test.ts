@@ -44,3 +44,13 @@ test("parseEvents tolerates a partial trailing frame and chunkText keeps every c
   const text = "one two three four five six seven eight nine";
   assert.equal(chunkText(text, 4).join(""), text);
 });
+
+test("the SSE fold keeps the factcheck degraded flag and reason; clean grades stay flag-free (TH-45)", () => {
+  const degraded: PanelSession = { ...fixture, factcheck: { ...fixture.factcheck!, degraded: true, reason: "repaired" } };
+  const wire = sessionToEvents(degraded, PANEL_ORDER).map(encodeEvent).join("");
+  const back = eventsToSession(parseEvents(wire));
+  assert.equal(back.factcheck?.degraded, true);
+  assert.equal(back.factcheck?.reason, "repaired");
+  const clean = eventsToSession(parseEvents(sessionToEvents(fixture, PANEL_ORDER).map(encodeEvent).join("")));
+  assert.equal("degraded" in (clean.factcheck ?? {}), false);
+});
