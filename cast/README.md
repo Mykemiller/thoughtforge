@@ -9,7 +9,7 @@ Ten original panelists (Cast Sheet v1, TF-DEC-31). Each folder is the canonical 
 | Mach Eigen | Chief Engineer | `mach-eigen/` |
 | Delia Marchetti | Press Lead | `delia-marchetti/` |
 | Albert Thorne | Policy | `albert-thorne/` |
-| Hartford Caldwell (Hart) | Counsel | `hartford-caldwell/` |
+| Hartford Nakamura (Hart) | Counsel | `hartford-nakamura/` |
 | Rosalind Ferraro (Rose) | Political Director | `rosalind-ferraro/` |
 | Victoria Stroud (Vick) | Economic Advisor | `victoria-stroud/` |
 | Dr. Ingrid Halverson | Science Advisor, Thermal Management | `ingrid-halverson/` |

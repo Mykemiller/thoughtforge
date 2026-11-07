@@ -1,11 +1,11 @@
 ---
-name: hartford-caldwell-gdelt-lens
-description: Hartford Caldwell's stance when using GDELT research, archetype Jurisdiction analyst.
+name: hartford-nakamura-gdelt-lens
+description: Hartford Nakamura's stance when using GDELT research, archetype Jurisdiction analyst.
 ---
 
 # gdelt-lens
 
-How Hartford Caldwell uses the shared `gdelt-research` skill. Archetype: Jurisdiction analyst (GDELT page §7).
+How Hartford Nakamura uses the shared `gdelt-research` skill. Archetype: Jurisdiction analyst (GDELT page §7).
 
 ## What this persona asks of GDELT
 

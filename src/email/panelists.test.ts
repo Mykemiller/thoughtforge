@@ -18,8 +18,8 @@ test("ten distinct From addresses on the panel subdomain, first.last, Dr. and sh
   }
   const by = new Map(ps.map((p) => [p.slug, p]));
   assert.equal(by.get("ingrid-halverson")!.address, `ingrid.halverson@${SENDING_DOMAIN}`);
-  assert.equal(by.get("hartford-caldwell")!.address, `hartford.caldwell@${SENDING_DOMAIN}`);
-  assert.equal(by.get("hartford-caldwell")!.firstName, "Hart");
+  assert.equal(by.get("hartford-nakamura")!.address, `hartford.nakamura@${SENDING_DOMAIN}`);
+  assert.equal(by.get("hartford-nakamura")!.firstName, "Hart");
   assert.equal(by.get("rosalind-ferraro")!.firstName, "Rose");
   assert.equal(by.get("victoria-stroud")!.firstName, "Vick");
   assert.equal(by.get("ingrid-halverson")!.from, `"Dr. Ingrid Halverson" <ingrid.halverson@${SENDING_DOMAIN}>`);
@@ -29,7 +29,7 @@ test("ten distinct From addresses on the panel subdomain, first.last, Dr. and sh
 
 test("local part and From header helpers", () => {
   assert.equal(localPart("Dr. Ingrid Halverson"), "ingrid.halverson");
-  assert.equal(localPart("Hartford Caldwell (Hart)"), "hartford.caldwell");
+  assert.equal(localPart("Hartford Nakamura (Hart)"), "hartford.nakamura");
   assert.throws(() => localPart("Cher"), /first\.last/);
   assert.equal(fromHeader('A "B" C', "x@y.z"), '"A B C" <x@y.z>');
 });
@@ -48,7 +48,7 @@ test("per-panelist Reply-To: firstname@ on the root domain, never a nickname, ne
       ["mach-eigen", "mach@faraday-thoughtforge.com"],
       ["delia-marchetti", "delia@faraday-thoughtforge.com"],
       ["albert-thorne", "albert@faraday-thoughtforge.com"],
-      ["hartford-caldwell", "hartford@faraday-thoughtforge.com"],
+      ["hartford-nakamura", "hartford@faraday-thoughtforge.com"],
       ["rosalind-ferraro", "rosalind@faraday-thoughtforge.com"],
       ["victoria-stroud", "victoria@faraday-thoughtforge.com"],
       ["ingrid-halverson", "ingrid@faraday-thoughtforge.com"],

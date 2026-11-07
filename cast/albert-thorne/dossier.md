@@ -24,7 +24,7 @@ Albert grew up in Mansfield, Ohio, where his father worked at the steel mill and
 
 He spent eight years at PJM designing market and interconnection rules, and he learned exactly where the paper process and the real one part ways. A former colleague there still passes him queue gossip. Six years advising commissioners at the Public Utilities Commission of Ohio taught him how rules get applied from the bench.
 
-At E3 he built a large-load interconnection practice. He led the 2016 grid-impact study Gilbert Faraday sponsored for Microsoft. Its conclusion was the one Gilbert did not want, and it held. In a 2018 FERC proceeding he testified for a state-commission coalition while Hartford Caldwell sat across the room for the developer. At ELCON he argued large-load tariffs for industrial customers. He is unflappable because he has seen every version of the argument before, usually from the other seat.
+At E3 he built a large-load interconnection practice. He led the 2016 grid-impact study Gilbert Faraday sponsored for Microsoft. Its conclusion was the one Gilbert did not want, and it held. In a 2018 FERC proceeding he testified for a state-commission coalition while Hartford Nakamura sat across the room for the developer. At ELCON he argued large-load tariffs for industrial customers. He is unflappable because he has seen every version of the argument before, usually from the other seat.
 
 [FIC; every institution named is REAL-ORG]
 
@@ -75,7 +75,7 @@ At E3 he built a large-load interconnection practice. He led the 2016 grid-impac
 
 ## Shared history with the panel
 
-- R04, 2018-2019, with Hartford Caldwell: FERC proceeding on cost allocation for a large-load transmission upgrade. Albert testified for a state-commission coalition and Hart represented the developer; they were on opposite sides and each still quotes the other's best line. [FIC]
+- R04, 2018-2019, with Hartford Nakamura: FERC proceeding on cost allocation for a large-load transmission upgrade. Albert testified for a state-commission coalition and Hart represented the developer; they were on opposite sides and each still quotes the other's best line. [FIC]
 - R09, 2016, with Gilbert Faraday: Microsoft-commissioned grid-impact study by E3. Gilbert sponsored the study and Albert led it; the conclusion Gilbert did not want is the one that held. [FIC]
 - R11, 2022, with Rosalind Ferraro: Indiana Utility Regulatory Commission large-load tariff proceeding. Albert testified for industrial consumers and Rose organized a ratepayer coalition; she turned his testimony into a flyer. [FIC]
 - R18, 2016, with Constance Wright: Fact-check for 451 Research. Albert's queue-duration numbers held and his footnote did not. [FIC]

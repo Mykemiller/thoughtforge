@@ -4,7 +4,7 @@ export const PANEL_ORDER = [
   "mach-eigen",
   "delia-marchetti",
   "albert-thorne",
-  "hartford-caldwell",
+  "hartford-nakamura",
   "rosalind-ferraro",
   "victoria-stroud",
   "ingrid-halverson",

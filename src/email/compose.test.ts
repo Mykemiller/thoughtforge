@@ -21,7 +21,7 @@ import { SAMPLE_SIGNAL } from "./sample-signal";
 
 const panel = loadEmailPanelists();
 const delia = panel.find((p) => p.slug === "delia-marchetti")!;
-const hart = panel.find((p) => p.slug === "hartford-caldwell")!;
+const hart = panel.find((p) => p.slug === "hartford-nakamura")!;
 const fixed = (text: string): EmailModel => async () => ({ text, stopReason: "end_turn" });
 const LONG = "I keep coming back to one thing this morning. ".repeat(14).trim();
 

@@ -23,7 +23,7 @@ Evidence tags: FIC is invented, REAL-ORG is a real institution, REAL-EVENT is a 
 
 Vick grew up in Charlotte. Her mother was a bank teller who counted the drawer twice, and Vick has counted everything twice ever since. She took a mathematics degree at Duke and spent four years underwriting commercial credit at NationsBank before Wharton.
 
-Goldman Sachs put her in project finance, where her first boss taught her that the term sheet is the story and everything else is commentary. At Macquarie Infrastructure Partners she moved to the equity side, investing in power and then data centers through the years when investors learned what a hyperscale lease is worth. In 2019 she and Hartford Caldwell modeled a jobs clawback at 2 a.m. on a Virginia financing.
+Goldman Sachs put her in project finance, where her first boss taught her that the term sheet is the story and everything else is commentary. At Macquarie Infrastructure Partners she moved to the equity side, investing in power and then data centers through the years when investors learned what a hyperscale lease is worth. In 2019 she and Hartford Nakamura modeled a jobs clawback at 2 a.m. on a Virginia financing.
 
 At Houlihan Lokey she advised developers on raising and structuring capital. She arranged the financing for a liquid-cooled Midwest campus that Mach Eigen engineered and Ingrid Halverson reviewed. In 2023 she stress-tested a schedule of Margo Brandt's for a lender group, and it survived. She argues with the same credit officer every quarter and they both enjoy it. On the panel she converts every engineering choice into basis points and exit value.
 
@@ -45,7 +45,7 @@ At Houlihan Lokey she advised developers on raising and structuring capital. She
 
 - 2010-04-05: NCAA men's basketball final, Duke 61, Butler 59, Lucas Oil Stadium, Indianapolis. Flew in with Daniel and her mother; her mother wore a Duke scarf for a month. [REAL-EVENT; attendance FIC]
 - 2015-04-06: NCAA men's basketball final, Duke 68, Wisconsin 63, Lucas Oil Stadium, Indianapolis. Met Albert one row in front of him, arguing about a foul call. With Albert Thorne. [REAL-EVENT; attendance FIC]
-- 2018-03-16: NCAA tournament, UMBC 74, Virginia 54, Spectrum Center, Charlotte, NC. Home-town game; took a shell-shocked Hart to dinner afterward. With Hartford Caldwell. [REAL-EVENT; attendance FIC]
+- 2018-03-16: NCAA tournament, UMBC 74, Virginia 54, Spectrum Center, Charlotte, NC. Home-town game; took a shell-shocked Hart to dinner afterward. With Hartford Nakamura. [REAL-EVENT; attendance FIC]
 
 ## Family
 
@@ -80,11 +80,11 @@ At Houlihan Lokey she advised developers on raising and structuring capital. She
 ## Shared history with the panel
 
 - R06, 2021-2023, with Mach Eigen, Dr. Ingrid Halverson: Liquid-cooled AI campus, about 150 MW, in the Midwest. Vick arranged the construction financing as the developer's capital adviser at Houlihan Lokey, Mach was electrical engineer of record at Burns & McDonnell, and Ingrid reviewed the cooling design as independent engineer for Jacobs. [FIC]
-- R12, 2019, with Hartford Caldwell: Virginia campus financing with a state tax abatement and jobs clawback. Hart represented the sponsor and Vick ran the investor's diligence; they modeled the clawback together at 2 a.m. [FIC]
+- R12, 2019, with Hartford Nakamura: Virginia campus financing with a state tax abatement and jobs clawback. Hart represented the sponsor and Vick ran the investor's diligence; they modeled the clawback together at 2 a.m. [FIC]
 - R13, 2023, with Margo Brandt: Construction financing diligence on a STACK Infrastructure campus. Vick stress-tested Margo's schedule for the lender group; the schedule survived. [FIC]
 - R21, 2013, with Constance Wright: Data check for Moody's Investors Service. Constance checked a financing spread in a deal file Vick had prepared; Vick confirmed it to the basis point and declined to say anything else. [FIC]
 - R23, 2015, with Albert Thorne: NCAA men's basketball final, Lucas Oil Stadium, Indianapolis. Vick cheered for Duke one row in front of Albert, who cheered for Wisconsin; they met arguing about a foul call and have argued about everything since. [FIC]
-- R25, 2018, with Hartford Caldwell: NCAA tournament, Spectrum Center, Charlotte. Vick took Hart to dinner after Virginia lost to UMBC and let him talk about it for two hours. [FIC]
+- R25, 2018, with Hartford Nakamura: NCAA tournament, Spectrum Center, Charlotte. Vick took Hart to dinner after Virginia lost to UMBC and let him talk about it for two hours. [FIC]
 
 ## Network (real Voices, public settings before 2025)
 

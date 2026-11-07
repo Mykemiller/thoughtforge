@@ -20,7 +20,7 @@ Source for each row: `cast/<slug>/persona.json` (`born_year`, `hometown`, `voice
 | Gilbert Faraday (`gilbert-faraday`) | Tacoma, Washington; grew up on the Tacoma waterfront (Pacific Northwest) | 1962 (64) | male | Measured, dry, never hurried. Asks one clarifying question, lets the room argue, then rules in a sentence and names what evidence would change his mind. Speaks last. |
 | Delia Marchetti (`delia-marchetti`) | Joliet, Illinois; grew up in Joliet (Chicagoland) | 1976 (50) | female | Fast, wry, warm. Restates the engineering answer in two sentences a county commissioner would understand, and flags what will be misquoted. |
 | Albert Thorne (`albert-thorne`) | Born Columbus, Ohio; grew up in Mansfield, Ohio | 1968 (58) | male | Precise, academic, unflappable. Cites the docket, the tariff section, the queue position. Distinguishes what the rule says from how the ISO actually behaves. |
-| Hartford Caldwell, "Hart" (`hartford-caldwell`; see note on the TF-DEC-92 rename) | Richmond, Virginia; grew up in Richmond | 1970 (56) | male | Prepared, policy-dense, dry wit. Opens with the exposure, closes with the mitigation. Can brake a recommendation that creates legal or consent risk. |
+| Hartford Nakamura, "Hart" (`hartford-nakamura`; see note on the TF-DEC-92 rename) | Richmond, Virginia; grew up in Richmond | 1970 (56) | male | Prepared, policy-dense, dry wit. Opens with the exposure, closes with the mitigation. Can brake a recommendation that creates legal or consent risk. |
 | Rosalind Ferraro, "Rose" (`rosalind-ferraro`) | Chicago, Illinois (Bridgeport); grew up in Bridgeport | 1978 (48) | female | Relentless drive and vote-counting instinct, delivered with warmth, directness, and moral clarity. Knows who is in the room at the zoning hearing and why. Names the community cost before anyone else does. |
 | Victoria Stroud, "Vick" (`victoria-stroud`) | Charlotte, North Carolina; grew up in Charlotte | 1972 (54) | female | Quiet authority, numbers first, sparing with words. Converts every technical choice into cost of capital and exit value. Not impressed by narrative. |
 | Dr. Ingrid Halverson (`ingrid-halverson`) | Fargo, North Dakota; grew up in Fargo | 1975 (51) | female | Curious, exact, allergic to hand-waving. Starts from heat flux and works outward. Will correct a unit mid-sentence. Only her closest friends call her Doc; the panel does not. |
@@ -28,7 +28,7 @@ Source for each row: `cast/<slug>/persona.json` (`born_year`, `hometown`, `voice
 
 No panelist is UNCLEAR: all eight carry a `hometown` and a "grew up in" line in the v2 dossier Backstory.
 
-**Note on Hart's slug.** The task names him `hartford-nakamura` (renamed from Hartford Caldwell per TF-DEC-92). On `main` as of this branch the dossier folder, `src/data/panel.ts` and `cast/_shared/voices.yaml` still use `hartford-caldwell`; only `src/email/panelists.test.ts` references `hartford-nakamura` (as an alias that resolves to the same inbox). The home region (born 1970, Richmond, Virginia) is the same under either name and was read from `cast/hartford-caldwell/persona.json` and `dossier.md`.
+**Note on Hart's slug.** Hart was renamed Hartford Nakamura per TF-DEC-92 (TH-64); the slug is now `hartford-nakamura` across the dossier folder, `src/data/panel.ts` and `cast/_shared/voices.yaml`. The home region (born 1970, Richmond, Virginia) is unchanged by the rename and was read from his `persona.json` and `dossier.md`.
 
 ## Accent mapping
 
@@ -39,7 +39,7 @@ The ElevenLabs shared library tags accent as a free-text label (filter `accent=`
 | Gilbert Faraday | Tacoma, WA | American (general) | The Pacific Northwest is the textbook General American region; there is no separate library label for it. |
 | Delia Marchetti | Joliet, IL | American Midwest | Joliet is Chicagoland, Inland North dialect; the library's Midwest label is the closest tag. |
 | Albert Thorne | Columbus / Mansfield, OH | American Midwest | Central Ohio is Midland speech, which the library files under its Midwest label. |
-| Hartford Caldwell | Richmond, VA | American Southern | Richmond is Tidewater Virginia; a light, educated Southern label fits better than general American for a 1970 Richmond upbringing. |
+| Hartford Nakamura | Richmond, VA | American Southern | Richmond is Tidewater Virginia; a light, educated Southern label fits better than general American for a 1970 Richmond upbringing. |
 | Rosalind Ferraro | Chicago, IL (Bridgeport) | American Midwest (Chicago where tagged) | Bridgeport is a South Side neighbourhood with a strong Chicago accent; the library has no reliable Chicago-only label, so Midwest is the filter and any voice tagged Chicago is preferred. |
 | Victoria Stroud | Charlotte, NC | American Southern | Piedmont North Carolina; a restrained Southern label suits a Charlotte banker. |
 | Dr. Ingrid Halverson | Fargo, ND | American Midwest | Upper Midwest, North Central dialect; the Midwest label is the nearest tag. |
@@ -101,7 +101,7 @@ ElevenLabs ships a set of premade voices in every account, tagged by ElevenLabs 
 | Gilbert Faraday | Bill (older, trustworthy), Roger (confident), Brian (deep, resonant) | Bill is the only premade tagged old; the others read middle-aged. |
 | Delia Marchetti | Matilda (middle-aged, friendly), Jessica (expressive), Laura (upbeat) | Only Matilda reads middle-aged; Jessica and Laura read young. |
 | Albert Thorne | Brian (deep, resonant), Eric (friendly, clear), Chris (casual) | Brian is his current voice; TF-DEC-103 says it still reads British, so weigh Eric and Chris first. |
-| Hartford Caldwell | Roger, Eric, Bill | No premade is tagged Southern; a real Southern match needs the library search. |
+| Hartford Nakamura | Roger, Eric, Bill | No premade is tagged Southern; a real Southern match needs the library search. |
 | Rosalind Ferraro | Matilda, Jessica, Laura | Same age caveat as Delia; no premade is tagged Midwest or Chicago. |
 | Victoria Stroud | Matilda, Sarah (reassuring, confident) | Sarah is Margo's voice and stays hers; listed only as a register reference, not a pick. |
 | Dr. Ingrid Halverson | Matilda, Jessica | Matilda is her current voice. |

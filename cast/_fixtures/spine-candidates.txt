@@ -18,7 +18,7 @@ Americas
 Angela Ferraro
 Ann McCabe
 Anne
-Anne Caldwell
+Anne Nakamura
 Answered Delia
 Answers Dr
 Arlington
@@ -171,12 +171,13 @@ Duke
 Duke University
 Duluth
 EPCs
+East Coast
 East Rutherford
 Economic Advisor
 EdgeConneX
 Edina
 Educator
-Eleanor Caldwell
+Eleanor Nakamura
 Electrical Engineering
 Electricity Consumers Resource Council
 ElevenLabs
@@ -260,10 +261,12 @@ Hal Brennecke
 Hard Rock Stadium
 Harold Thorne
 Hart
-Hartford Caldwell
+Hartford Nakamura
 Harvard Kennedy School
 Hattie Brannock
 Headline You Will Get
+Heart Mountain
+Heart Mountain Relocation Center
 Helen Faraday
 Henry Stroud
 High Delta-T
@@ -271,6 +274,7 @@ Hiking the Dolomites
 Hillsboro
 Hilltop
 Hilltop Public Solutions
+Hiroshima Prefecture
 Hopkins
 Houlihan Lokey
 Hunton & Williams
@@ -320,6 +324,7 @@ James Hamilton
 James Madison
 Japan
 Japanese
+Japanese American
 Jenifer French
 Jensen Huang
 Joe Kava
@@ -335,6 +340,7 @@ Kaija Rautio
 Kansas City
 Karen Petersburg
 Kenji Morioka
+Kenji Nakamura
 Korean
 Lake Erie
 Large Load Owes the Grid
@@ -369,7 +375,7 @@ Lorraine Pettigrew
 Loudoun County
 Loudoun County Attorney Office
 Lucas Oil Stadium
-Lucy Caldwell
+Lucy Nakamura
 Lyle Hostetler
 Lynx
 MA Public Affairs Reporting
@@ -442,6 +448,7 @@ Never SRC
 New Year
 New York
 Newport Jazz Festival
+Nisei
 Nora
 Nora Simmons
 Nordics and Korea
@@ -531,6 +538,7 @@ Redmond
 Reference Shelf
 Reginald Wright
 Remote
+Renamed Hartford Nakamura
 Reno
 Reno-area
 Research
@@ -563,6 +571,7 @@ San Jose Convention Center
 San Juan Islands
 Sandia
 Sandia National Laboratories
+Sato
 Say
 Schedules Are Promises
 Science Advisor
@@ -605,6 +614,7 @@ Sureel Choksi
 TCF Bank Stadium
 Tacoma
 Tariff Gap
+Taught Hart
 Taught Rose
 Tax
 Taxation
@@ -664,6 +674,7 @@ Vertiv
 Vick
 Victoria Stroud
 Virginia
+Virginia Department of Highways
 Virginia Legal Aid Society
 Virginia State Bar
 Virginia State Corporation Commission
@@ -676,6 +687,7 @@ Warm-Water Cooling Without the Hand-Waving
 Washington
 Water Story Runs First
 Wendell Pryor
+West Coast
 Wharton
 Wharton School
 White Sox

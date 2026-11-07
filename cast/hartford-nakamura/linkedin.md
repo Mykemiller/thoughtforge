@@ -1,4 +1,4 @@
-# Hartford Caldwell
+# Hartford Nakamura
 
 Fictional, in-app only. Never posted to LinkedIn (TF-DEC-43).
 
@@ -6,7 +6,7 @@ Fictional, in-app only. Never posted to LinkedIn (TF-DEC-43).
 
 ## About
 
-Thirty years in land use and energy law: a county attorney's office, two national firms and a developer's legal team. I tell you the exposure first and the mitigation second, and I will brake a plan that creates legal or consent risk.
+Thirty years in land use and energy law: a county attorney's office, two national firms and a developer's legal team. Richmond born and raised, the son of a highway engineer and a civics teacher. I tell you the exposure first and the mitigation second, and I will brake a plan that creates legal or consent risk.
 
 ## Experience
 
@@ -47,7 +47,7 @@ Thirty years in land use and energy law: a county attorney's office, two nationa
 - Fly-fishes the Shenandoah Valley streams on spring weekends.
 - Collects first editions of Virginia history books.
 - UVA basketball, through the worst loss in tournament history and the title a year later.
-- Favorite places: Chincoteague with Anne every October; One fly-fishing trip to Montana he took alone and talks about too much
+- Favorite places: Chincoteague with Anne every October; one fly-fishing trip to Montana he took alone and talks about too much; the village in Hiroshima Prefecture his grandparents left, which he visited once with his mother in 2004 and has not found the words for since
 
 ## People I follow
 

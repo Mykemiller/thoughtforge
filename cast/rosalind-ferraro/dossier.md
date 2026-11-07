@@ -25,7 +25,7 @@ Rose grew up in Bridgeport. In 1990 her mother ran for the county board and lost
 
 She spent ten years in the Illinois Senate. She started as a press secretary, sharing the Springfield pressroom with a Tribune reporter named Delia Marchetti, and finished as a senator's chief of staff who ran the floor count. She took an MPA at night and learned the difference between a whip count and a promise. Four years at Hilltop Public Solutions followed, running coalition campaigns.
 
-Compass Datacenters hired her to run community engagement on new campuses. In a 2020 central Ohio rezoning she persuaded outside counsel Hartford Caldwell to concede on water before the story ran, and they kept the votes. The first call she makes on any site is to a water-district board member she trusts. Back at Hilltop she sat on the other side of the table, including a 2022 Indiana tariff case where she turned Albert Thorne's testimony into a flyer. She names the community cost first because she has paid it.
+Compass Datacenters hired her to run community engagement on new campuses. In a 2020 central Ohio rezoning she persuaded outside counsel Hartford Nakamura to concede on water before the story ran, and they kept the votes. The first call she makes on any site is to a water-district board member she trusts. Back at Hilltop she sat on the other side of the table, including a 2022 Indiana tariff case where she turned Albert Thorne's testimony into a flyer. She names the community cost first because she has paid it.
 
 [FIC; every institution named is REAL-ORG]
 
@@ -80,7 +80,7 @@ Compass Datacenters hired her to run community engagement on new campuses. In a 
 ## Shared history with the panel
 
 - R05, 2002-2006, with Delia Marchetti: Illinois State Capitol, Springfield. Delia covered the statehouse for the Chicago Tribune and Rose was a Senate press secretary; they traded gossip and the occasional scoop. [FIC]
-- R10, 2020, with Hartford Caldwell: Rezoning hearings for a data center campus in central Ohio. Rose led community engagement for the developer and Hart was its outside counsel; they disagreed about conceding on water and Rose won. [FIC]
+- R10, 2020, with Hartford Nakamura: Rezoning hearings for a data center campus in central Ohio. Rose led community engagement for the developer and Hart was its outside counsel; they disagreed about conceding on water and Rose won. [FIC]
 - R11, 2022, with Albert Thorne: Indiana Utility Regulatory Commission large-load tariff proceeding. Albert testified for industrial consumers and Rose organized a ratepayer coalition; she turned his testimony into a flyer. [FIC]
 - R20, 2018, with Constance Wright: Fact-check for 451 Research. Constance doubted a community-meeting attendance figure and Rose produced the sign-in sheets. [FIC]
 - R26, 2016, with Delia Marchetti: World Series Game 7, Chicago. Delia, a Cubs fan, called Rose, a White Sox fan, at 12:47 a.m. after the final out and said nothing. Rose hung up. [FIC]
