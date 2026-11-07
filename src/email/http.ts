@@ -14,7 +14,8 @@ import { EmailEnvError, readEmailEnv, type EmailEnv } from "./env";
 import { handleReceived, svixHeaders, verifyWebhook, WebhookError, type InboundDeps } from "./inbound";
 import { loadEmailPanelists } from "./panelists";
 import type { InboundMessage, ReplyDeps } from "./reply";
-import { parseSignalBody, runDaily, runSignal, SignalInputError, type Outcome, type RunDeps } from "./run";
+import { runPanelDay, type DayRunDeps } from "./day-run";
+import { parseSignalBody, runSignal, SignalInputError, type Outcome, type RunDeps } from "./run";
 import { DryRunSender, ResendSender } from "./send";
 import { supabaseStores } from "./store";
 
@@ -35,6 +36,8 @@ export interface HttpDeps {
   build: (env: EmailEnv) => RunDeps;
   /** Inbound wiring (TH-47): the Resend fetch and the reply/digest stores. */
   buildInbound: (env: EmailEnv, run: RunDeps) => InboundDeps;
+  /** TH-66: the panel day's stores and lane sources. */
+  buildDay: (env: EmailEnv, run: RunDeps) => DayRunDeps;
   now: () => Date;
 }
 
@@ -52,6 +55,12 @@ export function buildRunDeps(env: EmailEnv): RunDeps {
     signalMode: env.signalMode,
     log: (line) => console.log(line),
   };
+}
+
+/** TH-66: the day planner's wiring. LINEAR_API_KEY goes only to the projects lane and is never logged. */
+export function buildDayDeps(env: EmailEnv, run: RunDeps): DayRunDeps {
+  const stores = supabaseStores(env.supabaseUrl);
+  return { ...run, dayPlans: stores.dayPlans, lanes: { linearApiKey: env.linearApiKey ?? undefined, digests: stores.digests }, maxDaily: env.maxDaily };
 }
 
 /** GET /emails/receiving/{id} through the SDK: headers, text and html of a received email. */
@@ -100,6 +109,7 @@ export const defaultHttpDeps: HttpDeps = {
   env: () => readEmailEnv(),
   build: buildRunDeps,
   buildInbound: buildInboundDeps,
+  buildDay: buildDayDeps,
   now: () => new Date(),
 };
 
@@ -122,11 +132,14 @@ function guard(req: Request, deps: HttpDeps): Response | { env: EmailEnv; run: R
 
 const statusFor = (outcomes: Outcome[]) => (outcomes.some((o) => o.status === "failed") ? 502 : 200);
 
+/** TH-66: the weekday 07:00 and Saturday 09:00 cron run the panel day (runPanelDay). */
 export async function handleCron(req: Request, deps: HttpDeps = defaultHttpDeps): Promise<Response> {
   const g = guard(req, deps);
   if (g instanceof Response) return g;
-  const result = await runDaily(deps.now(), g.run);
-  return json({ dry_run: g.env.dryRun, ...result }, statusFor(result.outcomes));
+  const result = await runPanelDay(deps.now(), deps.buildDay(g.env, g.run));
+  // Bodies stay out of the response; subjects and statuses are enough for the cron log.
+  const slots = result.slots.map((s) => ({ ...s, body: undefined }));
+  return json({ dry_run: g.env.dryRun, ...result, slots }, result.slots.some((s) => s.status === "failed") ? 502 : 200);
 }
 
 export async function handleSignal(req: Request, deps: HttpDeps = defaultHttpDeps): Promise<Response> {

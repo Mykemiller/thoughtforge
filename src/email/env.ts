@@ -32,6 +32,10 @@ export type EmailEnvName = (typeof EMAIL_ENV_NAMES)[number];
 /** TH-47 additions. Optional: inbound needs the webhook secret, the rest have defaults. */
 export const INBOUND_ENV_NAMES = ["RESEND_WEBHOOK_SECRET", "PANEL_SIGNAL_MODE", "PANEL_RECIPIENT_NAME", "PANEL_REPLY_ALLOWLIST", "PANEL_REPLY_MAX_PER_THREAD_PER_DAY"] as const;
 
+/** TH-66 additions. Optional: no Linear key empties the projects lane; PANEL_MAX_DAILY defaults to 5. */
+export const DAY_ENV_NAMES = ["LINEAR_API_KEY", "PANEL_MAX_DAILY"] as const;
+export const DEFAULT_MAX_DAILY = 5;
+
 export interface EmailEnv {
   dryRun: boolean;
   mockCompose: boolean;
@@ -47,6 +51,10 @@ export interface EmailEnv {
   /** Lower-cased addresses allowed to write to the panel; defaults to the recipient. */
   replyAllowlist: string[];
   maxRepliesPerThreadPerDay: number;
+  /** TH-66: read-only Linear key for the projects lane; null when unset. Never logged. */
+  linearApiKey: string | null;
+  /** TH-66: emails per panel day (PANEL_MAX_DAILY, default 5). */
+  maxDaily: number;
 }
 
 export class EmailEnvError extends Error {
@@ -107,6 +115,8 @@ export function readEmailEnv(env: Env = process.env): EmailEnv {
   if (value("PANEL_REPLY_ALLOWLIST") && allowlist.some((a) => !EMAIL_RE.test(a))) invalid.push("PANEL_REPLY_ALLOWLIST (not a comma-separated list of email addresses)");
   const maxReplies = value("PANEL_REPLY_MAX_PER_THREAD_PER_DAY") ? Number(value("PANEL_REPLY_MAX_PER_THREAD_PER_DAY")) : DEFAULT_MAX_REPLIES;
   if (!Number.isInteger(maxReplies) || maxReplies < 1) invalid.push("PANEL_REPLY_MAX_PER_THREAD_PER_DAY (must be a positive integer)");
+  const maxDaily = value("PANEL_MAX_DAILY") ? Number(value("PANEL_MAX_DAILY")) : DEFAULT_MAX_DAILY;
+  if (!Number.isInteger(maxDaily) || maxDaily < 1 || maxDaily > 10) invalid.push("PANEL_MAX_DAILY (must be an integer from 1 to 10)");
   if (missing.length || invalid.length) throw new EmailEnvError(missing, invalid);
 
   return {
@@ -115,6 +125,8 @@ export function readEmailEnv(env: Env = process.env): EmailEnv {
     readerName: value("PANEL_RECIPIENT_NAME") || DEFAULT_READER_NAME,
     replyAllowlist: allowlist,
     maxRepliesPerThreadPerDay: maxReplies,
+    linearApiKey: value("LINEAR_API_KEY") || null,
+    maxDaily,
     dryRun,
     mockCompose,
     resendApiKey: dryRun ? null : value("RESEND_API_KEY"),

@@ -219,12 +219,12 @@ test("mode comes from the POST body first, then the env default", async () => {
   assert.equal(sender.sent.length, 11);
 });
 
-test("briefing with a digest on file names the edition in its opener; without one it says nothing new landed", async () => {
+test("briefing with a digest on file names the edition in its opener; without one it never says nothing landed (TH-66)", async () => {
   const fetched = new Map<string, InboundMessage>();
   const { deps, sender, digests } = wiring(fetched);
   const dry = await runDaily(NOW, deps.run);
   assert.equal(dry.digest_date, undefined);
-  assert.match(sender.sent[0].text, /no Signal in front of me/);
+  assert.doesNotMatch(sender.sent[0].text, /no Signal|nothing (new )?landed/i);
   await digests.upsert({ digest_date: "2026-11-05", subject: DIGEST_SUBJECT, signal_count: 37, source_message_id: null, raw_html: null, raw_text: "1. item" });
   const { deps: d2, sender: s2 } = wiring(fetched, { digests });
   d2.run.digests = digests;

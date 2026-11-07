@@ -129,6 +129,23 @@ teams_and_acts:
   - "Texas Tech"
   - "White Sox"
   - "Wild"
+  # TH-66: ESPN scoreboard display names for the teams the dossiers name. Teams, never a person.
+  - "Baltimore Orioles" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "Baltimore Ravens" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "Chicago Blackhawks" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "Chicago Cubs" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "Chicago White Sox" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "Duke Blue Devils" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "Kansas City Chiefs" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "Minnesota Lynx" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "Minnesota Wild" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "North Dakota State Bison" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "Ohio State Buckeyes" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "Seattle Mariners" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "Seattle Seahawks" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "Virginia Cavaliers" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "VfB Stuttgart" # scoreboard team name, src/email/context/sports.ts (TH-66)
+  - "Wisconsin Badgers" # scoreboard team name, src/email/context/sports.ts (TH-66)
 orgs_and_products:
   - "ARPA-E COOLERCHIPS"
   - "Brand Bible"
@@ -259,3 +276,5 @@ ui_copy:
   - "Signal Digest"
   - "Signal"
   - "Gmail"
+  - "Linear" # issue tracker read by the panel day's projects lane (TH-66)
+  - "GraphQL" # Linear's API, named in src/email/context/projects.ts (TH-66)

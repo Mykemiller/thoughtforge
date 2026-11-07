@@ -117,15 +117,16 @@ test("opener rule and reader name are in every persona system prompt; length rul
   assert.ok(emailSystemPrompt(delia, "roundtable-opener").includes("At most 60 words"));
 });
 
-test("briefing prompt: with a digest it names the edition and asks the opener to; without one it says nothing landed", () => {
+test("briefing prompt: with a digest it names the edition and asks the opener to; without one it never mentions the missing digest (TH-66)", () => {
   const withDigest = userPrompt("briefing", delia, { date: "2026-11-05", signal: { ...SAMPLE_SIGNAL, editionDate: "2026-11-05" } });
   assert.match(withDigest, /edition 2026-11-05/);
   assert.match(withDigest, /Your opener names that edition/);
   assert.ok(withDigest.includes(SAMPLE_SIGNAL.text));
   assert.match(withDigest, /note to Myke/);
   const without = userPrompt("briefing", delia, { date: "2026-11-05" });
-  assert.match(without, /No Signal Digest has landed/);
-  assert.match(without, /Your opener says so plainly/);
+  assert.doesNotMatch(without, /No Signal Digest has landed/);
+  assert.doesNotMatch(without, /says so plainly/);
+  assert.match(without, /Pick the one thing that matters most this morning/);
   assert.match(userPrompt("cold-open", delia, { date: "2026-11-05", readerName: "Sam" }), /writing to Sam unprompted/);
 });
 

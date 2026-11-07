@@ -13,6 +13,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { MODELS } from "../ask/roster";
 import { signature } from "./panelists";
+import type { DayThreadEntry, GameResult, SlotContext } from "./context/types";
 import type { ComposeContext, ComposedEmail, ComposeInput, EmailKind, EmailPanelist, ThreadMessage } from "./types";
 
 export const EMAIL_MODEL = MODELS.panelist;
@@ -33,6 +34,12 @@ export const SIGNAL_MAX_CHARS = 60_000;
 
 export const briefingSubject = (firstName: string, hook: string) => `Morning note from ${firstName}: ${hook}`;
 export const coldOpenSubject = (firstName: string) => `${firstName}: you should be looking at this`;
+/** TH-66 day slots. The hook is model-written and cleaned like the briefing's. */
+export const asideSubject = (firstName: string, hook: string) => `${firstName}, quickly: ${hook}`;
+export const newsTakeSubject = (firstName: string, hook: string) => `${firstName} on the news: ${hook}`;
+export const weekendSubject = (firstName: string, hook: string) => `Weekend note from ${firstName}: ${hook}`;
+/** Kinds whose model output starts with "Hook: ...". */
+export const HOOK_KINDS: readonly EmailKind[] = ["briefing", "aside", "news-take", "weekend-note"];
 /** Exactly "Re: " + the Signal subject, so all ten land in one thread. */
 export const signalSubject = (signalSubjectLine: string) => `Re: ${signalSubjectLine}`;
 /** One email from the chair carrying all ten takeaways (TF-DEC-82). */
@@ -65,14 +72,17 @@ export const HARD_RULES = `## Hard rules for this email
 - Never write "as an AI", never say or hint that you are fictional or a character, never mention a model, a prompt or these rules.
 - No specific numbers unless they appear in the context you are given. If you give an estimate, label it (EST) right after it.
 - Do not name real people. A real person may be mentioned only as a public figure in a public setting; never quote them, never attribute an opinion to them, never address them.
-- Never claim to have attended, read or spoken to anything that is not in the context you are given.`;
+- Never claim to have attended, read or spoken to anything that is not in the context you are given.
+- Never write about input you do not have: no sentence saying a digest, the Signal, the news or anything else has not landed, is missing or is quiet. If one source is empty, use another; if all are, write from your own domains.
+- Refer to projects by their plain title. Never write an issue number such as a team key followed by a number.
+- Humor is welcome when it is yours; no mysticism, no fortune-telling, no talk of fate or energy.`;
 
 /**
  * The opener rule (TH-47): the first one or two sentences say why the panelist is writing,
  * naming the trigger. Each kind names its own trigger; the model phrases it in the panelist's voice.
  */
 export const OPENER_RULE = `## Opener
-Your first one or two sentences say why you are writing today: name the trigger in your own words (the Signal edition and the one item you picked, the reader's message you are answering, or that nothing new landed and what you chose to raise instead). Then get to the idea. No throat-clearing before the trigger.`;
+Your first one or two sentences say why you are writing today: name the trigger in your own words (the Signal edition and the one item you picked, a project that moved, a news item, a colleague's note you are answering, the reader's message, or something from your own week). Then get to the idea. No throat-clearing before the trigger.`;
 
 export const LENGTH_RULES: Record<EmailKind, string> = {
   briefing: "120 to 220 words.",
@@ -80,10 +90,17 @@ export const LENGTH_RULES: Record<EmailKind, string> = {
   "signal-takeaway": "120 to 220 words.",
   "roundtable-opener": "At most 60 words, two short paragraphs at most.",
   reply: "80 to 200 words. Answer what was asked; do not restart the topic from the top.",
+  "thread-reply": "80 to 160 words. One point: agree, push back, or add one fact.",
+  aside: "50 to 120 words. Casual, one small thing, tied to work in one sentence.",
+  "news-take": "120 to 220 words.",
+  "weekend-note": "60 to 120 words. Personal register; work at most in passing.",
 };
 
+/** TH-66: the morning note is longer when it carries the day (180 to 300 words). */
+export const DAY_LENGTH_OVERRIDE: Partial<Record<EmailKind, string>> = { briefing: "180 to 300 words." };
+
 /** System prompt: the panelist's voice from the cast files, then the hard rules. */
-export function emailSystemPrompt(p: EmailPanelist, kind: EmailKind = "briefing"): string {
+export function emailSystemPrompt(p: EmailPanelist, kind: EmailKind = "briefing", dayMode = false): string {
   const voice = [`## Voice`, p.voiceBrief, p.sampleLine ? `Sample line: "${p.sampleLine}"` : null].filter(Boolean).join("\n");
   return [
     `# You are ${p.name}, ${p.role} on the ThoughtForge panel of Faraday Intelligence.`,
@@ -91,7 +108,8 @@ export function emailSystemPrompt(p: EmailPanelist, kind: EmailKind = "briefing"
     voice,
     `## Backstory\n${p.backstory}`,
     `## Life outside work\n${p.lifeOutsideWork}`,
-    `${HARD_RULES}\n- ${LENGTH_RULES[kind]}`,
+    `${HARD_RULES}\n- ${(dayMode && DAY_LENGTH_OVERRIDE[kind]) || LENGTH_RULES[kind]}`,
+    ...(dayMode ? [REGISTER_RULE] : []),
     OPENER_RULE,
   ].join("\n\n");
 }
@@ -106,6 +124,57 @@ export function renderThread(thread: ThreadMessage[], reader: string): string {
     .join("\n\n---\n\n");
 }
 
+/** TH-66: the colleague register for the panel day. */
+export const REGISTER_RULE = `## Register for today
+You are one of ten colleagues who email the reader through the day and read each other's notes. Pithy and specific: one idea per email, the kind of note a colleague sends between meetings. Sign-off is only your name and role, added for you. When you reply to a colleague, address them by first name and quote at most one phrase of theirs.`;
+
+const gameLine = (g: GameResult) => `${g.team} ${g.result === "W" ? "beat" : g.result === "L" ? "lost to" : "tied"} ${g.opponent}, ${g.teamScore}-${g.opponentScore} (${g.league}, final)`;
+
+/** The day's lanes as prompt text. Empty lanes are left out, never announced. */
+export function renderLanes(day: SlotContext, opts: { personal?: boolean; projects?: boolean; signal?: boolean; news?: boolean } = {}): string {
+  const want = { personal: true, projects: true, signal: true, news: true, ...opts };
+  const out: string[] = [];
+  if (want.projects && day.projects.length) {
+    out.push(
+      `## What the reader's team is working on (moved in the last day and a half; refer to them by title only)\n` +
+        day.projects.map((x) => `- ${x.title} [${x.state}]${x.lastComment ? `: latest comment: "${x.lastComment}"` : ""}`).join("\n"),
+    );
+  }
+  if (want.signal && day.signal) {
+    out.push(`## Faraday Signal Digest, edition ${day.signal.editionDate} ("${day.signal.subject}"), top items\n${day.signal.items.map((x, i) => `${i + 1}. ${x}`).join("\n")}`);
+  }
+  if (want.news && day.news.length) {
+    out.push(`## Current news, last 24 hours (headline and outlet only; you have not read the articles)\n${day.news.map((n) => `- "${n.title}" (${n.domain})`).join("\n")}`);
+  }
+  if (want.personal && day.personal) {
+    const pl = day.personal;
+    const lines = [
+      pl.sports && `Teams you follow: ${pl.sports}`,
+      pl.hobbies && `Hobbies: ${pl.hobbies}`,
+      pl.laughs && `What makes you laugh: ${pl.laughs}`,
+      pl.places && `Favorite places: ${pl.places}`,
+      pl.family.length ? `Family: ${pl.family.join(" ")}` : "",
+    ].filter(Boolean);
+    const games = day.sports.length
+      ? `Last night's finals for your teams (the only scores you know): ${day.sports.map(gameLine).join("; ")}.`
+      : `You have no score from last night in front of you: do not state or imply any result; if a game comes up, you didn't catch the end.`;
+    out.push(`## Your own life (from your file; your family and friends are yours, not public figures)\n${[...lines, games].join("\n")}`);
+  }
+  return out.join("\n\n");
+}
+
+/** Today's earlier emails, so later slots know the conversation. */
+export function renderDayThread(thread: DayThreadEntry[]): string {
+  return thread.map((t) => `${t.author} (${t.slot}) wrote, subject "${t.subject}":\n${t.body.slice(0, THREAD_MESSAGE_MAX_CHARS).trim()}`).join("\n\n---\n\n");
+}
+
+const dayThreadBlock = (day?: SlotContext) => (day?.thread.length ? [``, `## Earlier today from the panel (read; do not repeat it)`, renderDayThread(day.thread)] : []);
+const lanesBlock = (day: SlotContext | undefined, opts?: Parameters<typeof renderLanes>[1]) => {
+  const r = day ? renderLanes(day, opts) : "";
+  return r ? [``, r] : [];
+};
+const hookLine = `Output format, exactly: first line "Hook: " followed by a 4 to 8 word hook for the subject line, then one blank line, then the email body.`;
+
 export function userPrompt(kind: EmailKind, p: EmailPanelist, context: ComposeContext): string {
   const reader = readerOf(context);
   const signalBlock = (s: { subject: string; text: string; editionDate?: string }) =>
@@ -118,21 +187,25 @@ export function userPrompt(kind: EmailKind, p: EmailPanelist, context: ComposeCo
             `Pick the one item in your domains (${p.domains}) that matters most this morning for ${PANEL_FOCUS}, and say what ${reader} should do or watch today. Use only what the Signal says for facts and numbers.`,
           ]
         : [
-            `No Signal Digest has landed since your last note, so there is no fresh item in front of you. Your opener says so plainly, in one sentence, and names what you chose to raise instead.`,
-            `Pick the one thing in your domains (${p.domains}) that matters most this morning for ${PANEL_FOCUS}, and say what ${reader} should do or watch today.`,
+            `Pick the one thing that matters most this morning for ${PANEL_FOCUS}, from your domains (${p.domains}): a project of the reader's that moved, a news item, or your own read of the week, whichever is strongest in what you are given. Your opener names it. Say what ${reader} should do or watch today.`,
           ];
       return [
-        `Today is ${context.date} (US Central). You chair today's panel and write the morning note to ${reader}.`,
+        `Email type: morning note.`,
+        `Today is ${context.date} (US Central). You chair today's panel and write the morning note to ${reader}. Colleagues will follow up on it through the day.`,
         ...trigger,
         `Output format, exactly: first line "Hook: " followed by a 5 to 8 word hook for the subject line, then one blank line, then the email body.`,
         ...(context.signal ? [``, signalBlock(context.signal)] : []),
+        ...lanesBlock(context.day, { personal: false, signal: !context.signal }),
       ].join("\n");
     }
     case "cold-open":
       return [
+        `Email type: cold open.`,
         `Today is ${context.date} (US Central). Nobody asked; you are writing to ${reader} unprompted, and your opener says so in your own way.`,
         `Write one provocation: the single thing in your domains (${p.domains}) you think ${reader} should worry about this week, why it is easy to miss, and what you would check first.`,
         `Output the email body only.`,
+        ...lanesBlock(context.day, { personal: false }),
+        ...dayThreadBlock(context.day),
       ].join("\n");
     case "signal-takeaway": {
       if (!context.signal) throw new Error("compose: signal-takeaway needs context.signal");
@@ -167,18 +240,79 @@ export function userPrompt(kind: EmailKind, p: EmailPanelist, context: ComposeCo
         renderThread(context.thread, reader),
       ].join("\n");
     }
+    case "thread-reply": {
+      const a = context.day?.answering;
+      if (!a) throw new Error("compose: thread-reply needs context.day.answering");
+      return [
+        `Email type: thread reply.`,
+        `Today is ${context.date} (US Central). ${a.firstName} sent the note below to ${reader} this morning and you are replying in that thread, to both of them.`,
+        `Address ${a.firstName} by first name in your opener and quote at most one short phrase of theirs. Then make one point from your domains (${p.domains}): agree and sharpen it, push back with a reason, or add one fact from what you are given. Do not restate their note.`,
+        `Output the email body only.`,
+        ``,
+        `## ${a.author}'s note (subject "${a.subject}")`,
+        a.body.slice(0, THREAD_MESSAGE_MAX_CHARS).trim(),
+        ...lanesBlock(context.day, { personal: false }),
+      ].join("\n");
+    }
+    case "aside":
+      return [
+        `Email type: aside.`,
+        `Today is ${context.date} (US Central). Midday. You are sending ${reader} a short, casual note: something from your own life this week (a kid, a game, a trip, something that made you laugh), tied to work in one sentence, ideally to something the panel or the reader's team has on today.`,
+        `Only real scores you are given; otherwise no result at all. Family members are your own, from your file.`,
+        hookLine,
+        ...lanesBlock(context.day, { signal: false, news: false }),
+        ...dayThreadBlock(context.day),
+      ].join("\n");
+    case "news-take": {
+      return [
+        `Email type: news take.`,
+        `Today is ${context.date} (US Central). Late afternoon. Pick the one current item below that matters most for ${PANEL_FOCUS} from your domains (${p.domains}); your opener names it and the outlet. Say what it means for the reader's work and what you would watch next. You have seen the headline only; do not invent what the article says.`,
+        `If there is no news item below, pick the strongest item from the Signal or the reader's projects instead, and name that.`,
+        hookLine,
+        ...lanesBlock(context.day, { personal: false }),
+        ...dayThreadBlock(context.day),
+      ].join("\n");
+    }
+    case "weekend-note":
+      return [
+        `Email type: weekend note.`,
+        `Today is ${context.date} (US Central), Saturday. A short personal note to ${reader}: what your weekend looks like, a game, family, a place you are headed. Work at most in passing, one sentence.`,
+        `Only real scores you are given; otherwise no result at all.`,
+        hookLine,
+        ...lanesBlock(context.day, { signal: false, news: false, projects: false }),
+      ].join("\n");
   }
 }
 
 // ---------- output handling ----------
 
 const FORBIDDEN = [/\bas an ai\b/i, /\blanguage model\b/i, /\bfictional\b/i, /\bsystem prompt\b/i];
+
+/**
+ * TH-66: sentences about missing input. A lane that is empty is never announced
+ * ("no Signal Digest has landed", "I have no fresh news item").
+ */
+export const MISSING_INPUT: readonly RegExp[] = [
+  /\bno\s+(?:new\s+|fresh\s+)?(?:signal|digest)\b[^.!?\n]{0,40}\b(?:landed|arrived|came in|in front of me|today|this morning)/i,
+  /\b(?:signal|digest)\b[^.!?\n]{0,30}\b(?:has(?:n't| not)|did(?:n't| not)|never)\s+(?:land|landed|arrive|arrived|come in|came in)/i,
+  /\bnothing\s+(?:new\s+)?(?:has\s+)?landed\b/i,
+  /\bno\s+(?:fresh\s+|new\s+)?news(?:\s+item)?s?\b[^.!?\n]{0,30}\b(?:today|in front of me|to (?:share|report)|landed)/i,
+  /\bi\s+have\s+no\s+(?:fresh|new)\s+(?:news|item|signal)/i,
+  /\bnothing\s+(?:new\s+)?in\s+front\s+of\s+me\b/i,
+];
+/** TH-66: projects by plain title, never by issue number. */
+export const ISSUE_NUMBER = /\bTH-\d+\b/;
+
+/** The sentence-level guard on its own, for tests and the preview. */
+export const mentionsMissingInput = (body: string) => MISSING_INPUT.some((re) => re.test(body));
 const LIST_LINE = /^\s*(?:[-*•]|\d+[.)])\s+/m;
 
 /** Problems that make a body unsendable (one retry, then the send is skipped). */
 export function bodyProblems(body: string): string[] {
   const out: string[] = [];
   for (const re of FORBIDDEN) if (re.test(body)) out.push(`forbidden phrase ${re.source}`);
+  for (const re of MISSING_INPUT) if (re.test(body)) out.push("talks about missing input");
+  if (ISSUE_NUMBER.test(body)) out.push("names an issue number");
   if (LIST_LINE.test(body)) out.push("contains a list");
   if (!body.trim()) out.push("empty body");
   return out;
@@ -188,7 +322,7 @@ export function bodyProblems(body: string): string[] {
 export function parseModelOutput(kind: EmailKind, text: string): { hook: string | null; body: string } {
   let t = text.replace(/\r\n/g, "\n").trim();
   let hook: string | null = null;
-  if (kind === "briefing") {
+  if (HOOK_KINDS.includes(kind)) {
     const m = t.match(/^\s*hook\s*:\s*(.+)\n/i);
     if (m) {
       hook = cleanHook(m[1]);
@@ -228,6 +362,17 @@ export function subjectFor(kind: EmailKind, p: EmailPanelist, context: ComposeCo
     case "reply":
       if (!context.replySubject) throw new Error("compose: reply needs context.replySubject");
       return replySubject(context.replySubject);
+    case "thread-reply": {
+      const original = context.replySubject ?? context.day?.answering?.subject;
+      if (!original) throw new Error("compose: thread-reply needs the subject it answers");
+      return replySubject(original);
+    }
+    case "aside":
+      return asideSubject(p.firstName, hook && wordCount(hook) >= 3 ? hook : "one thing from today");
+    case "news-take":
+      return newsTakeSubject(p.firstName, hook && wordCount(hook) >= 3 ? hook : `what moved on ${context.date}`);
+    case "weekend-note":
+      return weekendSubject(p.firstName, hook && wordCount(hook) >= 3 ? hook : "Saturday, briefly");
   }
 }
 
@@ -259,7 +404,7 @@ export class ComposeError extends Error {}
 /** Composes one email. One retry when the first draft breaks a hard rule. */
 export async function composeEmail(input: ComposeInput, model: EmailModel = anthropicModel): Promise<ComposedEmail> {
   const { panelist, kind, context } = input;
-  const system = emailSystemPrompt(panelist, kind);
+  const system = emailSystemPrompt(panelist, kind, Boolean(context.day));
   const user = userPrompt(kind, panelist, context);
   let lastProblems: string[] = [];
   for (let attempt = 0; attempt < 2; attempt++) {
@@ -284,7 +429,9 @@ export const composerFor = (model: EmailModel = anthropicModel) => (input: Compo
  */
 export const mockModel: EmailModel = async ({ user }) => {
   // Order matters: a reply's thread may quote a takeaway, so the thread marker is checked first.
-  const kind: EmailKind = user.includes("## Thread, oldest first")
+  const typed = user.match(/^Email type: (thread reply|aside|news take|weekend note)\./m)?.[1];
+  const dayKind: EmailKind | undefined = typed ? (typed.replace(" ", "-") as EmailKind) : undefined;
+  const kind: EmailKind = dayKind ?? (user.includes("## Thread, oldest first")
     ? "reply"
     : user.includes("Write the opener only")
       ? "roundtable-opener"
@@ -292,17 +439,18 @@ export const mockModel: EmailModel = async ({ user }) => {
         ? "signal-takeaway"
         : user.includes("morning note")
           ? "briefing"
-          : "cold-open";
+          : "cold-open");
   const edition = user.match(/^## Signal edition date\n(\S+)/m)?.[1];
   const trigger = kind === "reply"
     ? "You wrote back, so this is a canned placeholder reply from TF_MOCK=1."
     : edition
       ? `This is a canned placeholder from TF_MOCK=1 on the Signal edition ${edition}.`
-      : "This is a canned placeholder from TF_MOCK=1 with no Signal in front of me.";
+      : `This is a canned ${kind} placeholder from TF_MOCK=1.`;
   const placeholder =
     `${trigger} No model was called, so nothing here is analysis and nothing here should be read as a claim. ` +
     "In a live run this space holds a note in my own voice on one idea from my domains, with any estimate labelled (EST).";
   if (kind === "briefing") return { text: `Hook: canned placeholder note for the preview\n\n${placeholder}`, stopReason: "end_turn" };
+  if (HOOK_KINDS.includes(kind)) return { text: `Hook: canned ${kind} for the preview\n\n${placeholder}`, stopReason: "end_turn" };
   if (kind === "signal-takeaway") return { text: `${TAKEAWAY_OPENER}\n${placeholder}`, stopReason: "end_turn" };
   if (kind === "roundtable-opener") return { text: `Canned roundtable opener from TF_MOCK=1${edition ? ` for ${edition}` : ""}: the panel's takeaways follow.`, stopReason: "end_turn" };
   return { text: placeholder, stopReason: "end_turn" };

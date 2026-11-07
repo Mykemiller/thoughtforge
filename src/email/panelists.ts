@@ -70,6 +70,7 @@ export function toEmailPanelist(member: CastMember): EmailPanelist {
     sampleLine: p.sample_line,
     backstory: dossierSection(member.dossier, "Backstory"),
     lifeOutsideWork: dossierSection(member.dossier, "Life outside work"),
+    family: dossierSection(member.dossier, "Family"),
   };
 }
 

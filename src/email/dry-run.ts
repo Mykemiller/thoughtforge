@@ -1,7 +1,7 @@
 /**
  * npm run email:dry-run -- [--date YYYY-MM-DD] [--signal] [--fast]
  *
- * Local rehearsal of the cron (and, with --signal, the Signal endpoint) with
+ * Local rehearsal of the cron (TH-66: the panel day, with fixture lanes) and, with --signal, the Signal endpoint, with
  * DryRunSender and an in-memory store: it runs each job twice to show that the
  * second run inserts nothing. Never calls Resend and never touches Supabase.
  * Compose: TF_MOCK=1 for canned text, otherwise ANTHROPIC_API_KEY is required.
@@ -10,10 +10,13 @@
 import { anthropicModel, composerFor, mockModel } from "./compose";
 import { isMockCompose } from "./env";
 import { loadEmailPanelists } from "./panelists";
-import { runDaily, runSignal, type RunDeps } from "./run";
+import { runPanelDay } from "./day-run";
+import { runSignal, type RunDeps } from "./run";
+import { sampleDayContext } from "./sample-day";
 import { SAMPLE_SIGNAL } from "./sample-signal";
 import { DryRunSender } from "./send";
-import { MemoryEmailStore } from "./store";
+import { centralDate } from "./rotation";
+import { MemoryDayPlanStore, MemoryEmailStore } from "./store";
 
 const arg = (name: string) => {
   const i = process.argv.indexOf(`--${name}`);
@@ -50,12 +53,14 @@ async function main(): Promise<number> {
     const second = await runSignal({ ...SAMPLE_SIGNAL, edition_date: date }, now, deps);
     summary("signal run 2", second.outcomes);
   } else {
-    const first = await runDaily(now, deps);
-    summary(`cron run 1 (${first.date}, weekday ${first.weekday}${first.skipped ? `, skipped: ${first.skipped}` : ""})`, first.outcomes);
-    const second = await runDaily(now, deps);
-    summary("cron run 2", second.outcomes);
+    const day = { ...deps, dayPlans: new MemoryDayPlanStore(), lanes: { offline: true }, context: sampleDayContext(centralDate(now), deps.panelists) };
+    const asOutcomes = (r: Awaited<ReturnType<typeof runPanelDay>>) => r.slots.map((s) => ({ kind: `${s.slot}:${s.kind ?? "?"}`, slug: s.slug, status: s.status ?? "?" }));
+    const first = await runPanelDay(now, day);
+    summary(`cron run 1 (${first.date}, weekday ${first.weekday}${first.skipped ? `, skipped: ${first.skipped}` : ""})`, asOutcomes(first));
+    const second = await runPanelDay(now, day);
+    summary(`cron run 2${second.skipped ? ` (skipped: ${second.skipped})` : ""}`, second.skipped ? [] : asOutcomes(second));
   }
-  for (const r of store.list()) console.log(`[email:dry-run] row: ${r.kind} ${r.send_date} ${r.panelist_slug} resend_id=${r.resend_id} thread_key=${r.thread_key ?? "null"}`);
+  for (const r of store.list()) console.log(`[email:dry-run] row: ${r.kind} ${r.send_date} ${r.panelist_slug} slot=${r.slot ?? "null"} resend_id=${r.resend_id} thread_key=${r.thread_key ?? "null"}`);
   return 0;
 }
 
