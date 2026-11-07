@@ -1,5 +1,10 @@
 import Link from "next/link";
 import { PanelStrip } from "@/src/components/PanelStrip";
+import { MeetTheTeam, type TeamBio } from "@/src/components/MeetTheTeam";
+import { PANEL_SORTED, panelAlt } from "@/src/data/panel";
+import { teamPhotos } from "@/src/data/team-photos";
+import { aboutFromLinkedin } from "@/src/cast/bio";
+import { loadCast } from "@/src/cast/load";
 
 const TIERS = [
   { code: "VRF", label: "Verified against a retrieved primary source." },
@@ -8,7 +13,25 @@ const TIERS = [
   { code: "INF", label: "Inference or judgment. No direct source." },
 ];
 
+/** Ten bios in cast order: first paragraph of the in-app About (TF-DEC-43), via the cast loader. */
+function loadBios(): TeamBio[] {
+  const cast = loadCast();
+  return PANEL_SORTED.map((m) => {
+    const member = cast.find((c) => c.slug === m.slug);
+    const about = member ? aboutFromLinkedin(member.linkedin) : "";
+    return {
+      slug: m.slug,
+      name: m.name,
+      role: m.role,
+      thumb: m.thumb,
+      alt: panelAlt(m),
+      bio: about.split(/\n\s*\n/)[0]?.trim() || m.bio,
+    };
+  });
+}
+
 export default function HomePage() {
+  const bios = loadBios();
   return (
     <main>
       {/* Hero */}
@@ -37,6 +60,8 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      <MeetTheTeam photos={teamPhotos} bios={bios} />
 
       <PanelStrip />
 
