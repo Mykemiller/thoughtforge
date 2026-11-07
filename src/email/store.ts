@@ -33,13 +33,10 @@ export class SupabaseEmailStore implements EmailStore {
   constructor(private readonly db: EmailDb) {}
 
   async has(key: EmailKey): Promise<boolean> {
-    const { data, error } = await this.db
-      .from(EMAIL_TABLE)
-      .select("id")
-      .eq("kind", key.kind)
-      .eq("send_date", key.send_date)
-      .eq("panelist_slug", key.panelist_slug)
-      .limit(1);
+    const q = this.db.from(EMAIL_TABLE).select("id").eq("kind", key.kind).eq("send_date", key.send_date).eq("panelist_slug", key.panelist_slug);
+    // TH-66: slot narrows the check when given. Without it the column is never named, so the
+    // Signal and reply paths keep working on a database where the TH-66 migration is not applied yet.
+    const { data, error } = await (key.slot ? q.eq("slot", key.slot) : q).limit(1);
     if (error) throw new Error(`${EMAIL_TABLE} read failed: ${error.message}`);
     return Array.isArray(data) && data.length > 0;
   }
@@ -77,13 +74,15 @@ export class MemoryEmailStore implements EmailStore {
   /** Monotonic timestamps so thread order is stable in tests. */
   private clock = Date.parse("2026-11-05T13:00:00Z");
   static keyOf(k: EmailKey) {
-    return `${k.kind}|${k.send_date}|${k.panelist_slug}`;
+    return `${k.kind}|${k.send_date}|${k.panelist_slug}|${k.slot ?? ""}`;
   }
+  /** Same as the Supabase store: slot narrows the match only when given. */
   async has(key: EmailKey) {
-    return [...this.rows.values()].some((r) => MemoryEmailStore.keyOf(r) === MemoryEmailStore.keyOf(key));
+    return [...this.rows.values()].some((r) => (key.slot ? MemoryEmailStore.keyOf(r) === MemoryEmailStore.keyOf(key) : r.kind === key.kind && r.send_date === key.send_date && r.panelist_slug === key.panelist_slug));
   }
   async reserve(row: EmailRow) {
-    if (row.kind !== "reply" && (await this.has(row))) return null;
+    // The unique index is exact on (kind, send_date, panelist_slug, coalesce(slot, '')).
+    if (row.kind !== "reply" && [...this.rows.values()].some((r) => MemoryEmailStore.keyOf(r) === MemoryEmailStore.keyOf(row))) return null;
     const id = `mem-${++this.seq}`;
     this.clock += 1000;
     this.rows.set(id, { ...row, id, created_at: new Date(this.clock).toISOString() });
@@ -98,6 +97,48 @@ export class MemoryEmailStore implements EmailStore {
   }
   list() {
     return [...this.rows.values()];
+  }
+}
+
+// ---------- TH-66: tf_email_day_plans ----------
+
+export const DAY_PLAN_TABLE = "tf_email_day_plans";
+/** planning: being composed or sent; scheduled: every slot is with Resend (a re-run does nothing); partial: some slot failed (a re-run retries it). */
+export type DayPlanStatus = "planning" | "scheduled" | "partial";
+
+export interface DayPlanRow {
+  send_date: string;
+  plan: unknown;
+  status: DayPlanStatus;
+}
+
+export interface DayPlanStore {
+  get(sendDate: string): Promise<DayPlanRow | null>;
+  /** Insert or replace on send_date. */
+  save(row: DayPlanRow): Promise<void>;
+}
+
+export class SupabaseDayPlanStore implements DayPlanStore {
+  constructor(private readonly db: EmailDb) {}
+  async get(sendDate: string): Promise<DayPlanRow | null> {
+    const { data, error } = await this.db.from(DAY_PLAN_TABLE).select("send_date, plan, status").eq("send_date", sendDate).limit(1);
+    if (error) throw new Error(`${DAY_PLAN_TABLE} read failed: ${error.message}`);
+    return (data?.[0] as DayPlanRow | undefined) ?? null;
+  }
+  async save(row: DayPlanRow): Promise<void> {
+    const { error } = await this.db.from(DAY_PLAN_TABLE).upsert(row, { onConflict: "send_date" });
+    if (error) throw new Error(`${DAY_PLAN_TABLE} upsert failed: ${error.message}`);
+  }
+}
+
+export class MemoryDayPlanStore implements DayPlanStore {
+  readonly rows = new Map<string, DayPlanRow>();
+  async get(sendDate: string) {
+    const r = this.rows.get(sendDate);
+    return r ? structuredClone(r) : null;
+  }
+  async save(row: DayPlanRow) {
+    this.rows.set(row.send_date, structuredClone(row));
   }
 }
 
@@ -215,6 +256,7 @@ export function supabaseStores(url: string | undefined = process.env.NEXT_PUBLIC
     threads: new SupabaseThreadStore(db),
     inbound: new SupabaseInboundStore(db),
     digests: new SupabaseDigestStore(db),
+    dayPlans: new SupabaseDayPlanStore(db),
   };
 }
 

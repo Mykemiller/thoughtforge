@@ -6,7 +6,8 @@ import { bearerMatches, handleCron, handleSignal, type HttpDeps } from "./http";
 import { loadEmailPanelists } from "./panelists";
 import { SAMPLE_SIGNAL } from "./sample-signal";
 import { DryRunSender } from "./send";
-import { MemoryEmailStore } from "./store";
+import { emptyDayContext } from "./context";
+import { MemoryDayPlanStore, MemoryEmailStore } from "./store";
 
 const SECRET = "test-secret-0123456789abcdef";
 const env: EmailEnv = {
@@ -22,10 +23,13 @@ const env: EmailEnv = {
   readerName: "Myke",
   replyAllowlist: ["r@example.com"],
   maxRepliesPerThreadPerDay: 6,
+  linearApiKey: null,
+  maxDaily: 5,
 };
 
 function httpDeps(over: Partial<HttpDeps> = {}) {
   const store = new MemoryEmailStore();
+  const dayPlans = new MemoryDayPlanStore();
   const sender = new DryRunSender(() => {});
   const d: HttpDeps = {
     cronSecret: () => SECRET,
@@ -34,6 +38,7 @@ function httpDeps(over: Partial<HttpDeps> = {}) {
     buildInbound: () => {
       throw new Error("not used in this test");
     },
+    buildDay: (_env, run) => ({ ...run, dayPlans, lanes: { offline: true }, context: emptyDayContext("2026-11-03"), maxDaily: 5 }),
     now: () => new Date("2026-11-03T13:00:00Z"),
     ...over,
   };
@@ -66,16 +71,20 @@ test("cron: env errors name variables, never values", async () => {
   assert.match((await res.json()).error, /missing: RESEND_API_KEY/);
 });
 
-test("cron with the bearer, Tuesday 2026-11-03: two rows; a second call adds none", async () => {
-  const { d, store } = httpDeps();
+test("cron with the bearer, Tuesday 2026-11-03: the panel day (five rows, four scheduled); a second call adds none", async () => {
+  const { d, store, sender } = httpDeps();
   const res = await handleCron(req("/api/email/cron", { headers: auth() }), d);
   assert.equal(res.status, 200);
   const body = await res.json();
   assert.equal(body.dry_run, true);
-  assert.equal(body.outcomes.length, 2);
-  assert.equal(store.list().length, 2);
-  await handleCron(req("/api/email/cron", { headers: auth() }), d);
-  assert.equal(store.list().length, 2);
+  assert.equal(body.status, "scheduled");
+  assert.deepEqual(body.slots.map((s: { slot: string }) => s.slot), ["morning-note", "cold-open", "thread-reply", "aside", "signal-or-news"]);
+  assert.ok(body.slots.every((s: { body?: string }) => s.body === undefined), "bodies stay out of the cron response");
+  assert.equal(store.list().length, 5);
+  assert.equal(sender.sent.filter((e) => e.scheduledAt).length, 4);
+  const again = await (await handleCron(req("/api/email/cron", { headers: auth() }), d)).json();
+  assert.equal(again.skipped, "already scheduled");
+  assert.equal(store.list().length, 5);
 });
 
 test("signal: 400 on a bad body, ten identical subjects on a good one", async () => {

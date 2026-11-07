@@ -22,6 +22,8 @@ export interface OutboundEmail {
   references?: string[];
   /** Sent as Resend's Idempotency-Key: kind/send_date/panelist_slug. */
   idempotencyKey: string;
+  /** TH-66: ISO 8601 instant; Resend holds the email until then. Absent or past: sent now. */
+  scheduledAt?: string;
 }
 
 export interface SendResult {
@@ -58,6 +60,7 @@ export class ResendSender implements Sender {
         subject: email.subject,
         text: email.text,
         headers: threadingHeaders(email),
+        ...(email.scheduledAt ? { scheduledAt: email.scheduledAt } : {}),
       },
       { idempotencyKey: email.idempotencyKey },
     );
@@ -77,6 +80,8 @@ export function formatDryRun(email: OutboundEmail): string {
     `Subject: ${email.subject}`,
     `Message-ID: ${email.messageId}`,
     ...(email.inReplyTo ? [`In-Reply-To: ${email.inReplyTo}`] : []),
+    ...(email.references?.length ? [`References: ${email.references.join(" ")}`] : []),
+    ...(email.scheduledAt ? [`Scheduled-At: ${email.scheduledAt}`] : []),
     "",
     email.text,
     "----- end -----",
