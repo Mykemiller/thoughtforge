@@ -1,0 +1,24 @@
+{
+  "attempts": [
+    {
+      "n": 1,
+      "word_count": 1712,
+      "outcome": "ok",
+      "detail": ""
+    }
+  ],
+  "real_name_audit": {
+    "ok": true,
+    "failures": [],
+    "review": []
+  },
+  "grading": {
+    "grades": {
+      "digest-2026-11-07-33": "SRC",
+      "digest-2026-11-07-34": "SRC",
+      "digest-2026-11-07-35": "SRC"
+    },
+    "degraded": false,
+    "reason": null
+  }
+}
