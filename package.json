@@ -29,7 +29,8 @@
     "email:preview": "tsx src/email/preview.ts",
     "email:dry-run": "DRY_RUN=1 tsx src/email/dry-run.ts",
     "plan:voices": "tsx scripts/plan-panel-voices.ts",
-    "panel:intros": "tsx scripts/sync-panel-intros.ts"
+    "panel:intros": "tsx scripts/sync-panel-intros.ts",
+    "probe:factcheck": "tsx scripts/probe-factcheck.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.3.0",

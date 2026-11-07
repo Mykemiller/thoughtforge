@@ -22,15 +22,21 @@ export const MODELS = {
  * Sampling. The pack asked for temperature 0.7 (panelists) and 0.3 (Fact-Checker,
  * ruling); the Claude 5 family rejects `temperature` with a 400, so the nearest
  * levers are used instead (docs/decisions-th32.md):
- *  - panelists and the Fact-Checker (claude-sonnet-5-5): thinking off via
- *    `between_tools` so the small max_tokens budgets go to the reply, effort
- *    `medium` for the panelists and `high` for the grader;
+ *  - panelists (claude-sonnet-5-5): `thinking: {type: "between_tools"}` so the
+ *    600-token budget goes to the reply, effort `medium`;
+ *  - the Fact-Checker (claude-sonnet-5-5): no `thinking` field at all (TH-45,
+ *    TF-DEC-57: thinking off), effort `high`, and 1,500 tokens. At 400 tokens
+ *    with `between_tools` the grader's JSON was truncated or never started
+ *    (TH-44: every session ungraded); 1,500 covers eight verdicts plus about
+ *    eight items with 300-character notes. A live probe (`npm run
+ *    probe:factcheck`) compares the thinking settings; it was not run in the
+ *    TH-45 session (no key), so the field is omitted per the issue's default;
  *  - the ruling (claude-opus-5-5): thinking cannot be disabled, so effort `low`
  *    keeps the 1,000-token budget for the ruling text itself.
  */
 export const LIMITS = {
   panelistMaxTokens: 600,
-  factcheckMaxTokens: 400,
+  factcheckMaxTokens: 1500,
   rulingMaxTokens: 1000,
   panelistEffort: "medium",
   factcheckEffort: "high",

@@ -2,8 +2,10 @@
  * Live panel orchestration (TH-32 §4.1, TF-DEC-08 turn order).
  *
  *  1. Eight domain panelists reply in parallel (claude-sonnet-5-5, 600 tokens).
- *  2. Constance Wright grades all eight (claude-sonnet-5-5, 400 tokens) and
- *     returns downgrades plus a one-line verdict per panelist.
+ *  2. Constance Wright grades all eight (claude-sonnet-5-5, 1,500 tokens, no
+ *     thinking field; TH-45) and returns downgrades plus a one-line verdict per
+ *     panelist. A failed or repaired grade is flagged `degraded` and the ruling
+ *     is told so.
  *  3. Gilbert Faraday rules last (claude-opus-5-5, 1,000 tokens) with all
  *     nine outputs in context.
  * Sampling levers are in ./roster (LIMITS); `temperature` is not accepted by these models.
@@ -12,20 +14,21 @@
  * Secrets are read by the SDK from process.env and are never logged.
  */
 import Anthropic from "@anthropic-ai/sdk";
+import type { MessageCreateParamsNonStreaming } from "@anthropic-ai/sdk/resources/messages/messages";
 import { loadCastWithShared } from "../cast/loader";
 import { composeSystemPrompt, type RetrievedForPrompt } from "../cast/prompt";
-import type { CastMember } from "../cast/types";
+import type { CastMember, SharedSkills } from "../cast/types";
 import type { Artifact } from "../retrieval";
 import { parseFactcheck } from "./factcheck";
 import { CHIEF_OF_STAFF, FACT_CHECKER, LIMITS, MODELS, PANEL_ORDER } from "./roster";
-import type { AskEvent, Factcheck, PanelSession } from "./sse";
+import { degradedFields, type AskEvent, type Factcheck, type PanelSession } from "./sse";
 
 export const hasAnthropicKey = () => Boolean(process.env.ANTHROPIC_API_KEY);
 
 const PANELIST_TURN = `## This turn
 Answer the user's question below as yourself, in 120 to 220 words, first person. Lead with your domain's answer, state disagreement with the likely view of another panelist if you have one, and tag every factual claim. Do not address the user as a group and do not summarize the other panelists.`;
 
-const FACTCHECK_TURN = (slugs: readonly string[]) => `## This turn
+export const FACTCHECK_TURN = (slugs: readonly string[]) => `## This turn
 You are grading the eight replies below before the Chief of Staff rules. For every claim whose tag you downgrade, record it. A projection tagged [SRC] is always downgraded to [EST]. A [SRC: title] whose title is not in the retrieved artifacts block is downgraded to [INF]. A [VRF] on anything but a primary retrieved artifact is downgraded to [SRC] or lower.
 Return ONLY compact JSON, no prose, in this exact shape:
 {"verdicts":{${slugs.map((s) => `"${s}":"<one line>"`).join(",")}},"items":[{"panelist":"<slug>","claim":"<short quote>","tag_given":"SRC","tag_should_be":"EST","note":"<why>"}]}
@@ -37,15 +40,45 @@ Dissent on the record: <name any panelist you overrule and on what, or "none">.
 What would change my mind: <one or two concrete pieces of evidence>.
 Never name a real person.`;
 
-function toPromptArtifacts(artifacts: Artifact[]): RetrievedForPrompt[] {
+export function toPromptArtifacts(artifacts: Artifact[]): RetrievedForPrompt[] {
   return artifacts.map((a) => ({ title: a.title, publisher: a.publisher, published_at: a.published_at, excerpt: a.excerpt, source: a.source }));
 }
 
-function repliesBlock(members: CastMember[], replies: Record<string, string>): string {
+export function repliesBlock(members: CastMember[], replies: Record<string, string>): string {
   return members
     .filter((m) => m.slug in replies)
     .map((m) => `### ${m.persona.display_name} (${m.slug}), ${m.persona.role}\n${replies[m.slug]}`)
     .join("\n\n");
+}
+
+/**
+ * The stage-2 request, shared by runPanel and scripts/probe-factcheck.ts so the
+ * probe measures exactly what production sends. Thinking is left unset (TH-45,
+ * TF-DEC-57): the whole max_tokens budget goes to the JSON reply.
+ */
+export function factcheckRequest(
+  constance: CastMember,
+  shared: SharedSkills,
+  promptArtifacts: RetrievedForPrompt[],
+  question: string,
+  replies: string,
+): MessageCreateParamsNonStreaming {
+  return {
+    model: MODELS.factcheck,
+    max_tokens: LIMITS.factcheckMaxTokens,
+    output_config: { effort: LIMITS.factcheckEffort },
+    system: composeSystemPrompt(constance, shared, { artifacts: promptArtifacts, turnInstructions: FACTCHECK_TURN(PANEL_ORDER) }),
+    messages: [{ role: "user", content: `## Question\n${question}\n\n## Replies\n${replies}` }],
+  };
+}
+
+/**
+ * The ruling's user turn. Adds one status line only when the fact-check is
+ * degraded, so Gilbert's "ungraded record" caveat is deliberate (TH-45).
+ */
+export function rulingUserContent(question: string, replies: string, factcheck: Factcheck): string {
+  const status = factcheck.degraded ? `Fact-Checker status: DEGRADED (${factcheck.reason ?? "unknown"}); the record is ungraded.\n` : "";
+  return `## Question\n${question}\n\n## Replies\n${replies}\n\n## Fact-Checker (Constance Wright)\n${status}${JSON.stringify(factcheck)}`;
 }
 
 export interface RunOptions {
@@ -114,24 +147,19 @@ export async function runPanel(opts: RunOptions): Promise<PanelSession> {
   // Stage 2: Fact-Checker over all eight.
   let factcheck: Factcheck;
   try {
-    const res = await client.messages.create(
-      {
-        model: MODELS.factcheck,
-        max_tokens: LIMITS.factcheckMaxTokens,
-        thinking: { type: "between_tools" },
-        output_config: { effort: LIMITS.factcheckEffort },
-        system: composeSystemPrompt(constance, shared, { artifacts: promptArtifacts, turnInstructions: FACTCHECK_TURN(PANEL_ORDER) }),
-        messages: [{ role: "user", content: `## Question\n${question}\n\n## Replies\n${repliesBlock(panelists, replies)}` }],
-      },
-      { signal },
-    );
+    const res = await client.messages.create(factcheckRequest(constance, shared, promptArtifacts, question, repliesBlock(panelists, replies)), { signal });
     const text = res.content.map((c) => (c.type === "text" ? c.text : "")).join("");
     factcheck = parseFactcheck(text, PANEL_ORDER);
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    factcheck = { items: [], verdicts: Object.fromEntries(PANEL_ORDER.map((s) => [s, `Fact-check unavailable: ${message}`])) };
+    factcheck = {
+      items: [],
+      verdicts: Object.fromEntries(PANEL_ORDER.map((s) => [s, `Fact-check unavailable: ${message}`])),
+      degraded: true,
+      reason: "api_error",
+    };
   }
-  emit({ type: "factcheck", items: factcheck.items, verdicts: factcheck.verdicts });
+  emit({ type: "factcheck", items: factcheck.items, verdicts: factcheck.verdicts, ...degradedFields(factcheck) });
 
   // Stage 3: the ruling, streamed.
   let ruling = "";
@@ -145,7 +173,7 @@ export async function runPanel(opts: RunOptions): Promise<PanelSession> {
         messages: [
           {
             role: "user",
-            content: `## Question\n${question}\n\n## Replies\n${repliesBlock(panelists, replies)}\n\n## Fact-Checker (Constance Wright)\n${JSON.stringify(factcheck)}`,
+            content: rulingUserContent(question, repliesBlock(panelists, replies), factcheck),
           },
         ],
       },

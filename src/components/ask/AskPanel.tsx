@@ -216,6 +216,11 @@ export function AskPanel({ panelists, factChecker, chiefOfStaff, roster, maxChar
             <h2 id="replies-heading" className="font-mono text-xs tracking-[0.08em] text-ink-muted">
               THE PANEL ANSWERS
             </h2>
+            {session.factcheck?.degraded ? (
+              <p role="status" className="mt-3 rounded border-l-4 border-amber-500 bg-amber-50 px-3 py-1.5 text-sm text-amber-900">
+                The fact-check could not be completed; the ruling below rests on an ungraded record.
+              </p>
+            ) : null}
             <ul className="mt-4 grid gap-4 md:grid-cols-2" role="list">
               {panelists.map((m) => {
                 const text = session.replies[m.slug];

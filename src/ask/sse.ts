@@ -15,18 +15,32 @@ export interface FactcheckItem {
   note: string;
 }
 
+/** Why a fact-check is degraded (TH-45). Absent on a clean grade. */
+export type FactcheckReason = "no_output" | "parse_failed" | "repaired" | "api_error";
+
 export interface Factcheck {
   items: FactcheckItem[];
   /** One-line verdict per panelist slug. */
   verdicts: Record<string, string>;
+  /**
+   * True only when the stage failed (no output, unparseable, API error) or its
+   * output had to be repaired from a truncation. Zero downgrades on a clean
+   * parse is a legitimate grade and is NOT degraded (TH-45 D4).
+   */
+  degraded?: boolean;
+  reason?: FactcheckReason;
 }
+
+/** Copy only the degraded fields that are set, so clean grades stay shape-identical. */
+export const degradedFields = (f: { degraded?: boolean; reason?: FactcheckReason }): Pick<Factcheck, "degraded" | "reason"> =>
+  f.degraded ? { degraded: true, ...(f.reason ? { reason: f.reason } : {}) } : {};
 
 export type AskEvent =
   | { type: "retrieval"; artifacts: Artifact[] }
   | { type: "panelist_start"; slug: string }
   | { type: "panelist_delta"; slug: string; text: string }
   | { type: "panelist_end"; slug: string }
-  | { type: "factcheck"; items: FactcheckItem[]; verdicts: Record<string, string> }
+  | { type: "factcheck"; items: FactcheckItem[]; verdicts: Record<string, string>; degraded?: boolean; reason?: FactcheckReason }
   | { type: "ruling_delta"; text: string }
   | { type: "ruling_end" }
   | { type: "error"; message: string }
@@ -81,7 +95,7 @@ export function eventsToSession(events: AskEvent[], seed: Partial<PanelSession> 
       case "panelist_start": s.replies[ev.slug] = s.replies[ev.slug] ?? ""; break;
       case "panelist_delta": s.replies[ev.slug] = (s.replies[ev.slug] ?? "") + ev.text; break;
       case "panelist_end": break;
-      case "factcheck": s.factcheck = { items: ev.items, verdicts: ev.verdicts }; break;
+      case "factcheck": s.factcheck = { items: ev.items, verdicts: ev.verdicts, ...degradedFields(ev) }; break;
       case "ruling_delta": s.ruling += ev.text; break;
       case "ruling_end": break;
       case "error": s.error = ev.message; break;
@@ -122,7 +136,7 @@ export function sessionToEvents(s: PanelSession, order: readonly string[]): AskE
     }
   }
   for (const slug of slugs) ev.push({ type: "panelist_end", slug });
-  if (s.factcheck) ev.push({ type: "factcheck", items: s.factcheck.items, verdicts: s.factcheck.verdicts });
+  if (s.factcheck) ev.push({ type: "factcheck", items: s.factcheck.items, verdicts: s.factcheck.verdicts, ...degradedFields(s.factcheck) });
   for (const text of chunkText(s.ruling)) ev.push({ type: "ruling_delta", text });
   ev.push({ type: "ruling_end" });
   if (s.error) ev.push({ type: "error", message: s.error });
