@@ -7,6 +7,7 @@ import { loadGuide } from "@/src/interview/guide";
 import { INTERVIEW_LIMITS } from "@/src/interview/run";
 import { InterviewRoom } from "@/src/components/interview/InterviewRoom";
 import { LockedRoom } from "@/src/components/interview/LockedRoom";
+import { faceClipsFor } from "@/src/interview/face";
 
 type Params = { slug: string };
 
@@ -40,6 +41,7 @@ export default async function InterviewPage({ params, searchParams }: { params: 
           arc={guide!.arc}
           maxChars={INTERVIEW_LIMITS.messageMaxChars}
           mock={process.env.TF_MOCK === "1"}
+          faceClips={faceClipsFor(slug)}
         />
       )}
     </main>

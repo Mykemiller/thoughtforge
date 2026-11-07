@@ -11,6 +11,8 @@ import { replyCount, transcriptMarkdown } from "@/src/interview/transcript";
 import { SentenceBuffer } from "@/src/voice/sentences";
 import { ReplyText } from "@/src/components/ask/ReplyText";
 import { useMic, useSpeaker, useVoiceStatus } from "./useVoice";
+import { InterviewFace } from "./InterviewFace";
+import type { FaceClips } from "@/src/interview/face-cues";
 
 export interface InterviewRoomProps {
   member: PanelMember;
@@ -18,11 +20,13 @@ export interface InterviewRoomProps {
   arc: string[];
   maxChars: number;
   mock: boolean;
+  /** TH-51: pre-rendered clips for the fixed segments; null/undefined = flag off, room unchanged. */
+  faceClips?: FaceClips | null;
 }
 
 type Phase = "idle" | "retrieving" | "replying";
 
-export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: InterviewRoomProps) {
+export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock, faceClips }: InterviewRoomProps) {
   const [transcript, setTranscript] = useState<InterviewMessage[]>([]);
   const [draft, setDraft] = useState("");
   const [live, setLive] = useState(""); // the reply being streamed
@@ -46,6 +50,8 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
     if (text) setDraft((d) => (d ? `${d} ${text}` : text));
   }, []);
   const mic = useMic(onDictated, stopSpeaking);
+  const [faceInterrupt, setFaceInterrupt] = useState(0);
+  const [wrapUp, setWrapUp] = useState(false);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ block: "nearest" });
@@ -62,6 +68,7 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
     clearVoiceError();
     mic.stopMic();
     stopSpeaking(); // barge-in: a new question ends the previous answer's audio
+    if (faceClips) setFaceInterrupt((n) => n + 1); // ...and any fixed clip still playing
     unlock();
     sentences.current.reset();
     const next: InterviewMessage[] = [...transcript, { role: "user", content: q }];
@@ -135,7 +142,7 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
       setLive("");
       setPhase("idle");
     }
-  }, [draft, busy, maxChars, transcript, startedAt, sessionId, artifacts, member.slug, clearVoiceError, mic, stopSpeaking, unlock, speak]);
+  }, [draft, busy, maxChars, transcript, startedAt, sessionId, artifacts, member.slug, clearVoiceError, mic, stopSpeaking, unlock, speak, faceClips]);
 
   const onKey = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
@@ -210,6 +217,20 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
           </p>
         </div>
       </header>
+
+      {faceClips ? (
+        <InterviewFace
+          clips={faceClips}
+          name={member.name}
+          poster={member.image}
+          turns={turns}
+          arcLength={arc.length}
+          busy={busy || speaking}
+          wrapUp={wrapUp}
+          onClipStart={stopSpeaking}
+          interrupt={faceInterrupt}
+        />
+      ) : null}
 
       {/* The arc */}
       <details className="rounded-card border border-line bg-muted p-4">
@@ -331,6 +352,11 @@ export function InterviewRoom({ member, voiceBrief, arc, maxChars, mock }: Inter
             {speaking ? (
               <button type="button" onClick={stopSpeaking} className="inline-flex min-h-11 items-center rounded-card border border-line px-4 text-sm font-semibold text-primary hover:bg-muted">
                 Quiet
+              </button>
+            ) : null}
+            {faceClips?.outro && turns > 0 && !wrapUp ? (
+              <button type="button" onClick={() => setWrapUp(true)} disabled={busy} className="inline-flex min-h-11 items-center rounded-card border border-line px-4 text-sm font-semibold text-primary hover:bg-muted disabled:opacity-50">
+                Wrap up
               </button>
             ) : null}
             {transcript.length ? (
