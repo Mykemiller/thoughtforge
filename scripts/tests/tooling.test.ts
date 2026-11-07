@@ -72,7 +72,7 @@ test("bad drafts are kept as unresolved, never dropped", async () => {
 });
 
 test("every cast draft resolves completely against the snapshot", async () => {
-  const slugs = ["albert-thorne", "constance-wright", "delia-marchetti", "gilbert-faraday", "hartford-caldwell", "ingrid-halverson", "mach-eigen", "margo-brandt", "rosalind-ferraro", "victoria-stroud"];
+  const slugs = ["albert-thorne", "constance-wright", "delia-marchetti", "gilbert-faraday", "hartford-nakamura", "ingrid-halverson", "mach-eigen", "margo-brandt", "rosalind-ferraro", "victoria-stroud"];
   for (const slug of slugs) {
     const draft = parse(readFileSync(join(ROOT, "cast", slug, "network.draft.yaml"), "utf8")) as Draft;
     const r = await resolveDraft(draft, snapshotSource(snap));

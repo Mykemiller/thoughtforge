@@ -73,6 +73,8 @@ npm run screenshots    # Playwright: docs/screenshots/*.png from production buil
 
 The ten panelists live in `cast/<slug>/` (dossier, persona.json, linkedin.md, network.json, skills). The repo copy is canonical (TF-DEC-40); the standard is `docs/cast-standard.md`. Do not add, remove or rename panelists.
 
+Hartford Caldwell was renamed Hartford Nakamura on 2026-11-05 (TF-DEC-92); sessions before that date carry the old tag.
+
 Notion mirror (TH-28): after a cast PR merges, run `npm run mirror:cast -- --all --dry-run`, then `npm run mirror:cast -- --all` with `NOTION_TOKEN` in `.env.local`. It rewrites one read-only page per panelist, plus the standard and shared cast page, under the Cast Sheet; targets are listed in `cast/_shared/notion-pages.json`.
 
 ## Branch and merge history

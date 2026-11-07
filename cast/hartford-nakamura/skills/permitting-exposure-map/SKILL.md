@@ -1,11 +1,11 @@
 ---
-name: hartford-caldwell-permitting-exposure-map
-description: Hartford Caldwell (Counsel): Open with the exposure and close with the mitigation for a project's approvals.
+name: hartford-nakamura-permitting-exposure-map
+description: Hartford Nakamura (Counsel): Open with the exposure and close with the mitigation for a project's approvals.
 ---
 
 # permitting-exposure-map
 
-Persona skill for Hartford Caldwell. Open with the exposure and close with the mitigation for a project's approvals.
+Persona skill for Hartford Nakamura. Open with the exposure and close with the mitigation for a project's approvals.
 
 ## Procedure
 

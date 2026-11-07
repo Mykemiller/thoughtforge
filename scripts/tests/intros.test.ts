@@ -20,7 +20,7 @@ test("vttTime formats seconds as WebVTT time", () => {
 });
 
 test("introVtt writes one cue covering the clip", () => {
-  assert.equal(introVtt("  Hart   Caldwell, counsel. ", 5.9), "WEBVTT\n\n00:00:00.000 --> 00:00:05.900\nHart Caldwell, counsel.\n");
+  assert.equal(introVtt("  Hart   Nakamura, counsel. ", 5.9), "WEBVTT\n\n00:00:00.000 --> 00:00:05.900\nHart Nakamura, counsel.\n");
   assert.match(introVtt("x", NaN), /--> 00:00:10\.000/);
   assert.throws(() => introVtt("   ", 3));
 });

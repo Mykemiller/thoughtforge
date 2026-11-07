@@ -1,11 +1,11 @@
 ---
-name: hartford-caldwell-incentive-clawback-model
-description: Hartford Caldwell (Counsel): Model abatement value against clawback triggers side by side.
+name: hartford-nakamura-incentive-clawback-model
+description: Hartford Nakamura (Counsel): Model abatement value against clawback triggers side by side.
 ---
 
 # incentive-clawback-model
 
-Persona skill for Hartford Caldwell. Model abatement value against clawback triggers side by side.
+Persona skill for Hartford Nakamura. Model abatement value against clawback triggers side by side.
 
 ## Procedure
 

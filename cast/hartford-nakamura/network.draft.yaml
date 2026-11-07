@@ -1,6 +1,6 @@
-# Draft network for hartford-caldwell. Input to scripts/resolve-network.ts, which writes network.json.
+# Draft network for hartford-nakamura. Input to scripts/resolve-network.ts, which writes network.json.
 # Rules: docs/network-rules.md (TF-OPEN-08, ruled 2026-11-01). Real people only, public settings before 2025.
-slug: hartford-caldwell
+slug: hartford-nakamura
 entries:
   - name: "Samuel T. Towell"
     relationship_kind: follows

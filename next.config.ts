@@ -8,6 +8,13 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200],
     imageSizes: [72, 96, 144, 192, 320, 400, 800],
   },
+  // Hartford Caldwell was renamed Hartford Nakamura (TF-DEC-92, TH-64); old links keep working.
+  async redirects() {
+    return [
+      { source: "/panel/hartford-caldwell", destination: "/panel/hartford-nakamura", statusCode: 308 },
+      { source: "/interview/hartford-caldwell", destination: "/interview/hartford-nakamura", statusCode: 308 },
+    ];
+  },
 };
 
 export default nextConfig;

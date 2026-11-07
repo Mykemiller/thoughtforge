@@ -146,9 +146,9 @@ test("sports lane: only finished games for followed teams; a failing league is e
   assert.deepEqual(parseScoreboard({ nope: true }, ["Chicago Cubs"], "mlb"), []);
   assert.equal(lastNight("2026-11-09"), "20261108");
   assert.match(scoreboardUrl({ path: "football/college-football", groups: "80" }, "20261108"), /college-football\/scoreboard\?dates=20261108&groups=80/);
-  const r = await fetchSports({ date: "2026-11-09", teamsBySlug: { "delia-marchetti": ["Chicago Cubs"], "hartford-caldwell": ["Seattle Seahawks"] }, fetcher: async (u) => (u.includes("mlb") ? json(scoreboard) : new Response("x", { status: 503 })) });
+  const r = await fetchSports({ date: "2026-11-09", teamsBySlug: { "delia-marchetti": ["Chicago Cubs"], "hartford-nakamura": ["Seattle Seahawks"] }, fetcher: async (u) => (u.includes("mlb") ? json(scoreboard) : new Response("x", { status: 503 })) });
   assert.equal(r["delia-marchetti"].length, 1);
-  assert.deepEqual(r["hartford-caldwell"], []);
+  assert.deepEqual(r["hartford-nakamura"], []);
   const down = await fetchSports({ date: "2026-11-09", teamsBySlug: { "delia-marchetti": ["Chicago Cubs"] }, fetcher: throwing });
   assert.deepEqual(down, { "delia-marchetti": [] });
 });
