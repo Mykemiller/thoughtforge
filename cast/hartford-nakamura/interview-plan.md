@@ -1,4 +1,4 @@
-# Interview plan: Hartford Caldwell (Hart), Counsel
+# Interview plan: Hartford Nakamura (Hart), Counsel
 
 Linear TH-58. Guide: `docs/interviews/guide.md` (TH-48). Drafted 2026-11-05 CT. Arc Q1 to Q9 as in the guide; this file carries what is specific to Hart.
 

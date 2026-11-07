@@ -13,7 +13,7 @@ export const SENDING_DOMAIN = "panel.faraday-thoughtforge.com";
 export const REPLY_INBOX_DOMAIN = "faraday-thoughtforge.com";
 
 /**
- * "hartford-caldwell" -> "hartford@faraday-thoughtforge.com". The first token of the
+ * "hartford-nakamura" -> "hartford@faraday-thoughtforge.com". The first token of the
  * slug, never the nickname (hart, rose, vick, doc), so the mailbox names Myke created hold.
  */
 export function replyInboxFor(slug: string): string {
@@ -29,14 +29,14 @@ export const EMAIL_ORDER = [
   "mach-eigen",
   "delia-marchetti",
   "albert-thorne",
-  "hartford-caldwell",
+  "hartford-nakamura",
   "rosalind-ferraro",
   "victoria-stroud",
   "ingrid-halverson",
   "constance-wright",
 ] as const;
 
-/** "Dr. Ingrid Halverson" -> "ingrid.halverson"; "Hartford Caldwell" -> "hartford.caldwell". */
+/** "Dr. Ingrid Halverson" -> "ingrid.halverson"; "Hartford Nakamura" -> "hartford.nakamura". */
 export function localPart(displayName: string): string {
   const tokens = displayName
     .replace(/^Dr\.\s+/, "")

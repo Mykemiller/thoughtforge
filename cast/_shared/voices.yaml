@@ -43,13 +43,13 @@ panelists:
     gender: male
     why: Regulatory specialist who cites the docket; articulate and precise.
     intro: "Albert Thorne. I'll tell you what the tariff says, and then how the queue actually behaves, which is rarely the same thing."
-  hartford-caldwell:
+  hartford-nakamura:
     voice_id: b5c5b28db1ea408abc7d851202983bdb
     video_id: 90c1eb4cf294cee3a1d3f8110822c677
     voice_name: "Roderic - Authoritative & Refined"
     gender: male
     why: Counsel who can stop a recommendation; measured, refined authority.
-    intro: "Hart Caldwell, counsel. I open with the exposure and close with the mitigation."
+    intro: "Hart Nakamura, counsel. I open with the exposure and close with the mitigation."
   rosalind-ferraro:
     voice_id: 00e580506bd44675a7432225d76053ac
     video_id: bee2d2eff5510eaa691aca9635d5005f

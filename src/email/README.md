@@ -100,7 +100,7 @@ curl -X POST https://<deployment>/api/email/signal \
 
 ## Rotation
 
-- Chair for a date = `EMAIL_ORDER[daysSince(2026-11-03) mod 10]`, by calendar day (weekends count), over: gilbert-faraday, margo-brandt, mach-eigen, delia-marchetti, albert-thorne, hartford-caldwell, rosalind-ferraro, victoria-stroud, ingrid-halverson, constance-wright. So 2026-11-03 is Gilbert, 2026-11-04 Margo, 2026-11-13 Gilbert again.
+- Chair for a date = `EMAIL_ORDER[daysSince(2026-11-03) mod 10]`, by calendar day (weekends count), over: gilbert-faraday, margo-brandt, mach-eigen, delia-marchetti, albert-thorne, hartford-nakamura, rosalind-ferraro, victoria-stroud, ingrid-halverson, constance-wright. So 2026-11-03 is Gilbert, 2026-11-04 Margo, 2026-11-13 Gilbert again.
 - Cold-open sender = mulberry32 seeded with `ISO year * 100 + ISO week`, so Tuesday and Thursday of one week share a sender.
 
 ## Idempotency and storage

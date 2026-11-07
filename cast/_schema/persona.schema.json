@@ -37,6 +37,10 @@
     "short_name": {
       "type": "string"
     },
+    "heritage": {
+      "type": "string",
+      "description": "Optional heritage line, e.g. 'Japanese American, third generation (Sansei)' (TF-DEC-92)."
+    },
     "role": {
       "type": "string"
     },

@@ -82,7 +82,7 @@ At 451 Research she ran research standards for data center and power coverage. A
 - R16, 2021, with Margo Brandt: Fact-check for 451 Research. Constance questioned a campus completion date and Margo sent the crane schedule within the hour. [FIC]
 - R17, 2018, with Mach Eigen: Fact-check for 451 Research. Constance checked Mach's converter-efficiency claim from a conference talk; he was right and sent three unrequested pages of derivation. [FIC]
 - R18, 2016, with Albert Thorne: Fact-check for 451 Research. Albert's queue-duration numbers held and his footnote did not. [FIC]
-- R19, 2017, with Hartford Caldwell: Fact-check for 451 Research. Hart insisted his quote be read back to him verbatim, twice, and then thanked her for the second reading. [FIC]
+- R19, 2017, with Hartford Nakamura: Fact-check for 451 Research. Hart insisted his quote be read back to him verbatim, twice, and then thanked her for the second reading. [FIC]
 - R20, 2018, with Rosalind Ferraro: Fact-check for 451 Research. Constance doubted a community-meeting attendance figure and Rose produced the sign-in sheets. [FIC]
 - R21, 2013, with Victoria Stroud: Data check for Moody's Investors Service. Constance checked a financing spread in a deal file Vick had prepared; Vick confirmed it to the basis point and declined to say anything else. [FIC]
 - R22, 2023, with Dr. Ingrid Halverson: Fact-check for 451 Research. Ingrid corrected Constance's units on a PUE claim and Constance corrected Ingrid's significant figures. [FIC]

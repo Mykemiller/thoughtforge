@@ -53,6 +53,17 @@ npm run ingest:artifact -- artifacts/inbox
 
 Format and a fictional example: `artifacts/inbox/README.md`, `artifacts/inbox/_example.md`. Every completed panel session is also saved as a `source = 'panel'` artifact, so later panels can cite earlier rulings as `[SRC]`. Full detail in `docs/artifacts.md`.
 
+## Ingesting Signal Digests (Panel Podcast)
+
+Export a Faraday Daily Signal Digest from Gmail as `.eml` (or save its HTML), drop it into `inbox/digests/` (gitignored), and run:
+
+```bash
+npm run ingest:digest -- inbox/digests --dry-run   # parse only, prints JSON, never touches Supabase
+npm run ingest:digest -- inbox/digests             # upsert tf_signal_digests + replace tf_digest_signals per digest_date
+```
+
+`pnpm ingest:digest <file|dir>` works the same way. The CLI refuses any Supabase project other than `ycadmmngkdhvpcsrcuaq` and exits non-zero if a digest yields fewer than 80% of the signals its subject line states. Gmail export steps and field mapping: `docs/podcast/digest-ingest.md`.
+
 ## Checks
 
 ```bash
@@ -72,6 +83,8 @@ npm run screenshots    # Playwright: docs/screenshots/*.png from production buil
 ## Cast
 
 The ten panelists live in `cast/<slug>/` (dossier, persona.json, linkedin.md, network.json, skills). The repo copy is canonical (TF-DEC-40); the standard is `docs/cast-standard.md`. Do not add, remove or rename panelists.
+
+Hartford Caldwell was renamed Hartford Nakamura on 2026-11-05 (TF-DEC-92); sessions before that date carry the old tag.
 
 Notion mirror (TH-28): after a cast PR merges, run `npm run mirror:cast -- --all --dry-run`, then `npm run mirror:cast -- --all` with `NOTION_TOKEN` in `.env.local`. It rewrites one read-only page per panelist, plus the standard and shared cast page, under the Cast Sheet; targets are listed in `cast/_shared/notion-pages.json`.
 

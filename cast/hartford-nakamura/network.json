@@ -1,5 +1,5 @@
 {
-  "slug": "hartford-caldwell",
+  "slug": "hartford-nakamura",
   "rule": "TF-OPEN-08 (2026-11-01): real people only, public settings before 2025; follows, cites or shared_room with a named venue",
   "resolved_against": "ycadmmngkdhvpcsrcuaq people",
   "source": "snapshot cast/_fixtures/people-snapshot.json (taken 2026-11-01)",
