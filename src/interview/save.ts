@@ -5,7 +5,9 @@
  * most the reply in flight. Degrades: any failure is a note, never a throw.
  * The service client asserts the project of record before any write.
  */
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { getServiceClient, hasServiceEnv } from "../lib/supabase";
+import { describeError } from "../lib/errors";
 import { loadCast } from "../cast/loader";
 import type { InterviewSession } from "./sse";
 import { firstQuestion, interviewArtifactTitle, transcriptMarkdown } from "./transcript";
@@ -14,12 +16,12 @@ export function interviewTags(session: InterviewSession): string[] {
   return ["interview", `panelist:${session.panelist}`, `session:${session.session_id}`];
 }
 
-export async function saveInterview(session: InterviewSession): Promise<{ saved: boolean; note?: string }> {
-  if (!hasServiceEnv()) return { saved: false, note: "not saved: Supabase env not set" };
+export async function saveInterview(session: InterviewSession, client?: SupabaseClient): Promise<{ saved: boolean; note?: string }> {
+  if (!client && !hasServiceEnv()) return { saved: false, note: "not saved: Supabase env not set" };
   try {
     const member = loadCast().find((m) => m.slug === session.panelist);
     if (!member) throw new Error(`unknown panelist ${session.panelist}`);
-    const sb = getServiceClient();
+    const sb = client ?? getServiceClient();
     const now = new Date().toISOString();
     const row = {
       id: session.session_id,
@@ -65,6 +67,6 @@ export async function saveInterview(session: InterviewSession): Promise<{ saved:
     if (a.error) throw a.error;
     return { saved: true };
   } catch (err) {
-    return { saved: false, note: `not saved: ${err instanceof Error ? err.message : String(err)}` };
+    return { saved: false, note: `not saved: ${describeError(err)}` };
   }
 }

@@ -36,7 +36,7 @@ export const degradedFields = (f: { degraded?: boolean; reason?: FactcheckReason
   f.degraded ? { degraded: true, ...(f.reason ? { reason: f.reason } : {}) } : {};
 
 export type AskEvent =
-  | { type: "retrieval"; artifacts: Artifact[] }
+  | { type: "retrieval"; artifacts: Artifact[]; notes?: string[] }
   | { type: "panelist_start"; slug: string }
   | { type: "panelist_delta"; slug: string; text: string }
   | { type: "panelist_end"; slug: string }
@@ -44,6 +44,7 @@ export type AskEvent =
   | { type: "ruling_delta"; text: string }
   | { type: "ruling_end" }
   | { type: "error"; message: string }
+  | { type: "saved"; saved: boolean; note?: string }
   | { type: "done"; session_id: string };
 
 export type AskEventType = AskEvent["type"];
@@ -58,6 +59,10 @@ export interface PanelSession {
   factcheck: Factcheck | null;
   ruling: string;
   error: string | null;
+  /** Retrieval degradation notes (TH-46). Empty on a clean retrieval or an old stream. */
+  retrievalNotes?: string[];
+  /** Persistence outcome (TH-46). null = unknown (demo mode, old stream, or not yet reported). */
+  save?: { saved: boolean; note?: string } | null;
 }
 
 /** Any event the app streams: /api/ask (AskEvent) or /api/interview (src/interview/sse.ts). */
@@ -88,10 +93,10 @@ export function parseEvents<T extends StreamEvent = AskEvent>(text: string): T[]
 
 /** Fold a stream of events into a session. Tolerates partial streams. */
 export function eventsToSession(events: AskEvent[], seed: Partial<PanelSession> = {}): PanelSession {
-  const s: PanelSession = { session_id: "", question: "", artifacts: [], replies: {}, factcheck: null, ruling: "", error: null, ...seed };
+  const s: PanelSession = { session_id: "", question: "", artifacts: [], replies: {}, factcheck: null, ruling: "", error: null, retrievalNotes: [], save: null, ...seed };
   for (const ev of events) {
     switch (ev.type) {
-      case "retrieval": s.artifacts = ev.artifacts; break;
+      case "retrieval": s.artifacts = ev.artifacts; s.retrievalNotes = ev.notes ?? []; break;
       case "panelist_start": s.replies[ev.slug] = s.replies[ev.slug] ?? ""; break;
       case "panelist_delta": s.replies[ev.slug] = (s.replies[ev.slug] ?? "") + ev.text; break;
       case "panelist_end": break;
@@ -99,6 +104,7 @@ export function eventsToSession(events: AskEvent[], seed: Partial<PanelSession> 
       case "ruling_delta": s.ruling += ev.text; break;
       case "ruling_end": break;
       case "error": s.error = ev.message; break;
+      case "saved": s.save = { saved: ev.saved, ...(ev.note ? { note: ev.note } : {}) }; break;
       case "done": s.session_id = ev.session_id; break;
     }
   }
