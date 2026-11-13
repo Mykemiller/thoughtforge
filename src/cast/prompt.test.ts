@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { checkSlugs, loadCastWithShared } from "./loader";
-import { composePanelistCore, composeSystemPrompt, estimateTokens, PROMPT_TOKEN_LIMIT, EVIDENCE_LADDER_CONTRACT } from "./prompt";
+import { composePanelistCore, composeSystemPrompt, estimateTokens, PROMPT_TOKEN_LIMIT, EVIDENCE_LADDER_CONTRACT, JOIN_CONTRACT } from "./prompt";
 
 const cast = loadCastWithShared();
 
@@ -60,4 +60,19 @@ test("retrieval block says so when nothing was retrieved, and lists titles when 
   assert.ok(some.includes("1. Example tariff filing (Example PUC · 2024-05-01 · primary)"));
   assert.ok(some.endsWith("Turn note."));
   assert.ok(!some.includes("x".repeat(301)), "excerpt is capped at 300 chars");
+});
+
+test("join mode (FDY-345): fixed prompt stays under budget, swaps the contract, and numbers the retrieval block", () => {
+  for (const m of cast.members) {
+    const core = composePanelistCore(m, cast.shared, "join");
+    assert.ok(estimateTokens(core) < PROMPT_TOKEN_LIMIT, `${m.slug}: ${estimateTokens(core)} tokens`);
+    assert.ok(core.endsWith(JOIN_CONTRACT) && !core.includes(EVIDENCE_LADDER_CONTRACT));
+  }
+  const m = cast.members[1];
+  const arts = [{ title: "Example tariff filing", publisher: "Example PUC", published_at: "2024-05-01", excerpt: "x", source: "primary" as const }];
+  const join = composeSystemPrompt(m, cast.shared, { artifacts: arts, mode: "join" });
+  assert.ok(join.includes("cite these by number as {{c:n}}") && !join.includes("exact title"));
+  assert.ok(join.includes("1. Example tariff filing (Example PUC"));
+  const ask = composeSystemPrompt(m, cast.shared, { artifacts: arts });
+  assert.ok(ask.includes("by exact title as [SRC: <title>]") && !ask.includes("{{c:n}}"));
 });

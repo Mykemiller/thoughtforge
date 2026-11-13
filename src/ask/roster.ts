@@ -12,6 +12,14 @@ export const PANEL_ORDER = [
 export const FACT_CHECKER = "constance-wright";
 export const CHIEF_OF_STAFF = "gilbert-faraday";
 
+/**
+ * Who Live Agent may bring into a conversation (FDY-345, /api/panel `join`): the
+ * eight panel members other than Mach Eigen (a Live Agent host), plus Constance
+ * Wright, who grades instead of answering. Gilbert Faraday is the other host and
+ * is never invitable.
+ */
+export const INVITABLE: readonly string[] = [...PANEL_ORDER.filter((s) => s !== "mach-eigen"), FACT_CHECKER];
+
 export const MODELS = {
   panelist: "claude-sonnet-5-5",
   factcheck: "claude-sonnet-5-5",

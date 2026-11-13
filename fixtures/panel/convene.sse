@@ -1,0 +1,1260 @@
+event: retrieval
+data: {"artifacts":[{"id":"la:0b7e1c52-6a43-4c1e-9d0a-5f3b2a7e8c11:1","title":"Open Rack V3 power specification, revision 2024","publisher":"Open Compute Project","url":"https://www.opencompute.org/","published_at":"2024-06-01","excerpt":"Mock excerpt for the demo: busbar current ratings, connector families and the shelf-level power envelope for the rack standard the panel discusses.","source":"primary","origin":"faraday"},{"id":"la:0b7e1c52-6a43-4c1e-9d0a-5f3b2a7e8c11:2","title":"Large-load interconnection study backlog, quarterly update","publisher":"Midwest regional transmission organization (mock)","url":"https://www.misoenergy.org/","published_at":"2025-09-15","excerpt":"Mock excerpt for the demo: counts of large-load study requests, median months from request to agreement, and the share withdrawn before energization.","source":"primary","origin":"faraday"},{"id":"la:0b7e1c52-6a43-4c1e-9d0a-5f3b2a7e8c11:3","title":"Trade-press survey of rack power vendors, autumn 2025","publisher":"Example datacenter trade publication (mock)","url":"https://example.com/mock-survey","published_at":"2025-10-02","excerpt":"Mock excerpt for the demo: vendor-reported lead times for high-voltage DC rectifier shelves and busbar assemblies, and the number of vendors shipping at volume.","source":"secondary","origin":"faraday"}],"notes":[]}
+
+event: panelist_start
+data: {"slug":"margo-brandt"}
+
+event: panelist_start
+data: {"slug":"mach-eigen"}
+
+event: panelist_start
+data: {"slug":"delia-marchetti"}
+
+event: panelist_start
+data: {"slug":"albert-thorne"}
+
+event: panelist_start
+data: {"slug":"hartford-nakamura"}
+
+event: panelist_start
+data: {"slug":"rosalind-ferraro"}
+
+event: panelist_start
+data: {"slug":"victoria-stroud"}
+
+event: panelist_start
+data: {"slug":"ingrid-halverson"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":"Buildability first. If we"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":"Start from the busbar."}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":"Here is the sentence"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":"The tariff does not"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":"Exposure first. Committing two"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":"Who is in the"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":"Lenders price novelty, so"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":"Start from the heat,"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" commit halls one and"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" At one megawatt per"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" that ends up on"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" care what voltage you"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" halls to a standard"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" room at the next"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" let me translate. A"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" not the voltage. At"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" two to 800 VDC,"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" rack on 415 VAC"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" page one if we"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" run inside the fence;"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" with a thin vendor"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" county meeting: the neighbors"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" credit committee will see"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" the rack densities that"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" the critical path moves"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" three-phase you are pushing"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" get this wrong: a"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" the interconnection study does"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" base creates a single-source"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" who heard three hundred"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" a two-hall commitment to"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" justify 800 VDC, every"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" from the switchgear to"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" roughly fourteen hundred amps"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" county that just approved"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" care about load shape"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" dependency, and single-source dependencies"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" megawatts and thought about"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" 800 VDC as technology"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" kilowatt that does not"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" the rectifier shelves and"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" per rack with the"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" a three hundred megawatt"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" and ramp [INF]. The"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" are where warranty, delay"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" their own bills, the"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" risk layered on construction"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" get rectified inside the"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" the DC busbar, and"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" power factor stated, and"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" campus learns the developer"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" regional transmission organization's quarterly"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" and force-majeure clauses get"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" local electrical contractors who"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" risk, and that costs"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" rack is a kilowatt"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" that is a vendor"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" the copper and connector"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" bet the first two"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" update puts the median"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" tested [INF]. The mitigation"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" want the work, and"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" something like twenty-five to"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" the cooling loop never"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" count problem, not a"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" mass stops making sense"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" halls on a power"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" large-load study at well"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" is contractual, not technical:"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" two commissioners up for"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" fifty basis points on"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" sees, and shelf-level rectification"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" design problem. The trade"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" well before that [EST]."}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" standard most people have"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" over two years from"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" dual-sourced shelf supply with"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" re-election [INF]. None of"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" the construction facility until"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" moves that loss to"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" survey the panel saw"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" At 800 VDC the"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" never heard of. That"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" request to agreement, with"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" a step-in right, liquidated"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" them will ask about"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" the first hall is"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" a place with its"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" lists only a handful"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" same rack is about"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" is a framing risk,"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" a meaningful share of"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" damages indexed to the"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" 800 VDC. They will"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" energized and performing [EST]."}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" own heat rejection path"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" of vendors shipping high-voltage"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" twelve hundred fifty amps,"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" not a technical one,"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" requests withdrawn before energization"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" energization date, and a"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" ask whether the campus"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" A conversion-ready AC first"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" [EST]. The rack standard"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" DC shelves at volume,"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" and the rectification moves"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" and it is manageable"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" [SRC: Large-load interconnection study"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" conversion-ready clause in the"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" flattens or spikes the"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" hall carries a busway"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" defines the shelf envelope"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" with quoted lead times"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" out of the rack"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" if we lead with"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" backlog, quarterly update]. That"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" general contractor's scope so"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" grid, and the interconnection"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" premium in the low"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" and the airflow boundary,"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" in the fifty-to-seventy-week range"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" into a shelf where"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" the plain-English version [INF]."}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" is the binding constraint,"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" hall one's AC build"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" backlog is already their"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" single-digit percent of hall"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" which is the number"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" [SRC: Trade-press survey of"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" it belongs [EST]. The"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" The version that holds"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" and it is indifferent"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" does not foreclose the"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" reference point because it"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" electrical cost [EST], which"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" my model actually needs"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" rack power vendors, autumn"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" physics is settled; the"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" up: we are building"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" to the 800 VDC"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" DC retrofit [INF]. On"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" has been in the"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" is cheap insurance against"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" [SRC: Open Rack V3"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" 2025]. Our hall-one energization"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" published rack standard already"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" the halls to accept"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" decision [INF]. Where the"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" incentives, the state abatement"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" regional press for a"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" both the lead-time risk"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" power specification, revision 2024]."}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" date sits about sixty"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" defines the shelf and"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" the next generation of"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" decision does touch the"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" we are negotiating is"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" year [SRC: Large-load interconnection"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" Margo named and the"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" So the thermal case"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" weeks out [EST], so"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" the busbar envelope [SRC:"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" equipment without tearing them"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" docket: a DC architecture"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" keyed to capital invested"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" study backlog, quarterly update]."}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" exit discount a single-standard"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" for DC is real,"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" we would be placing"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" Open Rack V3 power"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" open, and the first"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" with battery shelves at"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" by a date, not"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" The DC architecture helps"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" campus would carry in"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" but it is a"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" orders this quarter against"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" specification, revision 2024]. What"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" hall uses the same"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" the rack lets us"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" to a technology, so"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" me only if we"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" a 2029 sale [INF]."}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" second-order gain of a"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" a spec that the"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" is not settled is"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" power equipment every hospital"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" file a flatter demand"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" the DC decision is"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" can say, truthfully, that"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" The panel's prior ruling"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" few percent of IT"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" rack standard still revises"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" the vendor base, and"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" in the state runs"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" profile and a credible"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" neutral to clawback risk"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" it lets the campus"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" on pre-buying transformers set"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" load, not the headline"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" [SRC: Open Rack V3"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" Margo is right that"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" [INF]. The interconnection backlog"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" curtailment commitment, and flat"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" as long as the"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" curtail on request, and"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" a usable test: pre-commit"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" [EST]. The first-order question"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" power specification, revision 2024]."}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" this is a count"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" is the story the"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" profiles have been moving"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" schedule holds [INF]. I"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" that the first hall"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" when the deposit is"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" is the facility loop:"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" My sequence: hall one"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" problem. So the engineering"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" local press already follows"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" up the queue in"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" am not braking this."}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" uses equipment local contractors"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" recoverable and the lead"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" at a thirty-plus kelvin"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" on 415 VAC with"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" answer is: design every"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" [SRC: Large-load interconnection study"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" recent large-load orders [EST]."}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" Nothing here is hard"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" already know how to"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" time exceeds the study"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" approach the coolant distribution"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" the busway sized for"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" hall for DC at"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" backlog, quarterly update], so"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" So the policy answer"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" to undo; a hall"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" install [INF]. Count the"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" window [SRC: Panel ruling:"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" unit sizing changes, and"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" a later DC conversion,"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" the busway and the"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" our announcement should tie"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" is to make the"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" built conversion-ready can go"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" votes: the contractors are"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" Should a 150 MW"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" that is independent of"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" hall two designed dual-path"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" shelf positions, build hall"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" the power design to"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" architecture choice serve the"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" either way for the"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" for us if hall"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" campus pre-buy transformers before"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" the power architecture [INF]."}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" with the decision point"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" one on AC because"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" shortening that timeline, not"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" filing. Commit to DC"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" cost of the shelves."}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" one is conventional, neutral"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" the interconnection agreement is"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" My recommendation matches Mach's"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" at steel-up, roughly month"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" the shelves are not"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" to a vendor roadmap."}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" for hall two only"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" I would brake if"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" if it is not."}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" signed]. Apply it here:"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" on the engineering and"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" nine [INF]. That keeps"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" here, and make hall"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" I would hold any"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" if the study schedule"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" anyone proposed skipping the"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" Say the community cost"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" order shelves for hall"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" Margo's on the sequence:"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" the ribbon-cutting date and"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" two the first DC"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" mention of 800 VDC"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" can absorb an amended"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" dual-path design to save"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" out loud before anyone"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" two with a recoverable"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" design both halls for"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" gives Mach a real"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" hall [INF]. Anyone who"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" out of the groundbreaking"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" load profile without resetting"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" the busway premium, because"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" else does: more load"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" deposit, do not pre-commit"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" liquid-to-chip with the facility"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" option instead of a"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" tells you AC scales"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" release entirely and put"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" the clock, which the"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" that converts a reversible"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" on a stressed grid."}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" hall one. Narrative does"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" loop sized for the"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" wish. Owners and dates"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" to the 2027 rack"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" it in the engineering"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" current rules allow once"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" choice into a sunk"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" Then show the curtailment"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" not clear committee; recoverable"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" 2027 density, build hall"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" on every step, or"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" densities without a conversion"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" briefing six months later,"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" without penalty [INF]. Plan"}
+
+event: panelist_delta
+data: {"slug":"hartford-nakamura","text":" one."}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" commitment in writing. That"}
+
+event: panelist_delta
+data: {"slug":"victoria-stroud","text":" deposits do."}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" one on AC, and"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" it does not count."}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" loss penalty is saying"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" when there is something"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" for the real timeline,"}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" is how the second"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" instrument it so the"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" something physically wrong, and"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" installed to point at"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" not the rule's."}
+
+event: panelist_delta
+data: {"slug":"rosalind-ferraro","text":" vote holds."}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" hall-two DC decision rests"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" I will say so"}
+
+event: panelist_delta
+data: {"slug":"delia-marchetti","text":" [INF]."}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" on measured heat, not"}
+
+event: panelist_delta
+data: {"slug":"mach-eigen","text":" to the vendor."}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" vendor slides. Units on"}
+
+event: panelist_delta
+data: {"slug":"ingrid-halverson","text":" every number, please."}
+
+event: panelist_end
+data: {"slug":"margo-brandt"}
+
+event: panelist_end
+data: {"slug":"mach-eigen"}
+
+event: panelist_end
+data: {"slug":"delia-marchetti"}
+
+event: panelist_end
+data: {"slug":"albert-thorne"}
+
+event: panelist_end
+data: {"slug":"hartford-nakamura"}
+
+event: panelist_end
+data: {"slug":"rosalind-ferraro"}
+
+event: panelist_end
+data: {"slug":"victoria-stroud"}
+
+event: panelist_end
+data: {"slug":"ingrid-halverson"}
+
+event: factcheck
+data: {"items":[{"panelist":"margo-brandt","claim":"quoted lead times in the fifty-to-seventy-week range","tag_given":"SRC","tag_should_be":"EST","note":"The survey reports vendor self-declared lead times; vendor projections are at most EST, never SRC."},{"panelist":"albert-thorne","claim":"flat profiles have been moving up the queue in recent large-load orders","tag_given":"EST","tag_should_be":"INF","note":"No retrieved artifact supports the queue-position claim; without a second source it is inference."}],"verdicts":{"margo-brandt":"One downgrade: vendor lead times are EST, not SRC. Sequence stands. Proceed.","mach-eigen":"Busbar amperage is EST with the method stated; the shelf envelope is SRC to the rack standard. Clean. Proceed.","delia-marchetti":"All framing claims correctly tagged INF; the backlog citation is SRC. Proceed.","albert-thorne":"One downgrade: the queue-position claim is INF without a second feed. Study timeline is SRC. Proceed.","hartford-nakamura":"Every exposure claim tagged INF as it should be. Nothing to strike. Proceed.","rosalind-ferraro":"Backlog citation is SRC; the rest is correctly INF. Proceed.","victoria-stroud":"Basis-point range is EST with a stated basis; the prior ruling is SRC, correctly not VRF. Proceed.","ingrid-halverson":"Thermal gain is EST; the shelf envelope is SRC. Units present throughout. Proceed."}}
+
+event: ruling_delta
+data: {"text":"The question was whether"}
+
+event: ruling_delta
+data: {"text":" to commit the first"}
+
+event: ruling_delta
+data: {"text":" two halls to 800"}
+
+event: ruling_delta
+data: {"text":" VDC now or stay"}
+
+event: ruling_delta
+data: {"text":" on 415 VAC until"}
+
+event: ruling_delta
+data: {"text":" 2027. Nobody on this"}
+
+event: ruling_delta
+data: {"text":" panel argued for a"}
+
+event: ruling_delta
+data: {"text":" pure AC campus, and"}
+
+event: ruling_delta
+data: {"text":" nobody argued for committing"}
+
+event: ruling_delta
+data: {"text":" both halls to DC"}
+
+event: ruling_delta
+data: {"text":" this quarter. The ruling:"}
+
+event: ruling_delta
+data: {"text":" build every hall conversion-ready"}
+
+event: ruling_delta
+data: {"text":" at the busway and"}
+
+event: ruling_delta
+data: {"text":" shelf positions, build hall"}
+
+event: ruling_delta
+data: {"text":" one on 415 VAC,"}
+
+event: ruling_delta
+data: {"text":" and make hall two"}
+
+event: ruling_delta
+data: {"text":" the first 800 VDC"}
+
+event: ruling_delta
+data: {"text":" hall with shelves ordered"}
+
+event: ruling_delta
+data: {"text":" on a recoverable deposit,"}
+
+event: ruling_delta
+data: {"text":" decision point at steel-up."}
+
+event: ruling_delta
+data: {"text":" Margo's sequence and Mach's"}
+
+event: ruling_delta
+data: {"text":" engineering agree once the"}
+
+event: ruling_delta
+data: {"text":" vendor count is treated"}
+
+event: ruling_delta
+data: {"text":" as a schedule fact"}
+
+event: ruling_delta
+data: {"text":" rather than a design"}
+
+event: ruling_delta
+data: {"text":" opinion. Hart confirmed nothing"}
+
+event: ruling_delta
+data: {"text":" in this path is"}
+
+event: ruling_delta
+data: {"text":" hard to undo, and"}
+
+event: ruling_delta
+data: {"text":" Vick's test from our"}
+
+event: ruling_delta
+data: {"text":" prior transformer ruling, pre-commit"}
+
+event: ruling_delta
+data: {"text":" only when the deposit"}
+
+event: ruling_delta
+data: {"text":" is recoverable and the"}
+
+event: ruling_delta
+data: {"text":" lead time exceeds the"}
+
+event: ruling_delta
+data: {"text":" study window, is the"}
+
+event: ruling_delta
+data: {"text":" right gate for the"}
+
+event: ruling_delta
+data: {"text":" hall-two order. Albert and"}
+
+event: ruling_delta
+data: {"text":" Rose both pointed at"}
+
+event: ruling_delta
+data: {"text":" the real constraint, the"}
+
+event: ruling_delta
+data: {"text":" interconnection study, and the"}
+
+event: ruling_delta
+data: {"text":" DC architecture earns its"}
+
+event: ruling_delta
+data: {"text":" place only if it"}
+
+event: ruling_delta
+data: {"text":" buys us a flatter,"}
+
+event: ruling_delta
+data: {"text":" curtailable profile we can"}
+
+event: ruling_delta
+data: {"text":" put in the filing."}
+
+event: ruling_delta
+data: {"text":" Ingrid's point stands: the"}
+
+event: ruling_delta
+data: {"text":" thermal gain is second-order,"}
+
+event: ruling_delta
+data: {"text":" so the DC case"}
+
+event: ruling_delta
+data: {"text":" rests on the busbar"}
+
+event: ruling_delta
+data: {"text":" math and the filing,"}
+
+event: ruling_delta
+data: {"text":" not on cooling.\n\nDissent"}
+
+event: ruling_delta
+data: {"text":" on the record: Mach"}
+
+event: ruling_delta
+data: {"text":" wanted hall one on"}
+
+event: ruling_delta
+data: {"text":" DC as well; I"}
+
+event: ruling_delta
+data: {"text":" overrule him on schedule,"}
+
+event: ruling_delta
+data: {"text":" not on physics.\n\nWhat"}
+
+event: ruling_delta
+data: {"text":" would change my mind:"}
+
+event: ruling_delta
+data: {"text":" a third shelf vendor"}
+
+event: ruling_delta
+data: {"text":" shipping at volume with"}
+
+event: ruling_delta
+data: {"text":" lead times inside forty"}
+
+event: ruling_delta
+data: {"text":" weeks [EST], or a"}
+
+event: ruling_delta
+data: {"text":" study-queue ruling that penalizes"}
+
+event: ruling_delta
+data: {"text":" an amended load profile."}
+
+event: ruling_end
+data: {}
+
+event: saved
+data: {"saved":true}
+
+event: done
+data: {"session_id":"5d1f7a52-3c0e-4b8a-9a64-2f0e6b7d1c90"}
+
