@@ -21,7 +21,7 @@ export function panelArtifactBody(session: PanelSession): string {
   return [`# Ruling\n${session.ruling}`, ...replies].join("\n\n");
 }
 
-export async function saveSession(session: PanelSession, modelVersions: Record<string, string>, client?: SupabaseClient): Promise<{ saved: boolean; note?: string }> {
+export async function saveSession(session: PanelSession, modelVersions: Record<string, string>, client?: SupabaseClient, extraTags?: string[]): Promise<{ saved: boolean; note?: string }> {
   if (!client && !hasServiceEnv()) return { saved: false, note: "not saved: Supabase env not set" };
   try {
     const sb = client ?? getServiceClient();
@@ -45,7 +45,7 @@ export async function saveSession(session: PanelSession, modelVersions: Record<s
       body: panelArtifactBody(session),
       source: "panel",
       idf_domains: [],
-      tags: ["panel-ruling", `session:${session.session_id}`],
+      tags: ["panel-ruling", `session:${session.session_id}`, ...(extraTags ?? [])],
       created_by: "thoughtforge",
     });
     if (a.error) throw a.error;

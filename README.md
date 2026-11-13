@@ -37,11 +37,32 @@ If `TF_ACCESS_KEY` is unset the gate is open and logs one warning; set it to loc
 
 ## Environment variables (names only)
 
-`ANTHROPIC_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `ELEVENLABS_API_KEY`, `HEYGEN_API_KEY`, `TF_ACCESS_KEY`, `TF_MOCK`, and for panel email `RESEND_API_KEY`, `PANEL_RECIPIENT_EMAIL`, `PANEL_REPLY_TO`, `PANEL_CRON_SECRET`, `CRON_SECRET` (same value as `PANEL_CRON_SECRET`), `DRY_RUN`. See `.env.example`. Secrets live on the Vercel project `thoughtforge` (team `project-foundry`); code reads them from `process.env` only. The Supabase project of record is `ycadmmngkdhvpcsrcuaq`; every database path asserts that first and refuses the decoy project.
+`ANTHROPIC_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `ELEVENLABS_API_KEY`, `HEYGEN_API_KEY`, `TF_ACCESS_KEY`, `TF_MOCK`, `LA_PANEL_TOKEN`, and for panel email `RESEND_API_KEY`, `PANEL_RECIPIENT_EMAIL`, `PANEL_REPLY_TO`, `PANEL_CRON_SECRET`, `CRON_SECRET` (same value as `PANEL_CRON_SECRET`), `DRY_RUN`. See `.env.example`. Secrets live on the Vercel project `thoughtforge` (team `project-foundry`); code reads them from `process.env` only. The Supabase project of record is `ycadmmngkdhvpcsrcuaq`; every database path asserts that first and refuses the decoy project.
 
 ## Access
 
 `/ask` and `/api/ask` are gated by `proxy.ts` (TF-DEC-05): a `tf_access` cookie equal to the SHA-256 hex of `TF_ACCESS_KEY` allows; visiting `/ask?key=<TF_ACCESS_KEY>` once sets that cookie for 90 days and redirects to the clean path; otherwise `/ask` renders a locked page and `/api/ask` answers 401. Everything else is public.
+
+## /api/panel (Live Agent bridge)
+
+Server-to-server endpoint (FDY-345) that lets Live Agent bring panelists into a conversation or convene the full panel. Not behind the `TF_ACCESS_KEY` gate; it is authenticated by `Authorization: Bearer <LA_PANEL_TOKEN>` and answers **503 until `LA_PANEL_TOKEN` is set** on the Vercel project (same value as on `live-agent`). A missing or wrong token is 401 with an empty body. `runtime nodejs`, `maxDuration 120`.
+
+Body (zod, `src/panel/schema.ts`): `mode` (`join` | `convene`), `question` (at most 1,200 characters), `conversation` (last 12 turns of `{speaker, text}`), `context` (up to 12 numbered items `n` 1..k, `label` verified | sourced | estimate | read), `panelists` (join only: 1 to 4 of `INVITABLE` in `src/ask/roster.ts`; the hosts `mach-eigen` and `gilbert-faraday` are rejected), optional `settings {horizon 0-4, lens}`, `source: "live_agent"`, `conversation_id` (uuid). One call per conversation at a time (429 otherwise).
+
+- `join`: each requested panelist answers the latest turn in at most 120 words, concurrently, citing only numbered context items as `{{c:n}}` and wrapping forward-looking sentences in `{{read}}...{{/read}}`. Events: `panelist_start`, `panelist_delta`, `panelist_end`, then `done` (not saved). `constance-wright` does not answer; she grades the last host turn plus the replies and emits one `factcheck` event.
+- `convene`: runs the full panel (`runLive`) with the supplied context as retrieval and saves the session to `tf_sessions` / `tf_artifacts` tagged `source:live_agent` and `conversation:<id>`. Events are `/api/ask`'s, unchanged; replies carry ThoughtForge's bracket tags, which the caller converts.
+- Wire format is `/api/ask`'s: `event: <type>\ndata: <json without type>\n\n`.
+- `TF_MOCK=1` replays `fixtures/panel/join.sse` / `convene.sse` (regenerate: `npx tsx scripts/make-panel-fixtures.ts`).
+
+```bash
+curl -N https://<thoughtforge-host>/api/panel \
+  -H "Authorization: Bearer $LA_PANEL_TOKEN" -H "Content-Type: application/json" \
+  -d '{"mode":"join","question":"Should we commit to 800 VDC now?","conversation":[{"speaker":"user","text":"We are weighing 800 VDC."}],
+       "context":[{"n":1,"title":"Open Rack V3 power specification","publisher":"Open Compute Project","url":null,"date":"2024-06-01","label":"verified","excerpt":"Busbar ratings."}],
+       "panelists":["margo-brandt","constance-wright"],"source":"live_agent","conversation_id":"0b7e1c52-6a43-4c1e-9d0a-5f3b2a7e8c11"}'
+```
+
+Choices made: `docs/decisions-la7a.md`.
 
 ## Adding artifacts
 

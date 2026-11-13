@@ -1,0 +1,87 @@
+event: panelist_start
+data: {"slug":"margo-brandt"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":"Buildability first. The rectifier"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" shelves and the DC"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" busbar become the critical"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" path, and that is"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" a vendor-count problem {{c:3}}."}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" {{read}}I expect lead times"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" to stay long through"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" 2026.{{/read}} Mach is right"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" on the copper, but"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" I would not commit"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" both halls until a"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" second vendor ships at"}
+
+event: panelist_delta
+data: {"slug":"margo-brandt","text":" volume."}
+
+event: panelist_start
+data: {"slug":"albert-thorne"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":"The tariff does not"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" care what voltage runs"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" inside the fence; the"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" interconnection study cares about"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" load shape and ramp"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" {{c:2}}. {{read}}Flat profiles will"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" likely keep moving up"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" the queue.{{/read}} I would"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" settle the study first"}
+
+event: panelist_delta
+data: {"slug":"albert-thorne","text":" and the standard second."}
+
+event: panelist_end
+data: {"slug":"margo-brandt"}
+
+event: panelist_end
+data: {"slug":"albert-thorne"}
+
+event: factcheck
+data: {"items":[{"panelist":"host","claim":"The busbar math favors DC at that density","tag_given":"INF","tag_should_be":"EST","note":"A calculation with no method stated is an estimate at best."}],"verdicts":{"host":"Sound on the copper; vendor depth is asserted without a citation.","margo-brandt":"Citation checks out; the lead-time sentence is correctly marked as her read.","albert-thorne":"Citation checks out; the queue sentence is correctly marked as his read."}}
+
+event: done
+data: {"session_id":"5d1f7a52-3c0e-4b8a-9a64-2f0e6b7d1c90"}
+

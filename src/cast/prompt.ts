@@ -39,7 +39,22 @@ Keep the ladder in plain speech: say "reported by" for a sourced claim, "my esti
 Use only the signals in the retrieved block as facts about the world; do not invent figures, quotes or events.
 Never name a real person as a friend, mentor, colleague or endorser. A real person may be named only as the subject of a signal shown to you, or, if listed in your own network file, as someone you follow or cite. Never name a real person as a panelist.`;
 
-export type PromptMode = "ask" | "podcast";
+/**
+ * Join mode (FDY-345, /api/panel): a panelist invited into a live conversation. Bracket tags and the 120 to 220 word
+ * reply are replaced by this contract; the ladder's meaning is kept (a projection is never presented as sourced,
+ * absence is not evidence) and so is the real-person rule. Citations are numbered placeholders the caller converts.
+ */
+export const JOIN_CONTRACT = `## Evidence-ladder contract (live conversation)
+
+You have been invited into a live conversation. Reply to the latest user turn in at most 120 words, first person, in your own voice. You may disagree with the host.
+Cite only the numbered items in the retrieved block below, as {{c:n}} where n is the item's number, placed right after the claim it supports. Never cite anything that is not in that block, and never invent a figure, quote or event.
+Wrap every forward-looking sentence (a projection, forecast or expectation) in {{read}}...{{/read}}: it is your read, never a sourced fact. A projection is never cited as if it were reported.
+Absence is not evidence: say "Faraday has not observed it", never "there is none".
+Never write bracket tags such as [SRC] or [VRF], and never name tools, models, vendors, databases or internal codes.
+If someone sincerely asks whether they are talking to an AI, say yes: you are an AI persona.
+Never name a real person as a friend, mentor, colleague or endorser. A real person may be named only as the subject of an item in the retrieved block, or, if listed in your own network file, as someone you follow or cite, and only in their professional capacity.`;
+
+export type PromptMode = "ask" | "podcast" | "join";
 
 export interface RetrievedForPrompt {
   title: string;
@@ -54,17 +69,21 @@ export interface PromptContext {
   artifacts: RetrievedForPrompt[];
   /** Extra turn-specific text appended last (e.g. Fact-Checker or ruling instructions). */
   turnInstructions?: string;
-  /** "ask" (default) is the /api/ask panel reply; "podcast" swaps in the spoken-dialogue contract (TH-37). */
+  /** "ask" (default) is the /api/ask panel reply; "podcast" swaps in the spoken-dialogue contract (TH-37); "join" is a live-conversation reply (FDY-345). */
   mode?: PromptMode;
 }
 
-export function retrievedBlock(artifacts: RetrievedForPrompt[]): string {
+export function retrievedBlock(artifacts: RetrievedForPrompt[], mode: PromptMode = "ask"): string {
   if (!artifacts.length) return "## Retrieved artifacts\n\nNo artifacts were retrieved for this question; tag accordingly.";
   const lines = artifacts.map((a, i) => {
     const meta = [a.publisher, a.published_at, a.source === "primary" ? "primary" : a.source === "panel" ? "prior panel ruling" : "secondary"].filter(Boolean).join(" · ");
     return `${i + 1}. ${a.title} (${meta})\n   ${a.excerpt.slice(0, 300).replace(/\s+/g, " ")}`;
   });
-  return `## Retrieved artifacts\n\nYou may cite these by exact title as [SRC: <title>]. Only items marked primary may support [VRF].\n\n${lines.join("\n")}`;
+  const intro =
+    mode === "join"
+      ? "You may cite these by number as {{c:n}}, where n is the item's number. Only items marked primary are verified records."
+      : "You may cite these by exact title as [SRC: <title>]. Only items marked primary may support [VRF].";
+  return `## Retrieved artifacts\n\n${intro}\n\n${lines.join("\n")}`;
 }
 
 /** The fixed, per-panelist part of the prompt (what the budget test measures). */
@@ -81,12 +100,12 @@ export function composePanelistCore(member: CastMember, shared: SharedSkills, mo
   const life = `## Life outside work\n${dossierSection(member.dossier, "Life outside work")}`;
   const own = member.skills.map((s) => `## Skill: ${s.name}\n${s.body}`).join("\n\n");
   const sharedText = shared.all.map((s) => `## Shared skill: ${s.name}\n${s.body}`).join("\n\n");
-  return [identity, voice, backstory, life, own, sharedText, mode === "podcast" ? PODCAST_CONTRACT : EVIDENCE_LADDER_CONTRACT].join("\n\n");
+  return [identity, voice, backstory, life, own, sharedText, mode === "podcast" ? PODCAST_CONTRACT : mode === "join" ? JOIN_CONTRACT : EVIDENCE_LADDER_CONTRACT].join("\n\n");
 }
 
 /** Full system prompt for one turn: fixed core, then retrieval, then turn instructions. */
 export function composeSystemPrompt(member: CastMember, shared: SharedSkills, context: PromptContext): string {
-  const parts = [composePanelistCore(member, shared, context.mode ?? "ask"), retrievedBlock(context.artifacts)];
+  const parts = [composePanelistCore(member, shared, context.mode ?? "ask"), retrievedBlock(context.artifacts, context.mode ?? "ask")];
   if (context.turnInstructions) parts.push(context.turnInstructions);
   return parts.join("\n\n");
 }
