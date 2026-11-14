@@ -10,7 +10,7 @@
 // process.env and are never logged or written anywhere.
 import { execFile } from "node:child_process";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { promisify } from "node:util";
 import { pickVoice, VoiceError, type VoiceEntry } from "../../src/voice/resolve.ts";
@@ -103,6 +103,7 @@ export function estimateSeconds(script: EpisodeScript, turns: PlannedTurn[]): nu
 }
 
 export function durationProblem(seconds: number, min = DURATION_MIN_S, max = DURATION_MAX_S): string | null {
+  if (!Number.isFinite(seconds)) return "ffprobe could not measure the mixdown duration";
   if (seconds > max) return `duration ${mmss(seconds)} is above ${mmss(max)}`;
   if (seconds < min) return `duration ${mmss(seconds)} is below ${mmss(min)}`;
   return null;
@@ -125,15 +126,24 @@ export class ElevenLabs {
 
   private async req(path: string, init: RequestInit = {}, retries = TTS_MAX_RETRIES): Promise<Response> {
     for (let attempt = 0; ; attempt++) {
-      const res = await this.fetchImpl(`${this.base}${path}`, { ...init, headers: { "xi-api-key": this.key, ...(init.headers ?? {}) } });
+      let res: Response;
+      try {
+        res = await this.fetchImpl(`${this.base}${path}`, { ...init, headers: { "xi-api-key": this.key, ...(init.headers ?? {}) } });
+      } catch (e) {
+        // network-level failure (reset, DNS): retry like a 5xx; the message never carries headers
+        if (attempt >= retries) throw new Error(`ElevenLabs ${init.method ?? "GET"} ${path.split("?")[0]} failed: ${(e as Error).message}`);
+        await this.sleep(1000 * 2 ** attempt);
+        continue;
+      }
       if (res.ok) return res;
       const retryable = res.status === 429 || res.status >= 500;
       if (!retryable || attempt >= retries) {
         const detail = (await res.text().catch(() => "")).slice(0, 160).replace(/\s+/g, " ");
         throw new Error(`ElevenLabs ${init.method ?? "GET"} ${path.split("?")[0]} failed (${res.status})${detail ? `: ${detail}` : ""}`);
       }
+      const retryAfter = Number(res.headers.get("retry-after"));
       await res.body?.cancel().catch(() => {});
-      await this.sleep(1000 * 2 ** attempt);
+      await this.sleep(Number.isFinite(retryAfter) && retryAfter > 0 ? Math.min(retryAfter, 60) * 1000 : 1000 * 2 ** attempt);
     }
   }
 
@@ -240,31 +250,64 @@ export async function pool<T>(items: T[], size: number, fn: (x: T) => Promise<vo
   if (failed) throw failed;
 }
 
+export const TURN_MANIFEST = "manifest.json";
+type TurnManifest = Record<string, string>; // file -> content key
+
+/** What a cached turn file must match to be reused: voice, text, model, settings and dictionary version. */
+export function turnKey(voiceId: string, text: string, locators: DictionaryLocator[]): string {
+  return createHash("sha256")
+    .update(JSON.stringify({ voiceId, text, model: TTS_MODEL, format: TTS_OUTPUT_FORMAT, settings: TTS_VOICE_SETTINGS, dict: locators.map((l) => `${l.pronunciation_dictionary_id}@${l.version_id}`) }))
+    .digest("hex");
+}
+
+function readManifest(dir: string): TurnManifest {
+  try { return JSON.parse(readFileSync(join(dir, TURN_MANIFEST), "utf8")) as TurnManifest; } catch { return {}; }
+}
+
+function writeAtomic(path: string, data: string | Buffer) {
+  const tmp = `${path}.${process.pid}.tmp`;
+  writeFileSync(tmp, data);
+  renameSync(tmp, path);
+}
+
 const fresh = (path: string, now: number) => existsSync(path) && statSync(path).size > 0 && now - statSync(path).mtimeMs < TURN_CACHE_DAYS * 86_400_000;
 
-/** Synthesize each turn into dir. Reuses a turn file younger than 7 days unless forced; returns how many were synthesized. */
+/**
+ * Synthesize each turn into dir. A turn file is reused only if it is younger than 7 days AND its manifest key matches
+ * the current voice id, text, model, settings and dictionary version (so a replaced script or new pronunciation rules
+ * re-voice exactly the turns that changed). Returns how many were synthesized.
+ */
 export async function synthesizeTurns(
   turns: PlannedTurn[], dir: string, el: ElevenLabs, voiceIds: Map<string, string>, locators: DictionaryLocator[],
   opts: { force?: boolean; forceTurns?: Set<number>; concurrency?: number; now?: number } = {},
 ): Promise<{ synthesized: number; reused: number }> {
   mkdirSync(dir, { recursive: true });
   const now = opts.now ?? Date.now();
-  const todo = turns.filter((t) => opts.force || opts.forceTurns?.has(t.n) || !fresh(join(dir, t.file), now));
-  await pool(todo, opts.concurrency ?? TTS_CONCURRENCY, async (t) => {
-    const audio = await el.tts(voiceIds.get(t.speaker)!, t.text, locators);
-    if (!audio.length) throw new Error(`turn ${t.n} (${t.speaker}): ElevenLabs returned no audio`);
-    writeFileSync(join(dir, t.file), audio);
-  });
+  const manifest = readManifest(dir);
+  const keys = new Map(turns.map((t) => [t.n, turnKey(voiceIds.get(t.speaker)!, t.text, locators)]));
+  const todo = turns.filter((t) => opts.force || opts.forceTurns?.has(t.n) || manifest[t.file] !== keys.get(t.n) || !fresh(join(dir, t.file), now));
+  try {
+    await pool(todo, opts.concurrency ?? TTS_CONCURRENCY, async (t) => {
+      const audio = await el.tts(voiceIds.get(t.speaker)!, t.text, locators);
+      if (!audio.length) throw new Error(`turn ${t.n} (${t.speaker}): ElevenLabs returned no audio`);
+      writeAtomic(join(dir, t.file), audio);
+      manifest[t.file] = keys.get(t.n)!;
+    });
+  } finally {
+    writeAtomic(join(dir, TURN_MANIFEST), JSON.stringify(manifest, null, 2) + "\n"); // keep what did succeed
+  }
   return { synthesized: todo.length, reused: turns.length - todo.length };
 }
 
-/** Remove per-turn caches older than 7 days under out/podcast/<episode>/turns. */
+/** Remove per-turn caches whose newest file is older than 7 days under out/podcast/<episode>/turns. */
 export function pruneTurnCaches(podcastOut: string, now = Date.now()): string[] {
   if (!existsSync(podcastOut)) return [];
   const removed: string[] = [];
   for (const ep of readdirSync(podcastOut)) {
     const turns = join(podcastOut, ep, "turns");
-    if (existsSync(turns) && now - statSync(turns).mtimeMs > TURN_CACHE_DAYS * 86_400_000) {
+    if (!existsSync(turns)) continue;
+    const newest = Math.max(statSync(turns).mtimeMs, ...readdirSync(turns).map((f) => statSync(join(turns, f)).mtimeMs));
+    if (now - newest > TURN_CACHE_DAYS * 86_400_000) {
       rmSync(turns, { recursive: true, force: true });
       removed.push(ep);
     }
@@ -307,7 +350,7 @@ export async function mixdown(turns: PlannedTurn[], turnDir: string, outDir: str
   try {
     await run("ffmpeg", mixdownArgs(turns.map((t) => join(turnDir, t.file)), turns.map((t) => t.gapBeforeMs), wav, mp3), { maxBuffer: 16 * 1024 * 1024 });
   } catch (e) {
-    const err = (e as { stderr?: string }).stderr?.trim().split("\n").slice(-2).join(" ") ?? (e as Error).message;
+    const err = (e as { stderr?: string }).stderr?.trim().split("\n").slice(-2).join(" ") || (e as Error).message;
     throw new Error(`ffmpeg mixdown failed: ${err}`);
   }
   return { mp3, wav };
@@ -354,7 +397,7 @@ export interface EpisodeRepo {
 export type Regen = "audio" | "all" | null;
 
 export function statusGate(row: EpisodeRow, regen: Regen): { exit: number; message: string } | null {
-  if (row.audio_url && !regen) return { exit: 0, message: `${row.episode_id} already has audio: ${row.audio_url} (pass --regen audio|all to rebuild)` };
+  if (row.audio_url && row.status !== "failed" && !regen) return { exit: 0, message: `${row.episode_id} already has audio: ${row.audio_url} (pass --regen audio|all to rebuild)` };
   if (row.status === "scripted" || row.status === "failed") return null;
   if (row.status === "audio_ready" && regen) return null;
   if (row.status === "audio_ready") return { exit: 1, message: `${row.episode_id} is audio_ready; pass --regen audio|all to rebuild` };
@@ -436,8 +479,9 @@ export async function produce(o: ProduceOptions, d: ProduceDeps): Promise<Produc
   const speakers = [...new Set(turns.map((t) => t.speaker))];
   const warnings: string[] = [];
   const fail = async (reason: string): Promise<ProduceResult> => {
-    try { await d.repo.markFailed(o.episodeId, reason); } catch (e) { warnings.push(`could not record failure: ${(e as Error).message}`); }
-    return { exit: 1, message: `${o.episodeId} failed: ${reason}` };
+    let note = "";
+    try { await d.repo.markFailed(o.episodeId, reason); } catch (e) { note = ` (could not record the failure on tf_episodes: ${(e as Error).message})`; }
+    return { exit: 1, message: `${o.episodeId} failed: ${reason}${note}` };
   };
 
   let voiceIds: Map<string, string>;
@@ -489,8 +533,13 @@ export async function produce(o: ProduceOptions, d: ProduceDeps): Promise<Produc
   try {
     await d.repo.markAudioReady(o.episodeId, { audio_url: audioUrl, duration_seconds: seconds });
   } catch (e) {
-    try { await d.store.delete(key); } catch (e2) { warnings.push(`R2 rollback of ${key} failed: ${(e2 as Error).message}`); }
-    return { exit: 1, message: `${o.episodeId}: tf_episodes update failed (${(e as Error).message}); R2 object ${key} removed` };
+    const why = `${o.episodeId}: tf_episodes update failed (${(e as Error).message})`;
+    if (row.audio_url) {
+      // a --regen overwrote the key the row already points at: deleting it would leave the row pointing at a 404
+      return { exit: 1, message: `${why}; R2 object ${key} was overwritten with the new mix and kept, because the row still points at it` };
+    }
+    try { await d.store.delete(key); } catch (e2) { return { exit: 1, message: `${why}; R2 rollback of ${key} ALSO failed (${(e2 as Error).message}): delete it by hand` }; }
+    return { exit: 1, message: `${why}; R2 object ${key} removed` };
   }
 
   const roles = new Map((row.cast ?? []).map((c) => [c.slug, c.role]));

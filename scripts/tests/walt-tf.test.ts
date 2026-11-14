@@ -11,7 +11,7 @@ import { join, resolve } from "node:path";
 import { PANEL } from "../../src/data/panel.ts";
 import type { EpisodeScript } from "../../src/lib/podcast/script-schema.ts";
 import {
-  DURATION_MAX_S, DURATION_MIN_S, ElevenLabs, GAP_SEGMENT_MS, GAP_TURN_MS, REQUIRED_ENV, TTS_MODEL, dryRunPlan, durationProblem, ensureDictionary,
+  TURN_MANIFEST, synthesizeTurns, turnKey, DURATION_MAX_S, DURATION_MIN_S, ElevenLabs, GAP_SEGMENT_MS, GAP_TURN_MS, REQUIRED_ENV, TTS_MODEL, dryRunPlan, durationProblem, ensureDictionary,
   hasFfmpeg, missingEnv, mixdown, mixdownArgs, planTurns, probe, produce, pruneTurnCaches, publicUrl, r2Key, resolveSpeakerVoices, speakerWithoutVoice,
   statusGate, validateRules, type DictionaryRule, type EpisodeRepo, type EpisodeRow, type ObjectStore, type ProduceDeps,
 } from "../lib/walt-tf-core.ts";
@@ -44,12 +44,19 @@ let base = "";
 let toneMp3: Buffer = Buffer.alloc(0);
 const calls: { method: string; path: string; body: string }[] = [];
 let fail429Once = new Set<string>(); // voice ids that get one 429 first
+// Voice names come from the manifest, never hard-coded here: only "Gil Faraday" and "Mach Eigen - ..." are confirmed
+// (TH-38); the others are proposals Myke may still swap in src/data/panel.ts.
+const voiceName = (slug: string) => {
+  const n = PANEL.find((p) => p.slug === slug)?.elevenLabsVoiceName;
+  if (!n) throw new Error(`test setup: ${slug} has no elevenLabsVoiceName in src/data/panel.ts`);
+  return n;
+};
 const VOICES = [
-  { voice_id: "v-gil", name: "Gil Faraday" },
-  { voice_id: "v-mach", name: "Mach Eigen - Articulate Engineering Professor" },
-  { voice_id: "v-albert", name: "Brian - Deep, Resonant and Comforting" },
-  { voice_id: "v-dup1", name: "Sarah - Mature, Reassuring, Confident" },
-  { voice_id: "v-dup2", name: "Sarah - Mature, Reassuring, Confident" },
+  { voice_id: "v-gil", name: voiceName("gilbert-faraday") },
+  { voice_id: "v-mach", name: voiceName("mach-eigen") },
+  { voice_id: "v-albert", name: voiceName("albert-thorne") },
+  { voice_id: "v-dup1", name: voiceName("margo-brandt") },
+  { voice_id: "v-dup2", name: voiceName("margo-brandt") },
 ];
 let dictionaries: { id: string; name: string; latest_version_id: string }[] = [];
 
@@ -166,6 +173,7 @@ test("duration gate is 9:00 to 15:30", () => {
   assert.equal(durationProblem(600), null);
   assert.equal(durationProblem(931), "duration 15:31 is above 15:30");
   assert.equal(durationProblem(539), "duration 8:59 is below 9:00");
+  assert.equal(durationProblem(NaN), "ffprobe could not measure the mixdown duration");
 });
 
 test("status gate: idempotent on audio_url, audio_ready needs --regen, published is refused", () => {
@@ -176,6 +184,7 @@ test("status gate: idempotent on audio_url, audio_ready needs --regen, published
   assert.match(done!.message, /already has audio: https:\/\/x\/a\.mp3/);
   assert.equal(statusGate(row({ status: "audio_ready", audio_url: "https://x/a.mp3" }), "audio"), null);
   assert.equal(statusGate(row({ status: "audio_ready" }), null)?.exit, 1);
+  assert.equal(statusGate(row({ status: "failed", audio_url: "https://x/old.mp3" }), null), null, "a failed regen is retried, not reported as done");
   assert.match(statusGate(row({ status: "published" }), "all")!.message, /is published/);
 });
 
@@ -183,8 +192,8 @@ test("voice resolution: exact name, one line on zero or several matches, cache r
   const r = resolveSpeakerVoices(["gilbert-faraday", "mach-eigen"], PANEL, VOICES, { voices: {} }, new Date("2026-11-14T20:00:00Z"));
   assert.equal(r.ids.get("mach-eigen"), "v-mach");
   assert.deepEqual(r.cache.voices["Gil Faraday"], { voice_id: "v-gil", resolved_at: "2026-11-14T20:00:00.000Z" });
-  assert.throws(() => resolveSpeakerVoices(["margo-brandt"], PANEL, VOICES, { voices: {} }), /margo-brandt: 2 voices named "Sarah/);
-  assert.throws(() => resolveSpeakerVoices(["ingrid-halverson"], PANEL, VOICES, { voices: {} }), /ingrid-halverson: no voice named "Matilda/);
+  assert.throws(() => resolveSpeakerVoices(["margo-brandt"], PANEL, VOICES, { voices: {} }), /^Error: margo-brandt: 2 voices named "/);
+  assert.throws(() => resolveSpeakerVoices(["ingrid-halverson"], PANEL, VOICES, { voices: {} }), /^Error: ingrid-halverson: no voice named "/);
   assert.throws(() => resolveSpeakerVoices(["delia-marchetti"], PANEL, VOICES, { voices: {} }), /no ElevenLabs voice for delia-marchetti/);
 });
 
@@ -321,7 +330,7 @@ test("end to end: TTS per turn with the right voice, 429 retried, mixdown 44.1 k
   const ferc = tts.find((c) => JSON.parse(c.body).text === "FERC again.");
   assert.match(ferc!.path, /\/v-albert\?/);
 
-  assert.equal(readdirSync(join(out, "PP-20261114-01", "turns")).length, 8);
+  assert.equal(readdirSync(join(out, "PP-20261114-01", "turns")).filter((f) => f.endsWith(".mp3")).length, 8);
   const p = await probe(join(out, "PP-20261114-01", "audio.mp3"));
   assert.equal(p.sampleRate, 44100);
   assert.equal(p.channels, 1);
@@ -334,7 +343,7 @@ test("end to end: TTS per turn with the right voice, 429 retried, mixdown 44.1 k
   assert.deepEqual(state.audioReady, { audio_url: "https://episodes.example.test/episodes/PP-20261114-01/audio.mp3", duration_seconds: Math.round(p.seconds) });
   assert.equal(r.report?.cast, "gilbert-faraday (chair), mach-eigen, albert-thorne");
   assert.match(r.message, /walt-tf report/);
-  assert.deepEqual((d.saved.voices as { voices: Record<string, unknown> }).voices["Gil Faraday"] !== undefined, true);
+  assert.ok((d.saved.voices as { voices: Record<string, unknown> }).voices["Gil Faraday"]);
 
   // a rerun with --regen-turn 3 re-voices only that turn and reuses the other seven
   const { repo: repo2 } = memRepo(row({ status: "audio_ready", audio_url: "https://episodes.example.test/x" }));
@@ -388,11 +397,45 @@ test("a TTS error after retries marks the episode failed with the reason", needs
   const out = tmpOut();
   const { repo, state } = memRepo(row());
   const { store } = memStore();
-  const voices = [...VOICES.filter((v) => v.voice_id !== "v-albert"), { voice_id: "v-broken", name: "Brian - Deep, Resonant and Comforting" }];
+  const voices = [...VOICES.filter((v) => v.voice_id !== "v-albert"), { voice_id: "v-broken", name: voiceName("albert-thorne") }];
   const el = new ElevenLabs("test-key", base, fetch, noSleep);
   el.listVoices = async () => voices;
   const r = await produce({ episodeId: "PP-20261114-01", regen: null, regenTurn: null, outRoot: out, durationMin: 0, durationMax: 60 }, deps({ repo, store, el }));
   assert.equal(r.exit, 1);
   assert.match(state.failed ?? "", /^TTS: ElevenLabs POST \/v1\/text-to-speech\/v-broken failed \(400\): bad voice$/);
+  rmSync(out, { recursive: true, force: true });
+});
+
+test("turn cache is keyed on content: a changed turn text or dictionary version re-voices exactly those turns", needsFfmpeg, async () => {
+  const out = tmpOut();
+  const el = new ElevenLabs("test-key", base, fetch, noSleep);
+  const ids = new Map([["gilbert-faraday", "v-gil"], ["mach-eigen", "v-mach"], ["albert-thorne", "v-albert"]]);
+  const loc = [{ pronunciation_dictionary_id: "dict-1", version_id: "ver-1" }];
+  const s1 = tinyScript();
+  assert.deepEqual(await synthesizeTurns(planTurns(s1), out, el, ids, loc), { synthesized: 8, reused: 0 });
+  const manifest = JSON.parse(readFileSync(join(out, TURN_MANIFEST), "utf8"));
+  assert.equal(manifest["001-gilbert-faraday.mp3"], turnKey("v-gil", "Welcome to the panel.", loc));
+  assert.deepEqual(await synthesizeTurns(planTurns(s1), out, el, ids, loc), { synthesized: 0, reused: 8 });
+  // a replaced script (same episode_id, same speakers) changes two turns' text
+  const s2 = tinyScript();
+  s2.segments[1].turns[1].text = "Different numbers.";
+  s2.segments[4].turns[0].text = "A new read.";
+  assert.deepEqual(await synthesizeTurns(planTurns(s2), out, el, ids, loc), { synthesized: 2, reused: 6 });
+  // new pronunciation rules (dictionary version) re-voice everything
+  assert.deepEqual(await synthesizeTurns(planTurns(s2), out, el, ids, [{ ...loc[0], version_id: "ver-2" }]), { synthesized: 8, reused: 0 });
+  // a re-resolved voice id re-voices that speaker's turns only
+  ids.set("albert-thorne", "v-albert-2");
+  assert.deepEqual(await synthesizeTurns(planTurns(s2), out, el, ids, [{ ...loc[0], version_id: "ver-2" }]), { synthesized: 2, reused: 6 });
+  rmSync(out, { recursive: true, force: true });
+});
+
+test("a --regen whose tf_episodes update fails keeps the overwritten R2 object the row still points at", needsFfmpeg, async () => {
+  const out = tmpOut();
+  const { repo } = memRepo(row({ status: "audio_ready", audio_url: "https://episodes.example.test/episodes/PP-20261114-01/audio.mp3" }), { failUpdate: true });
+  const { store, log } = memStore();
+  const r = await produce({ episodeId: "PP-20261114-01", regen: "all", regenTurn: null, outRoot: out, durationMin: 0, durationMax: 60 }, deps({ repo, store }));
+  assert.equal(r.exit, 1);
+  assert.match(r.message, /overwritten with the new mix and kept/);
+  assert.deepEqual(log, ["put episodes/PP-20261114-01/audio.mp3"]);
   rmSync(out, { recursive: true, force: true });
 });

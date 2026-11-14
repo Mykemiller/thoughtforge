@@ -32,7 +32,7 @@ function loadDotEnvLocal() {
   const p = resolve(process.cwd(), ".env.local");
   if (!existsSync(p)) return;
   for (const line of readFileSync(p, "utf8").split("\n")) {
-    const m = line.match(/^\s*(?:export\s+)?([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
+    const m = line.replace(/\r$/, "").match(/^\s*(?:export\s+)?([A-Z0-9_]+)\s*=\s*(.*?)\s*$/);
     if (!m || process.env[m[1]] !== undefined) continue;
     process.env[m[1]] = m[2].replace(/^"(.*)"$/, "$1").replace(/^'(.*)'$/, "$1");
   }
@@ -50,9 +50,9 @@ async function main(): Promise<number> {
   const episodeId = argv.find((a, i) => !a.startsWith("--") && !["--regen", "--regen-turn", "--row-file"].includes(argv[i - 1] ?? ""));
   if (!episodeId || !/^PP-\d{8}-\d{2}$/.test(episodeId)) { console.error(USAGE); return 2; }
   const regenRaw = opt("regen");
-  if (regenRaw !== undefined && regenRaw !== "audio" && regenRaw !== "all") { console.error(USAGE); return 2; }
+  if (flag("regen") && regenRaw !== "audio" && regenRaw !== "all") { console.error(USAGE); return 2; }
   const regen: Regen = (regenRaw as Regen) ?? null;
-  const regenTurn = opt("regen-turn") !== undefined ? Number(opt("regen-turn")) : null;
+  const regenTurn = flag("regen-turn") ? Number(opt("regen-turn")) : null;
   if (regenTurn !== null && (!Number.isInteger(regenTurn) || regenTurn < 1)) { console.error(USAGE); return 2; }
   const voiceCache = readJson<VoiceCache>(VOICE_CACHE, { voices: {} });
 
@@ -97,7 +97,7 @@ async function main(): Promise<number> {
     credentials: { accessKeyId: process.env.R2_ACCESS_KEY_ID!, secretAccessKey: process.env.R2_SECRET_ACCESS_KEY! },
   });
   const store: ObjectStore = {
-    async put(k, body, contentType) { await s3.send(new PutObjectCommand({ Bucket: bucket, Key: k, Body: body, ContentType: contentType, CacheControl: "public, max-age=31536000" })); },
+    async put(k, body, contentType) { await s3.send(new PutObjectCommand({ Bucket: bucket, Key: k, Body: body, ContentType: contentType, CacheControl: "public, max-age=3600" })); },
     async delete(k) { await s3.send(new DeleteObjectCommand({ Bucket: bucket, Key: k })); },
   };
 

@@ -50,7 +50,11 @@ begin
 end
 $$;
 
-revoke insert, update, delete, truncate on public.tf_episodes from anon, authenticated;
+-- Writes are never granted to anon or authenticated (the service role bypasses RLS and grants). Expressed as
+-- "revoke all, grant select" so the file stays additive-only for the automated applier; this is slightly tighter than
+-- PP-03, which left REFERENCES/TRIGGER/MAINTAIN in place for those roles.
+revoke all on public.tf_episodes from anon, authenticated;
+grant select on public.tf_episodes to anon, authenticated;
 
 create or replace function public.tf_episodes_touch() returns trigger
 language plpgsql

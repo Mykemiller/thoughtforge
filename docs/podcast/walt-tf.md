@@ -41,7 +41,9 @@ to a credentials file and no value is ever printed. A missing variable stops the
    `podcast/pronunciation-dictionary.json` (commit it). When the rules file changes, the next run pushes the new rules.
 5. Voices each turn: `POST /v1/text-to-speech/{voice_id}`, model `eleven_multilingual_v2`, stability 0.5, similarity 0.75,
    style 0.2, `mp3_44100_128`, the dictionary locator on every call, concurrency 3, 429 and 5xx retried 3 times with
-   backoff. Files land in `out/podcast/<episode_id>/turns/NNN-<slug>.mp3` (gitignored) and are reused for 7 days.
+   backoff (honouring Retry-After). Files land in `out/podcast/<episode_id>/turns/NNN-<slug>.mp3` (gitignored) and are
+   reused for 7 days only while `turns/manifest.json` shows the same voice id, text, model, settings and dictionary
+   version, so a replaced script or new pronunciation rules re-voice exactly the turns that changed.
 6. Mixdown: 350 ms of silence between turns, 900 ms between segments, `loudnorm I=-16 TP=-1.5 LRA=11`, 44.1 kHz mono
    throughout; writes `audio.mp3` (128 kbps) and `audio.wav` (master). Duration from ffprobe. Outside 9:00 to 15:30 the
    row is set to `failed` with `failure_reason`, and nothing is uploaded.
@@ -84,8 +86,8 @@ cannot appear on an episode until they do.
 
 - failure_reason: `alter table public.tf_episodes drop column if exists failure_reason;`
 - compat, only if it created the table and the table is still empty:
-  `drop table if exists public.tf_episodes; drop function if exists public.tf_episodes_touch();`
-  (per CLAUDE.md, retire the function by rename and revoke instead of dropping it if anything references it).
+  `drop table if exists public.tf_episodes;` then retire the trigger function per CLAUDE.md (never DROP FUNCTION):
+  `alter function public.tf_episodes_touch() rename to tf_episodes_touch_retired_20261114; revoke all on function public.tf_episodes_touch_retired_20261114() from public, anon, authenticated;`
 
 ## Tests
 
