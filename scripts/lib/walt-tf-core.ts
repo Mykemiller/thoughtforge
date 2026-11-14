@@ -306,7 +306,8 @@ export function pruneTurnCaches(podcastOut: string, now = Date.now()): string[] 
   for (const ep of readdirSync(podcastOut)) {
     const turns = join(podcastOut, ep, "turns");
     if (!existsSync(turns)) continue;
-    const newest = Math.max(statSync(turns).mtimeMs, ...readdirSync(turns).map((f) => statSync(join(turns, f)).mtimeMs));
+    const mtime = (p: string) => { try { return statSync(p).mtimeMs; } catch { return 0; } }; // a file can vanish mid-scan
+    const newest = Math.max(mtime(turns), ...readdirSync(turns).map((f) => mtime(join(turns, f))));
     if (now - newest > TURN_CACHE_DAYS * 86_400_000) {
       rmSync(turns, { recursive: true, force: true });
       removed.push(ep);

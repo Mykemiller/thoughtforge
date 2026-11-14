@@ -41,7 +41,7 @@ to a credentials file and no value is ever printed. A missing variable stops the
    `podcast/pronunciation-dictionary.json` (commit it). When the rules file changes, the next run pushes the new rules.
 5. Voices each turn: `POST /v1/text-to-speech/{voice_id}`, model `eleven_multilingual_v2`, stability 0.5, similarity 0.75,
    style 0.2, `mp3_44100_128`, the dictionary locator on every call, concurrency 3, 429 and 5xx retried 3 times with
-   backoff (honouring Retry-After). Files land in `out/podcast/<episode_id>/turns/NNN-<slug>.mp3` (gitignored) and are
+   backoff (honouring Retry-After; a retry after a network-level error can bill the same characters twice). Files land in `out/podcast/<episode_id>/turns/NNN-<slug>.mp3` (gitignored) and are
    reused for 7 days only while `turns/manifest.json` shows the same voice id, text, model, settings and dictionary
    version, so a replaced script or new pronunciation rules re-voice exactly the turns that changed.
 6. Mixdown: 350 ms of silence between turns, 900 ms between segments, `loudnorm I=-16 TP=-1.5 LRA=11`, 44.1 kHz mono
@@ -49,7 +49,8 @@ to a credentials file and no value is ever printed. A missing variable stops the
    row is set to `failed` with `failure_reason`, and nothing is uploaded.
 7. Uploads `audio.mp3` to `thoughtforge-episodes/episodes/<episode_id>/audio.mp3` (one retry).
 8. Updates the row: `audio_url`, `duration_seconds`, `status = 'audio_ready'`, `failure_reason = null`. If that write fails
-   the R2 object is deleted and the run exits non-zero.
+   the R2 object is deleted and the run exits non-zero, except on a `--regen` where the row already points at that key:
+   then the overwritten object is kept (deleting it would leave the row pointing at a 404).
 9. Prints one report block: episode, cast, duration, URL, word count, turn counts, warnings. Log lines are in US Central.
 
 ## How it differs from Walt (Throughline)

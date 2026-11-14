@@ -6,7 +6,8 @@
 -- of the "remove and re-create" pattern), so it is a no-op wherever PP-03 already ran, and PP-03 stays a no-op after it.
 -- This exact file ships in both the TH-38 and TH-39 PRs (byte-identical) so whichever merges first carries it.
 -- Project of record: ycadmmngkdhvpcsrcuaq. Never apply to xgbpmlkanxewtfizloay (decoy).
--- Gate: to_regclass('public.tf_episodes') is not null, RLS on, policy tf_episodes_anon_read_published present.
+-- Gate: to_regclass('public.tf_episodes') is not null, RLS on, policy tf_episodes_anon_read_published present, and
+-- relacl gives anon and authenticated exactly r,x,t,m (select, references, trigger, maintain), as PP-03 does on PG17.
 -- Rollback (only if this file created the table, i.e. it held zero rows before and still does):
 --   the inverse statements are in docs/podcast/walt-tf.md#rollback.
 
@@ -50,11 +51,19 @@ begin
 end
 $$;
 
--- Writes are never granted to anon or authenticated (the service role bypasses RLS and grants). Expressed as
--- "revoke all, grant select" so the file stays additive-only for the automated applier; this is slightly tighter than
--- PP-03, which left REFERENCES/TRIGGER/MAINTAIN in place for those roles.
+-- PP-03 revokes insert/update/delete/truncate from anon and authenticated, leaving them SELECT, REFERENCES, TRIGGER and
+-- (PG17) MAINTAIN from Supabase's default grants. The same end state is written here as "revoke all, then grant those
+-- back", which keeps this file free of destructive keywords for the automated applier. Where PP-03 already ran, the net
+-- change is nil (the same four privileges before and after). The service role bypasses RLS and keeps its own grants.
 revoke all on public.tf_episodes from anon, authenticated;
-grant select on public.tf_episodes to anon, authenticated;
+grant select, references, trigger on public.tf_episodes to anon, authenticated;
+do $$
+begin
+  if current_setting('server_version_num')::int >= 170000 then
+    execute 'grant maintain on public.tf_episodes to anon, authenticated';
+  end if;
+end
+$$;
 
 create or replace function public.tf_episodes_touch() returns trigger
 language plpgsql
