@@ -5,6 +5,11 @@ import { PANEL_SORTED, panelAlt } from "@/src/data/panel";
 import { teamPhotos } from "@/src/data/team-photos";
 import { aboutFromLinkedin } from "@/src/cast/bio";
 import { loadCast } from "@/src/cast/load";
+import { LatestEpisodeCard } from "@/src/components/podcast/LatestEpisodeCard";
+import { latestEpisode } from "@/src/lib/podcast/queries";
+
+// ISR: the latest-episode card refreshes every 5 minutes (TH-39).
+export const revalidate = 300;
 
 const TIERS = [
   { code: "VRF", label: "Verified against a retrieved primary source." },
@@ -30,8 +35,9 @@ function loadBios(): TeamBio[] {
   });
 }
 
-export default function HomePage() {
+export default async function HomePage() {
   const bios = loadBios();
+  const latest = await latestEpisode();
   return (
     <main>
       {/* Hero */}
@@ -60,6 +66,9 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      {/* Latest podcast episode: hidden until one is published (TH-39) */}
+      <LatestEpisodeCard episode={latest} />
 
       <MeetTheTeam photos={teamPhotos} bios={bios} />
 
