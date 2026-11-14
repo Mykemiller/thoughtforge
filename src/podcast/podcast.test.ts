@@ -24,6 +24,7 @@ test("only published rows with a publish time survive normalization; the draft n
   assert.deepEqual(published.map((e) => e.episode_id).sort(), ["PP-20261031-01", "PP-20261107-01"]);
   assert.equal(toPublishedEpisode({ ...library.episodes[0], published_at: null }), null);
   assert.equal(toPublishedEpisode({ ...library.episodes[0], status: "approved" }), null);
+  assert.equal(toPublishedEpisode({ ...library.episodes[0], audio_url: "http://insecure.example/a.mp3" })?.audio_url, null, "https audio only");
 });
 
 test("show name comes from tf_episodes.show, falling back to ThoughtForge: The Signal", () => {

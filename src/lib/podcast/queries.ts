@@ -7,6 +7,7 @@
  * is logged and treated as "no episodes", so a public page never 500s because the podcast is not live yet.
  */
 import "server-only";
+import { cache } from "react";
 import library from "../../../fixtures/podcast/library.json";
 import { getAnonClient, hasAnonEnv } from "../supabase";
 import { PAGE_SIZE, PUBLIC_COLUMNS, isCursor, pageOf, sortNewestFirst, toPublishedEpisode, type PublishedEpisode } from "../../podcast/episodes";
@@ -45,7 +46,8 @@ export async function listPublishedEpisodes(limit = PAGE_SIZE, cursor?: string |
   }
 }
 
-export async function getEpisode(episodeId: string): Promise<PublishedEpisode | null> {
+/** Deduplicated per request with React cache(): generateMetadata and the page share one read. */
+export const getEpisode = cache(async function getEpisode(episodeId: string): Promise<PublishedEpisode | null> {
   if (!/^PP-\d{8}-\d{2}$/.test(episodeId)) return null;
   if (isMock()) return mockEpisodes().find((e) => e.episode_id === episodeId) ?? null;
   if (!hasAnonEnv()) return null;
@@ -57,7 +59,7 @@ export async function getEpisode(episodeId: string): Promise<PublishedEpisode | 
     console.error(`[podcast] getEpisode ${episodeId}: ${(e as Error).message}`);
     return null;
   }
-}
+});
 
 export async function latestEpisode(): Promise<PublishedEpisode | null> {
   return (await listPublishedEpisodes(1)).items[0] ?? null;

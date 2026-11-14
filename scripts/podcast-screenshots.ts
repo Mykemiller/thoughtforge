@@ -3,7 +3,7 @@
 //
 //   TF_MOCK=1 npm run build && npm run podcast:screenshots
 //
-// Writes PNGs to docs/podcast/screenshots/ and fails if any page scrolls horizontally on mobile.
+// Writes PNGs to docs/podcast/screenshots/ and fails if any page scrolls horizontally at 360-1024px.
 import { spawn, type ChildProcess } from "node:child_process";
 import { existsSync, mkdirSync } from "node:fs";
 import { chromium } from "playwright";
@@ -67,6 +67,19 @@ try {
     }
     await ctx.close();
   }
+  // horizontal-scroll sweep across phone, landscape-phone and tablet widths (no screenshots)
+  const sweep = await browser.newContext({ viewport: { width: 360, height: 800 } });
+  const sp = await sweep.newPage();
+  for (const width of [360, 375, 640, 667, 768, 1024]) {
+    await sp.setViewportSize({ width, height: 800 });
+    for (const s of shots) {
+      await sp.goto(`http://localhost:${PORT}${s.path}`, { waitUntil: "load" });
+      const overflow = await sp.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      if (overflow > 0) { failed = true; console.error(`${s.path} @${width}px: horizontal overflow ${overflow}px`); }
+    }
+  }
+  console.log("overflow sweep 360-1024 done");
+  await sweep.close();
 } finally {
   await browser.close();
   stop(server);

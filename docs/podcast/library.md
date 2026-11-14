@@ -66,8 +66,18 @@ TF_MOCK=1 npm run build && npm run podcast:screenshots   # docs/podcast/screensh
 ### Rollback
 
 - audio_bytes: `alter table public.tf_episodes drop column if exists audio_bytes;`
-- compat: see docs/podcast/walt-tf.md#rollback (TH-38) or, if TH-39 merges first, the same statements: drop the table only
-  if this file created it and it is still empty; retire `tf_episodes_touch()` by rename and revoke, never DROP FUNCTION.
+- compat (`20261114204547_tf_episodes_compat.sql`), only if this file created the table (`to_regclass('public.tf_episodes')`
+  was null before the apply) and it still holds zero rows:
+
+  ```sql
+  drop table if exists public.tf_episodes;
+  -- never DROP FUNCTION here (CLAUDE.md): retire the trigger function by rename and revoke
+  alter function public.tf_episodes_touch() rename to tf_episodes_touch_retired_20261114;
+  revoke all on function public.tf_episodes_touch_retired_20261114() from public, anon, authenticated;
+  ```
+
+  Confirm the rollback held: `to_regclass('public.tf_episodes') is null` and
+  `to_regprocedure('public.tf_episodes_touch()') is null`. The same statements are in docs/podcast/walt-tf.md (TH-38).
 
 ## Follow-ups
 

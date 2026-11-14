@@ -84,7 +84,7 @@ export function toPublishedEpisode(row: Raw): PublishedEpisode | null {
     signals: signalsOf(row.signals),
     script: parsed?.success ? parsed.data : null,
     show_notes_md: str(row.show_notes_md),
-    audio_url: str(row.audio_url) && /^https?:\/\//.test(row.audio_url as string) ? (row.audio_url as string) : null,
+    audio_url: str(row.audio_url) && /^https:\/\//.test(row.audio_url as string) ? (row.audio_url as string) : null, // https only: http audio is blocked as mixed content
     audio_bytes: num(row.audio_bytes),
     duration_seconds: num(row.duration_seconds),
     published_at: new Date(published).toISOString(),

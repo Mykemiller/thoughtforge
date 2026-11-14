@@ -26,7 +26,7 @@ export default async function PodcastPage({ searchParams }: { searchParams: Prom
           graded; the Chief of Staff rules.
         </p>
         <p className="mt-4 text-sm">
-          <Link href="/podcast/feed.xml" className="font-semibold text-primary underline-offset-4 hover:underline">RSS feed</Link>
+          <a href="/podcast/feed.xml" className="font-semibold text-primary underline-offset-4 hover:underline">RSS feed</a>
           {before ? (
             <>
               {" · "}
