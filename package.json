@@ -22,6 +22,7 @@
     "ingest:artifact": "tsx scripts/ingest-artifact.ts",
     "ingest:digest": "tsx scripts/ingest-digest.ts",
     "podcast:script": "tsx scripts/make-episode.ts",
+    "walt:tf": "tsx scripts/walt-tf.ts",
     "inspect:artifacts": "tsx scripts/inspect-artifacts.ts",
     "apply:migration": "tsx scripts/apply-migration.ts",
     "screenshots": "tsx scripts/screenshots.ts",
@@ -49,6 +50,7 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1169.0",
     "@google/genai": "^3.0.0",
     "@notionhq/client": "^5.30.0",
     "@tailwindcss/postcss": "^4",
