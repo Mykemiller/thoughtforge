@@ -36,3 +36,23 @@ export function getServiceClient(): SupabaseClient {
   serviceClient = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
   return serviceClient;
 }
+
+let anonClient: SupabaseClient | null = null;
+
+/** True when the URL and the anon key are present (public reads, TH-39). */
+export function hasAnonEnv(): boolean {
+  return Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+}
+
+/**
+ * Anon client for public pages (TH-39 podcast). RLS decides what it can see: for tf_episodes that is
+ * status = 'published' only. Never use it for writes.
+ */
+export function getAnonClient(): SupabaseClient {
+  if (anonClient) return anonClient;
+  const url = assertProjectOfRecord(process.env.NEXT_PUBLIC_SUPABASE_URL);
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!key) throw new SupabaseProjectError("NEXT_PUBLIC_SUPABASE_ANON_KEY is not set");
+  anonClient = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+  return anonClient;
+}
