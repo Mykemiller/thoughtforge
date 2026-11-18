@@ -12,8 +12,6 @@
 // Per-turn MP3s stay in out/podcast/<id>/turns/ (gitignored) for 7 days so one bad turn can be redone cheaply.
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { createClient } from "@supabase/supabase-js";
-import { DeleteObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { PANEL } from "../src/data/panel.ts";
 import { requireServiceEnv } from "./lib/supabase-guard.ts";
 import {
@@ -72,6 +70,10 @@ async function main(): Promise<number> {
   if (process.env.R2_BUCKET !== R2_BUCKET_NAME) { console.error(`R2_BUCKET must be ${R2_BUCKET_NAME}`); return 1; }
   if (!(await hasFfmpeg())) { console.error("ffmpeg and ffprobe must be on PATH"); return 1; }
 
+  // Loaded here, not at the top: the --video stub and --dry-run must print exactly one line, and supabase-js prints a
+  // deprecation warning on import under Node 20.
+  const { createClient } = await import("@supabase/supabase-js");
+  const { DeleteObjectCommand, PutObjectCommand, S3Client } = await import("@aws-sdk/client-s3");
   const { url, key } = requireServiceEnv(); // asserts ycadmmngkdhvpcsrcuaq, refuses the decoy
   const sb = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
   const repo: EpisodeRepo = {
@@ -95,6 +97,9 @@ async function main(): Promise<number> {
     region: "auto",
     endpoint: `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
     credentials: { accessKeyId: process.env.R2_ACCESS_KEY_ID!, secretAccessKey: process.env.R2_SECRET_ACCESS_KEY! },
+    // R2 does not need the SDK's default flexible checksums; send and validate them only when an operation requires it.
+    requestChecksumCalculation: "WHEN_REQUIRED",
+    responseChecksumValidation: "WHEN_REQUIRED",
   });
   const store: ObjectStore = {
     async put(k, body, contentType) { await s3.send(new PutObjectCommand({ Bucket: bucket, Key: k, Body: body, ContentType: contentType, CacheControl: "public, max-age=3600" })); },
