@@ -22,6 +22,7 @@ import { interviewModelVersions, runInterviewTurn, validateTranscript } from "@/
 import { runMockTurn } from "@/src/interview/mock";
 import { saveInterview } from "@/src/interview/save";
 import { mergeArtifacts, type InterviewEvent, type InterviewSession } from "@/src/interview/sse";
+import { tfGateApiDenial } from "@/src/lib/faradayGate";
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -30,6 +31,8 @@ export const dynamic = "force-dynamic";
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export async function POST(req: NextRequest): Promise<Response> {
+  const gateDenial = await tfGateApiDenial(req); // FDY-414 Faraday beta gate (open mode: no-op)
+  if (gateDenial) return gateDenial;
   let body: { slug?: unknown; transcript?: unknown; session_id?: unknown; started_at?: unknown; prior_artifacts?: unknown; retrieval?: unknown };
   try {
     body = await req.json();

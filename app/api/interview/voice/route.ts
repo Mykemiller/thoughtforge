@@ -13,6 +13,7 @@ import { PANEL } from "@/src/data/panel";
 import { isMock } from "@/src/ask/mock";
 import { hasVoiceEnv, resolveVoiceId, synthesize, TTS_MAX_CHARS, VoiceError } from "@/src/voice/elevenlabs";
 import { spokenText } from "@/src/voice/sentences";
+import { tfGateApiDenial } from "@/src/lib/faradayGate";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -28,6 +29,8 @@ function reasonFor(err: unknown): string {
 }
 
 export async function GET(req: NextRequest): Promise<Response> {
+  const gateDenial = await tfGateApiDenial(req); // FDY-414 Faraday beta gate (open mode: no-op)
+  if (gateDenial) return gateDenial;
   const slug = req.nextUrl.searchParams.get("slug") ?? "";
   const member = PANEL.find((m) => m.slug === slug);
   if (!member) return NextResponse.json({ error: "slug must name a panelist" }, { status: 400 });
@@ -44,6 +47,8 @@ export async function GET(req: NextRequest): Promise<Response> {
 }
 
 export async function POST(req: NextRequest): Promise<Response> {
+  const gateDenial = await tfGateApiDenial(req); // FDY-414 Faraday beta gate (open mode: no-op)
+  if (gateDenial) return gateDenial;
   let body: { slug?: unknown; text?: unknown };
   try {
     body = await req.json();
