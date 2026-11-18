@@ -12,12 +12,15 @@ import { acquire, release } from "@/src/ask/inflight";
 import { saveSession } from "@/src/ask/save";
 import { runLive } from "@/src/ask/live";
 import { LIMITS } from "@/src/ask/roster";
+import { tfGateApiDenial } from "@/src/lib/faradayGate";
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest): Promise<Response> {
+  const gateDenial = await tfGateApiDenial(req); // FDY-414 Faraday beta gate (open mode: no-op)
+  if (gateDenial) return gateDenial;
   let body: { question?: unknown; retrieval?: unknown };
   try {
     body = await req.json();
