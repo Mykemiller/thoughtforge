@@ -1,0 +1,12 @@
+{
+  "access_key": "thoughtforge",
+  "status": "draft",
+  "app_name": "ThoughtForge Panel",
+  "story": "ThoughtForge Panel puts one question to a standing panel of AI advisors, each arguing from Faraday's registry and the IDF, and grades every claim against an evidence ladder before a Chief of Staff rules. The result is a decision with its sourcing visible.",
+  "what_you_get": [
+    "One question, a standing panel of advisors",
+    "Every claim graded against an evidence ladder",
+    "A ruling with its sourcing visible"
+  ],
+  "source": "FDY-414 approved inventory description, edited for length"
+}
