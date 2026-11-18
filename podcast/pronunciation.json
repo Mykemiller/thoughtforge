@@ -1,0 +1,31 @@
+{
+  "_doc": "TH-38: alias rules for the ElevenLabs pronunciation dictionary \"thoughtforge-podcast\". Alias rules only (they work with eleven_multilingual_v2; phoneme rules do not). Matching is case-sensitive on whole words. Edit here; the next walt-tf run pushes the new rules and updates podcast/pronunciation-dictionary.json. Seeded from terms in cast/*/ and the PP-03 pronunciation_terms.",
+  "rules": [
+    { "type": "alias", "string_to_replace": "FERC", "alias": "ferk" },
+    { "type": "alias", "string_to_replace": "ERCOT", "alias": "ER-cot" },
+    { "type": "alias", "string_to_replace": "PJM", "alias": "P J M" },
+    { "type": "alias", "string_to_replace": "MISO", "alias": "MY-so" },
+    { "type": "alias", "string_to_replace": "CAISO", "alias": "KYE-so" },
+    { "type": "alias", "string_to_replace": "NYISO", "alias": "NYE-so" },
+    { "type": "alias", "string_to_replace": "ISOs", "alias": "I S Os" },
+    { "type": "alias", "string_to_replace": "PUC", "alias": "P U C" },
+    { "type": "alias", "string_to_replace": "PUCs", "alias": "P U Cs" },
+    { "type": "alias", "string_to_replace": "NERC", "alias": "nerk" },
+    { "type": "alias", "string_to_replace": "HVDC", "alias": "H V D C" },
+    { "type": "alias", "string_to_replace": "VDC", "alias": "volts D C" },
+    { "type": "alias", "string_to_replace": "BESS", "alias": "bess" },
+    { "type": "alias", "string_to_replace": "SMR", "alias": "S M R" },
+    { "type": "alias", "string_to_replace": "SMRs", "alias": "S M Rs" },
+    { "type": "alias", "string_to_replace": "PUE", "alias": "P U E" },
+    { "type": "alias", "string_to_replace": "CDU", "alias": "C D U" },
+    { "type": "alias", "string_to_replace": "CDUs", "alias": "C D Us" },
+    { "type": "alias", "string_to_replace": "MW", "alias": "megawatts" },
+    { "type": "alias", "string_to_replace": "GW", "alias": "gigawatts" },
+    { "type": "alias", "string_to_replace": "MWh", "alias": "megawatt hours" },
+    { "type": "alias", "string_to_replace": "8GW", "alias": "eight gigawatts" },
+    { "type": "alias", "string_to_replace": "NVIDIA", "alias": "en-VID-ee-uh" },
+    { "type": "alias", "string_to_replace": "OpenAI", "alias": "Open A I" },
+    { "type": "alias", "string_to_replace": "ING", "alias": "I N G" },
+    { "type": "alias", "string_to_replace": "DOE", "alias": "D O E" }
+  ]
+}
