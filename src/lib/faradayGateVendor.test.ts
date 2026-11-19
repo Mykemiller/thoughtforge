@@ -51,19 +51,23 @@ test("vendored files are identical to the canonical package when it is checked o
     }
   });
 
-test("GatePage renders under React 19 in every view with no price, and draft copy never shows", () => {
-  assert.equal(TF_GATE_COPY.status, "draft", "ThoughtForge copy is still draft (approval is Myke's call)");
+test("GatePage renders under React 19 in every view with no price, and approved copy shows its story, draft copy never does", () => {
+  assert.equal(TF_GATE_COPY.status, "approved", "ThoughtForge copy approved (FDY-434)");
   const views: GateView[] = ["request", "expired", "waitlist", "unavailable"];
   for (const view of views) {
     for (const email of [null, "someone@example.com"]) {
       const html = renderToStaticMarkup(createElement(GatePage, { app: TF_GATE_APP, appName: TF_GATE_APP_NAME, copy: TF_GATE_COPY, view, email }));
+      const draftHtml = renderToStaticMarkup(createElement(GatePage, { app: TF_GATE_APP, appName: TF_GATE_APP_NAME, copy: { ...TF_GATE_COPY, status: "draft" as const }, view, email }));
+      const draftVisible = draftHtml.replace(/<style[\s\S]*?<\/style>/g, "").replace(/<link[^>]*>/g, "");
       const visible = html.replace(/<style[\s\S]*?<\/style>/g, "").replace(/<link[^>]*>/g, "");
       assert.equal(visible.includes("$"), false, `$ in ${view}`);
       assert.equal(/USD|€|£|per month|\/mo\b|tokens?\b/i.test(visible), false, `price-like text in ${view}`);
       assert.ok(visible.includes("monthly subscription"), "commercial line present");
       assert.ok(visible.includes("ThoughtForge Panel"), "app name present");
-      assert.equal(visible.includes(TF_GATE_COPY.story), false, "draft story never renders");
-      if (view !== "unavailable") assert.ok(visible.includes("ThoughtForge Panel is in a private beta"), "neutral draft text");
+      assert.ok(visible.includes("no charge"), "no-charge demonstration line present");
+      assert.equal(draftVisible.includes(TF_GATE_COPY.story), false, "draft story never renders");
+      if (view !== "unavailable") assert.ok(draftVisible.includes("ThoughtForge Panel is in a private beta"), "neutral draft text");
+      if (view !== "unavailable") assert.ok(visible.includes(TF_GATE_COPY.story.slice(0, 40)), "approved story renders");
       // The neutral draft story itself says "Request demo access", so check the button markup, not the phrase.
       if (view === "waitlist") assert.equal(visible.includes(">Request demo access</button>"), false, "no demo button in waitlist mode");
       if (view === "request") assert.ok(visible.includes(">Request demo access</button>") && visible.includes(">Join the waitlist</button>"));
