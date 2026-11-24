@@ -5,8 +5,9 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  // lib/faraday-gate/ is vendored byte-identical from faraday-workbench (FDY-414); it is linted there, not here.
-  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "lib/faraday-gate/**"]),
+  // lib/faraday-gate/ (FDY-414) and lib/faraday-masthead/ (FDY-444/447) are vendored byte-identical from
+  // faraday-workbench; they are linted there, not here.
+  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "lib/faraday-gate/**", "lib/faraday-masthead/**"]),
 ]);
 
 export default eslintConfig;
