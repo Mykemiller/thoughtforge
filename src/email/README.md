@@ -117,6 +117,8 @@ All read through `src/email/env.ts`, which fails fast and names missing variable
 
 TH-47 (all optional except the first for inbound): `RESEND_WEBHOOK_SECRET` (Svix signing secret from the Resend webhook page; inbound answers 503 without it), `PANEL_SIGNAL_MODE` (`thread`, default, or `roundtable`), `PANEL_RECIPIENT_NAME` (default `Myke`), `PANEL_REPLY_ALLOWLIST` (comma-separated; default `PANEL_RECIPIENT_EMAIL`), `PANEL_REPLY_MAX_PER_THREAD_PER_DAY` (default 6). Sensitive values go in through the Vercel CLI, never chat: `vercel env add RESEND_WEBHOOK_SECRET production --sensitive` and again for `preview`.
 
+FDY-297 (ADM-2.4): `PANEL_SIGNAL_MODE`, `PANEL_REPLY_MAX_PER_THREAD_PER_DAY` and `PANEL_MAX_DAILY` can also be set in the Workbench console (app **TF**, keys `panel_signal_mode`, `panel_reply_max_per_thread_per_day`, `panel_max_daily`). A console value takes effect within 60 s with no redeploy; the env value above stays the fail-closed fallback when the read fails or nobody has set a value (`src/email/settings.ts`, `src/config/resolver.ts`).
+
 - `DRY_RUN=1`: compose, print the would-be email to stdout (To and Reply-To shown as variable names), and still insert rows with `resend_id = 'dry-run'`. `RESEND_API_KEY` is not needed. Delete those rows (`delete from tf_email_messages where resend_id = 'dry-run'`) before the first live run on the same day, or that day's live sends are skipped.
 - `TF_MOCK=1`: canned compose with no model call, marked as a placeholder. Allowed only with `DRY_RUN=1`, so a canned email can never be sent.
 

@@ -17,6 +17,7 @@ import type { InboundMessage, ReplyDeps } from "./reply";
 import { runPanelDay, type DayRunDeps } from "./day-run";
 import { parseSignalBody, runSignal, SignalInputError, type Outcome, type RunDeps } from "./run";
 import { DryRunSender, ResendSender } from "./send";
+import { applyPanelSettings } from "./settings";
 import { supabaseStores } from "./store";
 
 const sha = (s: string) => createHash("sha256").update(s, "utf8").digest();
@@ -38,6 +39,11 @@ export interface HttpDeps {
   buildInbound: (env: EmailEnv, run: RunDeps) => InboundDeps;
   /** TH-66: the panel day's stores and lane sources. */
   buildDay: (env: EmailEnv, run: RunDeps) => DayRunDeps;
+  /**
+   * FDY-297: overlay the settings set in the console (PANEL_SIGNAL_MODE, reply caps) on the validated env.
+   * Must never throw; on any failure it returns the env unchanged. Omitted = env only.
+   */
+  settings?: (env: EmailEnv) => Promise<EmailEnv>;
   now: () => Date;
 }
 
@@ -110,13 +116,14 @@ export const defaultHttpDeps: HttpDeps = {
   build: buildRunDeps,
   buildInbound: buildInboundDeps,
   buildDay: buildDayDeps,
+  settings: (env) => applyPanelSettings(env),
   now: () => new Date(),
 };
 
 const json = (body: unknown, status = 200) => Response.json(body, { status, headers: { "cache-control": "no-store" } });
 
-/** Auth, then env. Returns a Response to send back, or the deps to run with. */
-function guard(req: Request, deps: HttpDeps): Response | { env: EmailEnv; run: RunDeps } {
+/** Auth, then env, then the console settings (FDY-297). Returns a Response to send back, or the deps to run with. */
+async function guard(req: Request, deps: HttpDeps): Promise<Response | { env: EmailEnv; run: RunDeps }> {
   const secret = deps.cronSecret();
   if (!secret) return json({ error: "panel email is not configured: PANEL_CRON_SECRET is not set" }, 503);
   if (!bearerMatches(req.headers.get("authorization"), secret)) return json({ error: "unauthorized" }, 401);
@@ -127,6 +134,7 @@ function guard(req: Request, deps: HttpDeps): Response | { env: EmailEnv; run: R
     if (e instanceof EmailEnvError) return json({ error: e.message }, 500);
     throw e;
   }
+  if (deps.settings) env = await deps.settings(env);
   return { env, run: deps.build(env) };
 }
 
@@ -134,7 +142,7 @@ const statusFor = (outcomes: Outcome[]) => (outcomes.some((o) => o.status === "f
 
 /** TH-66: the weekday 07:00 and Saturday 09:00 cron run the panel day (runPanelDay). */
 export async function handleCron(req: Request, deps: HttpDeps = defaultHttpDeps): Promise<Response> {
-  const g = guard(req, deps);
+  const g = await guard(req, deps);
   if (g instanceof Response) return g;
   const result = await runPanelDay(deps.now(), deps.buildDay(g.env, g.run));
   // Bodies stay out of the response; subjects and statuses are enough for the cron log.
@@ -143,7 +151,7 @@ export async function handleCron(req: Request, deps: HttpDeps = defaultHttpDeps)
 }
 
 export async function handleSignal(req: Request, deps: HttpDeps = defaultHttpDeps): Promise<Response> {
-  const g = guard(req, deps);
+  const g = await guard(req, deps);
   if (g instanceof Response) return g;
   let input: ReturnType<typeof parseSignalBody>;
   try {
@@ -178,6 +186,7 @@ export async function handleInbound(req: Request, deps: HttpDeps = defaultHttpDe
     if (e instanceof WebhookError) return json({ error: e.message }, 401);
     throw e;
   }
+  if (deps.settings) env = await deps.settings(env); // FDY-297: only after the signature checks out
   const run = deps.build(env);
   try {
     const result = await handleReceived(event, deps.buildInbound(env, run));
