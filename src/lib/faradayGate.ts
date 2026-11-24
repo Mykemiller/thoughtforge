@@ -28,6 +28,15 @@ export const TF_GATE_APP_NAME = "ThoughtForge Panel";
 export const TF_GATE_TERMS_URL = "https://www.faraday-intelligence.ai/terms";
 export const TF_GATE_PRIVACY_URL = "https://www.faraday-intelligence.ai/privacy";
 
+/**
+ * FDY-433 (ADM-1.7h): paths that stay public in EVERY gate mode, because podcast apps cannot sign in.
+ * The feed is a route handler (app/podcast/feed.xml/route.ts), which no layout wraps, so the gate in
+ * app/podcast/layout.tsx never runs for it; the cover art is a static file in public/podcast/; the
+ * episode audio the feed's <enclosure> tags point at is served from storage (audio_url), not this app.
+ * src/lib/faradayGateCarveout.test.ts fails if any of these moves behind the gate or the magic-word wall.
+ */
+export const TF_GATE_PUBLIC_PATHS = ["/podcast/feed.xml", "/podcast/cover-600.png", "/podcast/cover-3000.png"] as const;
+
 type Env = Record<string, string | undefined>;
 
 /** The approved-or-draft gate copy for ThoughtForge (draft renders neutral text; see core.displayCopy). */
