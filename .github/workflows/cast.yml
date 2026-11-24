@@ -1,7 +1,7 @@
 name: cast
 on:
   pull_request:
-    paths: ["cast/**", "scripts/**", "docs/**", "package.json", "package-lock.json"]
+    paths: ["cast/**", "scripts/**", "docs/**", "lib/**", "package.json", "package-lock.json"]
   workflow_dispatch:
 jobs:
   checks:
@@ -11,6 +11,8 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20, cache: npm }
       - run: npm ci
+      - name: Faraday masthead drift check (FDY-447; vendored lib/faraday-masthead must match its MANIFEST)
+        run: node lib/faraday-masthead/check-drift.mjs
       - name: ffmpeg for the walt-tf mixdown tests (TH-38)
         run: command -v ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
       - run: npm run typecheck
